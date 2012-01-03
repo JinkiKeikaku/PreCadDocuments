@@ -1,0 +1,159 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html;charset=Shift_JIS"><title>Untitled Document</title></head>
+<BODY>
+<H2>プロトタイプ　Brownie01</H2>
+<H3>目標</H3>
+<BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+  <P>アルミの曲げ加工に挑戦する。<BR>大量生産（？）のめどを付ける。<BR>電源の単電源化（7.2V）をめざす。<BR>可能ならフィードバック制御の実験を行う（できませんでした）。<BR><FONT 
+  size=1>ROBO-ONE第２回大会予選突破（一応できました）。</FONT></P></BLOCKQUOTE>
+<H3>仕様</H3>
+<P>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  
+  <TR>
+    <TD>高さ&nbsp;&nbsp; </TD>
+    <TD>約45ｃｍ&nbsp;</TD></TR>
+  <TR>
+    <TD>幅</TD>
+    <TD>約23ｃｍ</TD></TR>
+  <TR>
+    <TD>奥行</TD>
+    <TD>約13ｃｍ</TD></TR>
+  <TR>
+    <TD>重量（電池込み）</TD>
+    <TD>2.3Kg（多分）。</TD></TR>
+  <TR>
+    <TD>サーボモーター</TD>
+    <TD>足首PS-2174FET×4　ひざPDS-2144FET×2　股間PS-2174FET×6<BR>腰PS-2174FET×1<BR>肩S3003×4　ひじS3003×2　S3102×2（回転用）</TD></TR>
+  <TR>
+    <TD>マイコン</TD>
+    <TD>AKI-3664フラットマイコンキット</TD></TR>
+  <TR>
+    <TD>コントローラ</TD>
+    <TD>SANYOのPentium166Mhzノートパソコン　　OS　Windows95</TD></TR>
+  <TR>
+    <TD>無線</TD>
+    <TD>IO-DATA　WNA-RS(X2)</TD></TR>
+  <TR>
+    <TD>電源</TD>
+    <TD>単三NiMH電池（秋月で売っていた1800mAhのもの）六本。レギュレータによりマイコン（5V）、無線（5V）、サーボ（6V）。</TD></TR>
+  <TR>
+    <TD>制御</TD>
+    <TD>
+      <P>一定時間間隔ごとにパソコンより関節角度を無線によりロボット側へ送信する。<BR>関節軌道は世に言う（？）なんちゃって歩行。<BR>姿勢制御等、フィードバック系は無し。</P></TD></TR>
+  <TR>
+    <TD>歩行速度</TD>
+    <TD>低速&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.8m/min&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      高速&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3m/min</TD></TR>
+  <TR>
+    <TD>回転速度</TD>
+    <TD>右旋回&nbsp; 0.7回転/min&nbsp;&nbsp;&nbsp; 左旋回&nbsp;&nbsp;1.7回転/min</TD></TR>
+  <TR>
+    <TD>連続駆動時間 (*1)</TD>
+    <TD>低速&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20min&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      高速&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 20min</TD></TR>
+  <TR>
+    <TD>不整地歩行能力</TD>
+    <TD>なし</TD></TR></TABLE></P>
+<P>*1連続旋回プログラムにより約2mの円軌道を歩行。旋回軌道を外れた場合は人間が（手で足先をちょっとずらして）介入して軌道修正した。<BR>無線が電圧変化に敏感で、しかも電流を500mAほど消費するので、有線時はこの1.5倍以上は動作すると思われる。</P>
+<P>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  
+  <TR>
+    <TD><A 
+      href="http://home1.catvmics.ne.jp/%7Emyam/robot/brownie/brownie01/pic/front.jpg"><IMG 
+      height=200 alt=FRONT src="index_files/robo_s.JPG" width=150></A></TD></TR>
+  <TR>
+    <TD>
+      <P align=center>正面</P></TD></TR></TABLE></P>
+<H3>動画</H3>
+<P><A 
+href="http://home1.catvmics.ne.jp/%7Emyam/robot/brownie/brownie01/movie/ojigi_walk.mpg"></A><A 
+href="http://home1.catvmics.ne.jp/%7Emyam/robot/brownie/brownie01/movie/ojigi_walk.mpg">おじぎ</A><A 
+href="http://home1.catvmics.ne.jp/%7Emyam/robot/brownie/brownie01/movie/ojigi_walk.mpg">と歩行</A></P>
+<P><A 
+href="http://home1.catvmics.ne.jp/%7Emyam/robot/brownie/brownie01/movie/kick.mpg">キック</A></P>
+<H3>&nbsp;</H3>
+<H3>反省点</H3>
+<UL dir=ltr style="MARGIN-RIGHT: 0px">
+  <LI>行動パターンの選択 
+  <UL>
+    <LI>パソコン画面のリストボックスから選ぶ方式をとったが、画面を見ながら動かすのはむづかしい。プロポかジョイスティックか音声認識、自律動作が望ましい。</LI></UL>
+  <LI>
+  <DIV>一度選んだパターンを途中で終了できない時がある。</DIV>
+  <UL dir=ltr>
+    <LI>
+    <DIV>ROBO-ONEで不本意にも倒れた対戦相手にキックを食らわせてしまいました（反則です）。キックは途中で止めると（多分）倒れるので一度コマンドが受けつけられると中止できない仕様のためです。パンチとかだと倒れた相手には当たりませんが、キックはだめです。</DIV></LI></UL>
+  <LI dir=ltr>
+  <DIV>サーボの動作がかくかく</DIV>
+  <UL>
+    <LI dir=ltr>
+    <DIV>今度はちゃんと軌道の補完をしましょう。</DIV></LI></UL>
+  <LI>
+  <DIV>無線が時々おかしくなる。</DIV>
+  <UL dir=ltr>
+    <LI>
+    <DIV>予選時、途中から電波がまったく届かなくなりました（それで転んだ）。Brownie01はパソコンからパターンを送ってるので、ちょっとでも通信がだめだと、まったく動きません（と言うか変な動きをする）。通信への依存を減らさなければいけません。</DIV>
+    <LI>
+    <DIV>あらためて予選時の映像を見ると、大股歩行時の途中からデータが来ていない感じです。</DIV></LI></UL>
+  <LI>
+  <DIV>起き上がりができない</DIV>
+  <UL dir=ltr>
+    <LI>
+    <DIV>なにも言わなくても当然でしょう。対戦相手（MetallicFighter...優勝者）の起き上がるさまを見てすでに負けました。</DIV></LI></UL>
+  <LI>
+  <DIV>姿勢制御がない</DIV>
+  <UL dir=ltr>
+    <LI>
+    <DIV>姿勢制御を付けるつもりで重心を腰より上にしたり、足裏を小さくしたのですが、、、。技術と時間がなくて、、、。</DIV></LI></UL>
+  <LI>
+  <DIV>股のがたつき</DIV>
+  <UL dir=ltr>
+    <LI>
+    <DIV>股を開く方向（ロール軸かな？）のことです。皆さん苦労しているようで。スラストベアリングを使うのが素直な解決法でしょうか（<A 
+    href="http://www5b.biglobe.ne.jp/%7Eyume-s/">夢さん</A>は自分でスラストベアリングを作ったそうで、、、。すごすぎる。）？ここが弱いと足を上げることができません。よって、構造の見直しをおこなわなければいけません（MetallicFighterはこれが無いんですよね？ある意味これも工夫ですね）。<BR>よく、足首が大事みたいに言われますが、実際は足首に必要なトルクは（足裏の長さ×重量）程度なので足裏が小さければそれほどトルクは要らないみたいです。実際、足首はS3003×2でなんとかなってました（ねんのためにPS-2174FETに変えましたが）。</DIV></LI></UL>
+  <LI>
+  <DIV>シミュレーション環境</DIV>
+  <UL dir=ltr>
+    <LI>
+    <DIV>ROBO-ONE-Stairs成功の方（の一人）からお話を聞いて、いるのかなぁと思いました。そもそも、機構部分にがたがあったり、精度がなかったりで有効に使えるかはわかりませんが。あと、売ってる物は（個人では）値段的に買えませんから、フリーか自分で何とかするか、、、。</DIV></LI></UL>
+  <LI>
+  <DIV>設計環境</DIV>
+  <UL dir=ltr>
+    <LI>
+    <DIV>３D 
+    CADはいらないと思ってきましたが、さすがにロボットを作るとなると、ちょっとほしくなります。先のシミュレーション環境と会わせて何とかしたいです。ここら辺も売り物は（個人には）高いと思います</DIV></LI></UL>
+  <LI>
+  <DIV>体力不足</DIV>
+  <UL dir=ltr>
+    <LI>
+    <DIV>やすりがけとかやると、すぐばてばてです。努力と根性も足りません。今回は何度かめまいが起きて倒れました（をぃをぃ）。無茶はしても無理はしない（だったっけ？）。健康管理も大事です。</DIV></LI></UL>
+  <LI>
+  <DIV>一人の限界</DIV>
+  <UL dir=ltr>
+    <LI>
+    <DIV>かといってまわりにその手の（技術のある）友人は少ないし、、、。いても現実主義者だし、、、（なんで2足歩行の意義を説明せにゃならんのかなぁ）。</DIV></LI></UL>
+  <LI dir=ltr>
+  <DIV>予算と時間</DIV>
+  <UL dir=ltr>
+    <LI dir=ltr>
+    <DIV>予算を使いすぎました。たぶん、ちょっとしたノートパソコン並みの金額を使ってます。失敗しなければその半額くらいでしょうか。シミュレーションや３DCADが使えればもうちょっと押さえられるかもしれません。</DIV>
+    <LI dir=ltr>
+    <DIV>試作や動作確認に使う時間が結構かかります。体力と気力不足のせいです。アルミを使わずにプラスチックと両面テープで試作すればお手軽かもしれません。</DIV></LI></UL>
+  <LI dir=ltr>
+  <DIV>その他</DIV>
+  <UL dir=ltr>
+    <LI dir=ltr>
+    <DIV>ラジコンサーボはお気楽でいいのですが、関節を持つロボットにはむいていないのでは？と思います（個人的な意見です）。<BR>リニアアクチュエータ（シリンダ）がいいですね。人工筋肉でも可。形状記憶合金（例えば<A 
+    href="http://www.toki.co.jp/BMX/BMX150.html">これ</A>）も一応検討しましたが、効率が悪すぎます。<BR>なんとなく、世の中モーターなので、この意見は少数派なんでしょうね。というわけで、まだしばらくラジコンサーボでしょうか？</DIV>
+    <LI dir=ltr>
+    <DIV>つま先は必要な気がします。つま先があれば、足首の駆動範囲の狭さ（でも、人間並みなんだよねぇ）もカバーできます。つま先に必要なトルクはあまり必要でなさそうですが、バランス制御が重要になりそうです。</DIV>
+    <LI dir=ltr>
+    <DIV>サーボの改造して、角度とか電流とか取りたいです。合わせてもっと、積分要素がほしいです。サーボをいじればいろいろ楽しめるのですが、技術と時間が、、、。</DIV></LI></UL></LI></UL>
+<P>&nbsp;</P>
+<H3>これから</H3>
+<BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+  <P>これからどうするかは未定です。上記の反省点を少しでも生かす機体を作るだけです。<BR>とある友人からは、重心位置が高いとか足裏が小さいとかいろいろ指摘されましたが、次回もそうします。重心位置に関しての参考文献は「アウターガンダム」（作画 
+  松浦まさふみ　ISBN4-8402-2167-7 C9979）P10より。こんなの参考にしていいのか？</P>
+  <P>さて、問題は技術と時間と予算。う～ん、どれもどうしようもないものばかりだ。こまったね。<BR></P></BLOCKQUOTE>
+</BODY></html>

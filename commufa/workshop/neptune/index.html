@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<META NAME="Generator" CONTENT="Homepage Manager Ver 1.37">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=Shift_JIS">
+<TITLE>Neptune-X</TITLE>
+</HEAD>
+<BODY text=#000000 vLink=#800080 aLink=#ff0000 link=#0000ff bgColor=#ffffff>
+<H1 align=center>Neptune-X</H1>
+<P align=center>X68000用LANカード</P>
+<H3 align=left>製作動機</H3>
+<BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+  <P>　ある同人誌を見ていたらEthernet 
+  ControllerのRTL8019AS（蟹さん）を使った製作記事があって、なんとなく何か作りたくなった。某プロジェクトでちょうどXILINXのXC9536を使って石の使い方やVHDLの書き方もなんとなくわかったので、なんか工作のネタを探していたところ、友人のX68K（NetBSD稼動中）にEthernetがついてないことをネタにしようと思いついた。</P>
+  <P>　すでに<A 
+  href="http://www.amy.hi-ho.ne.jp/shimada/neptune/">Neptune-X</A>なるものが存在することは知っていたのでその回路をXC95??あたりに焼いて、RTL8019ASを使ったカードを買い、分解してやればなんとかなると構想は順調に進んだ（え！）。</P></BLOCKQUOTE>
+<H3>工作法</H3>
+<BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+  <P>　ここで、一番入手が困難な部品はX68K用のユニバーサル基盤でしょう。PC9800用の基盤が使えると言ううわさも聞きましたが、なぜかそれも入手困難.、しかも高価でお店で悩んでいると、目の前に100ピンのカードエッジ（のような）だけの基盤を見つけ、普通のユニバーサル基盤とともに購入。これらをエポキシ接着剤で接着すればX68Kにつながるユニバーサル基盤の出来上がりとなる。</P>
+  <P>　次に、RTL8019ASや20MHｚのクリスタル、シリアルEEPROM、トランス、モジュラソケットなどは秋月電子などでも手に入りますが、これだけそろえるならそこら辺のお店で売っているISAのLANカードを買うほうが安い。</P>
+  <P>　しかし、その場合表面実装0.65mmピッチ100ピンのICを基盤からはがす必要があります。昔は１本づつ先の細い針ではずしましたが、ここでは低融点半田を使った取り外しキットを使いました。サンハヤトなどがだしてるやつです。これを使って結構簡単にはずすことができました。</P>
+  <P>　あ、そうそう、基盤から石をはずす前にISAのカードがささるパソコンを使ってカードの設定を行いましょうね。いまどきのカード（ISAがいま時かどうかはさておいて）はデフォルトはPNPモードなのでそれを切ってIRQ10、I/Oベースアドレスを300Hにしましょう。</P>
+  <P>　CPLDは入手性からXC9572-15PC84Cを使いました。しかも、これならPLCCソケットが使えて工作が楽です。Neptune-Xの回路に使うには規模は余裕ですが、ピン数が足りません。仕方がないので、アドレスバスのバッファーは外付けで74LS245を二つ使いました。正直、バッファーが要るかどうかよくわからないのですが、、、。</P>
+  <P>　さて、CPLDに書きこむ回路なんですが、<A 
+  href="http://www.tky.3web.ne.jp/~applause/neptune-x/">Ａｐｐｌａｕｓｅさんが作ったNeptune-X</A>のABELのソースをいただいて、今回使うXC9572用にちょっと修正して使わせていただきました。初期の目標は、VHDLを使って書くはずだったのですが、基盤チェック用に借りてきたX68000 
+  ACE 
+  HDが借りに行ったその日に電源が壊れて（涙）、チェックができなくなりました。もう、冒険はできないので上記のソースを使わせていただきました（これは正解でした。これがないと基盤の問題か、ロジックの問題かで悩んだでしょう）。VHDL使えなかったのがちょっと心残りかな？</P>
+  <P>&nbsp;</P></BLOCKQUOTE>
+<H3>チェックと稼動</H3>
+<BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+  <P>　まず、導通チェックを行います。これでOKならお客さん（笑）のお家にGO!。チェックプログラムを動かして確認、しかし、</P>
+  <HR align=left width="100%" SIZE=3>
+
+  <P>　<FONT 
+  color=crimson>　疑似ＩＳＡ上にNE-x000ではなさそうなカードを検出しました<BR>　　データバスの配線の確認をしてください。<BR>　　なお、Neptune-X 
+  ver0.3以下の場合は、ver0.4以上にしてください。</FONT></P>
+  <HR align=left width="100%" SIZE=3>
+
+  <P>　はぁー。自宅に戻って再びチェックすると接触抵抗が100オームの場所があるじゃありませんか。UEW線がうまく引っ付いてなかったみたいですね。これぐらいの抵抗値だとテスターの導通チェックのブザーは鳴ってしまうのでした。</P>
+  <P>　今度はもっとちゃんとチェックしました。秋月電子のH8TinyCPUのキット（AKI-3664フラットマイコンキット）をつないでRTL8019ASのレジスターをアクセスするプログラムを作りました。最初からやってりゃよかった。</P>
+  <P>　最初はなぜか思う値が出なくて、悩んだ挙句、「あ、ビッグエンディアンやん！」てな感じで上位８ビットを見たらOKでした。自分は昔からリトルエンディアンに犯された体なもんで、はまりました。</P>
+  <P>　再び友人宅へ。今度は割り込みのチェックで落ちる！今度のカードは少し自信があったのになぁ。現場でチェックするも、原因がつかめず。なんか不安定。しばらく抜き差しすると動いちゃった！！！原因不明。友人によると、カードをさすスロットの場所なんか変えたとか？もしかしたらカードエッジ部分の接触不良だったのかな？まあ、いいか。</P></BLOCKQUOTE>
+<H3>感想</H3>
+<BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+  <P>　いろいろ楽しかったです。またネタください（をぃ）。でも、面白い（うけを狙える）ネタでないと断ります（ここら辺がわからない人が私の周りに多くて、、、。仕事（まずまちがいなく）を持ってこられてもねぇ。おまえ暇だろと言われても、暇じゃないのよ。Neptune-Xも深夜にやってたし）。</P></BLOCKQUOTE>
+<H3>写真</H3>
+<BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+  <P>撮影が下手ですみません。</P></BLOCKQUOTE>
+<P>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <P align=center><A href="picture/front.jpg"><IMG height=96 
+      alt="front_s.jpg - 3,568Bytes" src="picture/front_s.jpg" 
+    width=128></A></P></TD>
+    <TD>
+      <P align=center><A href="picture/back.jpg"><IMG height=96 
+      alt="back_s.jpg - 3,643Bytes" src="picture/back_s.jpg" 
+    width=128></A></P></TD>
+    <TD>
+      <P align=center><A href="picture/writer.jpg"><IMG height=96 
+      alt="writer_s.jpg - 3,542Bytes" src="picture/writer_s.jpg" 
+      width=128></A></P></TD>
+    <TD>
+      <P align=center><A href="picture/zangai.jpg"><IMG height=96 
+      alt="zangai_s.jpg - 2,991Bytes" src="picture/zangai_s.jpg" 
+      width=128></A></P></TD>
+    <TD><A href="picture/h8.jpg"><IMG height=96 alt="h8_s.jpg - 3,816Bytes" 
+      src="picture/h8_s.jpg" width=128></A></TD></TR>
+  
+  <TR>
+    <TD>
+      <P align=center>部品面</P></TD>
+    <TD>
+      <P align=center>裏</P></TD>
+    <TD>
+      <P align=center>自作CPLDライター</P></TD>
+    <TD>
+      <P align=center>部品取外し後</P></TD>
+    <TD>
+      <P align=center>チェック用H8</P></TD></TR></TABLE></P>
+<P>&nbsp;</P>
+<H3>謝辞</H3>
+<P>Ａｐｐｌａｕｓｅさん、ABELのソースをこころよく使わせていただいてありがとうございます。</P>
+<P>0-chan、またネタください（そればっか）。</P>
+</BODY>
+</HTML>
