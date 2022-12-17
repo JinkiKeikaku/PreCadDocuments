@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>ひとりごと</TITLE>
+<META content=text/html;charset=Shift_JIS http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.23569"></HEAD>
+<BODY>
+<H4 align=left>ひとりごと</H4>
+<BLOCKQUOTE style="MARGIN-RIGHT: 0px" dir=ltr>
+  <P style="MARGIN-RIGHT: 0px" dir=ltr 
+  align=left>2014/03/27<BR>○謎<BR>　某タブレット、kernelを修正して電圧上げてなんとか安定した。分解したけど意味はなく、無駄に傷跡を残しただけだった。KITKATにあげたけど、動作が怪しいので、戻すかも。</P>
+  <P style="MARGIN-RIGHT: 0px" dir=ltr 
+  align=left>2014/03/23<BR>○PSOC<BR>　やっぱり制御周期落としてPSoCにします。こっちの方が面白い。<BR>　しかし、どんなモーターを使うかが決まらない。<BR>　コンデンサーを昨日発注。</P>
+  <P style="MARGIN-RIGHT: 0px" dir=ltr 
+  align=left>2014/03/03<BR>○LPC812<BR>　Digikeyに金曜夜に発注した分が朝に届く。RSに土曜朝に発注分は届かない(そりゃそうだ)。<BR></P>
+  <P style="MARGIN-RIGHT: 0px" dir=ltr 
+  align=left>2014/03/02<BR>○謎<BR>　失敗。<BR>○謎2<BR>　言ってないことを主張された感じでなんだかなぁ。<BR>○Android<BR>　中華なタブレットが不安定でＣＰＵやＧＰＵクロックを下げてもだめで、DDRクロックを下げたら安定したっぽい。</P>
+  <P style="MARGIN-RIGHT: 0px" dir=ltr 
+  align=left>2014/03/01<BR>○LPC812<BR>　結局LPCOpenとかのライブラリは使わない方向で直接レジスタをたたく。</P>
+  <P style="MARGIN-RIGHT: 0px" dir=ltr 
+  align=left>2014/03/01<BR>○LPC812<BR>　結局LPCOpenとかのライブラリは使わない方向で直接レジスタをたたく。<BR>　なんとなくマニュアルが読めるようになる。<BR>○LPC812その2<BR>　発注忘れをRSで追加発注。今回は、送料込みでもRSの方が安かった。<BR></P>
+  <P style="MARGIN-RIGHT: 0px" dir=ltr 
+  align=left>2014/02/28<BR>○LPC812<BR>　リセットや書き込み時、ピンはプルアップなんだね。危ないところはたいていプルダウンしているけど、注意しないと。<BR>　だいたいわかってきたので、試作用部品発注。</P>
+  <P style="MARGIN-RIGHT: 0px" dir=ltr 
+  align=left>2014/02/23<BR>○謎<BR>　LPC810が少し使えたので、LPC812のボード買った。SCTがわかる気がしなかったが、わかってきた。まぁ、PWMにしか使わないんだけど。<BR>　マニュアルが難解。</P>
+  <P style="MARGIN-RIGHT: 0px" dir=ltr 
+  align=left>2014/02/19<BR>○謎<BR>　いろいろあったけど、何とか生きてます。<BR>○謎2<BR>　サーボもPSOCでできたけど、いかんせんＣＰＵコアが遅い。3.3Vにすると、12MHzですってよ。しかも、実行に6clockとかいるなんて、泣けてくる。8bit乗算器はあるけど、コンパイラは使ってない。だからアセンブラでいじらなければいけない。お兄様、涙が止まりません。手動で最適化して（21世紀にこんなことやるとは思わなかった、、、）、127で除算をシフト3回に分解して、端数処理もぬかして制御周期を落として、、、さすがに疲れた。あー、external 
+  clockは、PLL使えないとか、微妙な感じがした。<BR>　ただ、PSOCのツールは優秀で、初期化コードとか、ＡＰＩとかめんどくさいとこは面倒見てくれるので楽だった（というか、楽しかった）。<BR>　ちょうどトラ技でLPC810がおまけで付いてきたことだし、LPC811かLPC812で作り直すことを検討中。ただ、この石が曲者で使いこなせる気がしない。<BR>　SwitchMatrixはいいよ。いいけど、ピンに出力電流やODなんかに違いがあるので、それが制約になって自由にはいかない。泣けてくる。他の機能も複雑なだけで、どう使えばいいのか、、、。そういえば、ADCが無いんですよ。I2Cで拡張するしかないのか。泣けてくる。<BR></P></BLOCKQUOTE></BODY></HTML>
