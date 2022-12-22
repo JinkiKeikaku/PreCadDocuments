@@ -8,6 +8,7 @@ title: PDF to JWW Converter
 - PDFファイルをJw_cadのjwwファイルに変換するプログラムです。
 - フリーソフトウェアです。
 ## 2. Download
+- Vectorからダウンロード　https://www.vector.co.jp/soft/winnt/business/se524472.html
 - [PdfToJww-1.2.1.zip](download/PdfToJww-1.2.1.zip) (2022/7/4)
   - ver1.2.1
   - 軽微な変更。

@@ -7,7 +7,8 @@ title: PDF Analyzer
 - PDF AnalyzerはPDFファイルの構造を理解しやすくするためのプログラムです。PDFのリファレンスマニュアルやPDFの構造を解説したホームページを見ながら使ってみてください。
 - フリーソフトウエアです。
 ## 2. Download
-- [PdfAnalyzer-1.0.0.zip](download/PdfAnalyzer-1.0.0.zip) (2022/6/27)
+- Vectorからダウンロード　https://www.vector.co.jp/soft/winnt/writing/se524513.html
+- [PdfAnalyzer-1.0.0.zip](https://www.vector.co.jp/soft/winnt/writing/se524513.html) (2022/6/27)
 ver1.0.0
 
 ## 3. 使い方
