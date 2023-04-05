@@ -1,4 +1,4 @@
-# PreCad file format ver 2.3仕様書　rev2
+# PreCad file format ver 2.3仕様書　rev3
 ## PreCadの特徴
 - PreCadは2DCADです。複数のページを作成することができます。
 - 各ページにはレイヤーの他にシートがあります。シートは縮尺を設定できます。
@@ -220,7 +220,15 @@ lineStyle(width(w)color(c)lineType(name)flag(f))
 | color(c)<br>[ c ] | c : Int| 線色。省略時0xff000000（黒） |
 | lineType(name)<br>[ t ] | name : String| 線種名。省略時実線 |
 | flag(f)<br>[ f ] | f : Int| フラグ。省略時0<br>|
+- 線種
 
+| 線種名 | パターン | 説明 |
+|-----|------|-----|
+|solid| なし | 実線|
+|dashed| 8.0, 4.0 | 破線|
+|center| 24.0, 4.0, 8.0, 4.0| 一点鎖線|
+|center| 24.0, 4.0, 8.0, 4.0, 8.0, 4.0| 二点鎖線|
+※パターンは線分長と空白のペアで長さはこれに線幅を掛ける。
 - フラグ<br>1:ColorByLayer, 0x1000:補助線, 0x2000:TypeByLayer, 0x8000:WidthByLayer
 
 <a id="fillStyle"></a>
@@ -675,6 +683,9 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...)
 そのためバージョン2.2.0で短縮形を設けました。
 
 ## 履歴
+2023/03/23 rev3
+- 線種追加
+
 2023/03/23 rev2
 - マクロ文字列追加
 
