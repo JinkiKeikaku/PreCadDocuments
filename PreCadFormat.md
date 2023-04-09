@@ -1,4 +1,15 @@
-# PreCad file format ver 2.3仕様書　rev3
+---
+html:
+  embed_local_images: true
+  embed_svg: true
+  offline: true
+  toc: true
+print_background: false
+title: PreCad file format
+---
+
+
+# PreCad file format ver 2.3仕様書　rev4
 ## PreCadの特徴
 - PreCadは2DCADです。複数のページを作成することができます。
 - 各ページにはレイヤーの他にシートがあります。シートは縮尺を設定できます。
@@ -512,6 +523,7 @@ startArrow(size(3)type(1))
 | tolerance(...)<br>[ to ] | [許容差](#tolerance)参照 | 許容差。省略時、許容差なし |
 
 - 引き出し線の長さがマイナスの場合、directionの逆向きに引き出し線を伸ばす。
+- dimensionStyle.DimensionLineExtensionが0の場合、寸法線の矢印が内向きとなり、数値側の線に矢印がつかない。
 
 ##### Radius（半径寸法）
 | 要素 | パラメータ | 説明 |
@@ -558,6 +570,7 @@ startArrow(size(3)type(1))
 | tolerance(...)<br>[ to ] | [許容差](#tolerance)参照 | 許容差。省略時、許容差なし |
 
 - 引き出し線の長さがマイナスの場合、中心と反対側に引き出し線を伸ばす。
+- dimensionStyle.DimensionLineExtensionが0の場合、寸法線の矢印が内向きとなり、数値側の線に矢印がつかない。
 
 ##### Leader（引出線）
 
@@ -683,6 +696,9 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...)
 そのためバージョン2.2.0で短縮形を設けました。
 
 ## 履歴
+2023/04/9 rev4
+- 寸法線と角度寸法のdimensionLineExtensionが0の場合の処理を追加。
+
 2023/03/23 rev3
 - 線種追加
 
