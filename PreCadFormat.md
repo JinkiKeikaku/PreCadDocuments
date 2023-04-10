@@ -9,7 +9,7 @@ title: PreCad file format
 ---
 
 
-# PreCad file format ver 2.3仕様書　rev4
+# PreCad file format ver 2.3仕様書　rev5
 ## PreCadの特徴
 - PreCadは2DCADです。複数のページを作成することができます。
 - 各ページにはレイヤーの他にシートがあります。シートは縮尺を設定できます。
@@ -325,9 +325,15 @@ startArrow(size(3)type(1))
 
 | 要素 | パラメータ | 説明 |
 |-----|------|-----|
-| textOffset(d)<br>[ to ] | d : Double | 文字の下線との離れ。省略時0 |
+| textOffset(d)<br>[ to ] | d : Double | 文字の下線との縦方向の離れ。省略時0 |
+| leaderOffset(d)<br>[ lf ] | d : Double | 引出線の終点から文字横方向の離れ。省略時0 |
+| extendLine(i)<br>[ el ] | i : Int | 線を文字列まで延長。<br>0:延長なし 1:延長する<br>省略時1 |
+| leaderOrientation(i)<br>[ lo ] | i : Int | 文字の配置方向。<br> 0:水平 1:平行<br>省略時0 |
+| leaderBasis(i)<br>[ lb ] | i : Int | 文字の縦方向配置。<br> 0:上 1:中 2:下<br>省略時0|
 | textStyle(...)<br>[ ts ] | [文字スタイル](#textStyle)参照 | 文字スタイル |
 | arrowStyle(...)<br>[ as ] | [矢印スタイル](#arrowStyle)参照 | 矢印スタイル |
+
+- extendLineの省略時の値は0でないことに注意。
 
 <a id="balloonStyle"></a>
 ###### balloonStyle（バルーンスタイル）
@@ -552,6 +558,8 @@ startArrow(size(3)type(1))
 | dimensionStyle(...)<br>[ ds ] | [直径寸法スタイル](#diameterStyle)参照 | 直径寸法スタイル |
 | tolerance(...)<br>[ to ] | [許容差](#tolerance)参照 | 許容差。省略時、許容差なし |
 
+- dimensionStyle.DimensionLineExtensionが0の場合、寸法線の矢印が内向きとなり、数値側の線に矢印がつかない。
+
 ##### Angle（角度寸法）
 | 要素 | パラメータ | 説明 |
 |-----|------|-----|
@@ -696,6 +704,10 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...)
 そのためバージョン2.2.0で短縮形を設けました。
 
 ## 履歴
+2023/04/10 rev5
+- 直径寸法のdimensionLineExtensionが0の場合の処理を追加。
+- leaderStyleにパラメータ追加。
+
 2023/04/9 rev4
 - 寸法線と角度寸法のdimensionLineExtensionが0の場合の処理を追加。
 
