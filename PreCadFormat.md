@@ -8,8 +8,7 @@ print_background: false
 title: PreCad file format
 ---
 
-
-# PreCad file format ver 2.3仕様書　rev5
+# PreCad file format ver 2.4仕様書　rev0
 ## PreCadの特徴
 - PreCadは2DCADです。複数のページを作成することができます。
 - 各ページにはレイヤーの他にシートがあります。シートは縮尺を設定できます。
@@ -326,14 +325,18 @@ startArrow(size(3)type(1))
 | 要素 | パラメータ | 説明 |
 |-----|------|-----|
 | textOffset(d)<br>[ to ] | d : Double | 文字の下線との縦方向の離れ。省略時0 |
-| leaderOffset(d)<br>[ lf ] | d : Double | 引出線の終点から文字横方向の離れ。省略時0 |
+| leaderOffset(d)<br>[ lo ] | d : Double | 引出線の終点から文字横方向の離れ。省略時0 |
 | extendLine(i)<br>[ el ] | i : Int | 線を文字列まで延長。<br>0:延長なし 1:延長する<br>省略時1 |
-| leaderOrientation(i)<br>[ lo ] | i : Int | 文字の配置方向。<br> 0:水平 1:平行<br>省略時0 |
-| leaderBasis(i)<br>[ lb ] | i : Int | 文字の縦方向配置。<br> 0:上 1:中 2:下<br>省略時0|
+| leaderOrientation(i)<br>[ lr ] | i : Int | 文字の配置方向。<br> 0:水平 1:平行<br>省略時0 |
+| leaderBasis(i)<br>[ lb ] | i : Int | 文字の配置。<br> 0:上 1:下 2:中 3:自由<br>省略時0|
 | textStyle(...)<br>[ ts ] | [文字スタイル](#textStyle)参照 | 文字スタイル |
 | arrowStyle(...)<br>[ as ] | [矢印スタイル](#arrowStyle)参照 | 矢印スタイル |
+| textAngle(d)<br>[ ta ] | d:Double | 文字角度。leaderBasisが3の時有効。 省略時0。|
+
 
 - extendLineの省略時の値は0でないことに注意。
+- leaderBasisが3の場合、leaderOffsettとtextOffsetは文字配置の相対座標。extendLine及びleaderOrientationは無視される。
+- textAngleはleaderBasisが3の時のみ有効。
 
 <a id="balloonStyle"></a>
 ###### balloonStyle（バルーンスタイル）
@@ -352,6 +355,7 @@ startArrow(size(3)type(1))
 | extensionLineOffset(d)<br>[ eo ] | d : Double | 引出位置から引出線までの離れ |
 | extensionLineOvershoot(d)<br>[ ev ] | d : Double | 寸法緯からの引出線の延長長さ |
 | dimensionLineExtension(d)<br>[ de ] | d : Double | 寸法緯の延長長さ |
+| flag(f)<br>[ f ] | f:Int | フラグ(ビットフラグでORをとる)<br>1：寸法線の延長線を常に引く（矢印外側）<br>省略時0|
 | textStyle(...)<br>[ ts ] | [文字スタイル](#textStyle)参照 | 文字スタイル |
 | textOffset(d)<br>[ to ] | d : Double | 文字の寸法線との離れ。省略時0 |
 | formatStyle(...)<br>[ fs ] | [寸法値フォーマット](#formatStyle)参照 | 寸法値フォーマット |
@@ -363,7 +367,8 @@ startArrow(size(3)type(1))
 ###### radiusStyle（半径寸法スタイル）
 | 要素 | パラメータ | 説明 |
 |-----|------|-----|
-| dimensionLineExtension(d)<br>[ de ] | d : Double | 寸法緯の延長長さ |
+| dimensionLineExtension(d)<br>[ de ] | d : Double | 寸法緯の延長長さ。 |
+| flag(f)<br>[ f ] | f:Int | フラグ(ビットフラグでORをとる)<br>1：寸法線の延長線を常に引く（矢印外側）<br>2：文字が外側の時、円の中心から線を引く(dimensionLineExtensionを無視) <br>省略時0|
 | textStyle(...)<br>[ ts ] | [文字スタイル](#textStyle)参照 | 文字スタイル |
 | textOffset(d)<br>[ to ] | d : Double | 文字の寸法線との離れ。省略時0 |
 | formatStyle(...)<br>[ fs ] | [寸法値フォーマット](#formatStyle)参照 | 寸法値フォーマット |
@@ -376,6 +381,7 @@ startArrow(size(3)type(1))
 | 要素 | パラメータ | 説明 |
 |-----|------|-----|
 | dimensionLineExtension(d)<br>[de(d)] | d : Double | 寸法緯の延長長さ |
+| flag(f)<br>[ f ] | f:Int | フラグ(ビットフラグでORをとる)<br>1：寸法線の延長線を常に引く（矢印外側）<br>省略時0|
 | textStyle(...)<br>[ ts ] | [文字スタイル](#textStyle)参照 | 文字スタイル |
 | textOffset(d)<br>[ to ] | d : Double | 文字の寸法線との離れ。省略時0 |
 | formatStyle(...)<br>[ fs ] | [寸法値フォーマット](#formatStyle)参照 | 寸法値フォーマット |
@@ -529,7 +535,8 @@ startArrow(size(3)type(1))
 | tolerance(...)<br>[ to ] | [許容差](#tolerance)参照 | 許容差。省略時、許容差なし |
 
 - 引き出し線の長さがマイナスの場合、directionの逆向きに引き出し線を伸ばす。
-- dimensionStyle.DimensionLineExtensionが0の場合、寸法線の矢印が内向きとなり、数値側の線に矢印がつかない。
+- dimensionStyle.dimensionLineExtensionが0の場合、文字位置が外側の時に寸法線の矢印が内側となり、数値側の線に矢印がつかない。
+- (dimensionStyle.flag & 1)!=0の場合、文字が寸法線の間にあっても寸法線に延長線を引き矢印は外側になる。その場合、dimensionStyle.dimensionLineExtensionが0であれば延長線が無くなり矢印は表示されない。
 
 ##### Radius（半径寸法）
 | 要素 | パラメータ | 説明 |
@@ -544,6 +551,8 @@ startArrow(size(3)type(1))
 | dimensionStyle(...)<br>[ ds ] | [半径寸法スタイル](#radiusStyle)参照 | 半径寸法スタイル |
 | tolerance(...)<br>[ to ] | [許容差](#tolerance)参照 | 許容差。省略時、許容差なし |
 - 始点は円の中心。
+- 文字位置が円の外側の時は矢印は内側になる。dimensionStyle.dimensionLineExtensionはその時の円内の延長線の長さ。
+- (dimensionStyle.flag & 1)!=0の場合、文字が寸法線の間にあっても寸法線に延長線を引き矢印は外側になる。その場合、dimensionStyle.dimensionLineExtensionが0であれば延長線が無くなり矢印は表示されない。
 
 ##### Diameter（直径寸法）
 | 要素 | パラメータ | 説明 |
@@ -558,7 +567,8 @@ startArrow(size(3)type(1))
 | dimensionStyle(...)<br>[ ds ] | [直径寸法スタイル](#diameterStyle)参照 | 直径寸法スタイル |
 | tolerance(...)<br>[ to ] | [許容差](#tolerance)参照 | 許容差。省略時、許容差なし |
 
-- dimensionStyle.DimensionLineExtensionが0の場合、寸法線の矢印が内向きとなり、数値側の線に矢印がつかない。
+- dimensionStyle.dimensionLineExtensionが0の場合、文字位置が円の外側の時に寸法線の矢印が内側となり、数値側の線に矢印がつかない。
+- (dimensionStyle.flag & 1)!=0の場合、文字が寸法線の間にあっても寸法線に延長線を引き矢印は外側になる。その場合、dimensionStyle.dimensionLineExtensionが0であれば延長線が無くなり矢印は表示されない。
 
 ##### Angle（角度寸法）
 | 要素 | パラメータ | 説明 |
@@ -578,19 +588,23 @@ startArrow(size(3)type(1))
 | tolerance(...)<br>[ to ] | [許容差](#tolerance)参照 | 許容差。省略時、許容差なし |
 
 - 引き出し線の長さがマイナスの場合、中心と反対側に引き出し線を伸ばす。
-- dimensionStyle.DimensionLineExtensionが0の場合、寸法線の矢印が内向きとなり、数値側の線に矢印がつかない。
+- dimensionStyle.dimensionLineExtensionが0の場合、文字位置が外側の時に寸法線の矢印が内側となり、数値側の線に矢印がつかない。
+- (dimensionStyle.flag & 1)!=0の場合、文字が寸法線の間にあっても寸法線に延長線を引き矢印は外側になる。その場合、dimensionStyle.dimensionLineExtensionが0であれば延長線が無くなり矢印は表示されない。
 
+<a id="Leader"></a>
 ##### Leader（引出線）
 
 | 要素 | パラメータ | 説明 |
 |-----|------|-----|
 | vertices(x1 y1 x2 y2 x3 y3 ... xn yn)<br>[ vs ] | x1..xn : Double,  y1..yn : Double| 頂点 |
 | text(t)<br>[ t ] | t : String| 文字列|
+| textAngle(d)<br>[ ta ] | d : Double| 文字列の配置角度。leaderStyle.leaderBasisが3の時のみ有効。|
 | lineStyle(...)<br>[ ls ] | [線スタイル](#lineStyle)参照 | 線スタイル。省略時、黒実線、幅0 |
 | fillStyle(...)<br>[ fs ] | [塗りスタイル](#fillStyle)参照 | 文字背景塗りスタイル。省略時塗りなし |
 | leaderStyle(...)<br>[ lt ] | [引出線スタイル](#leaderStyle)参照 | 引出線スタイル |
+- leaderStyle.leaderBasisが3（Free）の場合、文字の配置点は最後の頂点で文字の中心が基点。また、最後の頂点とその前の頂点間の線は引かれない（頂点が２つの場合の表示方法は特に規定しないが頂点間の線を引くことを推奨する）。
+- leaderStyle.leaderBasisが3（Free）の場合、leaderStyle.extendLineとleaderStyle.leaderOrientationは無視されtextAngleが使われる。
 
-- 文字の下線は頂点に含まない。
 
 ##### Balloon（バルーン）
 
@@ -690,20 +704,25 @@ points(P(x0,y0)P(x1,y1)...)　　//Pは大文字
 記述が冗長なのでこの形式は互換性のために読み込みのみ対応しています。
 ```
 points(P(x0 y0)P(x1 y1)...)
-controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...)
+controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 ```
 
 - バージョン2.1.0以前の直径寸法スタイルと直線寸法スタイルの矢印は始点終点同じものでした。そのため矢印スタイルのタグは`arrowStyle`でした。
 
-- バージョン2.3.0からImageのsrcタグにファイル名を追加、圧縮ファイル内のmediaフォルダ内に画像を保存します。それ以前はimageタグでbase64で画像のバイナリを同梱していました（この方式はクリップボード経由のコピーのために現在も使われています）。
+- バージョン2.3.0からImageのsrcタグにファイル名を追加、圧縮ファイル内のmediaフォルダ内に画像を保存します。それ以前はimageタグを使用し文字列として同梱していました（この方式はクリップボード経由のコピーのために現在も使われています）。
 
 ### 短縮形について
 もともとタグ名は内部で使っている変数名を元に決めました（kotlinで作っていたため最初が小文字から始まります）。そのため比較的文字数が多くなってしまいました。
 タグ名が多少長くてもCPUは十分速くファイルは圧縮するため、それほど問題にならないと思っていました。実際、ファイルサイズの増加はそれほどでもなく速度も（普通のファイルなら）問題になりませんでした。
-しかし、Androidでサイズの大きなファイルを読み込むと速度は大きく落ちました。Androidのディスクアクセスは遅かったのです。しかもGC（ガーベッジコレクション）が発生して遅さに拍車をかけることがわかりました。
+しかし、Androidでサイズの大きなファイルを読み込むと速度は大きく落ちました。Androidのディスクアクセスは遅かったのです。
 そのためバージョン2.2.0で短縮形を設けました。
 
 ## 履歴
+2023/04/12 2.4 rev0
+- 引出線の仕様変更。
+- 半径寸法のdimensionLineExtension説明追加、flag追加。
+- 寸法線関係の説明追加と修正。
+
 2023/04/10 rev5
 - 直径寸法のdimensionLineExtensionが0の場合の処理を追加。
 - leaderStyleにパラメータ追加。
