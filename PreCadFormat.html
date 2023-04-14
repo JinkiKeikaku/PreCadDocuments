@@ -261,7 +261,7 @@ pre[data-line] .line-highlight[data-end]:after {
     </head>
     <body for="html-export">
       <div class="mume markdown-preview  ">
-      <h1 class="mume-header" id="precad-file-format-ver-24%E4%BB%95%E6%A7%98%E6%9B%B8-rev0">PreCad file format ver 2.4&#x4ED5;&#x69D8;&#x66F8;&#x3000;rev0</h1>
+      <h1 class="mume-header" id="precad-file-format-ver-240%E4%BB%95%E6%A7%98%E6%9B%B8-rev1">PreCad file format ver 2.4.0&#x4ED5;&#x69D8;&#x66F8;&#x3000;rev1</h1>
 
 <h2 class="mume-header" id="precad%E3%81%AE%E7%89%B9%E5%BE%B4">PreCad&#x306E;&#x7279;&#x5FB4;</h2>
 
@@ -1031,17 +1031,12 @@ drawing&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x306F;&#x57FA;&#x672C;&#x7684;&
 <tr>
 <td>extensionLineOvershoot(d)<br>[ ev ]</td>
 <td>d : Double</td>
-<td>&#x5BF8;&#x6CD5;&#x7DEF;&#x304B;&#x3089;&#x306E;&#x5F15;&#x51FA;&#x7DDA;&#x306E;&#x5EF6;&#x9577;&#x9577;&#x3055;</td>
+<td>&#x5BF8;&#x6CD5;&#x7DDA;&#x304B;&#x3089;&#x306E;&#x5F15;&#x51FA;&#x7DDA;&#x306E;&#x5EF6;&#x9577;&#x9577;&#x3055;</td>
 </tr>
 <tr>
 <td>dimensionLineExtension(d)<br>[ de ]</td>
 <td>d : Double</td>
-<td>&#x5BF8;&#x6CD5;&#x7DEF;&#x306E;&#x5EF6;&#x9577;&#x9577;&#x3055;</td>
-</tr>
-<tr>
-<td>flag(f)<br>[ f ]</td>
-<td>f:Int</td>
-<td>&#x30D5;&#x30E9;&#x30B0;(&#x30D3;&#x30C3;&#x30C8;&#x30D5;&#x30E9;&#x30B0;&#x3067;OR&#x3092;&#x3068;&#x308B;)<br>1&#xFF1A;&#x5BF8;&#x6CD5;&#x7DDA;&#x306E;&#x5EF6;&#x9577;&#x7DDA;&#x3092;&#x5E38;&#x306B;&#x5F15;&#x304F;&#xFF08;&#x77E2;&#x5370;&#x5916;&#x5074;&#xFF09;<br>&#x7701;&#x7565;&#x6642;0</td>
+<td>&#x5BF8;&#x6CD5;&#x7DDA;&#x306E;&#x5EF6;&#x9577;&#x9577;&#x3055;</td>
 </tr>
 <tr>
 <td>textStyle(...)<br>[ ts ]</td>
@@ -1073,6 +1068,11 @@ drawing&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x306F;&#x57FA;&#x672C;&#x7684;&
 <td><a href="#arrowStyle">&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
 <td>&#x7D42;&#x70B9;&#x306E;&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x77E2;&#x5370;&#x306A;&#x3057;</td>
 </tr>
+<tr>
+<td>arrowMode(m)<br>[ am ]</td>
+<td>m:Int</td>
+<td>&#x77E2;&#x5370;&#x30E2;&#x30FC;&#x30C9;<br>0:&#x81EA;&#x52D5;, 1:&#x5185;&#x5074;, 2:&#x5916;&#x5074;<br>&#x7701;&#x7565;&#x6642;0</td>
+</tr>
 </tbody>
 </table>
 <p><a id="radiusStyle" href></a></p>
@@ -1088,14 +1088,14 @@ drawing&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x306F;&#x57FA;&#x672C;&#x7684;&
 </thead>
 <tbody>
 <tr>
-<td>dimensionLineExtension(d)<br>[ de ]</td>
+<td>dimensionLineExtension(d)<br>[de(d)]</td>
 <td>d : Double</td>
-<td>&#x5BF8;&#x6CD5;&#x7DEF;&#x306E;&#x5EF6;&#x9577;&#x9577;&#x3055;&#x3002;</td>
+<td>&#x5BF8;&#x6CD5;&#x7DDA;&#x306E;&#x5EF6;&#x9577;&#x9577;&#x3055;</td>
 </tr>
 <tr>
-<td>flag(f)<br>[ f ]</td>
-<td>f:Int</td>
-<td>&#x30D5;&#x30E9;&#x30B0;(&#x30D3;&#x30C3;&#x30C8;&#x30D5;&#x30E9;&#x30B0;&#x3067;OR&#x3092;&#x3068;&#x308B;)<br>1&#xFF1A;&#x5BF8;&#x6CD5;&#x7DDA;&#x306E;&#x5EF6;&#x9577;&#x7DDA;&#x3092;&#x5E38;&#x306B;&#x5F15;&#x304F;&#xFF08;&#x77E2;&#x5370;&#x5916;&#x5074;&#xFF09;<br>2&#xFF1A;&#x6587;&#x5B57;&#x304C;&#x5916;&#x5074;&#x306E;&#x6642;&#x3001;&#x5186;&#x306E;&#x4E2D;&#x5FC3;&#x304B;&#x3089;&#x7DDA;&#x3092;&#x5F15;&#x304F;(dimensionLineExtension&#x3092;&#x7121;&#x8996;) <br>&#x7701;&#x7565;&#x6642;0</td>
+<td>fromText(i)<br>[ ft ]</td>
+<td>i:Int</td>
+<td>0&#xFF1A;&#x4E2D;&#x5FC3;&#x304B;&#x3089;&#x5186;&#x5468;&#x306B;&#x5411;&#x3051;&#x3066;&#x7DDA;&#x3092;&#x5F15;&#x304F;&#x3002;<br>1&#xFF1A;&#x6587;&#x5B57;&#x304B;&#x3089;&#x5186;&#x5468;&#x306B;&#x5411;&#x3051;&#x3066;&#x306E;&#x7DDA;&#x306E;&#x307F;&#x3002;<br>&#x7701;&#x7565;&#x6642;0</td>
 </tr>
 <tr>
 <td>textStyle(...)<br>[ ts ]</td>
@@ -1105,7 +1105,7 @@ drawing&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x306F;&#x57FA;&#x672C;&#x7684;&
 <tr>
 <td>textOffset(d)<br>[ to ]</td>
 <td>d : Double</td>
-<td>&#x6587;&#x5B57;&#x306E;&#x5BF8;&#x6CD5;&#x7DDA;&#x3068;&#x306E;&#x96E2;&#x308C;&#x3002;&#x7701;&#x7565;&#x6642;0</td>
+<td>&#x6587;&#x5B57;&#x306E;&#x5BF8;&#x6CD5;&#x7DDA;&#x3068;&#x306E;&#x96E2;&#x308C;&#x3002;<br>&#x7701;&#x7565;&#x6642;0</td>
 </tr>
 <tr>
 <td>formatStyle(...)<br>[ fs ]</td>
@@ -1121,6 +1121,11 @@ drawing&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x306F;&#x57FA;&#x672C;&#x7684;&
 <td>arrowStyle(...)<br>[ as ]</td>
 <td><a href="#arrowStyle">&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
 <td>&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</td>
+</tr>
+<tr>
+<td>arrowMode(m)<br>[ am ]</td>
+<td>m:Int</td>
+<td>&#x77E2;&#x5370;&#x30E2;&#x30FC;&#x30C9;<br>0:&#x81EA;&#x52D5;, 1:&#x5185;&#x5074;, 2:&#x5916;&#x5074;<br>&#x7701;&#x7565;&#x6642;0</td>
 </tr>
 </tbody>
 </table>
@@ -1139,12 +1144,7 @@ drawing&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x306F;&#x57FA;&#x672C;&#x7684;&
 <tr>
 <td>dimensionLineExtension(d)<br>[de(d)]</td>
 <td>d : Double</td>
-<td>&#x5BF8;&#x6CD5;&#x7DEF;&#x306E;&#x5EF6;&#x9577;&#x9577;&#x3055;</td>
-</tr>
-<tr>
-<td>flag(f)<br>[ f ]</td>
-<td>f:Int</td>
-<td>&#x30D5;&#x30E9;&#x30B0;(&#x30D3;&#x30C3;&#x30C8;&#x30D5;&#x30E9;&#x30B0;&#x3067;OR&#x3092;&#x3068;&#x308B;)<br>1&#xFF1A;&#x5BF8;&#x6CD5;&#x7DDA;&#x306E;&#x5EF6;&#x9577;&#x7DDA;&#x3092;&#x5E38;&#x306B;&#x5F15;&#x304F;&#xFF08;&#x77E2;&#x5370;&#x5916;&#x5074;&#xFF09;<br>&#x7701;&#x7565;&#x6642;0</td>
+<td>&#x5BF8;&#x6CD5;&#x7DDA;&#x306E;&#x5EF6;&#x9577;&#x9577;&#x3055;</td>
 </tr>
 <tr>
 <td>textStyle(...)<br>[ ts ]</td>
@@ -1175,6 +1175,11 @@ drawing&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x306F;&#x57FA;&#x672C;&#x7684;&
 <td>endArrow(...)<br>[ ea ]</td>
 <td><a href="#arrowStyle">&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
 <td>&#x7D42;&#x70B9;&#x306E;&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x77E2;&#x5370;&#x306A;&#x3057;</td>
+</tr>
+<tr>
+<td>arrowMode(m)<br>[ am ]</td>
+<td>m:Int</td>
+<td>&#x77E2;&#x5370;&#x30E2;&#x30FC;&#x30C9;<br>0:&#x81EA;&#x52D5;, 1:&#x5185;&#x5074;, 2:&#x5916;&#x5074;<br>&#x7701;&#x7565;&#x6642;0</td>
 </tr>
 </tbody>
 </table>
@@ -1711,8 +1716,6 @@ drawing&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x306F;&#x57FA;&#x672C;&#x7684;&
 </table>
 <ul>
 <li>&#x5F15;&#x304D;&#x51FA;&#x3057;&#x7DDA;&#x306E;&#x9577;&#x3055;&#x304C;&#x30DE;&#x30A4;&#x30CA;&#x30B9;&#x306E;&#x5834;&#x5408;&#x3001;direction&#x306E;&#x9006;&#x5411;&#x304D;&#x306B;&#x5F15;&#x304D;&#x51FA;&#x3057;&#x7DDA;&#x3092;&#x4F38;&#x3070;&#x3059;&#x3002;</li>
-<li>dimensionStyle.dimensionLineExtension&#x304C;0&#x306E;&#x5834;&#x5408;&#x3001;&#x6587;&#x5B57;&#x4F4D;&#x7F6E;&#x304C;&#x5916;&#x5074;&#x306E;&#x6642;&#x306B;&#x5BF8;&#x6CD5;&#x7DDA;&#x306E;&#x77E2;&#x5370;&#x304C;&#x5185;&#x5074;&#x3068;&#x306A;&#x308A;&#x3001;&#x6570;&#x5024;&#x5074;&#x306E;&#x7DDA;&#x306B;&#x77E2;&#x5370;&#x304C;&#x3064;&#x304B;&#x306A;&#x3044;&#x3002;</li>
-<li>(dimensionStyle.flag &amp; 1)!=0&#x306E;&#x5834;&#x5408;&#x3001;&#x6587;&#x5B57;&#x304C;&#x5BF8;&#x6CD5;&#x7DDA;&#x306E;&#x9593;&#x306B;&#x3042;&#x3063;&#x3066;&#x3082;&#x5BF8;&#x6CD5;&#x7DDA;&#x306B;&#x5EF6;&#x9577;&#x7DDA;&#x3092;&#x5F15;&#x304D;&#x77E2;&#x5370;&#x306F;&#x5916;&#x5074;&#x306B;&#x306A;&#x308B;&#x3002;&#x305D;&#x306E;&#x5834;&#x5408;&#x3001;dimensionStyle.dimensionLineExtension&#x304C;0&#x3067;&#x3042;&#x308C;&#x3070;&#x5EF6;&#x9577;&#x7DDA;&#x304C;&#x7121;&#x304F;&#x306A;&#x308A;&#x77E2;&#x5370;&#x306F;&#x8868;&#x793A;&#x3055;&#x308C;&#x306A;&#x3044;&#x3002;</li>
 </ul>
 <h5 class="mume-header" id="radius%E5%8D%8A%E5%BE%84%E5%AF%B8%E6%B3%95">Radius&#xFF08;&#x534A;&#x5F84;&#x5BF8;&#x6CD5;&#xFF09;</h5>
 
@@ -1774,8 +1777,6 @@ drawing&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x306F;&#x57FA;&#x672C;&#x7684;&
 </table>
 <ul>
 <li>&#x59CB;&#x70B9;&#x306F;&#x5186;&#x306E;&#x4E2D;&#x5FC3;&#x3002;</li>
-<li>&#x6587;&#x5B57;&#x4F4D;&#x7F6E;&#x304C;&#x5186;&#x306E;&#x5916;&#x5074;&#x306E;&#x6642;&#x306F;&#x77E2;&#x5370;&#x306F;&#x5185;&#x5074;&#x306B;&#x306A;&#x308B;&#x3002;dimensionStyle.dimensionLineExtension&#x306F;&#x305D;&#x306E;&#x6642;&#x306E;&#x5186;&#x5185;&#x306E;&#x5EF6;&#x9577;&#x7DDA;&#x306E;&#x9577;&#x3055;&#x3002;</li>
-<li>(dimensionStyle.flag &amp; 1)!=0&#x306E;&#x5834;&#x5408;&#x3001;&#x6587;&#x5B57;&#x304C;&#x5BF8;&#x6CD5;&#x7DDA;&#x306E;&#x9593;&#x306B;&#x3042;&#x3063;&#x3066;&#x3082;&#x5BF8;&#x6CD5;&#x7DDA;&#x306B;&#x5EF6;&#x9577;&#x7DDA;&#x3092;&#x5F15;&#x304D;&#x77E2;&#x5370;&#x306F;&#x5916;&#x5074;&#x306B;&#x306A;&#x308B;&#x3002;&#x305D;&#x306E;&#x5834;&#x5408;&#x3001;dimensionStyle.dimensionLineExtension&#x304C;0&#x3067;&#x3042;&#x308C;&#x3070;&#x5EF6;&#x9577;&#x7DDA;&#x304C;&#x7121;&#x304F;&#x306A;&#x308A;&#x77E2;&#x5370;&#x306F;&#x8868;&#x793A;&#x3055;&#x308C;&#x306A;&#x3044;&#x3002;</li>
 </ul>
 <h5 class="mume-header" id="diameter%E7%9B%B4%E5%BE%84%E5%AF%B8%E6%B3%95">Diameter&#xFF08;&#x76F4;&#x5F84;&#x5BF8;&#x6CD5;&#xFF09;</h5>
 
@@ -1835,10 +1836,6 @@ drawing&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x306F;&#x57FA;&#x672C;&#x7684;&
 </tr>
 </tbody>
 </table>
-<ul>
-<li>dimensionStyle.dimensionLineExtension&#x304C;0&#x306E;&#x5834;&#x5408;&#x3001;&#x6587;&#x5B57;&#x4F4D;&#x7F6E;&#x304C;&#x5186;&#x306E;&#x5916;&#x5074;&#x306E;&#x6642;&#x306B;&#x5BF8;&#x6CD5;&#x7DDA;&#x306E;&#x77E2;&#x5370;&#x304C;&#x5185;&#x5074;&#x3068;&#x306A;&#x308A;&#x3001;&#x6570;&#x5024;&#x5074;&#x306E;&#x7DDA;&#x306B;&#x77E2;&#x5370;&#x304C;&#x3064;&#x304B;&#x306A;&#x3044;&#x3002;</li>
-<li>(dimensionStyle.flag &amp; 1)!=0&#x306E;&#x5834;&#x5408;&#x3001;&#x6587;&#x5B57;&#x304C;&#x5BF8;&#x6CD5;&#x7DDA;&#x306E;&#x9593;&#x306B;&#x3042;&#x3063;&#x3066;&#x3082;&#x5BF8;&#x6CD5;&#x7DDA;&#x306B;&#x5EF6;&#x9577;&#x7DDA;&#x3092;&#x5F15;&#x304D;&#x77E2;&#x5370;&#x306F;&#x5916;&#x5074;&#x306B;&#x306A;&#x308B;&#x3002;&#x305D;&#x306E;&#x5834;&#x5408;&#x3001;dimensionStyle.dimensionLineExtension&#x304C;0&#x3067;&#x3042;&#x308C;&#x3070;&#x5EF6;&#x9577;&#x7DDA;&#x304C;&#x7121;&#x304F;&#x306A;&#x308A;&#x77E2;&#x5370;&#x306F;&#x8868;&#x793A;&#x3055;&#x308C;&#x306A;&#x3044;&#x3002;</li>
-</ul>
 <h5 class="mume-header" id="angle%E8%A7%92%E5%BA%A6%E5%AF%B8%E6%B3%95">Angle&#xFF08;&#x89D2;&#x5EA6;&#x5BF8;&#x6CD5;&#xFF09;</h5>
 
 <table>
@@ -1919,8 +1916,6 @@ drawing&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x306F;&#x57FA;&#x672C;&#x7684;&
 </table>
 <ul>
 <li>&#x5F15;&#x304D;&#x51FA;&#x3057;&#x7DDA;&#x306E;&#x9577;&#x3055;&#x304C;&#x30DE;&#x30A4;&#x30CA;&#x30B9;&#x306E;&#x5834;&#x5408;&#x3001;&#x4E2D;&#x5FC3;&#x3068;&#x53CD;&#x5BFE;&#x5074;&#x306B;&#x5F15;&#x304D;&#x51FA;&#x3057;&#x7DDA;&#x3092;&#x4F38;&#x3070;&#x3059;&#x3002;</li>
-<li>dimensionStyle.dimensionLineExtension&#x304C;0&#x306E;&#x5834;&#x5408;&#x3001;&#x6587;&#x5B57;&#x4F4D;&#x7F6E;&#x304C;&#x5916;&#x5074;&#x306E;&#x6642;&#x306B;&#x5BF8;&#x6CD5;&#x7DDA;&#x306E;&#x77E2;&#x5370;&#x304C;&#x5185;&#x5074;&#x3068;&#x306A;&#x308A;&#x3001;&#x6570;&#x5024;&#x5074;&#x306E;&#x7DDA;&#x306B;&#x77E2;&#x5370;&#x304C;&#x3064;&#x304B;&#x306A;&#x3044;&#x3002;</li>
-<li>(dimensionStyle.flag &amp; 1)!=0&#x306E;&#x5834;&#x5408;&#x3001;&#x6587;&#x5B57;&#x304C;&#x5BF8;&#x6CD5;&#x7DDA;&#x306E;&#x9593;&#x306B;&#x3042;&#x3063;&#x3066;&#x3082;&#x5BF8;&#x6CD5;&#x7DDA;&#x306B;&#x5EF6;&#x9577;&#x7DDA;&#x3092;&#x5F15;&#x304D;&#x77E2;&#x5370;&#x306F;&#x5916;&#x5074;&#x306B;&#x306A;&#x308B;&#x3002;&#x305D;&#x306E;&#x5834;&#x5408;&#x3001;dimensionStyle.dimensionLineExtension&#x304C;0&#x3067;&#x3042;&#x308C;&#x3070;&#x5EF6;&#x9577;&#x7DDA;&#x304C;&#x7121;&#x304F;&#x306A;&#x308A;&#x77E2;&#x5370;&#x306F;&#x8868;&#x793A;&#x3055;&#x308C;&#x306A;&#x3044;&#x3002;</li>
 </ul>
 <p><a id="Leader" href></a></p>
 <h5 class="mume-header" id="leader%E5%BC%95%E5%87%BA%E7%B7%9A">Leader&#xFF08;&#x5F15;&#x51FA;&#x7DDA;&#xFF09;</h5>
@@ -1945,9 +1940,9 @@ drawing&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x306F;&#x57FA;&#x672C;&#x7684;&
 <td>&#x6587;&#x5B57;&#x5217;</td>
 </tr>
 <tr>
-<td>textAngle(d)<br>[ ta ]</td>
-<td>d : Double</td>
-<td>&#x6587;&#x5B57;&#x5217;&#x306E;&#x914D;&#x7F6E;&#x89D2;&#x5EA6;&#x3002;leaderStyle.leaderBasis&#x304C;3&#x306E;&#x6642;&#x306E;&#x307F;&#x6709;&#x52B9;&#x3002;</td>
+<td>leaderStyle.leaderBasis&#x304C;3&#x306E;&#x6642;&#x306E;&#x307F;&#x6709;&#x52B9;&#x3002;</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
@@ -1967,8 +1962,8 @@ drawing&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x306F;&#x57FA;&#x672C;&#x7684;&
 </tbody>
 </table>
 <ul>
-<li>leaderStyle.leaderBasis&#x304C;3&#xFF08;Free&#xFF09;&#x306E;&#x5834;&#x5408;&#x3001;&#x6587;&#x5B57;&#x306E;&#x914D;&#x7F6E;&#x70B9;&#x306F;&#x6700;&#x5F8C;&#x306E;&#x9802;&#x70B9;&#x3067;&#x6587;&#x5B57;&#x306E;&#x4E2D;&#x5FC3;&#x304C;&#x57FA;&#x70B9;&#x3002;&#x307E;&#x305F;&#x3001;&#x6700;&#x5F8C;&#x306E;&#x9802;&#x70B9;&#x3068;&#x305D;&#x306E;&#x524D;&#x306E;&#x9802;&#x70B9;&#x9593;&#x306E;&#x7DDA;&#x306F;&#x5F15;&#x304B;&#x308C;&#x306A;&#x3044;&#xFF08;&#x9802;&#x70B9;&#x304C;&#xFF12;&#x3064;&#x306E;&#x5834;&#x5408;&#x306E;&#x8868;&#x793A;&#x65B9;&#x6CD5;&#x306F;&#x7279;&#x306B;&#x898F;&#x5B9A;&#x3057;&#x306A;&#x3044;&#x304C;&#x9802;&#x70B9;&#x9593;&#x306E;&#x7DDA;&#x3092;&#x5F15;&#x304F;&#x3053;&#x3068;&#x3092;&#x63A8;&#x5968;&#x3059;&#x308B;&#xFF09;&#x3002;</li>
-<li>leaderStyle.leaderBasis&#x304C;3&#xFF08;Free&#xFF09;&#x306E;&#x5834;&#x5408;&#x3001;leaderStyle.extendLine&#x3068;leaderStyle.leaderOrientation&#x306F;&#x7121;&#x8996;&#x3055;&#x308C;textAngle&#x304C;&#x4F7F;&#x308F;&#x308C;&#x308B;&#x3002;</li>
+<li>leaderStyle.leaderBasis&#x304C;3&#xFF08;Free&#xFF09;&#x306E;&#x5834;&#x5408;&#x3001;&#x6587;&#x5B57;&#x5217;&#x306E;&#x914D;&#x7F6E;&#x70B9;&#x306F;&#x6700;&#x5F8C;&#x306E;&#x9802;&#x70B9;&#x306B;leaderStyle.textOffset&#x3092;X&#x3001;leaderStyle.leaderOffset&#x3092;Y&#x3068;&#x3057;&#x3066;&#x30AA;&#x30D5;&#x30BB;&#x30C3;&#x30C8;&#x3059;&#x308B;&#xFF08;&#x6587;&#x5B57;&#x306E;&#x57FA;&#x70B9;&#x306F;&#x4E2D;&#x5FC3;&#xFF09;&#x3002;</li>
+<li>leaderStyle.leaderBasis&#x304C;3&#xFF08;Free&#xFF09;&#x306E;&#x5834;&#x5408;&#x3001;leaderStyle.extendLine&#x3068;leaderStyle.leaderOrientation&#x306F;&#x7121;&#x8996;&#x3055;&#x308C;&#x6587;&#x5B57;&#x5217;&#x306E;&#x50BE;&#x304D;&#x306F;leaderStyle.textAngle&#x304C;&#x4F7F;&#x308F;&#x308C;&#x308B;&#x3002;</li>
 </ul>
 <h5 class="mume-header" id="balloon%E3%83%90%E3%83%AB%E3%83%BC%E3%83%B3">Balloon&#xFF08;&#x30D0;&#x30EB;&#x30FC;&#x30F3;&#xFF09;</h5>
 
@@ -2209,6 +2204,12 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 &#x305D;&#x306E;&#x305F;&#x3081;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;2.2.0&#x3067;&#x77ED;&#x7E2E;&#x5F62;&#x3092;&#x8A2D;&#x3051;&#x307E;&#x3057;&#x305F;&#x3002;</p>
 <h2 class="mume-header" id="%E5%B1%A5%E6%AD%B4">&#x5C65;&#x6B74;</h2>
 
+<p>2023/04/14 2.4.0 rev1</p>
+<ul>
+<li>Leader&#x306E;&#x4FEE;&#x6B63;</li>
+<li>&#x5BF8;&#x6CD5;&#x5024;&#x306E;&#x5909;&#x66F4;</li>
+<li>&#x3053;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x540D;&#x306E;&#x547D;&#x540D;&#x898F;&#x5247;&#x5909;&#x66F4;&#x3002;</li>
+</ul>
 <p>2023/04/12 2.4 rev0</p>
 <ul>
 <li>&#x5F15;&#x51FA;&#x7DDA;&#x306E;&#x4ED5;&#x69D8;&#x5909;&#x66F4;&#x3002;</li>
@@ -2242,7 +2243,7 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open>
         <summary class="md-toc-link-wrapper">
-          <a href="#precad-file-format-ver-24&#x4ED5;&#x69D8;&#x66F8;-rev0" class="md-toc-link"><p>PreCad file format ver 2.4&#x4ED5;&#x69D8;&#x66F8;&#x3000;rev0</p>
+          <a href="#precad-file-format-ver-240&#x4ED5;&#x69D8;&#x66F8;-rev1" class="md-toc-link"><p>PreCad file format ver 2.4.0&#x4ED5;&#x69D8;&#x66F8;&#x3000;rev1</p>
 </a>
           </summary>
         <div>

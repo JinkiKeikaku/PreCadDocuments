@@ -8,7 +8,7 @@ print_background: false
 title: PreCad file format
 ---
 
-# PreCad file format ver 2.4仕様書　rev0
+# PreCad file format ver 2.4.0仕様書　rev1
 ## PreCadの特徴
 - PreCadは2DCADです。複数のページを作成することができます。
 - 各ページにはレイヤーの他にシートがあります。シートは縮尺を設定できます。
@@ -333,7 +333,6 @@ startArrow(size(3)type(1))
 | arrowStyle(...)<br>[ as ] | [矢印スタイル](#arrowStyle)参照 | 矢印スタイル |
 | textAngle(d)<br>[ ta ] | d:Double | 文字角度。leaderBasisが3の時有効。 省略時0。|
 
-
 - extendLineの省略時の値は0でないことに注意。
 - leaderBasisが3の場合、leaderOffsettとtextOffsetは文字配置の相対座標。extendLine及びleaderOrientationは無視される。
 - textAngleはleaderBasisが3の時のみ有効。
@@ -353,41 +352,42 @@ startArrow(size(3)type(1))
 | 要素 | パラメータ | 説明 |
 |-----|------|-----|
 | extensionLineOffset(d)<br>[ eo ] | d : Double | 引出位置から引出線までの離れ |
-| extensionLineOvershoot(d)<br>[ ev ] | d : Double | 寸法緯からの引出線の延長長さ |
-| dimensionLineExtension(d)<br>[ de ] | d : Double | 寸法緯の延長長さ |
-| flag(f)<br>[ f ] | f:Int | フラグ(ビットフラグでORをとる)<br>1：寸法線の延長線を常に引く（矢印外側）<br>省略時0|
+| extensionLineOvershoot(d)<br>[ ev ] | d : Double | 寸法線からの引出線の延長長さ |
+| dimensionLineExtension(d)<br>[ de ] | d : Double | 寸法線の延長長さ |
 | textStyle(...)<br>[ ts ] | [文字スタイル](#textStyle)参照 | 文字スタイル |
 | textOffset(d)<br>[ to ] | d : Double | 文字の寸法線との離れ。省略時0 |
 | formatStyle(...)<br>[ fs ] | [寸法値フォーマット](#formatStyle)参照 | 寸法値フォーマット |
 | tolerance2LinesTextScale(s)<br>[ tt ] | s:Double | 2行の許容差の文字サイズの比率。省略時0.75 |
 | startArrow(...)<br>[ sa ] | [矢印スタイル](#arrowStyle)参照 | 始点の矢印スタイル。省略時矢印なし |
 | endArrow(...)<br>[ ea ] | [矢印スタイル](#arrowStyle)参照 | 終点の矢印スタイル。省略時矢印なし |
+| arrowMode(m)<br>[ am ] | m:Int | 矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0 |
 
 <a id="radiusStyle"></a>
 ###### radiusStyle（半径寸法スタイル）
 | 要素 | パラメータ | 説明 |
 |-----|------|-----|
-| dimensionLineExtension(d)<br>[ de ] | d : Double | 寸法緯の延長長さ。 |
-| flag(f)<br>[ f ] | f:Int | フラグ(ビットフラグでORをとる)<br>1：寸法線の延長線を常に引く（矢印外側）<br>2：文字が外側の時、円の中心から線を引く(dimensionLineExtensionを無視) <br>省略時0|
+| dimensionLineExtension(d)<br>[de(d)] | d : Double | 寸法線の延長長さ |
+| fromText(i)<br>[ ft ] | i:Int | 0：中心から円周に向けて線を引く。<br>1：文字から円周に向けての線のみ。<br>省略時0|
 | textStyle(...)<br>[ ts ] | [文字スタイル](#textStyle)参照 | 文字スタイル |
-| textOffset(d)<br>[ to ] | d : Double | 文字の寸法線との離れ。省略時0 |
+| textOffset(d)<br>[ to ] | d : Double | 文字の寸法線との離れ。<br>省略時0 |
 | formatStyle(...)<br>[ fs ] | [寸法値フォーマット](#formatStyle)参照 | 寸法値フォーマット |
 | tolerance2LinesTextScale(s)<br>[ tt ] | s:Double | 2行の許容差の文字サイズの比率。省略時0.75 |
 | arrowStyle(...)<br>[ as ] | [矢印スタイル](#arrowStyle)参照 | 矢印スタイル |
+| arrowMode(m)<br>[ am ] | m:Int | 矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0 |
 
 <a id="diameterStyle"></a>
 ###### diameterStyle（直径寸法スタイル）
 
 | 要素 | パラメータ | 説明 |
 |-----|------|-----|
-| dimensionLineExtension(d)<br>[de(d)] | d : Double | 寸法緯の延長長さ |
-| flag(f)<br>[ f ] | f:Int | フラグ(ビットフラグでORをとる)<br>1：寸法線の延長線を常に引く（矢印外側）<br>省略時0|
+| dimensionLineExtension(d)<br>[de(d)] | d : Double | 寸法線の延長長さ |
 | textStyle(...)<br>[ ts ] | [文字スタイル](#textStyle)参照 | 文字スタイル |
 | textOffset(d)<br>[ to ] | d : Double | 文字の寸法線との離れ。省略時0 |
 | formatStyle(...)<br>[ fs ] | [寸法値フォーマット](#formatStyle)参照 | 寸法値フォーマット |
 | tolerance2LinesTextScale(s)<br>[ tt ] | s:Double | 2行の許容差の文字サイズの比率。省略時0.75 |
 | startArrow(...)<br>[ sa ] | [矢印スタイル](#arrowStyle)参照 | 始点の矢印スタイル。省略時矢印なし |
 | endArrow(...)<br>[ ea ] | [矢印スタイル](#arrowStyle)参照 | 終点の矢印スタイル。省略時矢印なし |
+| arrowMode(m)<br>[ am ] | m:Int | 矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0 |
 
 <a id="formatStyle"></a>
 ###### formatStyle（寸法値フォーマット）
@@ -535,8 +535,6 @@ startArrow(size(3)type(1))
 | tolerance(...)<br>[ to ] | [許容差](#tolerance)参照 | 許容差。省略時、許容差なし |
 
 - 引き出し線の長さがマイナスの場合、directionの逆向きに引き出し線を伸ばす。
-- dimensionStyle.dimensionLineExtensionが0の場合、文字位置が外側の時に寸法線の矢印が内側となり、数値側の線に矢印がつかない。
-- (dimensionStyle.flag & 1)!=0の場合、文字が寸法線の間にあっても寸法線に延長線を引き矢印は外側になる。その場合、dimensionStyle.dimensionLineExtensionが0であれば延長線が無くなり矢印は表示されない。
 
 ##### Radius（半径寸法）
 | 要素 | パラメータ | 説明 |
@@ -551,8 +549,6 @@ startArrow(size(3)type(1))
 | dimensionStyle(...)<br>[ ds ] | [半径寸法スタイル](#radiusStyle)参照 | 半径寸法スタイル |
 | tolerance(...)<br>[ to ] | [許容差](#tolerance)参照 | 許容差。省略時、許容差なし |
 - 始点は円の中心。
-- 文字位置が円の外側の時は矢印は内側になる。dimensionStyle.dimensionLineExtensionはその時の円内の延長線の長さ。
-- (dimensionStyle.flag & 1)!=0の場合、文字が寸法線の間にあっても寸法線に延長線を引き矢印は外側になる。その場合、dimensionStyle.dimensionLineExtensionが0であれば延長線が無くなり矢印は表示されない。
 
 ##### Diameter（直径寸法）
 | 要素 | パラメータ | 説明 |
@@ -567,8 +563,6 @@ startArrow(size(3)type(1))
 | dimensionStyle(...)<br>[ ds ] | [直径寸法スタイル](#diameterStyle)参照 | 直径寸法スタイル |
 | tolerance(...)<br>[ to ] | [許容差](#tolerance)参照 | 許容差。省略時、許容差なし |
 
-- dimensionStyle.dimensionLineExtensionが0の場合、文字位置が円の外側の時に寸法線の矢印が内側となり、数値側の線に矢印がつかない。
-- (dimensionStyle.flag & 1)!=0の場合、文字が寸法線の間にあっても寸法線に延長線を引き矢印は外側になる。その場合、dimensionStyle.dimensionLineExtensionが0であれば延長線が無くなり矢印は表示されない。
 
 ##### Angle（角度寸法）
 | 要素 | パラメータ | 説明 |
@@ -588,8 +582,6 @@ startArrow(size(3)type(1))
 | tolerance(...)<br>[ to ] | [許容差](#tolerance)参照 | 許容差。省略時、許容差なし |
 
 - 引き出し線の長さがマイナスの場合、中心と反対側に引き出し線を伸ばす。
-- dimensionStyle.dimensionLineExtensionが0の場合、文字位置が外側の時に寸法線の矢印が内側となり、数値側の線に矢印がつかない。
-- (dimensionStyle.flag & 1)!=0の場合、文字が寸法線の間にあっても寸法線に延長線を引き矢印は外側になる。その場合、dimensionStyle.dimensionLineExtensionが0であれば延長線が無くなり矢印は表示されない。
 
 <a id="Leader"></a>
 ##### Leader（引出線）
@@ -598,12 +590,12 @@ startArrow(size(3)type(1))
 |-----|------|-----|
 | vertices(x1 y1 x2 y2 x3 y3 ... xn yn)<br>[ vs ] | x1..xn : Double,  y1..yn : Double| 頂点 |
 | text(t)<br>[ t ] | t : String| 文字列|
-| textAngle(d)<br>[ ta ] | d : Double| 文字列の配置角度。leaderStyle.leaderBasisが3の時のみ有効。|
+leaderStyle.leaderBasisが3の時のみ有効。|
 | lineStyle(...)<br>[ ls ] | [線スタイル](#lineStyle)参照 | 線スタイル。省略時、黒実線、幅0 |
 | fillStyle(...)<br>[ fs ] | [塗りスタイル](#fillStyle)参照 | 文字背景塗りスタイル。省略時塗りなし |
 | leaderStyle(...)<br>[ lt ] | [引出線スタイル](#leaderStyle)参照 | 引出線スタイル |
-- leaderStyle.leaderBasisが3（Free）の場合、文字の配置点は最後の頂点で文字の中心が基点。また、最後の頂点とその前の頂点間の線は引かれない（頂点が２つの場合の表示方法は特に規定しないが頂点間の線を引くことを推奨する）。
-- leaderStyle.leaderBasisが3（Free）の場合、leaderStyle.extendLineとleaderStyle.leaderOrientationは無視されtextAngleが使われる。
+- leaderStyle.leaderBasisが3（Free）の場合、文字列の配置点は最後の頂点にleaderStyle.textOffsetをX、leaderStyle.leaderOffsetをYとしてオフセットする（文字の基点は中心）。
+- leaderStyle.leaderBasisが3（Free）の場合、leaderStyle.extendLineとleaderStyle.leaderOrientationは無視され文字列の傾きはleaderStyle.textAngleが使われる。
 
 
 ##### Balloon（バルーン）
@@ -718,6 +710,11 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 そのためバージョン2.2.0で短縮形を設けました。
 
 ## 履歴
+2023/04/14 2.4.0 rev1
+- Leaderの修正
+- 寸法値の変更
+- このファイルのバージョン名の命名規則変更。
+
 2023/04/12 2.4 rev0
 - 引出線の仕様変更。
 - 半径寸法のdimensionLineExtension説明追加、flag追加。
