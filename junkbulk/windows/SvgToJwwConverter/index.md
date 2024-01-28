@@ -9,7 +9,7 @@ title: SVG to JWW Converter
 ## 1. 概要
 - SVGファイルをJw_cadのjwwファイルに変換するプログラムです。
 - SVGの色が塗られたパスなどをJw_cadのソリッドに変換できます。
-- フリーソフトウェアです。無料で使用できますが、[開発支援](..donate/index.html)のカンパをお願いします。
+- フリーソフトウェアです。無料で使用できますが、[開発支援](../donate/index.html)のカンパをお願いします。
 
 ## 2. Download
 - Vectorからダウンロード　https://www.vector.co.jp/soft/winnt/business/se524991.html

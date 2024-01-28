@@ -2,6 +2,17 @@
 title: ソフトウェア(Android)
 ---
 # ソフトウェア(Android)
+
+## [ボクメモ2](https://play.google.com/store/apps/details?id=com.junkbulk.bokumemo2)
+BokuMemoの改良版。
+- BokuMemoのグループをリスト表示に変更。
+- サマリーと詳細表示の区切りをドラッグで移動可能。
+- メモに画像を添付可能。
+- フォルダにパスワード設定可能。
+
+BokuMemoを変更しようとしたけど難しかったので別アプリになりました。パスワードと画像は自分が必要になったから付けました。
+この程度ならもう慣れたのですぐ作れるようになった気がする。
+
 ## [PreCad](https://play.google.com/store/apps/details?id=com.junkbulk.precad)
 2DのCADです。
 [説明書](https://junkbulk.com/android/PreCAD/manuals/PreCAD_android_manual_jp.html)
