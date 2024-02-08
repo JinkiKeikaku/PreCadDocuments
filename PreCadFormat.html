@@ -3,584 +3,390 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="file:///c:\Users\yama\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.6.8\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
-      
-      
-      
-      
+      <link rel="stylesheet" href="file:///c:\Users\yama\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.11\crossnote\dependencies\katex\katex.min.css">
       
       
       
       
       
       <style>
-      /**
- * prism.js Github theme based on GitHub's theme.
- * @author Sam Clarke
- */
-code[class*="language-"],
-pre[class*="language-"] {
-  color: #333;
-  background: none;
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  word-wrap: normal;
-  line-height: 1.4;
-
-  -moz-tab-size: 8;
-  -o-tab-size: 8;
-  tab-size: 8;
-
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
-}
-
-/* Code blocks */
-pre[class*="language-"] {
-  padding: .8em;
-  overflow: auto;
-  /* border: 1px solid #ddd; */
-  border-radius: 3px;
-  /* background: #fff; */
-  background: #f5f5f5;
-}
-
-/* Inline code */
-:not(pre) > code[class*="language-"] {
-  padding: .1em;
-  border-radius: .3em;
-  white-space: normal;
-  background: #f5f5f5;
-}
-
-.token.comment,
-.token.blockquote {
-  color: #969896;
-}
-
-.token.cdata {
-  color: #183691;
-}
-
-.token.doctype,
-.token.punctuation,
-.token.variable,
-.token.macro.property {
-  color: #333;
-}
-
-.token.operator,
-.token.important,
-.token.keyword,
-.token.rule,
-.token.builtin {
-  color: #a71d5d;
-}
-
-.token.string,
-.token.url,
-.token.regex,
-.token.attr-value {
-  color: #183691;
-}
-
-.token.property,
-.token.number,
-.token.boolean,
-.token.entity,
-.token.atrule,
-.token.constant,
-.token.symbol,
-.token.command,
-.token.code {
-  color: #0086b3;
-}
-
-.token.tag,
-.token.selector,
-.token.prolog {
-  color: #63a35c;
-}
-
-.token.function,
-.token.namespace,
-.token.pseudo-element,
-.token.class,
-.token.class-name,
-.token.pseudo-class,
-.token.id,
-.token.url-reference .token.variable,
-.token.attr-name {
-  color: #795da3;
-}
-
-.token.entity {
-  cursor: help;
-}
-
-.token.title,
-.token.title .token.punctuation {
-  font-weight: bold;
-  color: #1d3e81;
-}
-
-.token.list {
-  color: #ed6a43;
-}
-
-.token.inserted {
-  background-color: #eaffea;
-  color: #55a532;
-}
-
-.token.deleted {
-  background-color: #ffecec;
-  color: #bd2c00;
-}
-
-.token.bold {
-  font-weight: bold;
-}
-
-.token.italic {
-  font-style: italic;
-}
-
-
-/* JSON */
-.language-json .token.property {
-  color: #183691;
-}
-
-.language-markup .token.tag .token.punctuation {
-  color: #333;
-}
-
-/* CSS */
-code.language-css,
-.language-css .token.function {
-  color: #0086b3;
-}
-
-/* YAML */
-.language-yaml .token.atrule {
-  color: #63a35c;
-}
-
-code.language-yaml {
-  color: #183691;
-}
-
-/* Ruby */
-.language-ruby .token.function {
-  color: #333;
-}
-
-/* Markdown */
-.language-markdown .token.url {
-  color: #795da3;
-}
-
-/* Makefile */
-.language-makefile .token.symbol {
-  color: #795da3;
-}
-
-.language-makefile .token.variable {
-  color: #183691;
-}
-
-.language-makefile .token.builtin {
-  color: #0086b3;
-}
-
-/* Bash */
-.language-bash .token.keyword {
-  color: #0086b3;
-}
-
-/* highlight */
-pre[data-line] {
-  position: relative;
-  padding: 1em 0 1em 3em;
-}
-pre[data-line] .line-highlight-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: transparent;
-  display: block;
-  width: 100%;
-}
-
-pre[data-line] .line-highlight {
-  position: absolute;
-  left: 0;
-  right: 0;
-  padding: inherit 0;
-  margin-top: 1em;
-  background: hsla(24, 20%, 50%,.08);
-  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
-  pointer-events: none;
-  line-height: inherit;
-  white-space: pre;
-}
-
-pre[data-line] .line-highlight:before, 
-pre[data-line] .line-highlight[data-end]:after {
-  content: attr(data-start);
-  position: absolute;
-  top: .4em;
-  left: .6em;
-  min-width: 1em;
-  padding: 0 .5em;
-  background-color: hsla(24, 20%, 50%,.4);
-  color: hsl(24, 20%, 95%);
-  font: bold 65%/1.5 sans-serif;
-  text-align: center;
-  vertical-align: .3em;
-  border-radius: 999px;
-  text-shadow: none;
-  box-shadow: 0 1px white;
-}
-
-pre[data-line] .line-highlight[data-end]:after {
-  content: attr(data-end);
-  top: auto;
-  bottom: .4em;
-}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p,html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  300px/2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
 /* Please visit the URL below for more information: */
 /*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
 
       </style>
-    </head>
-    <body for="html-export">
-      <div class="mume markdown-preview  ">
-      <h1 class="mume-header" id="precad-file-format-ver-240%E4%BB%95%E6%A7%98%E6%9B%B8-rev1">PreCad file format ver 2.4.0&#x4ED5;&#x69D8;&#x66F8;&#x3000;rev1</h1>
-
-<h2 class="mume-header" id="precad%E3%81%AE%E7%89%B9%E5%BE%B4">PreCad&#x306E;&#x7279;&#x5FB4;</h2>
-
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="precad-file-format-ver-241仕様書-rev0">PreCad file format ver 2.4.1仕様書　Rev.0 </h1>
+<h2 id="precadの特徴">PreCadの特徴 </h2>
 <ul>
-<li>PreCad&#x306F;2DCAD&#x3067;&#x3059;&#x3002;&#x8907;&#x6570;&#x306E;&#x30DA;&#x30FC;&#x30B8;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</li>
-<li>&#x5404;&#x30DA;&#x30FC;&#x30B8;&#x306B;&#x306F;&#x30EC;&#x30A4;&#x30E4;&#x30FC;&#x306E;&#x4ED6;&#x306B;&#x30B7;&#x30FC;&#x30C8;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;&#x30B7;&#x30FC;&#x30C8;&#x306F;&#x7E2E;&#x5C3A;&#x3092;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</li>
-<li>&#x30B7;&#x30FC;&#x30C8;&#x3092;&#x8907;&#x6570;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#x7E2E;&#x5C3A;&#x306E;&#x7570;&#x306A;&#x308B;&#x90E8;&#x5206;&#x56F3;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</li>
-<li>PreCad&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#x8907;&#x6570;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;ZIP&#x5F62;&#x5F0F;&#x3067;&#x5727;&#x7E2E;&#x3057;&#x3001;&#x62E1;&#x5F35;&#x5B50;&#x3092;pcad&#x3068;&#x3057;&#x305F;&#x3082;&#x306E;&#x3067;&#x3059;&#x3002;&#x62E1;&#x5F35;&#x5B50;&#x3092;zip&#x306B;&#x5909;&#x3048;&#x3066;&#x5C55;&#x958B;&#x3059;&#x308B;&#x3068;&#x5185;&#x5BB9;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</li>
+<li>PreCadは2DCADです。複数のページを作成することができます。</li>
+<li>各ページにはレイヤーの他にシートがあります。シートは縮尺を設定できます。</li>
+<li>シートを複数使用することで縮尺の異なる部分図を作成することができます。</li>
+<li>PreCadのファイルは複数のファイルをZIP形式で圧縮し、拡張子をpcadとしたものです。拡張子をzipに変えて展開すると内容を確認することができます。</li>
 </ul>
-<h2 class="mume-header" id="%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E6%A7%8B%E6%88%90">&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x69CB;&#x6210;</h2>
-
+<h2 id="ファイル構成">ファイル構成 </h2>
 <ul>
-<li>PreCad&#x306E;&#x56F3;&#x9762;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x53CA;&#x3073;&#x8907;&#x6570;&#x306E;&#x56F3;&#x9762;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3088;&#x308A;&#x69CB;&#x6210;&#x3055;&#x308C;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;&#x305D;&#x308C;&#x3089;&#x3092;zip&#x3067;&#x5727;&#x7E2E;&#x5F8C;&#x3001;&#x62E1;&#x5F35;&#x5B50;&#x3092;pcad&#x306B;&#x5909;&#x66F4;&#x3057;&#x305F;&#x3082;&#x306E;&#x3067;&#x3059;&#x3002;&#x305D;&#x306E;&#x305F;&#x3081;PreCad&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x62E1;&#x5F35;&#x5B50;&#x3092;zip&#x306B;&#x5909;&#x66F4;&#x3057;&#x89E3;&#x51CD;&#x3059;&#x308B;&#x3068;&#x69CB;&#x6210;&#x3059;&#x308B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;<br>
-&#x4EE5;&#x4E0B;&#x306F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x69CB;&#x6210;&#x306E;&#x4F8B;&#x3067;&#x3059;&#x3002;</li>
+<li>PreCadの図面ファイルはインデックスファイル及び複数の図面ファイルにより構成されています。それらをzipで圧縮後、拡張子をpcadに変更したものです。そのためPreCadのファイルの拡張子をzipに変更し解凍すると構成するファイルを確認することができます。<br>
+以下はファイル構成の例です。</li>
 </ul>
-<pre data-role="codeBlock" data-info class="language-"><code>/
- &#x251C;index
- &#x251C;drawing_1.pcdt
- &#x251C;drawing_2.pcdt
- &#x251C;drawing_3.pcdt
- &#x2514;media/
-   &#x251C; e87099e2-8962-4e33-9de5-87eda5b55270.jpg
-   &#x2514; 01ed77be-822f-474b-a297-6d4c025ba6be.jpg
+<pre data-role="codeBlock" data-info="" class="language-text text"><code>/
+ ├index
+ ├drawing_1.pcdt
+ ├drawing_2.pcdt
+ ├drawing_3.pcdt
+ └media/
+   ├ e87099e2-8962-4e33-9de5-87eda5b55270.jpg
+   └ 01ed77be-822f-474b-a297-6d4c025ba6be.jpg
 </code></pre><ul>
-<li>&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x53CA;&#x3073;&#x56F3;&#x9762;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#x30C6;&#x30AD;&#x30B9;&#x30C8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x6587;&#x5B57;&#x30B3;&#x30FC;&#x30C9;&#x306F;UTF8&#x3067;&#x3059;&#x3002;&#x6539;&#x884C;&#x30B3;&#x30FC;&#x30C9;&#x306F;LF(0x0A)&#x3082;&#x3057;&#x304F;&#x306F;CRLF(0x0D, 0x0A)&#x3067;&#x3059;&#x3002;</li>
-<li>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x306F;&#x30BF;&#x30B0;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x5F62;&#x5F0F;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;&#x30BF;&#x30B0;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x5F62;&#x5F0F;&#x306F;&#x30BF;&#x30B0;&#x306E;&#x6B21;&#x306B;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;()&#x3067;&#x56F2;&#x307F;&#x8A18;&#x8FF0;&#x3057;&#x307E;&#x3059;&#x3002;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306F;&#x6570;&#x5024;&#x3001;&#x6587;&#x5B57;&#x5217;&#x3001;&#x30BF;&#x30B0;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;&#x8907;&#x6570;&#x542B;&#x3081;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x533A;&#x5207;&#x308A;&#x306F;&#x7A7A;&#x767D;&#x6587;&#x5B57;&#x3067;&#x3059;&#x3002;&#x307E;&#x305F;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x304C;&#x306A;&#x3044;&#x30BF;&#x30B0;&#x3082;&#x5B58;&#x5728;&#x3057;&#x307E;&#x3059;&#x3002;&#x30BF;&#x30B0;&#x306E;&#x51FA;&#x73FE;&#x9806;&#x306F;&#x4E00;&#x90E8;&#xFF08;&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3001;&#x30DA;&#x30FC;&#x30B8;&#x3001;&#x30EC;&#x30A4;&#x30E4;&#x3001;&#x30B7;&#x30FC;&#x30C8;&#x3001;&#x56F3;&#x5F62;&#x306E;&#x9806;&#x5E8F;&#x306A;&#x3069;&#xFF09;&#x3092;&#x9664;&#x304D;&#x81EA;&#x7531;&#x3067;&#x3059;&#x3002;</li>
-<li>&#x30BF;&#x30B0;&#x540D;&#x306F;&#x5927;&#x6587;&#x5B57;&#x5C0F;&#x6587;&#x5B57;&#x3092;&#x533A;&#x5225;&#x3057;&#x307E;&#x3059;&#x3002;</li>
-<li>&#x4E00;&#x90E8;&#x306E;&#x30BF;&#x30B0;&#x306B;&#x306F;&#x77ED;&#x7E2E;&#x5F62;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;&#x3053;&#x306E;&#x4ED5;&#x69D8;&#x66F8;&#x3067;&#x306F;&#x77ED;&#x7E2E;&#x5F62;&#x304C;&#x3042;&#x308B;&#x3082;&#x306E;&#x306F;[]&#x3067;&#x56F2;&#x3063;&#x3066;&#x4F75;&#x8A18;&#x3057;&#x307E;&#x3059;&#x3002;</li>
-<li>&#x6539;&#x884C;&#x3084;&#x7A7A;&#x767D;&#x306A;&#x3069;&#x306F;&#x7121;&#x8996;&#x3055;&#x308C;&#x307E;&#x3059;&#xFF08;&#x305F;&#x3060;&#x3057;&#x3001;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x5148;&#x982D;&#x306E;filetype&#x306F;&#x9664;&#x304D;&#x307E;&#x3059;&#xFF09;&#x3002;</li>
-<li>//&#x304B;&#x3089;&#x884C;&#x672B;&#x307E;&#x3067;&#x306F;&#x30B3;&#x30E1;&#x30F3;&#x30C8;&#x3067;&#x3059;&#x3002;</li>
-<li>&#x6570;&#x5024;&#x306F;&#x6574;&#x6570;&#xFF08;Int&#xFF09;&#x3082;&#x3057;&#x304F;&#x306F;&#x5B9F;&#x6570;&#xFF08;Double&#xFF09;&#x3067;&#x30BF;&#x30B0;&#x3054;&#x3068;&#x306B;&#x5224;&#x65AD;&#x3057;&#x307E;&#x3059;&#x3002;</li>
-<li>16&#x9032;&#x6574;&#x6570;&#x306F;&#x5148;&#x982D;&#x306B;0x&#x3092;&#x4ED8;&#x3051;&#x307E;&#x3059;&#x3002;&#x4E3B;&#x306B;&#x8272;&#x5024;&#x306B;&#x4F7F;&#x3044;&#x307E;&#x3059;&#x3002;&#x8272;&#x5024;&#x306F;32&#x30D3;&#x30C3;&#x30C8;ARGB&#x3067;&#x3059;&#x3002;</li>
-<li>&#x6587;&#x5B57;&#x5217;&#x306F;&#x30C0;&#x30D6;&#x30EB;&#x30AF;&#x30A9;&#x30FC;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x304F;&#x304F;&#x308A;&#x307E;&#x3059;&#x3002;&#x6587;&#x5B57;&#x5217;&#x4E2D;&#x306E;&#x884C;&#x672B;&#x306E;&#x6539;&#x884C;&#x306F;&#x7121;&#x8996;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;<code>\</code>&#x306F;&#x30A8;&#x30B9;&#x30B1;&#x30FC;&#x30D7;&#x6587;&#x5B57;&#x3067;&#x3059;&#x3002;&#x6539;&#x884C;&#x306F;<code>\n</code>&#x3001;&#x30BF;&#x30D6;&#x306F;<code>\t</code>&#x3067;&#x3059;&#x3002;<code>\</code>&#x306E;&#x5F8C;&#x306B;&#x305D;&#x306E;&#x4ED6;&#x306E;&#x6587;&#x5B57;&#x304C;&#x6765;&#x305F;&#x5834;&#x5408;&#x306F;&#x305D;&#x306E;&#x6587;&#x5B57;&#x304C;&#x4F7F;&#x308F;&#x308C;&#x307E;&#x3059;&#xFF08;&#x4F8B;&#x3048;&#x3070;&#x30C0;&#x30D6;&#x30EB;&#x30AF;&#x30A9;&#x30FC;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306F;<code>\&quot;</code>&#x3092;&#x4F7F;&#x3044;&#x307E;&#x3059;&#xFF09;&#x3002;</li>
-<li>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#xFF11;&#x884C;&#x76EE;&#x306B;<code>filetype</code>&#x30BF;&#x30B0;&#x3092;&#x8A18;&#x5165;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</li>
-<li>&#x305F;&#x3068;&#x3048;&#x3070;&#x3001;index&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#xFF11;&#x884C;&#x76EE;&#x306B;<code>filetype(&quot;precad_archive&quot;)</code>&#x3068;&#x8A18;&#x5165;&#x3057;&#x307E;&#x3059;&#x3002;&#x3053;&#x308C;&#x3067;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x7A2E;&#x985E;&#x3092;&#x5224;&#x5225;&#x3057;&#x307E;&#x3059;&#x3002;<code>filetype(&quot;precad_archive&quot;)</code>&#x306F;&#x30BF;&#x30B0;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x5F62;&#x5F0F;&#x3067;&#x3059;&#x304C;&#x3001;&#x9014;&#x4E2D;&#x306B;&#x7A7A;&#x767D;&#x3084;&#x6539;&#x884C;&#x3092;&#x5165;&#x308C;&#x305A;&#x884C;&#x306E;&#x5148;&#x982D;&#x304B;&#x3089;&#x66F8;&#x3044;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#xFF08;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x7A2E;&#x5225;&#x306E;&#x5224;&#x5225;&#x3092;&#x7C21;&#x7565;&#x5316;&#x3059;&#x308B;&#x305F;&#x3081;&#x3067;&#x3059;&#xFF09;&#x3002;</li>
-<li>&#xFF11;&#x884C;&#x76EE;&#x306E;filetype&#x306F;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5074;&#x3067;&#x4E00;&#x884C;&#x8AAD;&#x307F;&#x8FBC;&#x3093;&#x3067;&#x6587;&#x5B57;&#x5217;&#x3068;&#x3057;&#x3066;&#x6BD4;&#x8F03;&#x3057;&#x3066;&#x3082;&#x901A;&#x5E38;&#x306E;&#x30BF;&#x30B0;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3068;&#x540C;&#x3058;&#x3088;&#x3046;&#x306B;&#x89E3;&#x6790;&#x3057;&#x3066;&#x3082;&#x3069;&#x3061;&#x3089;&#x3067;&#x3082;&#x554F;&#x984C;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;</li>
-<li>media&#x30D5;&#x30A9;&#x30EB;&#x30C0;&#x306F;&#x753B;&#x50CF;&#x306A;&#x3069;&#x3092;&#x540C;&#x68B1;&#x3059;&#x308B;&#x6642;&#x306B;&#x4F7F;&#x3044;&#x307E;&#x3059;&#x3002;&#x753B;&#x50CF;&#x306F;&#x3053;&#x306E;&#x30D5;&#x30A9;&#x30EB;&#x30C0;&#x306B;&#x4FDD;&#x5B58;&#x3059;&#x308B;&#x4EE5;&#x5916;&#x306B;&#x5404;&#x56F3;&#x9762;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x5185;&#x306B;&#x6587;&#x5B57;&#x5217;&#x3068;&#x3057;&#x3066;&#x540C;&#x68B1;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</li>
-<li>&#x4EE5;&#x4E0B;&#x306F;&#x30BF;&#x30B0;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x5F62;&#x5F0F;&#x306E;&#x4F8B;&#x3067;&#x3059;&#x3002;</li>
+<li>インデックスファイル及び図面ファイルはテキストファイルで文字コードはUTF8です。改行コードはLF(0x0A)もしくはCRLF(0x0D, 0x0A)です。</li>
+<li>ファイルフォーマットはタグパラメータ形式を使用しています。タグパラメータ形式はタグの次にパラメータを()で囲み記述します。パラメータは数値、文字列、タグパラメータを複数含めることができます。パラメータの区切りは空白文字です。またパラメータがないタグも存在します。タグの出現順は一部（セクション、ページ、レイヤ、シート、図形の順序など）を除き自由です。</li>
+<li>タグ名は大文字小文字を区別します。</li>
+<li>一部のタグには短縮形があります。この仕様書では短縮形があるものは[]で囲って併記します。</li>
+<li>改行や空白などは無視されます（ただし、ファイル先頭のfiletypeは除きます）。</li>
+<li>//から行末まではコメントです。</li>
+<li>数値は整数（Int）もしくは実数（Double）でタグごとに判断します。</li>
+<li>16進整数は先頭に0xを付けます。主に色値に使います。色値は32ビットARGBです。</li>
+<li>文字列はダブルクォーテーションでくくります。文字列中の行末の改行は無視されます。<code>\</code>はエスケープ文字です。改行は<code>\n</code>、タブは<code>\t</code>です。<code>\</code>の後にその他の文字が来た場合はその文字が使われます（例えばダブルクォーテーションは<code>\"</code>を使います）。</li>
+<li>ファイルの１行目に<code>filetype</code>タグを記入してください。</li>
+<li>たとえば、indexファイルは１行目に<code>filetype("precad_archive")</code>と記入します。これでファイルの種類を判別します。<code>filetype("precad_archive")</code>はタグパラメータ形式ですが、途中に空白や改行を入れず行の先頭から書いてください（ファイル種別の判別を簡略化するためです）。</li>
+<li>１行目のfiletypeはアプリケーション側で一行読み込んで文字列として比較しても通常のタグパラメータと同じように解析してもどちらでも問題ありません。</li>
+<li>mediaフォルダは画像などを同梱する時に使います。画像はこのフォルダに保存する以外に各図面ファイル内に文字列として同梱することもできます。</li>
+<li>以下はタグパラメータ形式の例です。</li>
 </ul>
-<pre data-role="codeBlock" data-info class="language-"><code>filetype(&quot;sample&quot;)  //&#x4E00;&#x884C;&#x76EE;&#x306F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30BF;&#x30A4;&#x30D7;&#x3002;&#x3053;&#x3053;&#x3067;&#x306F;&#x7A7A;&#x767D;&#x6587;&#x5B57;&#x3092;&#x4F7F;&#x308F;&#x306A;&#x3044;&#x3053;&#x3068;&#x3002;
-tag1(1)		//&#x5358;&#x72EC;&#x306E;&#x6570;&#x5024;&#x3002;&#x6574;&#x6570;&#x3068;&#x3059;&#x308B;&#x304B;&#x5B9F;&#x6570;&#x3068;&#x3059;&#x308B;&#x304B;&#x306F;&#x30BF;&#x30B0;&#x306E;&#x7A2E;&#x985E;&#x306B;&#x3088;&#x308B;&#x3002;
-tag2(&quot;STRING&quot;)	//&#x5358;&#x72EC;&#x306E;&#x6587;&#x5B57;&#x5217;&#x3002;
-tag3(10.0 15.5)	//&#x5EA7;&#x6A19;&#x3002;&#x6570;&#x5024;&#x3092;&#x7A7A;&#x767D;&#x6587;&#x5B57;&#x3067;&#x533A;&#x5207;&#x308B;&#x3002;
-tag4(tag1(5.5)tag2(&quot;xyz&quot;))	//&#x8907;&#x6570;&#x306E;&#x30BF;&#x30B0;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3002;
-tag5(0xFF000000)	//16&#x9032;&#x6570;&#x306F;&#x6574;&#x6570;&#x3068;&#x3057;&#x3066;&#x89E3;&#x91C8;&#x3059;&#x308B;&#x3002;&#x4E3B;&#x306B;&#x8272;&#x3067;&#x4F7F;&#x308F;&#x308C;&#x308B;&#x3002;
-byLayer()	//&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306A;&#x3057;&#x3002;
-//&#x6B21;&#x306E;&#x4E8C;&#x3064;&#x306F;&#x3069;&#x3061;&#x3089;&#x3082;&#x540C;&#x3058;&#xFF08;&#x9806;&#x5E8F;&#x306F;&#x7121;&#x95A2;&#x4FC2;&#xFF09;
+<pre data-role="codeBlock" data-info="" class="language-text text"><code>filetype("sample")  //一行目はファイルタイプ。ここでは空白文字を使わないこと。
+tag1(1)		//単独の数値。整数とするか実数とするかはタグの種類による。
+tag2("STRING")	//単独の文字列。
+tag3(10.0 15.5)	//座標。数値を空白文字で区切る。
+tag4(tag1(5.5)tag2("xyz"))	//複数のタグパラメータ。
+tag5(0xFF000000)	//16進数は整数として解釈する。主に色で使われる。
+byLayer()	//パラメータなし。
+//次の二つはどちらも同じ（順序は無関係）
 tag6(tag1(5.5)tag2(123))
 tag6(tag2(123)tag1(5.5))
 
-</code></pre><h2 class="mume-header" id="%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB">&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h2>
-
-<p>&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x306F;<code>index</code>&#x3067;&#x3059;&#x3002;&#x3053;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x30DA;&#x30FC;&#x30B8;&#x306E;&#x60C5;&#x5831;&#x3068;&#x5171;&#x901A;&#x3059;&#x308B;&#x8A2D;&#x5B9A;&#x3092;&#x8A18;&#x5165;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+</code></pre><h2 id="インデックスファイル">インデックスファイル </h2>
+<p>インデックスファイルのファイル名は<code>index</code>です。このファイルにページの情報と共通する設定を記入します。</p>
 <ul>
-<li>1&#x884C;&#x76EE;&#x306B;<code>filetype(&quot;precad_archive&quot;)</code>&#x3092;&#x7A7A;&#x767D;&#x6587;&#x5B57;&#x306A;&#x3057;&#x3067;&#x8A18;&#x5165;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</li>
-<li>2&#x884C;&#x76EE;&#x4EE5;&#x964D;&#x306B;fileinfo&#x3001;contents&#x3001;settings&#x306E;&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#x7D9A;&#x304D;&#x307E;&#x3059;&#x3002;&#x3053;&#x306E;&#x51FA;&#x73FE;&#x9806;&#x306F;&#x5B88;&#x3063;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x30A2;&#x30C3;&#x30D7;&#x7B49;&#x3067;&#x65B0;&#x305F;&#x306B;&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#x52A0;&#x308F;&#x308B;&#x304B;&#x3082;&#x3057;&#x308C;&#x307E;&#x305B;&#x3093;&#x306E;&#x3067;&#x672A;&#x77E5;&#x306E;&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306F;&#x8AAD;&#x307F;&#x98DB;&#x3070;&#x305B;&#x308B;&#x3088;&#x3046;&#x306B;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</li>
+<li>1行目に<code>filetype("precad_archive")</code>を空白文字なしで記入してください。</li>
+<li>2行目以降にfileinfo、contents、settingsのセクションが続きます。この出現順は守ってください。バージョンアップ等で新たにセクションが加わるかもしれませんので未知のセクションは読み飛ばせるようにしてください。</li>
 </ul>
-<p>&#x4EE5;&#x4E0B;&#x306F;index&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x4F8B;&#x3067;&#x3059;&#x3002;</p>
-<pre data-role="codeBlock" data-info class="language-"><code>filetype(&quot;precad_archive&quot;)
+<p>以下はindexファイルの例です。</p>
+<pre data-role="codeBlock" data-info="" class="language-text text"><code>filetype("precad_archive")
 fileinfo(
- version(2.0.0)appinfo(&quot;precad for windows version 2.0.0.0&quot;)
+ version(2.0.0)appinfo("precad for windows version 2.0.0.0")
 )
 contents(
  pages(
   page(
-   title(&quot;Page1&quot;)drawing(&quot;drawing_1.pcdt&quot;)
+   title("Page1")drawing("drawing_1.pcdt")
   )
   page(
-   title(&quot;Page2&quot;)drawing(&quot;drawing_2.pcdt&quot;)
+   title("Page2")drawing("drawing_2.pcdt")
   )
  )
 )
 settings(
  pageIndex(0)
- paper(size(841.0 594.0))
+ paper(name("A3")size(297 210))
  grid(p0(0.0 0.0)spacing(10.0)div(10)isScaled(0)angle(0.0))
  printInfo(printPaperSize(420.0 297.0)printCenter(0.0 0.0)printScale(2.0))
 )
-</code></pre><h3 class="mume-header" id="fileinfo%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3">fileinfo&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</h3>
-
-<p>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x60C5;&#x5831;&#x3067;&#x3059;&#x3002;</p>
+</code></pre><h3 id="fileinfoセクション">fileinfoセクション </h3>
+<p>ファイルの情報です。</p>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>version(version)</td>
 <td>version : String</td>
-<td>&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;</td>
+<td>フォーマットのバージョン</td>
 </tr>
 <tr>
 <td>appinfo(name)</td>
 <td>name : String</td>
-<td>&#x4F5C;&#x6210;&#x3057;&#x305F;&#x30A2;&#x30D7;&#x30EA;&#x306E;&#x60C5;&#x5831;</td>
+<td>作成したアプリの情報</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306F;2.1.0&#x306E;&#x3088;&#x3046;&#x306B;&#x30E1;&#x30B8;&#x30E3;&#x30FC;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3001;&#x30DE;&#x30A4;&#x30CA;&#x2015;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3001;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x5C0F;&#x6570;&#x70B9;&#x3067;&#x5206;&#x5272;&#x3057;&#x307E;&#x3059;&#x3002;</li>
-<li>&#x30E1;&#x30B8;&#x30E3;&#x30FC;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306F;&#x5927;&#x304D;&#x306A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x69CB;&#x9020;&#x306E;&#x5909;&#x66F4;&#x6642;&#x306B;&#x5909;&#x66F4;&#x3057;&#x307E;&#x3059;&#x3002;&#x30DE;&#x30EB;&#x30C1;&#x30DA;&#x30FC;&#x30B8;&#x5BFE;&#x5FDC;&#x6642;&#x306B;1&#x304B;&#x3089;2&#x306B;&#x4E0A;&#x304C;&#x308A;&#x307E;&#x3057;&#x305F;&#x3002;&#x30E1;&#x30B8;&#x30E3;&#x30FC;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x304C;&#x4E0A;&#x304C;&#x308A;&#x65E7;&#x30A2;&#x30D7;&#x30EA;&#x3067;&#x8AAD;&#x3081;&#x306A;&#x3044;&#x5834;&#x5408;&#x306F;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x8868;&#x793A;&#x3057;&#x307E;&#x3059;&#xFF08;&#x30E1;&#x30B8;&#x30E3;&#x30FC;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x304C;&#x4E0A;&#x304C;&#x3063;&#x305F;&#x5834;&#x5408;&#x3001;&#x304A;&#x305D;&#x3089;&#x304F;&#x305D;&#x3046;&#x306A;&#x308B;&#x3067;&#x3057;&#x3087;&#x3046;&#xFF09;&#x3002;</li>
-<li>&#x30DE;&#x30A4;&#x30CA;&#x30FC;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306F;&#x8981;&#x7D20;&#x8FFD;&#x52A0;&#x3001;&#x30BF;&#x30B0;&#x540D;&#x306E;&#x5909;&#x66F4;&#x30FB;&#x524A;&#x9664;&#x306A;&#x3069;&#x3067;&#x5909;&#x308F;&#x308A;&#x307E;&#x3059;&#x3002;&#x3053;&#x306E;&#x5909;&#x66F4;&#x3067;&#x65B0;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x65E7;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3067;&#x8AAD;&#x3080;&#x3068;&#x60C5;&#x5831;&#x306E;&#x6B20;&#x843D;&#x306A;&#x3069;&#x304C;&#x8D77;&#x3053;&#x308B;&#x304B;&#x3082;&#x3057;&#x308C;&#x307E;&#x305B;&#x3093;&#x3002;&#x5FC5;&#x8981;&#x3067;&#x3042;&#x308C;&#x3070;&#x8B66;&#x544A;&#x3092;&#x8868;&#x793A;&#x3057;&#x307E;&#x3059;&#x3002;</li>
-<li>&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x6642;&#x3001;&#x30DE;&#x30A4;&#x30CA;&#x30FC;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306B;&#x3088;&#x308A;&#x51E6;&#x7406;&#x3092;&#x5909;&#x3048;&#x308B;&#x3053;&#x3068;&#x3092;&#x63A8;&#x5968;&#x3057;&#x307E;&#x305B;&#x3093;&#x3002;&#x30DE;&#x30A4;&#x30CA;&#x30FC;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306F;&#x3042;&#x304F;&#x307E;&#x3067;&#x3082;&#x53C2;&#x8003;&#x3068;&#x3057;&#x3001;&#x8FFD;&#x52A0;&#x3055;&#x308C;&#x305F;&#x30BF;&#x30B0;&#xFF08;&#x3082;&#x3057;&#x304F;&#x306F;&#x5EC3;&#x6B62;&#x3055;&#x308C;&#x305F;&#x30BF;&#x30B0;&#xFF09;&#x3092;&#x3082;&#x3068;&#x306B;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x3092;&#x884C;&#x3046;&#x3079;&#x304D;&#x3067;&#x3059;&#x3002;</li>
-<li>&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x306F;&#x305D;&#x306E;&#x4ED6;&#x8EFD;&#x5FAE;&#x306A;&#x5909;&#x66F4;&#x3067;&#x5909;&#x308F;&#x308A;&#x307E;&#x3059;&#xFF08;&#x30BF;&#x30B0;&#x540D;&#x306E;typo&#x4FEE;&#x6B63;&#x306A;&#x3069;&#xFF09;&#x3002;</li>
+<li>バージョンは2.1.0のようにメジャーバージョン、マイナ―バージョン、リビジョンを小数点で分割します。</li>
+<li>メジャーバージョンは大きなファイル構造の変更時に変更します。マルチページ対応時に1から2に上がりました。メジャーバージョンが上がり旧アプリで読めない場合はエラーを表示します（メジャーバージョンが上がった場合、おそらくそうなるでしょう）。</li>
+<li>マイナーバージョンは要素追加、タグ名の変更・削除などで変わります。この変更で新バージョンのファイルを旧バージョンで読むと情報の欠落などが起こるかもしれません。必要であれば警告を表示します。</li>
+<li>読み込み時、マイナーバージョンにより処理を変えることを推奨しません。マイナーバージョンはあくまでも参考とし、追加されたタグ（もしくは廃止されたタグ）をもとに読み込みを行うべきです。</li>
+<li>リビジョンはその他軽微な変更で変わります（タグ名のtypo修正など）。</li>
 </ul>
-<h3 class="mume-header" id="contents%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3">contents&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</h3>
-
-<h4 class="mume-header" id="pages">pages</h4>
-
-<p>&#x30DA;&#x30FC;&#x30B8;&#x306E;&#x30EA;&#x30B9;&#x30C8;&#x3067;&#x3059;&#x3002;1&#x30DA;&#x30FC;&#x30B8;&#x304B;&#x3089;&#x9806;&#x306B;&#x4E26;&#x3073;&#x307E;&#x3059;&#x3002;</p>
-<h4 class="mume-header" id="page">page</h4>
-
+<h3 id="contentsセクション">contentsセクション </h3>
+<h4 id="pages">pages </h4>
+<p>ページのリストです。1ページから順に並びます。</p>
+<h4 id="page">page </h4>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>title(title)</td>
 <td>title : String</td>
-<td>&#x56F3;&#x9762;&#x306E;&#x30BF;&#x30A4;&#x30C8;&#x30EB;</td>
+<td>図面のタイトル</td>
 </tr>
 <tr>
 <td>drawing(file)</td>
 <td>file : String</td>
-<td>&#x56F3;&#x9762;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;</td>
+<td>図面のファイル名</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>&#x56F3;&#x9762;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x62E1;&#x5F35;&#x5B50;&#x306F;<code>pcdt</code>(PreCad Drawing Text)&#x3067;&#x3059;&#x3002;</li>
+<li>図面ファイルの拡張子は<code>pcdt</code>(PreCad Drawing Text)です。</li>
 </ul>
-<h3 class="mume-header" id="settings%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3">settings&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</h3>
-
-<p>&#x8A2D;&#x5B9A;&#x3092;&#x8A18;&#x8FF0;&#x3057;&#x307E;&#x3059;&#x3002;</p>
-<pre data-role="codeBlock" data-info class="language-"><code>settings(
+<h3 id="settingsセクション">settingsセクション </h3>
+<p>設定を記述します。</p>
+<pre data-role="codeBlock" data-info="" class="language-text text"><code>settings(
  pageIndex(0)   
- paper(size(420 297))
+ paper(name("A3")size(297 210))rotatePaper
  grid(p0(0 0)spacing(10)div(5)isScaled(0)angle(0.0))
  printInfo(printPaperSize(420.0 297.0)printCenter(0.0 0.0)printScale(2.0))
 )
-</code></pre><h4 class="mume-header" id="pageindex--int">pageIndex : Int</h4>
-
-<p>&#x9078;&#x629E;&#x3055;&#x308C;&#x3066;&#x3044;&#x305F;&#x30DA;&#x30FC;&#x30B8;&#x306E;&#x30A4;&#x30F3;&#x30C7;&#x30AF;&#x30B9;&#xFF08;0&#x304C;1&#x30DA;&#x30FC;&#x30B8;&#x76EE;&#xFF09;&#x3002;</p>
-<h4 class="mume-header" id="paper">paper</h4>
-
-<p>&#x7528;&#x7D19;&#x8A2D;&#x5B9A;&#x3002;&#x753B;&#x9762;&#x4E0A;&#x3067;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#x7528;&#x7D19;&#x306E;&#x30B5;&#x30A4;&#x30BA;&#x3067;&#x5370;&#x5237;&#x7528;&#x7D19;&#x3067;&#x7121;&#x3044;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x3002;</p>
+</code></pre><h4 id="pageindex--int">pageIndex : Int </h4>
+<p>選択されていたページのインデクス（0が1ページ目）。</p>
+<h4 id="paper">paper </h4>
+<p>用紙設定。画面上で表示される用紙のサイズで印刷用紙で無いことに注意。</p>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>size(width height)</td>
 <td>width : Double,  height : Double</td>
-<td>&#x7528;&#x7D19;&#x30B5;&#x30A4;&#x30BA;</td>
+<td>用紙サイズ。</td>
 </tr>
 </tbody>
 </table>
-<h4 class="mume-header" id="grid">grid</h4>
-
-<p>&#x30B0;&#x30EA;&#x30C3;&#x30C9;&#x306E;&#x8A2D;&#x5B9A;</p>
+<p>PreCadでは以下の用紙リストから用紙を選択する。</p>
+<p>用紙名リスト（用紙は横向きが基準）</p>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>用紙名</th>
+<th>サイズ(幅 x 高さ)[mm]</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Letter</td>
+<td>279 x 216</td>
+<td>11 x 8.5 in</td>
+</tr>
+<tr>
+<td>A4</td>
+<td>297 x 210</td>
+<td></td>
+</tr>
+<tr>
+<td>A3</td>
+<td>420 x 297</td>
+<td></td>
+</tr>
+<tr>
+<td>A2</td>
+<td>594 x 420</td>
+<td></td>
+</tr>
+<tr>
+<td>A1</td>
+<td>841 x 594</td>
+<td></td>
+</tr>
+<tr>
+<td>A0</td>
+<td>1189 x 841</td>
+<td></td>
+</tr>
+<tr>
+<td>2A</td>
+<td>1682 x 1189</td>
+<td></td>
+</tr>
+<tr>
+<td>3A</td>
+<td>2378 x 1682</td>
+<td></td>
+</tr>
+<tr>
+<td>4A</td>
+<td>3364 x 2378</td>
+<td></td>
+</tr>
+<tr>
+<td>5A</td>
+<td>4756 x 3364</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="grid">grid </h4>
+<p>グリッドの設定</p>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>p0(x y)</td>
 <td>x : Double,  y : Double</td>
-<td>&#x30B0;&#x30EA;&#x30C3;&#x30C9;&#x539F;&#x70B9;</td>
+<td>グリッド原点</td>
 </tr>
 <tr>
 <td>spacing(s)</td>
 <td>s : Double</td>
-<td>&#x30B0;&#x30EA;&#x30C3;&#x30C9;&#x9593;&#x9694;</td>
+<td>グリッド間隔</td>
 </tr>
 <tr>
 <td>div(n)</td>
 <td>n : Int</td>
-<td>&#x30B0;&#x30EA;&#x30C3;&#x30C9;&#x9593;&#x9694;&#x3092;n&#x5206;&#x5272;</td>
+<td>グリッド間隔をn分割</td>
 </tr>
 <tr>
 <td>isScaled(f)</td>
 <td>f : Int</td>
-<td>0:&#x30B0;&#x30EA;&#x30C3;&#x30C9;&#x9593;&#x9694;&#x306F;&#x7528;&#x7D19;&#x5BF8;<br>1:&#x30B0;&#x30EA;&#x30C3;&#x30C9;&#x9593;&#x9694;&#x306F;&#x5B9F;&#x5BF8;</td>
+<td>0:グリッド間隔は用紙寸<br>1:グリッド間隔は実寸</td>
 </tr>
 <tr>
 <td>angle(s)</td>
 <td>s : Double</td>
-<td>&#x30B0;&#x30EA;&#x30C3;&#x30C9;&#x89D2;&#x5EA6;&#xFF08;&#x5EA6;&#xFF09;</td>
+<td>グリッド角度（度）</td>
 </tr>
 </tbody>
 </table>
-<h4 class="mume-header" id="printinfo">printInfo</h4>
-
+<h4 id="printinfo">printInfo </h4>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>printPaperSize(width height)</td>
 <td>width : Double,  height : Double</td>
-<td>&#x5370;&#x5237;&#x3059;&#x308B;&#x7528;&#x7D19;&#x306E;&#x30B5;&#x30A4;&#x30BA;</td>
+<td>印刷する用紙のサイズ</td>
 </tr>
 <tr>
 <td>printCenter(x y)</td>
 <td>x : Double, y : Double</td>
-<td>&#x5370;&#x5237;&#x9818;&#x57DF;&#x306E;&#x4E2D;&#x5FC3;&#x5EA7;&#x6A19;</td>
+<td>印刷領域の中心座標</td>
 </tr>
 <tr>
 <td>printScale(scale)</td>
 <td>scale : Double</td>
-<td>&#x5370;&#x5237;&#x500D;&#x7387;</td>
+<td>印刷倍率</td>
 </tr>
 </tbody>
 </table>
-<h2 class="mume-header" id="%E5%9B%B3%E9%9D%A2%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB">&#x56F3;&#x9762;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h2>
-
-<p>&#x56F3;&#x9762;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#x5404;&#x30DA;&#x30FC;&#x30B8;&#x306E;&#x56F3;&#x9762;&#x672C;&#x4F53;&#x3067;&#x3059;&#x3002;<br>
-&#xFF11;&#x884C;&#x76EE;&#x306B;<code>filetype(&quot;precad_document&quot;)</code>&#x3092;&#x8A18;&#x5165;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;&#x3053;&#x308C;&#x3067;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x7A2E;&#x985E;&#x3092;&#x5224;&#x5225;&#x3057;&#x307E;&#x3059;&#x3002;<br>
-&#xFF12;&#x884C;&#x76EE;&#x4EE5;&#x964D;&#x306B;fileinfo&#x3001;contents&#x3001;settings&#x306E;&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#x7D9A;&#x304D;&#x307E;&#x3059;&#x3002;&#x3053;&#x306E;&#x51FA;&#x73FE;&#x9806;&#x306F;&#x5B88;&#x3063;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x30A2;&#x30C3;&#x30D7;&#x7B49;&#x3067;&#x65B0;&#x305F;&#x306B;&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#x52A0;&#x308F;&#x308B;&#x304B;&#x3082;&#x3057;&#x308C;&#x307E;&#x305B;&#x3093;&#x306E;&#x3067;&#x672A;&#x77E5;&#x306E;&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306F;&#x8AAD;&#x307F;&#x98DB;&#x3070;&#x305B;&#x308B;&#x3088;&#x3046;&#x306B;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</p>
-<h3 class="mume-header" id="fileinfo%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3-1">fileinfo&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</h3>
-
-<p>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x60C5;&#x5831;&#x3067;&#x3059;&#x3002;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x6E96;&#x62E0;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+<h2 id="図面ファイル">図面ファイル </h2>
+<p>図面ファイルは各ページの図面本体です。<br>
+１行目に<code>filetype("precad_document")</code>を記入してください。これでファイルの種類を判別します。<br>
+２行目以降にfileinfo、contents、settingsのセクションが続きます。この出現順は守ってください。バージョンアップ等で新たにセクションが加わるかもしれませんので未知のセクションは読み飛ばせるようにしてください。</p>
+<h3 id="fileinfoセクション-1">fileinfoセクション </h3>
+<p>ファイルの情報です。インデックスファイルに準拠します。</p>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>version(version)</td>
 <td>version : Stgring</td>
-<td>&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;</td>
+<td>フォーマットのバージョン</td>
 </tr>
 <tr>
 <td>appinfo(name)</td>
 <td>name : String</td>
-<td>&#x4F5C;&#x6210;&#x3057;&#x305F;&#x30A2;&#x30D7;&#x30EA;&#x306E;&#x60C5;&#x5831;</td>
+<td>作成したアプリの情報</td>
 </tr>
 </tbody>
 </table>
-<h3 class="mume-header" id="contents%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3-1">contents&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</h3>
-
-<p>&#x30EC;&#x30A4;&#x30E4;&#x3001;&#x30B7;&#x30FC;&#x30C8;&#x3001;&#x56F3;&#x5F62;&#x3092;&#x8A18;&#x8FF0;&#x3057;&#x307E;&#x3059;&#x3002;<br>
-drawing&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x306F;&#x57FA;&#x672C;&#x7684;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x8981;&#x7D20;&#x306F;&#x4E8B;&#x524D;&#x306B;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3051;&#x308C;&#x3070;&#x3044;&#x3051;&#x307E;&#x305B;&#x3093;&#x3002;&#x3057;&#x305F;&#x304C;&#x3063;&#x3066;shapes&#x306F;sheet&#x53CA;&#x3073;layer&#x304C;&#x5FC5;&#x8981;&#x306B;&#x306A;&#x308B;&#x306E;&#x3067;shapes&#x306E;&#x524D;&#x306B;layers&#x53CA;&#x3073;sheets&#x304C;&#x5FC5;&#x8981;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#xFF08;layers&#x3068;sheets&#x306E;&#x51FA;&#x73FE;&#x9806;&#x306B;&#x306F;&#x5236;&#x7D04;&#x304C;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&#xFF09;&#x3002;</p>
-<pre data-role="codeBlock" data-info class="language-"><code>contents(
+<h3 id="contentsセクション-1">contentsセクション </h3>
+<p>レイヤ、シート、図形を記述します。<br>
+drawingファイルでは基本的に使用する要素は事前に定義されていなければいけません。したがってshapesはsheet及びlayerが必要になるのでshapesの前にlayers及びsheetsが必要になります（layersとsheetsの出現順には制約がありません）。</p>
+<pre data-role="codeBlock" data-info="" class="language-text text"><code>contents(
  layers(
-  layer(name(&quot;&#x30C6;&#x30B9;&#x30C8;1&quot;)color(0xFF000000)lineWidth(0))
-  layer(name(&quot;&#x30C6;&#x30B9;&#x30C8;2&quot;)color(0xFF000000)lineWidth(0))
+  layer(name("テスト1")color(0xFF000000)lineWidth(0))
+  layer(name("テスト2")color(0xFF000000)lineWidth(0))
  )
  sheets(
-  sheet(name(&quot;&#x30B7;&#x30FC;&#x30C8;1&quot;)scale(0.3))
-  sheet(name(&quot;&#x30B7;&#x30FC;&#x30C8;2&quot;)scale(0.3))
+  sheet(name("シート1")scale(0.3))
+  sheet(name("シート2")scale(0.3))
  )
  shapes(
-  sheet(&quot;&#x30B7;&#x30FC;&#x30C8;2&quot;)
-   layer(&quot;&#x30C6;&#x30B9;&#x30C8;1&quot;)
+  sheet("シート2")
+   layer("テスト1")
     Line(...)
     Circle(...)
-   layer(&quot;&#x30C6;&#x30B9;&#x30C8;2&quot;)
+   layer("テスト2")
     Line(...)
   ...
  )
 )        
-</code></pre><h4 class="mume-header" id="layers">layers</h4>
-
-<p>&#x30EC;&#x30A4;&#x30E4;&#x306E;&#x30EA;&#x30B9;&#x30C8;&#x3067;&#x3059;&#x3002;&#x4E26;&#x3073;&#x306F;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#x3068;&#x304D;&#x306E;&#x91CD;&#x306D;&#x9806;&#x3067;&#x4E0B;&#x304B;&#x3089;&#x4E0A;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</p>
-<h4 class="mume-header" id="sheets">sheets</h4>
-
-<p>&#x30B7;&#x30FC;&#x30C8;&#x306E;&#x30EA;&#x30B9;&#x30C8;&#x3067;&#x3059;&#x3002;&#x4E26;&#x3073;&#x306F;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#x3068;&#x304D;&#x306E;&#x91CD;&#x306D;&#x9806;&#x3067;&#x4E0B;&#x304B;&#x3089;&#x4E0A;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</p>
-<h4 class="mume-header" id="shapes">shapes</h4>
-
-<p>&#x56F3;&#x5F62;&#x306E;&#x30EA;&#x30B9;&#x30C8;&#x3067;&#x3059;&#x3002;&#x56F3;&#x5F62;&#x4EE5;&#x5916;&#x306B;sheet&#x304A;&#x3088;&#x3073;layer&#x30BF;&#x30B0;&#x304C;&#x3042;&#x3089;&#x308F;&#x308C;&#x307E;&#x3059;&#x3002;</p>
+</code></pre><h4 id="layers">layers </h4>
+<p>レイヤのリストです。並びは表示されるときの重ね順で下から上になります。</p>
+<h4 id="sheets">sheets </h4>
+<p>シートのリストです。並びは表示されるときの重ね順で下から上になります。</p>
+<h4 id="shapes">shapes </h4>
+<p>図形のリストです。図形以外にsheetおよびlayerタグがあらわれます。</p>
 <ul>
-<li>sheet&#x30BF;&#x30B0;&#x3067;&#x73FE;&#x5728;&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x30B7;&#x30FC;&#x30C8;&#x3092;&#x5207;&#x308A;&#x66FF;&#x3048;&#x307E;&#x3059;&#x3002;</li>
-<li>layer&#x30BF;&#x30B0;&#x3067;&#x73FE;&#x5728;&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x30EC;&#x30A4;&#x30E4;&#x3092;&#x5207;&#x308A;&#x66FF;&#x3048;&#x307E;&#x3059;&#x3002;</li>
+<li>sheetタグで現在の書き込みシートを切り替えます。</li>
+<li>layerタグで現在の書き込みレイヤを切り替えます。</li>
 </ul>
-<p>&#x4E26;&#x3073;&#x306F;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#x3068;&#x304D;&#x306E;&#x91CD;&#x306D;&#x9806;&#x3067;&#x4E0B;&#x304B;&#x3089;&#x4E0A;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</p>
-<h4 class="mume-header" id="%E5%9B%B3%E5%BD%A2%E5%85%B1%E9%80%9A">&#x56F3;&#x5F62;&#x5171;&#x901A;</h4>
-
+<p>並びは表示されるときの重ね順で下から上になります。</p>
+<h4 id="図形共通">図形共通 </h4>
 <ul>
-<li>&#x5EA7;&#x6A19;&#x53CA;&#x3073;&#x5927;&#x304D;&#x3055;&#xFF08;&#x7DDA;&#x5E45;&#x3001;&#x534A;&#x5F84;&#x3001;&#x6587;&#x5B57;&#x30B5;&#x30A4;&#x30BA;&#x7B49;&#xFF09;&#x306F;&#x7528;&#x7D19;&#x5BF8;&#x3067;&#x3059;&#x3002;&#x30B7;&#x30FC;&#x30C8;&#x306E;&#x7E2E;&#x5C3A;&#x3067;&#x5272;&#x308B;&#x3053;&#x3068;&#x3067;&#x5B9F;&#x5BF8;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</li>
-<li>&#x5EA7;&#x6A19;&#x539F;&#x70B9;&#x306F;&#x7528;&#x7D19;&#x306E;&#x4E2D;&#x5FC3;&#x3067;X&#x8EF8;&#x306F;&#x53F3;&#x304C;&#x6B63;&#x3001;Y&#x8EF8;&#x306F;&#x4E0A;&#x304C;&#x6B63;&#x3067;&#x3059;&#x3002;</li>
-<li>&#x89D2;&#x5EA6;&#x306F;&#x5EA6;(degree)&#x3067;&#x3059;&#x3002;&#x5DE6;&#x56DE;&#x308A;&#x304C;&#x6B63;&#x3067;&#x3059;&#x3002;</li>
-<li>&#x56F3;&#x5F62;&#x306B;&#x306F;&#x7DDA;&#x7A2E;&#x306A;&#x3069;&#x5171;&#x901A;&#x3059;&#x308B;&#x5C5E;&#x6027;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;</li>
-<li>&#x7701;&#x7565;&#x6642;&#x306E;&#x5024;&#x304C;&#x66F8;&#x304B;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3082;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;&#x7701;&#x7565;&#x3067;&#x304D;&#x307E;&#x3059;&#x304C;&#x5024;&#x306F;&#x672A;&#x5B9A;&#x7FA9;&#x3067;&#x3059;&#x3002;</li>
-<li>&#x6587;&#x5B57;&#x56F3;&#x5F62;&#x3084;&#x5BF8;&#x6CD5;&#x7DDA;&#x306A;&#x3069;&#x306E;&#x6587;&#x5B57;&#x5217;&#x306B;&#x306F;&#x30DA;&#x30FC;&#x30B8;&#x30BF;&#x30A4;&#x30C8;&#x30EB;&#x306A;&#x3069;&#x306B;&#x7F6E;&#x63DB;&#x3067;&#x304D;&#x308B;&#x30DE;&#x30AF;&#x30ED;&#x6587;&#x5B57;&#x5217;&#x3092;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;&#x4EE5;&#x4E0B;&#x306E;&#x30DE;&#x30AF;&#x30ED;&#x6587;&#x5B57;&#x5217;&#x304C;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</li>
+<li>座標及び大きさ（線幅、半径、文字サイズ等）は用紙寸です。シートの縮尺で割ることで実寸になります。</li>
+<li>座標原点は用紙の中心でX軸は右が正、Y軸は上が正です。</li>
+<li>角度は度(degree)です。左回りが正です。</li>
+<li>図形には線種など共通する属性があります。</li>
+<li>省略時の値が書かれていないパラメータもパラメータを省略できますが値は未定義です。</li>
+<li>文字図形や寸法線などの文字列にはページタイトルなどに置換できるマクロ文字列を使用できます。以下のマクロ文字列が使用できます。</li>
 </ul>
 <table>
 <thead>
 <tr>
-<th>&#x30DE;&#x30AF;&#x30ED;&#x6587;&#x5B57;&#x5217;</th>
-<th>&#x5024;</th>
+<th>マクロ文字列</th>
+<th>値</th>
 </tr>
 </thead>
 <tbody>
@@ -590,299 +396,298 @@ drawing&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x306F;&#x57FA;&#x672C;&#x7684;&
 </tr>
 <tr>
 <td>${PageTitle}</td>
-<td>&#x30DA;&#x30FC;&#x30B8;&#x306E;&#x30BF;&#x30A4;&#x30C8;&#x30EB;</td>
+<td>ページのタイトル</td>
 </tr>
 <tr>
 <td>${PageNumber}</td>
-<td>&#x30DA;&#x30FC;&#x30B8;&#x756A;&#x53F7;</td>
+<td>ページ番号</td>
 </tr>
 <tr>
 <td>${PageCount}</td>
-<td>&#x7DCF;&#x30DA;&#x30FC;&#x30B8;&#x6570;</td>
+<td>総ページ数</td>
 </tr>
 <tr>
 <td>${SheetName}</td>
-<td>&#x30B7;&#x30FC;&#x30C8;&#x540D;</td>
+<td>シート名</td>
 </tr>
 <tr>
 <td>${SheetScale}</td>
-<td>&#x30B7;&#x30FC;&#x30C8;&#x306E;&#x7E2E;&#x5C3A;</td>
+<td>シートの縮尺</td>
 </tr>
 </tbody>
 </table>
-<h4 class="mume-header" id="%E5%9B%B3%E5%BD%A2%E5%B1%9E%E6%80%A7">&#x56F3;&#x5F62;&#x5C5E;&#x6027;</h4>
-
-<p>&#x56F3;&#x5F62;&#x306B;&#x306F;&#x4EE5;&#x4E0B;&#x306E;&#x5C5E;&#x6027;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;<br>
-<a id="lineStyle" href></a></p>
-<h6 class="mume-header" id="linestyle%E7%B7%9A%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E5%B1%9E%E6%80%A7">lineStyle&#xFF08;&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x5C5E;&#x6027;&#xFF09;</h6>
-
-<p>&#x7DDA;&#x306E;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x306F;&#x9ED2;&#x3001;&#x5B9F;&#x7DDA;&#x3001;&#x7DDA;&#x5E45;0&#x3067;&#x3059;&#x3002;</p>
-<pre data-role="codeBlock" data-info class="language-"><code>lineStyle(width(w)color(c)lineType(name)flag(f))
+<h4 id="図形属性">図形属性 </h4>
+<p>図形には以下の属性があります。<br>
+<a id="lineStyle" href=""></a></p>
+<h6 id="linestyle線スタイル属性">lineStyle（線スタイル属性） </h6>
+<p>線のスタイル。省略時は黒、実線、線幅0です。</p>
+<pre data-role="codeBlock" data-info="" class="language-text text"><code>lineStyle(width(w)color(c)lineType(name)flag(f))
 [ ls ]
 </code></pre><table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>width(w)<br>[ w ]</td>
 <td>w : Double</td>
-<td>&#x7DDA;&#x5E45;&#x3002;&#x7701;&#x7565;&#x6642;0.0</td>
+<td>線幅。省略時0.0</td>
 </tr>
 <tr>
 <td>color(c)<br>[ c ]</td>
 <td>c : Int</td>
-<td>&#x7DDA;&#x8272;&#x3002;&#x7701;&#x7565;&#x6642;0xff000000&#xFF08;&#x9ED2;&#xFF09;</td>
+<td>線色。省略時0xff000000（黒）</td>
 </tr>
 <tr>
 <td>lineType(name)<br>[ t ]</td>
 <td>name : String</td>
-<td>&#x7DDA;&#x7A2E;&#x540D;&#x3002;&#x7701;&#x7565;&#x6642;&#x5B9F;&#x7DDA;</td>
+<td>線種名。省略時実線</td>
 </tr>
 <tr>
 <td>flag(f)<br>[ f ]</td>
 <td>f : Int</td>
-<td>&#x30D5;&#x30E9;&#x30B0;&#x3002;&#x7701;&#x7565;&#x6642;0<br></td>
+<td>フラグ。省略時0<br></td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>&#x7DDA;&#x7A2E;</li>
+<li>線種</li>
 </ul>
 <table>
 <thead>
 <tr>
-<th>&#x7DDA;&#x7A2E;&#x540D;</th>
-<th>&#x30D1;&#x30BF;&#x30FC;&#x30F3;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>線種名</th>
+<th>パターン</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>solid</td>
-<td>&#x306A;&#x3057;</td>
-<td>&#x5B9F;&#x7DDA;</td>
+<td>なし</td>
+<td>実線</td>
 </tr>
 <tr>
 <td>dashed</td>
 <td>8.0, 4.0</td>
-<td>&#x7834;&#x7DDA;</td>
+<td>破線</td>
 </tr>
 <tr>
 <td>center</td>
 <td>24.0, 4.0, 8.0, 4.0</td>
-<td>&#x4E00;&#x70B9;&#x9396;&#x7DDA;</td>
+<td>一点鎖線</td>
 </tr>
 <tr>
 <td>center</td>
 <td>24.0, 4.0, 8.0, 4.0, 8.0, 4.0</td>
-<td>&#x4E8C;&#x70B9;&#x9396;&#x7DDA;</td>
+<td>二点鎖線</td>
+</tr>
+<tr>
+<td>※パターンは線分長と空白のペアで長さはこれに線幅を掛ける。</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<p>&#x203B;&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x306F;&#x7DDA;&#x5206;&#x9577;&#x3068;&#x7A7A;&#x767D;&#x306E;&#x30DA;&#x30A2;&#x3067;&#x9577;&#x3055;&#x306F;&#x3053;&#x308C;&#x306B;&#x7DDA;&#x5E45;&#x3092;&#x639B;&#x3051;&#x308B;&#x3002;</p>
 <ul>
-<li>&#x30D5;&#x30E9;&#x30B0;<br>1:ColorByLayer, 0x1000:&#x88DC;&#x52A9;&#x7DDA;, 0x2000:TypeByLayer, 0x8000:WidthByLayer</li>
+<li>フラグ<br>1:ColorByLayer, 0x1000:補助線, 0x2000:TypeByLayer, 0x8000:WidthByLayer</li>
 </ul>
-<p><a id="fillStyle" href></a></p>
-<h6 class="mume-header" id="fillstyle%E5%A1%97%E3%82%8A%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E5%B1%9E%E6%80%A7">fillStyle&#xFF08;&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x5C5E;&#x6027;&#xFF09;</h6>
-
-<p>&#x5186;&#x3084;&#x591A;&#x89D2;&#x5F62;&#x306E;&#x5857;&#x308A;&#x306E;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3067;&#x3059;&#x3002;solid&#xFF08;&#x5358;&#x8272;&#xFF09;&#x3068;byLayer&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;fillStyle&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306B;&#x306F;&#x3069;&#x3061;&#x3089;&#x304B;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;fillStyle&#x30BF;&#x30B0;&#x304C;&#x7701;&#x7565;&#x3055;&#x308C;&#x305F;&#x5834;&#x5408;&#x306F;&#x900F;&#x660E;&#x8272;&#x3067;&#x3059;&#x3002;</p>
-<pre data-role="codeBlock" data-info class="language-"><code>fillStyle(solid(0xFF00FF00))
+<p><a id="fillStyle" href=""></a></p>
+<h6 id="fillstyle塗りスタイル属性">fillStyle（塗りスタイル属性） </h6>
+<p>円や多角形の塗りのスタイルです。solid（単色）とbyLayerがあります。fillStyleのパラメータにはどちらかを指定してください。fillStyleタグが省略された場合は透明色です。</p>
+<pre data-role="codeBlock" data-info="" class="language-text text"><code>fillStyle(solid(0xFF00FF00))
 </code></pre><table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>solid(c)</td>
 <td>c : Int</td>
-<td>&#x9762;&#x8272;&#x3002;&#x7701;&#x7565;&#x6642;&#x3001;&#x900F;&#x660E;&#xFF08;&#x30A2;&#x30EB;&#x30D5;&#x30A1;&#x5024;&#x304C;0&#xFF09;</td>
+<td>面色。省略時、透明（アルファ値が0）</td>
 </tr>
 <tr>
 <td>byLayer()</td>
 <td></td>
-<td>&#x30EC;&#x30A4;&#x30E4;&#x8272;&#x3002;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306F;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;</td>
+<td>レイヤ色。パラメータはありません。</td>
 </tr>
 </tbody>
 </table>
-<p><a id="arrowStyle" href></a></p>
-<h6 class="mume-header" id="arrow-startarrow-endarrow%E7%9F%A2%E5%8D%B0-%E5%A7%8B%E7%82%B9%E7%9F%A2%E5%8D%B0-%E7%B5%82%E7%82%B9%E7%9F%A2%E5%8D%B0%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E5%B1%9E%E6%80%A7">arrow, startArrow, endArrow&#xFF08;&#x77E2;&#x5370;&#x3001;&#x59CB;&#x70B9;&#x77E2;&#x5370;&#x3001;&#x7D42;&#x70B9;&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x5C5E;&#x6027;&#xFF09;</h6>
-
-<p>&#x77E2;&#x5370;&#x306E;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3067;&#x3059;&#x3002;&#x7701;&#x7565;&#x6642;&#x306F;&#x77E2;&#x5370;&#x7121;&#x3057;&#x3002;</p>
-<pre data-role="codeBlock" data-info class="language-"><code>startArrow(size(3)type(1))
+<p><a id="arrowStyle" href=""></a></p>
+<h6 id="arrow-startarrow-endarrow矢印-始点矢印-終点矢印スタイル属性">arrow, startArrow, endArrow（矢印、始点矢印、終点矢印スタイル属性） </h6>
+<p>矢印のスタイルです。省略時は矢印無し。</p>
+<pre data-role="codeBlock" data-info="" class="language-text text"><code>startArrow(size(3)type(1))
 </code></pre><table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>size(size)<br>[ s ]</td>
 <td>size : Double</td>
-<td>&#x77E2;&#x5370;&#x306E;&#x5927;&#x304D;&#x3055;</td>
+<td>矢印の大きさ</td>
 </tr>
 <tr>
 <td>type(id)<br>[ t ]</td>
 <td>id : Int</td>
-<td>&#x77E2;&#x5370;&#x306E;&#x7A2E;&#x985E;</td>
+<td>矢印の種類</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>&#x77E2;&#x5370;&#x306E;&#x7A2E;&#x985E;</li>
+<li>矢印の種類</li>
 </ul>
 <table>
 <thead>
 <tr>
 <th>ID</th>
-<th>&#x7A2E;&#x985E;</th>
+<th>種類</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>0</td>
-<td>&#x306A;&#x3057;</td>
+<td>なし</td>
 </tr>
 <tr>
 <td>1</td>
-<td>&#x958B;&#x3044;&#x305F;&#x77E2;&#x5370;</td>
+<td>開いた矢印</td>
 </tr>
 <tr>
 <td>2</td>
-<td>&#x4E09;&#x89D2;&#x5F62;</td>
+<td>三角形</td>
 </tr>
 <tr>
 <td>3</td>
-<td>&#x5857;&#x308A;&#x3064;&#x3076;&#x3057;&#x305F;&#x4E09;&#x89D2;&#x5F62;</td>
+<td>塗りつぶした三角形</td>
 </tr>
 <tr>
 <td>4</td>
-<td>&#x5186;</td>
+<td>円</td>
 </tr>
 <tr>
 <td>5</td>
-<td>&#x5857;&#x308A;&#x3064;&#x3076;&#x3057;&#x305F;&#x5186;</td>
+<td>塗りつぶした円</td>
 </tr>
 <tr>
 <td>6</td>
-<td>&#x56DB;&#x89D2;&#x5F62;</td>
+<td>四角形</td>
 </tr>
 <tr>
 <td>7</td>
-<td>&#x5857;&#x308A;&#x3064;&#x3076;&#x3057;&#x305F;&#x56DB;&#x89D2;&#x5F62;</td>
+<td>塗りつぶした四角形</td>
 </tr>
 <tr>
 <td>8</td>
-<td>&#x659C;&#x3081;&#x7DDA;</td>
+<td>斜め線</td>
 </tr>
 <tr>
 <td>9</td>
-<td>S&#x5B57;</td>
+<td>S字</td>
 </tr>
 </tbody>
 </table>
-<p><a id="textStyle" href></a></p>
-<h6 class="mume-header" id="textstyle%E6%96%87%E5%AD%97%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB">textStyle&#xFF08;&#x6587;&#x5B57;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#xFF09;</h6>
-
+<p><a id="textStyle" href=""></a></p>
+<h6 id="textstyle文字スタイル">textStyle（文字スタイル） </h6>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>color(c)<br>[ c ]</td>
 <td>c : Int</td>
-<td>&#x6587;&#x5B57;&#x8272;&#x3002;&#x7701;&#x7565;&#x6642;&#x9ED2;</td>
+<td>文字色。省略時黒</td>
 </tr>
 <tr>
 <td>textAlign(a)<br>[ ta ]</td>
 <td>a : Int</td>
-<td>&#x6587;&#x5B57;&#x914D;&#x7F6E; 0:&#x5DE6; 1:&#x4E2D;&#x592E; 2:&#x53F3;&#x3002;&#x7701;&#x7565;&#x6642;0</td>
+<td>文字配置 0:左 1:中央 2:右。省略時0</td>
 </tr>
 <tr>
 <td>fontName(name)<br>[ fn ]</td>
 <td>name : String</td>
-<td>&#x30D5;&#x30A9;&#x30F3;&#x30C8;&#x540D;</td>
+<td>フォント名</td>
 </tr>
 <tr>
 <td>fontHeight(h)<br>[ fh ]</td>
 <td>h : Double</td>
-<td>&#x30D5;&#x30A9;&#x30F3;&#x30C8;&#x30B5;&#x30A4;&#x30BA;</td>
+<td>フォントサイズ</td>
 </tr>
 <tr>
 <td>fontWidthScale(w)<br>[ fw ]</td>
 <td>w : Double</td>
-<td>&#x30D5;&#x30A9;&#x30F3;&#x30C8;&#x6A2A;&#x5E45;&#x6BD4;&#x3002;&#x7701;&#x7565;&#x6642;1</td>
+<td>フォント横幅比。省略時1</td>
 </tr>
 <tr>
 <td>fontSpace(s)<br>[ fs ]</td>
 <td>s : Double</td>
-<td>&#x6587;&#x5B57;&#x9593;&#x9694;&#x3002;&#x7701;&#x7565;&#x6642;0</td>
+<td>文字間隔。省略時0</td>
 </tr>
 <tr>
 <td>fontSkewAngle(a)<br>[ fa ]</td>
 <td>a : Double</td>
-<td>&#x50BE;&#x659C;&#x89D2;&#x3002;&#x7701;&#x7565;&#x6642;0</td>
+<td>傾斜角。省略時0</td>
 </tr>
 <tr>
 <td>flag(f)<br>[ f ]</td>
 <td>f : Int</td>
-<td>&#x30D5;&#x30E9;&#x30B0;&#x3002;&#x7701;&#x7565;&#x6642;0</td>
+<td>フラグ。省略時0</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>&#x30D5;&#x30E9;&#x30B0;<br>1:ColorByLayer, 0x2000:&#x7E26;&#x66F8;&#x304D;, 0x4000:&#x30A4;&#x30BF;&#x30EA;&#x30C3;&#x30AF;, 0x8000:&#x30DC;&#x30FC;&#x30EB;&#x30C9;, 0x10_0000:&#x4E0B;&#x7DDA;, 0x20_0000:&#x53D6;&#x308A;&#x6D88;&#x3057;&#x7DDA;, 0x80_0000:&#xFF08;&#x4E88;&#x7D04;&#xFF1A;&#x6298;&#x308A;&#x8FD4;&#x3057;&#xFF09;</li>
+<li>フラグ<br>1:ColorByLayer, 0x2_0000:縦書き, 0x4_0000:イタリック, 0x8_0000:ボールド, 0x10_0000:下線, 0x20_0000:取り消し線, 0x80_0000:（予約：折り返し）, 0x100_0000:TEXT_SLANT_ONLY_CHARACTER</li>
+<li>TEXT_SLANT_ONLY_CHARACTERは、fontSkewAngleで文字のみを傾かせる（背景色を設定すると、背景が長方形になる）。フラグが立っていない場合は、文字列全体を歪ませる（背景色を設定すると、背景が平行四辺形になる。複数行の場合、2行目以降が横にずれる）。</li>
 </ul>
-<p><a id="markerStyle" href></a></p>
-<h6 class="mume-header" id="markerstyle%E7%82%B9%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB">markerStyle&#xFF08;&#x70B9;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#xFF09;</h6>
-
+<p><a id="markerStyle" href=""></a></p>
+<h6 id="markerstyle点スタイル">markerStyle（点スタイル） </h6>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>type(name)<br>[ t ]</td>
 <td>name : String</td>
-<td>&#x30DE;&#x30FC;&#x30AB;&#x30FC;&#x540D;</td>
+<td>マーカー名</td>
 </tr>
 <tr>
 <td>size(s)<br>[ s ]</td>
 <td>s : Double</td>
-<td>&#x30B5;&#x30A4;&#x30BA;</td>
+<td>サイズ</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>&#x30DE;&#x30FC;&#x30AB;&#x30FC;&#x540D;</li>
+<li>マーカー名</li>
 </ul>
 <table>
 <thead>
 <tr>
-<th>&#x540D;&#x79F0;</th>
-<th>&#x7A2E;&#x985E;</th>
-<th>&#x5099;&#x8003;</th>
+<th>名称</th>
+<th>種類</th>
+<th>備考</th>
 </tr>
 </thead>
 <tbody>
@@ -893,13 +698,13 @@ drawing&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x306F;&#x57FA;&#x672C;&#x7684;&
 </tr>
 <tr>
 <td>circle</td>
-<td><center>&#x5186;</center></td>
+<td><center>円</center></td>
 <td></td>
 </tr>
 <tr>
 <td>dot</td>
-<td><center>&#x70B9;</center></td>
-<td>size&#x3092;&#x4F7F;&#x308F;&#x306A;&#x3044;&#x3002;&#x753B;&#x9762;&#x30BA;&#x30FC;&#x30E0;&#x3057;&#x3066;&#x3082;&#x30B5;&#x30A4;&#x30BA;&#x306F;&#x5909;&#x308F;&#x3089;&#x306A;&#x3044;&#x3002;</td>
+<td><center>点</center></td>
+<td>sizeを使わない。画面ズームしてもサイズは変わらない。</td>
 </tr>
 <tr>
 <td>plus</td>
@@ -908,12 +713,12 @@ drawing&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x306F;&#x57FA;&#x672C;&#x7684;&
 </tr>
 <tr>
 <td>square</td>
-<td><center>&#x56DB;&#x89D2;</center></td>
+<td><center>四角</center></td>
 <td></td>
 </tr>
 <tr>
 <td>triangle</td>
-<td><center>&#x4E09;&#x89D2;&#x5F62;</center></td>
+<td><center>三角形</center></td>
 <td></td>
 </tr>
 <tr>
@@ -923,1351 +728,1327 @@ drawing&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x306F;&#x57FA;&#x672C;&#x7684;&
 </tr>
 </tbody>
 </table>
-<p><a id="leaderStyle" href></a></p>
-<h6 class="mume-header" id="leaderstyle%E5%BC%95%E5%87%BA%E7%B7%9A%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB">leaderStyle&#xFF08;&#x5F15;&#x51FA;&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#xFF09;</h6>
-
+<p><a id="leaderStyle" href=""></a></p>
+<h6 id="leaderstyle引出線スタイル">leaderStyle（引出線スタイル） </h6>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>textOffset(d)<br>[ to ]</td>
 <td>d : Double</td>
-<td>&#x6587;&#x5B57;&#x306E;&#x4E0B;&#x7DDA;&#x3068;&#x306E;&#x7E26;&#x65B9;&#x5411;&#x306E;&#x96E2;&#x308C;&#x3002;&#x7701;&#x7565;&#x6642;0</td>
+<td>文字の下線との縦方向の離れ。省略時0</td>
 </tr>
 <tr>
 <td>leaderOffset(d)<br>[ lo ]</td>
 <td>d : Double</td>
-<td>&#x5F15;&#x51FA;&#x7DDA;&#x306E;&#x7D42;&#x70B9;&#x304B;&#x3089;&#x6587;&#x5B57;&#x6A2A;&#x65B9;&#x5411;&#x306E;&#x96E2;&#x308C;&#x3002;&#x7701;&#x7565;&#x6642;0</td>
+<td>引出線の終点から文字横方向の離れ。省略時0</td>
 </tr>
 <tr>
 <td>extendLine(i)<br>[ el ]</td>
 <td>i : Int</td>
-<td>&#x7DDA;&#x3092;&#x6587;&#x5B57;&#x5217;&#x307E;&#x3067;&#x5EF6;&#x9577;&#x3002;<br>0:&#x5EF6;&#x9577;&#x306A;&#x3057; 1:&#x5EF6;&#x9577;&#x3059;&#x308B;<br>&#x7701;&#x7565;&#x6642;1</td>
+<td>線を文字列まで延長。<br>0:延長なし 1:延長する<br>省略時1</td>
 </tr>
 <tr>
 <td>leaderOrientation(i)<br>[ lr ]</td>
 <td>i : Int</td>
-<td>&#x6587;&#x5B57;&#x306E;&#x914D;&#x7F6E;&#x65B9;&#x5411;&#x3002;<br> 0:&#x6C34;&#x5E73; 1:&#x5E73;&#x884C;<br>&#x7701;&#x7565;&#x6642;0</td>
+<td>文字の配置方向。<br> 0:水平 1:平行<br>省略時0</td>
 </tr>
 <tr>
 <td>leaderBasis(i)<br>[ lb ]</td>
 <td>i : Int</td>
-<td>&#x6587;&#x5B57;&#x306E;&#x914D;&#x7F6E;&#x3002;<br> 0:&#x4E0A; 1:&#x4E0B; 2:&#x4E2D; 3:&#x81EA;&#x7531;<br>&#x7701;&#x7565;&#x6642;0</td>
+<td>文字の配置。<br> 0:上 1:下 2:中 3:自由<br>省略時0</td>
 </tr>
 <tr>
 <td>textStyle(...)<br>[ ts ]</td>
-<td><a href="#textStyle">&#x6587;&#x5B57;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x6587;&#x5B57;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</td>
+<td><a href="#textStyle">文字スタイル</a>参照</td>
+<td>文字スタイル</td>
 </tr>
 <tr>
 <td>arrowStyle(...)<br>[ as ]</td>
-<td><a href="#arrowStyle">&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>矢印スタイル</td>
 </tr>
 <tr>
 <td>textAngle(d)<br>[ ta ]</td>
 <td>d:Double</td>
-<td>&#x6587;&#x5B57;&#x89D2;&#x5EA6;&#x3002;leaderBasis&#x304C;3&#x306E;&#x6642;&#x6709;&#x52B9;&#x3002; &#x7701;&#x7565;&#x6642;0&#x3002;</td>
+<td>文字角度。leaderBasisが3の時有効。 省略時0。</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>extendLine&#x306E;&#x7701;&#x7565;&#x6642;&#x306E;&#x5024;&#x306F;0&#x3067;&#x306A;&#x3044;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x3002;</li>
-<li>leaderBasis&#x304C;3&#x306E;&#x5834;&#x5408;&#x3001;leaderOffsett&#x3068;textOffset&#x306F;&#x6587;&#x5B57;&#x914D;&#x7F6E;&#x306E;&#x76F8;&#x5BFE;&#x5EA7;&#x6A19;&#x3002;extendLine&#x53CA;&#x3073;leaderOrientation&#x306F;&#x7121;&#x8996;&#x3055;&#x308C;&#x308B;&#x3002;</li>
-<li>textAngle&#x306F;leaderBasis&#x304C;3&#x306E;&#x6642;&#x306E;&#x307F;&#x6709;&#x52B9;&#x3002;</li>
+<li>extendLineの省略時の値は0でないことに注意。</li>
+<li>leaderBasisが3の場合、leaderOffsettとtextOffsetは文字配置の相対座標。extendLine及びleaderOrientationは無視される。</li>
+<li>textAngleはleaderBasisが3の時のみ有効。</li>
 </ul>
-<p><a id="balloonStyle" href></a></p>
-<h6 class="mume-header" id="balloonstyle%E3%83%90%E3%83%AB%E3%83%BC%E3%83%B3%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB">balloonStyle&#xFF08;&#x30D0;&#x30EB;&#x30FC;&#x30F3;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#xFF09;</h6>
-
+<p><a id="balloonStyle" href=""></a></p>
+<h6 id="balloonstyleバルーンスタイル">balloonStyle（バルーンスタイル） </h6>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>radius(r)<br>[ r ]</td>
 <td>r : Double</td>
-<td>&#x534A;&#x5F84;</td>
+<td>半径</td>
 </tr>
 <tr>
 <td>textStyle(...)<br>[ ts ]</td>
-<td><a href="#textStyle">&#x6587;&#x5B57;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x6587;&#x5B57;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</td>
+<td><a href="#textStyle">文字スタイル</a>参照</td>
+<td>文字スタイル</td>
 </tr>
 <tr>
 <td>arrowStyle(...)<br>[ as ]</td>
-<td><a href="#arrowStyle">&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>矢印スタイル</td>
 </tr>
 </tbody>
 </table>
-<p><a id="dimensionStyle" href></a></p>
-<h6 class="mume-header" id="dimensionstyle%E7%9B%B4%E7%B7%9A%E5%AF%B8%E6%B3%95%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB">dimensionStyle&#xFF08;&#x76F4;&#x7DDA;&#x5BF8;&#x6CD5;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#xFF09;</h6>
-
+<p><a id="dimensionStyle" href=""></a></p>
+<h6 id="dimensionstyle直線寸法スタイル">dimensionStyle（直線寸法スタイル） </h6>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>extensionLineOffset(d)<br>[ eo ]</td>
 <td>d : Double</td>
-<td>&#x5F15;&#x51FA;&#x4F4D;&#x7F6E;&#x304B;&#x3089;&#x5F15;&#x51FA;&#x7DDA;&#x307E;&#x3067;&#x306E;&#x96E2;&#x308C;</td>
+<td>引出位置から引出線までの離れ</td>
 </tr>
 <tr>
 <td>extensionLineOvershoot(d)<br>[ ev ]</td>
 <td>d : Double</td>
-<td>&#x5BF8;&#x6CD5;&#x7DDA;&#x304B;&#x3089;&#x306E;&#x5F15;&#x51FA;&#x7DDA;&#x306E;&#x5EF6;&#x9577;&#x9577;&#x3055;</td>
+<td>寸法線からの引出線の延長長さ</td>
 </tr>
 <tr>
 <td>dimensionLineExtension(d)<br>[ de ]</td>
 <td>d : Double</td>
-<td>&#x5BF8;&#x6CD5;&#x7DDA;&#x306E;&#x5EF6;&#x9577;&#x9577;&#x3055;</td>
+<td>寸法線の延長長さ</td>
 </tr>
 <tr>
 <td>textStyle(...)<br>[ ts ]</td>
-<td><a href="#textStyle">&#x6587;&#x5B57;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x6587;&#x5B57;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</td>
+<td><a href="#textStyle">文字スタイル</a>参照</td>
+<td>文字スタイル</td>
 </tr>
 <tr>
 <td>textOffset(d)<br>[ to ]</td>
 <td>d : Double</td>
-<td>&#x6587;&#x5B57;&#x306E;&#x5BF8;&#x6CD5;&#x7DDA;&#x3068;&#x306E;&#x96E2;&#x308C;&#x3002;&#x7701;&#x7565;&#x6642;0</td>
+<td>文字の寸法線との離れ。省略時0</td>
 </tr>
 <tr>
 <td>formatStyle(...)<br>[ fs ]</td>
-<td><a href="#formatStyle">&#x5BF8;&#x6CD5;&#x5024;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;</a>&#x53C2;&#x7167;</td>
-<td>&#x5BF8;&#x6CD5;&#x5024;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;</td>
+<td><a href="#formatStyle">寸法値フォーマット</a>参照</td>
+<td>寸法値フォーマット</td>
 </tr>
 <tr>
 <td>tolerance2LinesTextScale(s)<br>[ tt ]</td>
 <td>s:Double</td>
-<td>2&#x884C;&#x306E;&#x8A31;&#x5BB9;&#x5DEE;&#x306E;&#x6587;&#x5B57;&#x30B5;&#x30A4;&#x30BA;&#x306E;&#x6BD4;&#x7387;&#x3002;&#x7701;&#x7565;&#x6642;0.75</td>
+<td>2行の許容差の文字サイズの比率。省略時0.75</td>
 </tr>
 <tr>
 <td>startArrow(...)<br>[ sa ]</td>
-<td><a href="#arrowStyle">&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x59CB;&#x70B9;&#x306E;&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x77E2;&#x5370;&#x306A;&#x3057;</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>始点の矢印スタイル。省略時矢印なし</td>
 </tr>
 <tr>
 <td>endArrow(...)<br>[ ea ]</td>
-<td><a href="#arrowStyle">&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x7D42;&#x70B9;&#x306E;&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x77E2;&#x5370;&#x306A;&#x3057;</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>終点の矢印スタイル。省略時矢印なし</td>
 </tr>
 <tr>
 <td>arrowMode(m)<br>[ am ]</td>
 <td>m:Int</td>
-<td>&#x77E2;&#x5370;&#x30E2;&#x30FC;&#x30C9;<br>0:&#x81EA;&#x52D5;, 1:&#x5185;&#x5074;, 2:&#x5916;&#x5074;<br>&#x7701;&#x7565;&#x6642;0</td>
+<td>矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0</td>
 </tr>
 </tbody>
 </table>
-<p><a id="radiusStyle" href></a></p>
-<h6 class="mume-header" id="radiusstyle%E5%8D%8A%E5%BE%84%E5%AF%B8%E6%B3%95%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB">radiusStyle&#xFF08;&#x534A;&#x5F84;&#x5BF8;&#x6CD5;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#xFF09;</h6>
-
+<p><a id="radiusStyle" href=""></a></p>
+<h6 id="radiusstyle半径寸法スタイル">radiusStyle（半径寸法スタイル） </h6>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>dimensionLineExtension(d)<br>[de(d)]</td>
 <td>d : Double</td>
-<td>&#x5BF8;&#x6CD5;&#x7DDA;&#x306E;&#x5EF6;&#x9577;&#x9577;&#x3055;</td>
+<td>寸法線の延長長さ</td>
 </tr>
 <tr>
 <td>fromText(i)<br>[ ft ]</td>
 <td>i:Int</td>
-<td>0&#xFF1A;&#x4E2D;&#x5FC3;&#x304B;&#x3089;&#x5186;&#x5468;&#x306B;&#x5411;&#x3051;&#x3066;&#x7DDA;&#x3092;&#x5F15;&#x304F;&#x3002;<br>1&#xFF1A;&#x6587;&#x5B57;&#x304B;&#x3089;&#x5186;&#x5468;&#x306B;&#x5411;&#x3051;&#x3066;&#x306E;&#x7DDA;&#x306E;&#x307F;&#x3002;<br>&#x7701;&#x7565;&#x6642;0</td>
+<td>0：中心から円周に向けて線を引く。<br>1：文字から円周に向けての線のみ。<br>省略時0</td>
 </tr>
 <tr>
 <td>textStyle(...)<br>[ ts ]</td>
-<td><a href="#textStyle">&#x6587;&#x5B57;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x6587;&#x5B57;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</td>
+<td><a href="#textStyle">文字スタイル</a>参照</td>
+<td>文字スタイル</td>
 </tr>
 <tr>
 <td>textOffset(d)<br>[ to ]</td>
 <td>d : Double</td>
-<td>&#x6587;&#x5B57;&#x306E;&#x5BF8;&#x6CD5;&#x7DDA;&#x3068;&#x306E;&#x96E2;&#x308C;&#x3002;<br>&#x7701;&#x7565;&#x6642;0</td>
+<td>文字の寸法線との離れ。<br>省略時0</td>
 </tr>
 <tr>
 <td>formatStyle(...)<br>[ fs ]</td>
-<td><a href="#formatStyle">&#x5BF8;&#x6CD5;&#x5024;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;</a>&#x53C2;&#x7167;</td>
-<td>&#x5BF8;&#x6CD5;&#x5024;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;</td>
+<td><a href="#formatStyle">寸法値フォーマット</a>参照</td>
+<td>寸法値フォーマット</td>
 </tr>
 <tr>
 <td>tolerance2LinesTextScale(s)<br>[ tt ]</td>
 <td>s:Double</td>
-<td>2&#x884C;&#x306E;&#x8A31;&#x5BB9;&#x5DEE;&#x306E;&#x6587;&#x5B57;&#x30B5;&#x30A4;&#x30BA;&#x306E;&#x6BD4;&#x7387;&#x3002;&#x7701;&#x7565;&#x6642;0.75</td>
+<td>2行の許容差の文字サイズの比率。省略時0.75</td>
 </tr>
 <tr>
 <td>arrowStyle(...)<br>[ as ]</td>
-<td><a href="#arrowStyle">&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>矢印スタイル</td>
 </tr>
 <tr>
 <td>arrowMode(m)<br>[ am ]</td>
 <td>m:Int</td>
-<td>&#x77E2;&#x5370;&#x30E2;&#x30FC;&#x30C9;<br>0:&#x81EA;&#x52D5;, 1:&#x5185;&#x5074;, 2:&#x5916;&#x5074;<br>&#x7701;&#x7565;&#x6642;0</td>
+<td>矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0</td>
 </tr>
 </tbody>
 </table>
-<p><a id="diameterStyle" href></a></p>
-<h6 class="mume-header" id="diameterstyle%E7%9B%B4%E5%BE%84%E5%AF%B8%E6%B3%95%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB">diameterStyle&#xFF08;&#x76F4;&#x5F84;&#x5BF8;&#x6CD5;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#xFF09;</h6>
-
+<p><a id="diameterStyle" href=""></a></p>
+<h6 id="diameterstyle直径寸法スタイル">diameterStyle（直径寸法スタイル） </h6>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>dimensionLineExtension(d)<br>[de(d)]</td>
 <td>d : Double</td>
-<td>&#x5BF8;&#x6CD5;&#x7DDA;&#x306E;&#x5EF6;&#x9577;&#x9577;&#x3055;</td>
+<td>寸法線の延長長さ</td>
 </tr>
 <tr>
 <td>textStyle(...)<br>[ ts ]</td>
-<td><a href="#textStyle">&#x6587;&#x5B57;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x6587;&#x5B57;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</td>
+<td><a href="#textStyle">文字スタイル</a>参照</td>
+<td>文字スタイル</td>
 </tr>
 <tr>
 <td>textOffset(d)<br>[ to ]</td>
 <td>d : Double</td>
-<td>&#x6587;&#x5B57;&#x306E;&#x5BF8;&#x6CD5;&#x7DDA;&#x3068;&#x306E;&#x96E2;&#x308C;&#x3002;&#x7701;&#x7565;&#x6642;0</td>
+<td>文字の寸法線との離れ。省略時0</td>
 </tr>
 <tr>
 <td>formatStyle(...)<br>[ fs ]</td>
-<td><a href="#formatStyle">&#x5BF8;&#x6CD5;&#x5024;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;</a>&#x53C2;&#x7167;</td>
-<td>&#x5BF8;&#x6CD5;&#x5024;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;</td>
+<td><a href="#formatStyle">寸法値フォーマット</a>参照</td>
+<td>寸法値フォーマット</td>
 </tr>
 <tr>
 <td>tolerance2LinesTextScale(s)<br>[ tt ]</td>
 <td>s:Double</td>
-<td>2&#x884C;&#x306E;&#x8A31;&#x5BB9;&#x5DEE;&#x306E;&#x6587;&#x5B57;&#x30B5;&#x30A4;&#x30BA;&#x306E;&#x6BD4;&#x7387;&#x3002;&#x7701;&#x7565;&#x6642;0.75</td>
+<td>2行の許容差の文字サイズの比率。省略時0.75</td>
 </tr>
 <tr>
 <td>startArrow(...)<br>[ sa ]</td>
-<td><a href="#arrowStyle">&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x59CB;&#x70B9;&#x306E;&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x77E2;&#x5370;&#x306A;&#x3057;</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>始点の矢印スタイル。省略時矢印なし</td>
 </tr>
 <tr>
 <td>endArrow(...)<br>[ ea ]</td>
-<td><a href="#arrowStyle">&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x7D42;&#x70B9;&#x306E;&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x77E2;&#x5370;&#x306A;&#x3057;</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>終点の矢印スタイル。省略時矢印なし</td>
 </tr>
 <tr>
 <td>arrowMode(m)<br>[ am ]</td>
 <td>m:Int</td>
-<td>&#x77E2;&#x5370;&#x30E2;&#x30FC;&#x30C9;<br>0:&#x81EA;&#x52D5;, 1:&#x5185;&#x5074;, 2:&#x5916;&#x5074;<br>&#x7701;&#x7565;&#x6642;0</td>
+<td>矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0</td>
 </tr>
 </tbody>
 </table>
-<p><a id="formatStyle" href></a></p>
-<h6 class="mume-header" id="formatstyle%E5%AF%B8%E6%B3%95%E5%80%A4%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88">formatStyle&#xFF08;&#x5BF8;&#x6CD5;&#x5024;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#xFF09;</h6>
-
+<p><a id="formatStyle" href=""></a></p>
+<h6 id="formatstyle寸法値フォーマット">formatStyle（寸法値フォーマット） </h6>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>fractionDigits(d)<br>[ fd ]</td>
 <td>d : Int</td>
-<td>&#x5C0F;&#x6570;&#x70B9;&#x6841;&#x6570;&#x3002;&#x7701;&#x7565;&#x6642;1</td>
+<td>小数点桁数。省略時1</td>
 </tr>
 <tr>
 <td>usesGroupingSeparator(f)<br>[ gs ]</td>
 <td>f : Int</td>
-<td>0:&#x533A;&#x5207;&#x308A;&#x306A;&#x3057; 1:&#x6841;&#x533A;&#x5207;&#x308A;&#x3002;&#x7701;&#x7565;&#x6642;0</td>
+<td>0:区切りなし 1:桁区切り。省略時0</td>
 </tr>
 <tr>
 <td>prefix(s)<br>[ p ]</td>
 <td>s : String</td>
-<td>&#x524D;&#x7F6E;&#x6587;&#x5B57;&#x3002;&#x7701;&#x7565;&#x6642;&#x6587;&#x5B57;&#x7121;&#x3057;</td>
+<td>前置文字。省略時文字無し</td>
 </tr>
 <tr>
 <td>suffix(s)<br>[ s ]</td>
 <td>s : String</td>
-<td>&#x5F8C;&#x7F6E;&#x6587;&#x5B57;&#x3002;&#x7701;&#x7565;&#x6642;&#x6587;&#x5B57;&#x7121;&#x3057;</td>
+<td>後置文字。省略時文字無し</td>
 </tr>
 </tbody>
 </table>
-<p><a id="tolerance" href></a></p>
-<h6 class="mume-header" id="tolerance%E8%A8%B1%E5%AE%B9%E5%B7%AE">tolerance&#xFF08;&#x8A31;&#x5BB9;&#x5DEE;&#xFF09;</h6>
-
+<p><a id="tolerance" href=""></a></p>
+<h6 id="tolerance許容差">tolerance（許容差） </h6>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>toleranceType(t)<br>[ tt ]</td>
 <td>t : Int</td>
-<td>&#x8A31;&#x5BB9;&#x5DEE;&#x30BF;&#x30A4;&#x30D7; 0:&#x7121;&#x3057; 1:&#x4E00;&#x6BB5; 2:&#x4E8C;&#x6BB5;&#x3002;&#x7701;&#x7565;&#x6642;0</td>
+<td>許容差タイプ 0:無し 1:一段 2:二段。省略時0</td>
 </tr>
 <tr>
 <td>value0(v)<br>[ v0 ]</td>
 <td>v : Double</td>
-<td>&#x8A31;&#x5BB9;&#x5DEE;&#x4E0A;&#x3001;&#x4E00;&#x6BB5;&#x306E;&#x6642;&#x4F7F;&#x7528;</td>
+<td>許容差上、一段の時使用</td>
 </tr>
 <tr>
 <td>value1(v)<br>[ v1 ]</td>
 <td>v : Double</td>
-<td>&#x8A31;&#x5BB9;&#x5DEE;&#x4E0B;&#x3002;&#x4E00;&#x6BB5;&#x306E;&#x6642;&#x306F;&#x7701;&#x7565;</td>
+<td>許容差下。一段の時は省略</td>
 </tr>
 <tr>
 <td>fractionDigits(d)<br>[ fd ]</td>
 <td>d : Int</td>
-<td>&#x5C0F;&#x6570;&#x70B9;&#x6841;&#x6570;&#x3002;&#x7701;&#x7565;&#x6642;1</td>
+<td>小数点桁数。省略時1</td>
 </tr>
 <tr>
 <td>suffix(s)<br>[ s ]</td>
 <td>s : String</td>
-<td>&#x5F8C;&#x7F6E;&#x6587;&#x5B57;&#x3002;&#x7701;&#x7565;&#x6642;&#x6587;&#x5B57;&#x7121;&#x3057;</td>
+<td>後置文字。省略時文字無し</td>
 </tr>
 </tbody>
 </table>
-<h4 class="mume-header" id="%E5%9B%B3%E5%BD%A2%E8%A6%81%E7%B4%A0">&#x56F3;&#x5F62;&#x8981;&#x7D20;</h4>
-
-<h5 class="mume-header" id="line%E7%B7%9A">Line&#xFF08;&#x7DDA;&#xFF09;</h5>
-
+<h4 id="図形要素">図形要素 </h4>
+<h5 id="line線">Line（線） </h5>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>pp(x0 y0 x1 y1)</td>
 <td>x0 : Double,  y0 : Double, <br>x1 : Double,  y1 : Double</td>
-<td>&#x59CB;&#x70B9;&#x3068;&#x7D42;&#x70B9;</td>
+<td>始点と終点</td>
 </tr>
 <tr>
 <td>p0(x y)</td>
 <td>x : Double,  y : Double</td>
-<td>&#x59CB;&#x70B9;</td>
+<td>始点</td>
 </tr>
 <tr>
 <td>p1(x y)</td>
 <td>x : Double,  y : Double</td>
-<td>&#x7D42;&#x70B9;</td>
+<td>終点</td>
 </tr>
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
-<td><a href="#lineStyle">&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x3001;&#x9ED2;&#x5B9F;&#x7DDA;&#x3001;&#x5E45;0</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
 </tr>
 <tr>
 <td>startArrow(...)<br>[ sa ]</td>
-<td><a href="#arrowStyle">&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x59CB;&#x70B9;&#x306E;&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x77E2;&#x5370;&#x306A;&#x3057;</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>始点の矢印スタイル。省略時矢印なし</td>
 </tr>
 <tr>
 <td>endArrow(...)<br>[ ea ]</td>
-<td><a href="#arrowStyle">&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x7D42;&#x70B9;&#x306E;&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x77E2;&#x5370;&#x306A;&#x3057;</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>終点の矢印スタイル。省略時矢印なし</td>
 </tr>
 </tbody>
 </table>
-<h5 class="mume-header" id="polyline%E9%80%A3%E7%B6%9A%E7%B7%9A">Polyline&#xFF08;&#x9023;&#x7D9A;&#x7DDA;&#xFF09;</h5>
-
+<h5 id="polyline連続線">Polyline（連続線） </h5>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>vertices(x1 y1 x2 y2 x3 y3 ... xn yn)<br>[ vs ]</td>
 <td>x1..xn : Double,  y1..yn : Double</td>
-<td>&#x9802;&#x70B9;</td>
+<td>頂点</td>
 </tr>
 <tr>
 <td>isClosed(flag)<br>[ ic ]</td>
 <td>flag : Int</td>
-<td>0:Open&#x3000;1:Close &#x7701;&#x7565;&#x6642;0</td>
+<td>0:Open　1:Close 省略時0</td>
 </tr>
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
-<td><a href="#lineStyle">&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x3001;&#x9ED2;&#x5B9F;&#x7DDA;&#x3001;&#x5E45;0</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
-<td><a href="#fillStyle">&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x5857;&#x308A;&#x306A;&#x3057;</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>塗りスタイル。省略時塗りなし</td>
 </tr>
 <tr>
 <td>startArrow(...)<br>[ sa ]</td>
-<td><a href="#arrowStyle">&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x59CB;&#x70B9;&#x77E2;&#x5370;&#x3002;&#x7701;&#x7565;&#x6642;&#x77E2;&#x5370;&#x306A;&#x3057;</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>始点矢印。省略時矢印なし</td>
 </tr>
 <tr>
 <td>endArrow(...)<br>[ ea ]</td>
-<td><a href="#arrowStyle">&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x7D42;&#x70B9;&#x77E2;&#x5370;&#x3002;&#x7701;&#x7565;&#x6642;&#x77E2;&#x5370;&#x306A;&#x3057;</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>終点矢印。省略時矢印なし</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>isClose&#x304C;1&#x306E;&#x6642;&#x306F;&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x306F;&#x4F7F;&#x308F;&#x308C;&#x307E;&#x305B;&#x3093;&#x3002;</li>
+<li>isCloseが1の時は矢印スタイルは使われません。</li>
 </ul>
-<h5 class="mume-header" id="spline%E3%82%B9%E3%83%97%E3%83%A9%E3%82%A4%E3%83%B3%E6%9B%B2%E7%B7%9A">Spline&#xFF08;&#x30B9;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#x66F2;&#x7DDA;&#xFF09;</h5>
-
+<h5 id="splineスプライン曲線">Spline（スプライン曲線） </h5>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>vertices(x1 y1 x2 y2 x3 y3 ... xn yn)<br>[ vs ]</td>
 <td>x1..xn : Double,  y1..yn : Double</td>
-<td>&#x9802;&#x70B9;</td>
+<td>頂点</td>
 </tr>
 <tr>
 <td>isClosed(flag)<br>[ ic ]</td>
 <td>flag : Int</td>
-<td>0:Open&#x3000;1:Close &#x7701;&#x7565;&#x6642;0</td>
+<td>0:Open　1:Close 省略時0</td>
 </tr>
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
-<td><a href="#lineStyle">&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x3001;&#x9ED2;&#x5B9F;&#x7DDA;&#x3001;&#x5E45;0</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
-<td><a href="#fillStyle">&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x5857;&#x308A;&#x306A;&#x3057;</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>塗りスタイル。省略時塗りなし</td>
 </tr>
 <tr>
 <td>startArrow(...)<br>[ sa ]</td>
-<td><a href="#arrowStyle">&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x59CB;&#x70B9;&#x77E2;&#x5370;&#x3002;&#x7701;&#x7565;&#x6642;&#x77E2;&#x5370;&#x306A;&#x3057;</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>始点矢印。省略時矢印なし</td>
 </tr>
 <tr>
 <td>endArrow(...)<br>[ ea ]</td>
-<td><a href="#arrowStyle">&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x7D42;&#x70B9;&#x77E2;&#x5370;&#x3002;&#x7701;&#x7565;&#x6642;&#x77E2;&#x5370;&#x306A;&#x3057;</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>終点矢印。省略時矢印なし</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>&#x30AB;&#x30FC;&#x30C7;&#x30A3;&#x30CA;&#x30EB;&#x30B9;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#x3067;&#x30C6;&#x30F3;&#x30B7;&#x30E7;&#x30F3;&#x306F;0.5&#x3067;&#x3059;&#x3002;</li>
-<li>isClose&#x304C;1&#x306E;&#x6642;&#x306F;&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x306F;&#x4F7F;&#x308F;&#x308C;&#x307E;&#x305B;&#x3093;&#x3002;</li>
+<li>カーディナルスプラインでテンションは0.5です。</li>
+<li>isCloseが1の時は矢印スタイルは使われません。</li>
 </ul>
-<h5 class="mume-header" id="bezier%E3%83%99%E3%82%B8%E3%82%A7%E6%9B%B2%E7%B7%9A">Bezier&#xFF08;&#x30D9;&#x30B8;&#x30A7;&#x66F2;&#x7DDA;&#xFF09;</h5>
-
+<h5 id="bezierベジェ曲線">Bezier（ベジェ曲線） </h5>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>vertices(x1 y1 x2 y2 x3 y3 ... xn yn)<br>[ vs ]</td>
 <td>x1..xn : Double,  y1..yn : Double</td>
-<td>&#x9802;&#x70B9;&#x3068;&#x5236;&#x5FA1;&#x70B9;</td>
+<td>頂点と制御点</td>
 </tr>
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
-<td><a href="#lineStyle">&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x3001;&#x9ED2;&#x5B9F;&#x7DDA;&#x3001;&#x5E45;0</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
-<td><a href="#fillStyle">&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x5857;&#x308A;&#x306A;&#x3057;</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>塗りスタイル。省略時塗りなし</td>
 </tr>
 <tr>
 <td>startArrow(...)<br>[ sa ]</td>
-<td><a href="#arrowStyle">&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x59CB;&#x70B9;&#x77E2;&#x5370;&#x3002;&#x7701;&#x7565;&#x6642;&#x77E2;&#x5370;&#x306A;&#x3057;</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>始点矢印。省略時矢印なし</td>
 </tr>
 <tr>
 <td>endArrow(...)<br>[ ea ]</td>
-<td><a href="#arrowStyle">&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x7D42;&#x70B9;&#x77E2;&#x5370;&#x3002;&#x7701;&#x7565;&#x6642;&#x77E2;&#x5370;&#x306A;&#x3057;</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>終点矢印。省略時矢印なし</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>3&#x6B21;&#x30D9;&#x30B8;&#x30A7;&#x66F2;&#x7DDA;&#x3067;&#x3059;&#x3002;&#x9802;&#x70B9;&#x3001;&#x5236;&#x5FA1;&#x70B9;&#xFF11;&#x3001;&#x5236;&#x5FA1;&#x70B9;2&#xFF0C;&#x9802;&#x70B9;&#x306E;&#x9806;&#x306B;&#x4E26;&#x3079;&#x3066;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;&#x9802;&#x70B9;&#x6570;&#x3092;m&#x3068;&#x3057;&#x305F;&#x5834;&#x5408;&#x3001;&#x5236;&#x5FA1;&#x70B9;&#x3068;&#x9802;&#x70B9;&#x306E;&#x5408;&#x8A08;n&#x306F;n=3*m+1&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</li>
-<li>isClose&#x304C;1&#x306E;&#x6642;&#x306F;&#x59CB;&#x70B9;&#x3068;&#x7D42;&#x70B9;&#x304C;&#x76F4;&#x7DDA;&#x3067;&#x7E4B;&#x304C;&#x308C;&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x306F;&#x4F7F;&#x308F;&#x308C;&#x307E;&#x305B;&#x3093;&#x3002;</li>
+<li>3次ベジェ曲線です。頂点、制御点１、制御点2，頂点の順に並べてあります。頂点数をmとした場合、制御点と頂点の合計nはn=3*m+1になります。</li>
+<li>isCloseが1の時は始点と終点が直線で繋がれ矢印スタイルは使われません。</li>
 </ul>
-<h5 class="mume-header" id="circle%E5%86%86">Circle&#xFF08;&#x5186;&#xFF09;</h5>
-
+<h5 id="circle円">Circle（円） </h5>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>p0(x y)</td>
 <td>x : Double,  y : Double</td>
-<td>&#x4E2D;&#x5FC3;&#x70B9;</td>
+<td>中心点</td>
 </tr>
 <tr>
 <td>radius(r)<br>[ r ]</td>
 <td>r : Double</td>
-<td>&#x534A;&#x5F84;</td>
+<td>半径</td>
 </tr>
 <tr>
 <td>flatness(f)<br>[ f ]</td>
 <td>f : Double</td>
-<td>&#x6241;&#x5E73;&#x7387;&#x3002;&#x7701;&#x7565;&#x6642;1</td>
+<td>扁平率。省略時1</td>
 </tr>
 <tr>
 <td>angle(a)<br>[ a ]</td>
 <td>a : Double</td>
-<td>&#x89D2;&#x5EA6;&#xFF08;&#x5EA6;&#xFF09;&#x3002;&#x7701;&#x7565;&#x6642;0</td>
+<td>角度（度）。省略時0</td>
 </tr>
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
-<td><a href="#lineStyle">&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x3001;&#x9ED2;&#x5B9F;&#x7DDA;&#x3001;&#x5E45;0</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
-<td><a href="#fillStyle">&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x5857;&#x308A;&#x306A;&#x3057;</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>塗りスタイル。省略時塗りなし</td>
 </tr>
 </tbody>
 </table>
-<h5 class="mume-header" id="arc%E5%86%86%E5%BC%A7">Arc&#xFF08;&#x5186;&#x5F27;&#xFF09;</h5>
-
+<h5 id="arc円弧">Arc（円弧） </h5>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>p0(x y)</td>
 <td>x : Double,  y : Double</td>
-<td>&#x4E2D;&#x5FC3;&#x70B9;</td>
+<td>中心点</td>
 </tr>
 <tr>
 <td>radius(r)<br>[ r ]</td>
 <td>r : Double</td>
-<td>&#x534A;&#x5F84;</td>
+<td>半径</td>
 </tr>
 <tr>
 <td>flatness(f)<br>[ f ]</td>
 <td>f : Double</td>
-<td>&#x6241;&#x5E73;&#x7387;&#x3002;&#x7701;&#x7565;&#x6642;1</td>
+<td>扁平率。省略時1</td>
 </tr>
 <tr>
 <td>angle(a)<br>[ a ]</td>
 <td>a : Double</td>
-<td>&#x89D2;&#x5EA6;&#xFF08;&#x5EA6;&#xFF09;&#x3002;&#x7701;&#x7565;&#x6642;0</td>
+<td>角度（度）。省略時0</td>
 </tr>
 <tr>
 <td>startAngle(a)<br>[ st ]</td>
 <td>a : Double</td>
-<td>&#x958B;&#x59CB;&#x89D2;&#xFF08;&#x5EA6;&#xFF09;&#x3002;&#x7701;&#x7565;&#x6642;0</td>
+<td>開始角（度）。省略時0</td>
 </tr>
 <tr>
 <td>sweepAngle(a)<br>[ sw ]</td>
 <td>a : Double</td>
-<td>&#x89D2;&#x5E45;&#xFF08;&#x5EA6;&#xFF09;&#x3002;&#x7701;&#x7565;&#x6642;90</td>
+<td>角幅（度）。省略時90</td>
 </tr>
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
-<td><a href="#lineStyle">&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x3001;&#x9ED2;&#x5B9F;&#x7DDA;&#x3001;&#x5E45;0</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
-<td><a href="#fillStyle">&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x5857;&#x308A;&#x306A;&#x3057;</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>塗りスタイル。省略時塗りなし</td>
 </tr>
 <tr>
 <td>startArrow(...)<br>[ sa ]</td>
-<td><a href="#arrowStyle">&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x59CB;&#x70B9;&#x77E2;&#x5370;&#x3002;&#x7701;&#x7565;&#x6642;&#x77E2;&#x5370;&#x306A;&#x3057;</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>始点矢印。省略時矢印なし</td>
 </tr>
 <tr>
 <td>endArrow(...)<br>[ ea ]</td>
-<td><a href="#arrowStyle">&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x7D42;&#x70B9;&#x77E2;&#x5370;&#x3002;&#x7701;&#x7565;&#x6642;&#x77E2;&#x5370;&#x306A;&#x3057;</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>終点矢印。省略時矢印なし</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>&#x958B;&#x59CB;&#x89D2;&#x53CA;&#x3073;&#x89D2;&#x5E45;&#x306F;&#x7701;&#x7565;&#x53EF;&#x80FD;&#x3067;&#x3059;&#x304C;&#x7701;&#x7565;&#x5024;&#x306F;&#x66AB;&#x5B9A;&#x306E;&#x305F;&#x3081;&#x7701;&#x7565;&#x3092;&#x63A8;&#x5968;&#x3057;&#x307E;&#x305B;&#x3093;&#x3002;</li>
-<li>&#x89D2;&#x5E45;&#x306F;&#x5DE6;&#x56DE;&#x308A;&#x304C;&#x6B63;&#x3001;&#x53F3;&#x56DE;&#x308A;&#x306F;&#x8CA0;&#x3067;&#x3059;&#x3002;</li>
+<li>開始角及び角幅は省略可能ですが省略値は暫定のため省略を推奨しません。</li>
+<li>角幅は左回りが正、右回りは負です。</li>
 </ul>
-<h5 class="mume-header" id="marker%E7%82%B9">Marker&#xFF08;&#x70B9;&#xFF09;</h5>
-
+<h5 id="marker点">Marker（点） </h5>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>p0(x y)</td>
 <td>x : Double,  y : Double</td>
-<td>&#x4E2D;&#x5FC3;&#x70B9;</td>
+<td>中心点</td>
 </tr>
 <tr>
 <td>angle(a)<br>[ a ]</td>
 <td>a : Double</td>
-<td>&#x89D2;&#x5EA6;&#xFF08;&#x5EA6;&#xFF09;&#x3002;&#x7701;&#x7565;&#x6642;0</td>
+<td>角度（度）。省略時0</td>
 </tr>
 <tr>
 <td>markerStyle(...)<br>[ ms ]</td>
-<td><a href="#markerStyle">&#x70B9;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x70B9;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</td>
+<td><a href="#markerStyle">点スタイル</a>参照</td>
+<td>点スタイル</td>
 </tr>
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
-<td><a href="#lineStyle">&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x3001;&#x9ED2;&#x5B9F;&#x7DDA;&#x3001;&#x5E45;0</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x306E;&#x7DDA;&#x7A2E;&#x306F;&#x7121;&#x52B9;&#x3067;&#x5E38;&#x306B;&#x5B9F;&#x7DDA;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</li>
-<li>&#x30D5;&#x30E9;&#x30B0;&#x3067;&#x7DDA;&#x7A2E;&#x304C;&#x30EC;&#x30A4;&#x30E4;&#x7DDA;&#x7A2E;&#x306B;&#x306A;&#x3063;&#x3066;&#x3044;&#x3066;&#x3082;&#x5B9F;&#x7DDA;&#x3067;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#x3002;</li>
-<li>&#x30D5;&#x30E9;&#x30B0;&#x304C;&#x4EEE;&#x7DDA;&#x306E;&#x5834;&#x5408;&#x306F;&#x4EEE;&#x7DDA;&#x3067;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#xFF08;&#x5370;&#x5237;&#x4E0D;&#x53EF;&#x306E;&#x4EEE;&#x70B9;&#x3068;&#x306A;&#x308B;&#xFF09;&#x3002;</li>
+<li>線スタイルの線種は無効で常に実線になります。</li>
+<li>フラグで線種がレイヤ線種になっていても実線で表示される。</li>
+<li>フラグが仮線の場合は仮線で表示される（印刷不可の仮点となる）。</li>
 </ul>
-<h5 class="mume-header" id="text%E6%96%87%E5%AD%97">Text&#xFF08;&#x6587;&#x5B57;&#xFF09;</h5>
-
+<h5 id="text文字">Text（文字） </h5>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>p0(x y)</td>
 <td>x : Double,  y : Double</td>
-<td>&#x57FA;&#x6E96;&#x70B9;</td>
+<td>基準点</td>
 </tr>
 <tr>
 <td>width(w)<br>[ w ]</td>
 <td>w : Double</td>
-<td>&#x5E45;</td>
+<td>幅</td>
 </tr>
 <tr>
 <td>height(h)<br>[ h ]</td>
 <td>h : Double</td>
-<td>&#x9AD8;&#x3055;</td>
+<td>高さ</td>
 </tr>
 <tr>
 <td>text(t)<br>[ t ]</td>
 <td>t : String</td>
-<td>&#x6587;&#x5B57;&#x5217;</td>
+<td>文字列</td>
 </tr>
 <tr>
 <td>angle(a)<br>[ a ]</td>
 <td>a : Double</td>
-<td>&#x89D2;&#x5EA6;&#xFF08;&#x5EA6;&#xFF09;&#x3002;&#x7701;&#x7565;&#x6642;0</td>
+<td>角度（度）。省略時0</td>
 </tr>
 <tr>
 <td>basis(b)<br>[ b ]</td>
 <td>b : Int</td>
-<td>&#x914D;&#x7F6E;&#x57FA;&#x6E96;&#x3002;&#x7701;&#x7565;&#x6642;0&#xFF08;&#x5DE6;&#x4E0B;&#xFF09;</td>
+<td>配置基準。省略時0（左下）</td>
 </tr>
 <tr>
 <td>textStyle(...)<br>[ ts ]</td>
-<td><a href="#textStyle">&#x6587;&#x5B57;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x6587;&#x5B57;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;</td>
+<td><a href="#textStyle">文字スタイル</a>参照</td>
+<td>文字スタイル。</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
-<td><a href="#fillStyle">&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x6587;&#x5B57;&#x80CC;&#x666F;&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x5857;&#x308A;&#x306A;&#x3057;</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>文字背景塗りスタイル。省略時塗りなし</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>&#x5E45;&#x3068;&#x9AD8;&#x3055;&#x306F;&#x6587;&#x5B57;&#x5217;&#x3092;&#x56F2;&#x3080;&#x5E45;&#x3068;&#x9AD8;&#x3055;&#x3067;&#x306F;&#x306A;&#x304F;&#x56F3;&#x5F62;&#x9078;&#x629E;&#x6642;&#x306B;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#x77E9;&#x5F62;&#x3067;&#x3059;&#x3002;&#x6298;&#x308A;&#x8FD4;&#x3057;&#x3084;&#x80CC;&#x666F;&#x8272;&#x306E;&#x7BC4;&#x56F2;&#x306B;&#x4F7F;&#x3046;&#x4E88;&#x5B9A;&#x3067;&#x3057;&#x305F;&#x304C;&#x5B9F;&#x88C5;&#x3067;&#x304D;&#x3066;&#x3044;&#x307E;&#x305B;&#x3093;&#xFF08;&#x6298;&#x308A;&#x8FD4;&#x3057;&#x304C;&#x96E3;&#x3057;&#x3044;&#xFF09;&#x3002;&#x5C06;&#x6765;&#x7684;&#x306B;&#x30D5;&#x30E9;&#x30B0;&#x3067;&#x305D;&#x308C;&#x3089;&#x306E;&#x6A5F;&#x80FD;&#x3092;&#x6709;&#x52B9;&#x306B;&#x3059;&#x308B;&#x304B;&#x3082;&#x3057;&#x308C;&#x307E;&#x305B;&#x3093;&#x3002;</li>
-<li>&#x914D;&#x7F6E;&#x57FA;&#x6E96;&#x3000;0:&#x5DE6;&#x4E0B;, 1:&#x4E2D;&#x4E0B;, 2:&#x53F3;&#x4E0B;, 3:&#x5DE6;&#x4E2D;, 4:&#x4E2D;&#x592E;, 5:&#x53F3;&#x4E2D;, 6:&#x5DE6;&#x4E0A;, 7:&#x4E2D;&#x4E0A;, 8:&#x53F3;&#x4E0A;</li>
+<li>幅と高さは文字列を囲む幅と高さではなく図形選択時に表示される矩形です。折り返しや背景色の範囲に使う予定でしたが実装できていません（折り返しが難しい）。将来的にフラグでそれらの機能を有効にするかもしれません。</li>
+<li>配置基準　0:左下, 1:中下, 2:右下, 3:左中, 4:中央, 5:右中, 6:左上, 7:中上, 8:右上</li>
 </ul>
-<h5 class="mume-header" id="dimension%E7%9B%B4%E7%B7%9A%E5%AF%B8%E6%B3%95">Dimension&#xFF08;&#x76F4;&#x7DDA;&#x5BF8;&#x6CD5;&#xFF09;</h5>
-
+<h5 id="dimension直線寸法">Dimension（直線寸法） </h5>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>p0(x y)</td>
 <td>x : Double,  y : Double</td>
-<td>&#x5BF8;&#x6CD5;&#x7DDA;&#x59CB;&#x70B9;</td>
+<td>寸法線始点</td>
 </tr>
 <tr>
 <td>p1(x y)</td>
 <td>x : Double,  y : Double</td>
-<td>&#x5BF8;&#x6CD5;&#x7DDA;&#x7D42;&#x70B9;</td>
+<td>寸法線終点</td>
 </tr>
 <tr>
 <td>direction(dx dy)<br>[ d ]</td>
 <td>dx : Double,  dy : Double</td>
-<td>&#x5BF8;&#x6CD5;&#x7DDA;&#x304B;&#x3089;&#x5F15;&#x51FA;&#x4F4D;&#x7F6E;&#x3078;&#x306E;&#x65B9;&#x5411;&#x5358;&#x4F4D;&#x30D9;&#x30AF;&#x30C8;&#x30EB;</td>
+<td>寸法線から引出位置への方向単位ベクトル</td>
 </tr>
 <tr>
 <td>extensionLine0(d)<br>[ e0 ]</td>
 <td>d : Double</td>
-<td>&#x59CB;&#x70B9;&#x5074;&#x5F15;&#x304D;&#x51FA;&#x3057;&#x7DDA;&#x306E;&#x9577;&#x3055;</td>
+<td>始点側引き出し線の長さ</td>
 </tr>
 <tr>
 <td>extensionLine1(d)<br>[ e1 ]</td>
 <td>d : Double</td>
-<td>&#x7D42;&#x70B9;&#x5074;&#x5F15;&#x304D;&#x51FA;&#x3057;&#x7DDA;&#x306E;&#x9577;&#x3055;</td>
+<td>終点側引き出し線の長さ</td>
 </tr>
 <tr>
 <td>text(t)<br>[ t ]</td>
 <td>t : String</td>
-<td>&#x6587;&#x5B57;&#x5217;</td>
+<td>文字列</td>
 </tr>
 <tr>
 <td>tp(d)</td>
 <td>d : Double</td>
-<td>&#x6587;&#x5B57;&#x914D;&#x7F6E;&#x4F4D;&#x7F6E; 0.0&#x304C;&#x59CB;&#x70B9;&#x3001;1.0&#x304C;&#x7D42;&#x70B9;&#x3001;0.5&#x304C;&#x5BF8;&#x6CD5;&#x7DDA;&#x306E;&#x4E2D;&#x592E;&#x3002;&#x7701;&#x7565;&#x6642;0.5</td>
+<td>文字配置位置 0.0が始点、1.0が終点、0.5が寸法線の中央。省略時0.5</td>
 </tr>
 <tr>
 <td>enableAutoDimension(f)<br>[ ed ]</td>
 <td>f : Int</td>
-<td>1&#x3067;&#x5BF8;&#x6CD5;&#x5024;&#x81EA;&#x52D5;&#x3002;&#x7701;&#x7565;&#x6642;1</td>
+<td>1で寸法値自動。省略時1</td>
 </tr>
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
-<td><a href="#lineStyle">&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x3001;&#x9ED2;&#x5B9F;&#x7DDA;&#x3001;&#x5E45;0</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
-<td><a href="#fillStyle">&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x6587;&#x5B57;&#x80CC;&#x666F;&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x5857;&#x308A;&#x306A;&#x3057;</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>文字背景塗りスタイル。省略時塗りなし</td>
 </tr>
 <tr>
 <td>dimensionStyle(...)<br>[ ds ]</td>
-<td><a href="#dimensionStyle">&#x76F4;&#x7DDA;&#x5BF8;&#x6CD5;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x76F4;&#x7DDA;&#x5BF8;&#x6CD5;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</td>
+<td><a href="#dimensionStyle">直線寸法スタイル</a>参照</td>
+<td>直線寸法スタイル</td>
 </tr>
 <tr>
 <td>tolerance(...)<br>[ to ]</td>
-<td><a href="#tolerance">&#x8A31;&#x5BB9;&#x5DEE;</a>&#x53C2;&#x7167;</td>
-<td>&#x8A31;&#x5BB9;&#x5DEE;&#x3002;&#x7701;&#x7565;&#x6642;&#x3001;&#x8A31;&#x5BB9;&#x5DEE;&#x306A;&#x3057;</td>
+<td><a href="#tolerance">許容差</a>参照</td>
+<td>許容差。省略時、許容差なし</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>&#x5F15;&#x304D;&#x51FA;&#x3057;&#x7DDA;&#x306E;&#x9577;&#x3055;&#x304C;&#x30DE;&#x30A4;&#x30CA;&#x30B9;&#x306E;&#x5834;&#x5408;&#x3001;direction&#x306E;&#x9006;&#x5411;&#x304D;&#x306B;&#x5F15;&#x304D;&#x51FA;&#x3057;&#x7DDA;&#x3092;&#x4F38;&#x3070;&#x3059;&#x3002;</li>
+<li>引き出し線の長さがマイナスの場合、directionの逆向きに引き出し線を伸ばす。</li>
 </ul>
-<h5 class="mume-header" id="radius%E5%8D%8A%E5%BE%84%E5%AF%B8%E6%B3%95">Radius&#xFF08;&#x534A;&#x5F84;&#x5BF8;&#x6CD5;&#xFF09;</h5>
-
+<h5 id="radius半径寸法">Radius（半径寸法） </h5>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>p0(x y)</td>
 <td>x : Double,  y : Double</td>
-<td>&#x5BF8;&#x6CD5;&#x7DDA;&#x59CB;&#x70B9;</td>
+<td>寸法線始点</td>
 </tr>
 <tr>
 <td>p1(x y)</td>
 <td>x : Double,  y : Double</td>
-<td>&#x5BF8;&#x6CD5;&#x7DDA;&#x7D42;&#x70B9;</td>
+<td>寸法線終点</td>
 </tr>
 <tr>
 <td>text(t)<br>[ t ]</td>
 <td>t : String</td>
-<td>&#x6587;&#x5B57;&#x5217;</td>
+<td>文字列</td>
 </tr>
 <tr>
 <td>tp(d)</td>
 <td>d : Double</td>
-<td>&#x6587;&#x5B57;&#x914D;&#x7F6E;&#x4F4D;&#x7F6E; 0.0&#x304C;&#x4E2D;&#x5FC3;&#x3001;1.0&#x304C;&#x7D42;&#x70B9;&#x3001;0.5&#x304C;&#x5BF8;&#x6CD5;&#x7DDA;&#x306E;&#x4E2D;&#x592E;&#x3002;&#x7701;&#x7565;&#x6642;0.5</td>
+<td>文字配置位置 0.0が中心、1.0が終点、0.5が寸法線の中央。省略時0.5</td>
 </tr>
 <tr>
 <td>enableAutoDimension(f)<br>[ ed ]</td>
 <td>f : Int</td>
-<td>1&#x3067;&#x5BF8;&#x6CD5;&#x5024;&#x81EA;&#x52D5;&#x3002;&#x7701;&#x7565;&#x6642;1</td>
+<td>1で寸法値自動。省略時1</td>
 </tr>
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
-<td><a href="#lineStyle">&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x3001;&#x9ED2;&#x5B9F;&#x7DDA;&#x3001;&#x5E45;0</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
-<td><a href="#fillStyle">&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x6587;&#x5B57;&#x80CC;&#x666F;&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x5857;&#x308A;&#x306A;&#x3057;</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>文字背景塗りスタイル。省略時塗りなし</td>
 </tr>
 <tr>
 <td>dimensionStyle(...)<br>[ ds ]</td>
-<td><a href="#radiusStyle">&#x534A;&#x5F84;&#x5BF8;&#x6CD5;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x534A;&#x5F84;&#x5BF8;&#x6CD5;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</td>
+<td><a href="#radiusStyle">半径寸法スタイル</a>参照</td>
+<td>半径寸法スタイル</td>
 </tr>
 <tr>
 <td>tolerance(...)<br>[ to ]</td>
-<td><a href="#tolerance">&#x8A31;&#x5BB9;&#x5DEE;</a>&#x53C2;&#x7167;</td>
-<td>&#x8A31;&#x5BB9;&#x5DEE;&#x3002;&#x7701;&#x7565;&#x6642;&#x3001;&#x8A31;&#x5BB9;&#x5DEE;&#x306A;&#x3057;</td>
+<td><a href="#tolerance">許容差</a>参照</td>
+<td>許容差。省略時、許容差なし</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>&#x59CB;&#x70B9;&#x306F;&#x5186;&#x306E;&#x4E2D;&#x5FC3;&#x3002;</li>
+<li>始点は円の中心。</li>
 </ul>
-<h5 class="mume-header" id="diameter%E7%9B%B4%E5%BE%84%E5%AF%B8%E6%B3%95">Diameter&#xFF08;&#x76F4;&#x5F84;&#x5BF8;&#x6CD5;&#xFF09;</h5>
-
+<h5 id="diameter直径寸法">Diameter（直径寸法） </h5>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>p0(x y)</td>
 <td>x : Double,  y : Double</td>
-<td>&#x5BF8;&#x6CD5;&#x7DDA;&#x59CB;&#x70B9;</td>
+<td>寸法線始点</td>
 </tr>
 <tr>
 <td>p1(x y)</td>
 <td>x : Double,  y : Double</td>
-<td>&#x5BF8;&#x6CD5;&#x7DDA;&#x7D42;&#x70B9;</td>
+<td>寸法線終点</td>
 </tr>
 <tr>
 <td>text(t)<br>[ t ]</td>
 <td>t : String</td>
-<td>&#x6587;&#x5B57;&#x5217;</td>
+<td>文字列</td>
 </tr>
 <tr>
 <td>tp(d)</td>
 <td>d : Double</td>
-<td>&#x6587;&#x5B57;&#x914D;&#x7F6E;&#x4F4D;&#x7F6E; 0.0&#x304C;&#x59CB;&#x70B9;&#x3001;1.0&#x304C;&#x7D42;&#x70B9;&#x3001;0.5&#x304C;&#x5BF8;&#x6CD5;&#x7DDA;&#x306E;&#x4E2D;&#x592E;&#x3002;&#x7701;&#x7565;&#x6642;0.5</td>
+<td>文字配置位置 0.0が始点、1.0が終点、0.5が寸法線の中央。省略時0.5</td>
 </tr>
 <tr>
 <td>enableAutoDimension(f)<br>[ ed ]</td>
 <td>f : Int</td>
-<td>1&#x3067;&#x5BF8;&#x6CD5;&#x5024;&#x81EA;&#x52D5;&#x3002;&#x7701;&#x7565;&#x6642;1</td>
+<td>1で寸法値自動。省略時1</td>
 </tr>
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
-<td><a href="#lineStyle">&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x3001;&#x9ED2;&#x5B9F;&#x7DDA;&#x3001;&#x5E45;0</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
-<td><a href="#fillStyle">&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x6587;&#x5B57;&#x80CC;&#x666F;&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x5857;&#x308A;&#x306A;&#x3057;</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>文字背景塗りスタイル。省略時塗りなし</td>
 </tr>
 <tr>
 <td>dimensionStyle(...)<br>[ ds ]</td>
-<td><a href="#diameterStyle">&#x76F4;&#x5F84;&#x5BF8;&#x6CD5;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x76F4;&#x5F84;&#x5BF8;&#x6CD5;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</td>
+<td><a href="#diameterStyle">直径寸法スタイル</a>参照</td>
+<td>直径寸法スタイル</td>
 </tr>
 <tr>
 <td>tolerance(...)<br>[ to ]</td>
-<td><a href="#tolerance">&#x8A31;&#x5BB9;&#x5DEE;</a>&#x53C2;&#x7167;</td>
-<td>&#x8A31;&#x5BB9;&#x5DEE;&#x3002;&#x7701;&#x7565;&#x6642;&#x3001;&#x8A31;&#x5BB9;&#x5DEE;&#x306A;&#x3057;</td>
+<td><a href="#tolerance">許容差</a>参照</td>
+<td>許容差。省略時、許容差なし</td>
 </tr>
 </tbody>
 </table>
-<h5 class="mume-header" id="angle%E8%A7%92%E5%BA%A6%E5%AF%B8%E6%B3%95">Angle&#xFF08;&#x89D2;&#x5EA6;&#x5BF8;&#x6CD5;&#xFF09;</h5>
-
+<h5 id="angle角度寸法">Angle（角度寸法） </h5>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>p0(x y)</td>
 <td>x : Double,  y : Double</td>
-<td>&#x4E2D;&#x5FC3;</td>
+<td>中心</td>
 </tr>
 <tr>
 <td>radius(r)<br>[ r ]</td>
 <td>r : Double</td>
-<td>&#x534A;&#x5F84;</td>
+<td>半径</td>
 </tr>
 <tr>
 <td>startAngle(a)<br>[ st ]</td>
 <td>a : Double</td>
-<td>&#x958B;&#x59CB;&#x89D2;&#xFF08;&#x5EA6;&#xFF09;&#x3002;&#x7701;&#x7565;&#x6642;0</td>
+<td>開始角（度）。省略時0</td>
 </tr>
 <tr>
 <td>sweepAngle(a)<br>[ sw ]</td>
 <td>a : Double</td>
-<td>&#x89D2;&#x5E45;&#xFF08;&#x5EA6;&#xFF09;&#x3002;&#x7701;&#x7565;&#x6642;90</td>
+<td>角幅（度）。省略時90</td>
 </tr>
 <tr>
 <td>extensionLine0(d)<br>[ e0 ]</td>
 <td>d : Double</td>
-<td>&#x59CB;&#x70B9;&#x5074;&#x5F15;&#x304D;&#x51FA;&#x3057;&#x7DDA;&#x306E;&#x9577;&#x3055;</td>
+<td>始点側引き出し線の長さ</td>
 </tr>
 <tr>
 <td>extensionLine1(d)<br>[ e1 ]</td>
 <td>d : Double</td>
-<td>&#x7D42;&#x70B9;&#x5074;&#x5F15;&#x304D;&#x51FA;&#x3057;&#x7DDA;&#x306E;&#x9577;&#x3055;</td>
+<td>終点側引き出し線の長さ</td>
 </tr>
 <tr>
 <td>text(t)<br>[ t ]</td>
 <td>t : String</td>
-<td>&#x6587;&#x5B57;&#x5217;</td>
+<td>文字列</td>
 </tr>
 <tr>
 <td>tp(d)</td>
 <td>d : Double</td>
-<td>&#x6587;&#x5B57;&#x914D;&#x7F6E;&#x4F4D;&#x7F6E; 0.0&#x304C;&#x59CB;&#x70B9;&#x3001;1.0&#x304C;&#x7D42;&#x70B9;&#x3001;0.5&#x304C;&#x5BF8;&#x6CD5;&#x7DDA;&#x306E;&#x4E2D;&#x592E;&#x3002;&#x7701;&#x7565;&#x6642;0.5</td>
+<td>文字配置位置 0.0が始点、1.0が終点、0.5が寸法線の中央。省略時0.5</td>
 </tr>
 <tr>
 <td>enableAutoDimension(f)<br>[ ed ]</td>
 <td>f : Int</td>
-<td>1&#x3067;&#x5BF8;&#x6CD5;&#x5024;&#x81EA;&#x52D5;&#x3002;&#x7701;&#x7565;&#x6642;1</td>
+<td>1で寸法値自動。省略時1</td>
 </tr>
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
-<td><a href="#lineStyle">&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x3001;&#x9ED2;&#x5B9F;&#x7DDA;&#x3001;&#x5E45;0</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
-<td><a href="#fillStyle">&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x6587;&#x5B57;&#x80CC;&#x666F;&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x5857;&#x308A;&#x306A;&#x3057;</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>文字背景塗りスタイル。省略時塗りなし</td>
 </tr>
 <tr>
 <td>dimensionStyle(...)<br>[ ds ]</td>
-<td><a href="#dimensionStyle">&#x76F4;&#x7DDA;&#x5BF8;&#x6CD5;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x5BF8;&#x6CD5;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x76F4;&#x7DDA;&#x5BF8;&#x6CD5;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3092;&#x4F7F;&#x7528;</td>
+<td><a href="#dimensionStyle">直線寸法スタイル</a>参照</td>
+<td>寸法スタイル。直線寸法スタイルを使用</td>
 </tr>
 <tr>
 <td>tolerance(...)<br>[ to ]</td>
-<td><a href="#tolerance">&#x8A31;&#x5BB9;&#x5DEE;</a>&#x53C2;&#x7167;</td>
-<td>&#x8A31;&#x5BB9;&#x5DEE;&#x3002;&#x7701;&#x7565;&#x6642;&#x3001;&#x8A31;&#x5BB9;&#x5DEE;&#x306A;&#x3057;</td>
+<td><a href="#tolerance">許容差</a>参照</td>
+<td>許容差。省略時、許容差なし</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>&#x5F15;&#x304D;&#x51FA;&#x3057;&#x7DDA;&#x306E;&#x9577;&#x3055;&#x304C;&#x30DE;&#x30A4;&#x30CA;&#x30B9;&#x306E;&#x5834;&#x5408;&#x3001;&#x4E2D;&#x5FC3;&#x3068;&#x53CD;&#x5BFE;&#x5074;&#x306B;&#x5F15;&#x304D;&#x51FA;&#x3057;&#x7DDA;&#x3092;&#x4F38;&#x3070;&#x3059;&#x3002;</li>
+<li>引き出し線の長さがマイナスの場合、中心と反対側に引き出し線を伸ばす。</li>
 </ul>
-<p><a id="Leader" href></a></p>
-<h5 class="mume-header" id="leader%E5%BC%95%E5%87%BA%E7%B7%9A">Leader&#xFF08;&#x5F15;&#x51FA;&#x7DDA;&#xFF09;</h5>
-
+<p><a id="Leader" href=""></a></p>
+<h5 id="leader引出線">Leader（引出線） </h5>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>vertices(x1 y1 x2 y2 x3 y3 ... xn yn)<br>[ vs ]</td>
 <td>x1..xn : Double,  y1..yn : Double</td>
-<td>&#x9802;&#x70B9;</td>
+<td>頂点</td>
 </tr>
 <tr>
 <td>text(t)<br>[ t ]</td>
 <td>t : String</td>
-<td>&#x6587;&#x5B57;&#x5217;</td>
+<td>文字列</td>
 </tr>
 <tr>
-<td>leaderStyle.leaderBasis&#x304C;3&#x306E;&#x6642;&#x306E;&#x307F;&#x6709;&#x52B9;&#x3002;</td>
+<td>leaderStyle.leaderBasisが3の時のみ有効。</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
-<td><a href="#lineStyle">&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x3001;&#x9ED2;&#x5B9F;&#x7DDA;&#x3001;&#x5E45;0</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
-<td><a href="#fillStyle">&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x6587;&#x5B57;&#x80CC;&#x666F;&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x5857;&#x308A;&#x306A;&#x3057;</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>文字背景塗りスタイル。省略時塗りなし</td>
 </tr>
 <tr>
 <td>leaderStyle(...)<br>[ lt ]</td>
-<td><a href="#leaderStyle">&#x5F15;&#x51FA;&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x5F15;&#x51FA;&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</td>
+<td><a href="#leaderStyle">引出線スタイル</a>参照</td>
+<td>引出線スタイル</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>leaderStyle.leaderBasis&#x304C;3&#xFF08;Free&#xFF09;&#x306E;&#x5834;&#x5408;&#x3001;&#x6587;&#x5B57;&#x5217;&#x306E;&#x914D;&#x7F6E;&#x70B9;&#x306F;&#x6700;&#x5F8C;&#x306E;&#x9802;&#x70B9;&#x306B;leaderStyle.textOffset&#x3092;X&#x3001;leaderStyle.leaderOffset&#x3092;Y&#x3068;&#x3057;&#x3066;&#x30AA;&#x30D5;&#x30BB;&#x30C3;&#x30C8;&#x3059;&#x308B;&#xFF08;&#x6587;&#x5B57;&#x306E;&#x57FA;&#x70B9;&#x306F;&#x4E2D;&#x5FC3;&#xFF09;&#x3002;</li>
-<li>leaderStyle.leaderBasis&#x304C;3&#xFF08;Free&#xFF09;&#x306E;&#x5834;&#x5408;&#x3001;leaderStyle.extendLine&#x3068;leaderStyle.leaderOrientation&#x306F;&#x7121;&#x8996;&#x3055;&#x308C;&#x6587;&#x5B57;&#x5217;&#x306E;&#x50BE;&#x304D;&#x306F;leaderStyle.textAngle&#x304C;&#x4F7F;&#x308F;&#x308C;&#x308B;&#x3002;</li>
+<li>leaderStyle.leaderBasisが3（Free）の場合、文字列の配置点は最後の頂点にleaderStyle.textOffsetをX、leaderStyle.leaderOffsetをYとしてオフセットする（文字の基点は中心）。</li>
+<li>leaderStyle.leaderBasisが3（Free）の場合、leaderStyle.extendLineとleaderStyle.leaderOrientationは無視され文字列の傾きはleaderStyle.textAngleが使われる。</li>
 </ul>
-<h5 class="mume-header" id="balloon%E3%83%90%E3%83%AB%E3%83%BC%E3%83%B3">Balloon&#xFF08;&#x30D0;&#x30EB;&#x30FC;&#x30F3;&#xFF09;</h5>
-
+<h5 id="balloonバルーン">Balloon（バルーン） </h5>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>vertices(x1 y1 x2 y2 x3 y3 ... xn yn)<br>[ vs ]</td>
 <td>x1..xn : Double,  y1..yn : Double</td>
-<td>&#x9802;&#x70B9;</td>
+<td>頂点</td>
 </tr>
 <tr>
 <td>text(t)<br>[ t ]</td>
 <td>t : String</td>
-<td>&#x6587;&#x5B57;&#x5217;</td>
+<td>文字列</td>
 </tr>
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
-<td><a href="#lineStyle">&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x3001;&#x9ED2;&#x5B9F;&#x7DDA;&#x3001;&#x5E45;0</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
-<td><a href="#fillStyle">&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x6587;&#x5B57;&#x80CC;&#x666F;&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x5857;&#x308A;&#x306A;&#x3057;</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>文字背景塗りスタイル。省略時塗りなし</td>
 </tr>
 <tr>
 <td>balloonStyle(...)<br>[ bs ]</td>
-<td><a href="#balloonStyle">&#x30D0;&#x30EB;&#x30FC;&#x30F3;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x30D0;&#x30EB;&#x30FC;&#x30F3;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</td>
+<td><a href="#balloonStyle">バルーンスタイル</a>参照</td>
+<td>バルーンスタイル</td>
 </tr>
 </tbody>
 </table>
-<h5 class="mume-header" id="group%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E5%9B%B3%E5%BD%A2">Group&#xFF08;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x56F3;&#x5F62;&#xFF09;</h5>
-
+<h5 id="groupグループ図形">Group（グループ図形） </h5>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>shapes(S1()S2()...Sn())<br>[ ss ]</td>
-<td>S1..Sn:&#x56F3;&#x5F62;</td>
-<td>&#x56F3;&#x5F62;&#x306E;&#x30EA;&#x30B9;&#x30C8;</td>
+<td>S1..Sn:図形</td>
+<td>図形のリスト</td>
 </tr>
 </tbody>
 </table>
-<h5 class="mume-header" id="path%E3%83%91%E3%82%B9%E5%9B%B3%E5%BD%A2">Path&#xFF08;&#x30D1;&#x30B9;&#x56F3;&#x5F62;&#xFF09;</h5>
-
+<h5 id="pathパス図形">Path（パス図形） </h5>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>p(...)<br></td>
 <td></td>
-<td>&#x30D1;&#x30B9;&#x30EA;&#x30B9;&#x30C8;</td>
+<td>パスリスト</td>
 </tr>
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
-<td><a href="#lineStyle">&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x7DDA;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x3001;&#x9ED2;&#x5B9F;&#x7DDA;&#x3001;&#x5E45;0</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
-<td><a href="#fillStyle">&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</a>&#x53C2;&#x7167;</td>
-<td>&#x5857;&#x308A;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3002;&#x7701;&#x7565;&#x6642;&#x5857;&#x308A;&#x306A;&#x3057;</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>塗りスタイル。省略時塗りなし</td>
 </tr>
 </tbody>
 </table>
-<p>&#x30D1;&#x30B9;&#x8981;&#x7D20;</p>
+<p>パス要素</p>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>s(x,y)<br></td>
 <td>x:Double, y:Double</td>
-<td>&#x59CB;&#x70B9;</td>
+<td>始点</td>
 </tr>
 <tr>
 <td>e(flag)<br></td>
 <td>flag:Int</td>
-<td>0&#xFF1A;&#x9589;&#x3058;&#x306A;&#x3044;, 1:&#x9589;&#x3058;&#x308B;</td>
+<td>0：閉じない, 1:閉じる</td>
 </tr>
 <tr>
 <td>l(x1 y1 x2 y2 ... xn yn)<br></td>
 <td>x1..xn : Double,  y1..yn : Double</td>
-<td>&#x76F4;&#x7DDA;</td>
+<td>直線</td>
 </tr>
 <tr>
 <td>b(x1 y1 x2 y2 ... xn yn)<br></td>
 <td>x1..xn : Double,  y1..yn : Double</td>
-<td>3&#x6B21;&#x30D9;&#x30B8;&#x30A7;&#x66F2;&#x7DDA;&#x3002;2&#x3064;&#x306E;&#x5236;&#x5FA1;&#x70B9;&#x3068;&#xFF11;&#x3064;&#x306E;&#x9802;&#x70B9;&#x306E;&#x7D44;</td>
+<td>3次ベジェ曲線。2つの制御点と１つの頂点の組</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>&#x30D1;&#x30B9;&#x306F;s()&#x304B;&#x3089;&#x59CB;&#x307E;&#x308B;&#x3053;&#x3068;&#x3002;e()&#x306E;&#x30D5;&#x30E9;&#x30B0;&#x304C;1&#x306E;&#x6642;&#x306F;&#x6700;&#x5F8C;&#x306E;&#x70B9;&#x304B;&#x3089;&#x307E;&#x3067;&#x59CB;&#x70B9;&#x307E;&#x3067;&#x76F4;&#x7DDA;&#x3092;&#x5F15;&#x304F;&#x3002;</li>
+<li>パスはs()から始まること。e()のフラグが1の時は最後の点からまで始点まで直線を引く。</li>
 </ul>
-<h5 class="mume-header" id="image%E7%94%BB%E5%83%8F%E5%9B%B3%E5%BD%A2">Image&#xFF08;&#x753B;&#x50CF;&#x56F3;&#x5F62;&#xFF09;</h5>
-
+<h5 id="image画像図形">Image（画像図形） </h5>
 <table>
 <thead>
 <tr>
-<th>&#x8981;&#x7D20;</th>
-<th>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>p0(x y)</td>
 <td>x : Double,  y : Double</td>
-<td>&#x4E2D;&#x5FC3;</td>
+<td>中心</td>
 </tr>
 <tr>
 <td>width(w)<br>[ w ]</td>
 <td>w : Double</td>
-<td>&#x5E45;</td>
+<td>幅</td>
 </tr>
 <tr>
 <td>height(h)<br>[ h ]</td>
 <td>h : Double</td>
-<td>&#x9AD8;&#x3055;</td>
+<td>高さ</td>
 </tr>
 <tr>
 <td>angle(a)<br>[ a ]</td>
 <td>a : Double</td>
-<td>&#x89D2;&#x5EA6;&#xFF08;&#x5EA6;&#xFF09;&#x3002;&#x7701;&#x7565;&#x6642;0</td>
+<td>角度（度）。省略時0</td>
 </tr>
 <tr>
 <td>image(bytes)<br>[ im ]</td>
 <td>bytes : Bytes</td>
-<td>&#x753B;&#x50CF;&#x30C7;&#x30FC;&#x30BF;</td>
+<td>画像データ</td>
 </tr>
 <tr>
 <td>src(file)<br></td>
 <td>file : String</td>
-<td>&#x753B;&#x50CF;&#x30C7;&#x30FC;&#x30BF;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x30D1;&#x30B9;&#xFF08;&#x30D5;&#x30A9;&#x30EB;&#x30C0;&#x540D;&#x542B;&#x3080;&#xFF09;&#x3002;&#x4F8B;&#xFF1A;src(&quot;media\\e1ed77be-822f-4743-a295-6d4c025ba6b0.png&quot;) &#x30D5;&#x30A9;&#x30EB;&#x30C0;&#x306E;&#x533A;&#x5207;&#x308A;&#x306E;&apos;\&apos;&#x306F;&#x6587;&#x5B57;&#x5217;&#x3067;&#x306F;&#xFF12;&#x3064;&#x5FC5;&#x8981;&#x306A;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x3002;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x62E1;&#x5F35;&#x5B50;&#x306F;&#x7121;&#x304F;&#x3066;&#x3082;&#x3088;&#x3044;&#x304C;&#x3001;&#x3042;&#x3063;&#x305F;&#x307B;&#x3046;&#x304C;&#x30C7;&#x30D0;&#x30C3;&#x30B0;&#x304C;&#x697D;&#x306B;&#x306A;&#x308B;&#x3068;&#x601D;&#x3044;&#x307E;&#x3059;&#x3002;</td>
+<td>画像データファイルへのパス（フォルダ名含む）。例：src("media\\e1ed77be-822f-4743-a295-6d4c025ba6b0.png") フォルダの区切りの'\'は文字列では２つ必要なことに注意。ファイルに拡張子は無くてもよいが、あったほうがデバッグが楽になると思います。</td>
 </tr>
 <tr>
 <td>type(name)<br>[ t ]</td>
 <td>name : String</td>
-<td>&#x753B;&#x50CF;&#x306E;&#x7A2E;&#x985E;&#xFF08;jpg, png, bmp&#xFF09;<br>&#x53C2;&#x8003;&#x5024;&#x3002;&#x7701;&#x7565;&#x53EF;&#x3002;</td>
+<td>画像の種類（jpg, png, bmp）<br>参考値。省略可。</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>&#x753B;&#x50CF;&#x306E;&#x7A2E;&#x985E;&#x306F;&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x304B;&#x3089;&#x5224;&#x65AD;&#x3067;&#x304D;&#x308B;&#x305F;&#x3081;type&#x30BF;&#x30B0;&#x306F;&#x7121;&#x304F;&#x3066;&#x3082;&#x3088;&#x3044;&#x3002;&#x4ECA;&#x306E;&#x3068;&#x3053;&#x308D;type&#x30BF;&#x30B0;&#x306F;&#x30C7;&#x30D0;&#x30C3;&#x30B0;&#x3067;&#x4F7F;&#x3046;&#x3053;&#x3068;&#x3092;&#x60F3;&#x5B9A;&#x3059;&#x308B;&#x3002;</li>
-<li>image&#x30BF;&#x30B0;&#x3068;src&#x30BF;&#x30B0;&#x306F;&#x7247;&#x65B9;&#x306E;&#x307F;&#x6709;&#x52B9;&#x3002;&#x4E21;&#x65B9;&#x3042;&#x3063;&#x305F;&#x5834;&#x5408;&#x306E;&#x52D5;&#x4F5C;&#x306F;&#x672A;&#x5B9A;&#x7FA9;&#x3002;</li>
-<li>image&#x30BF;&#x30B0;&#x3092;&#x4F7F;&#x3046;&#x3068;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B5;&#x30A4;&#x30BA;&#x304C;&#x5927;&#x304D;&#x304F;&#x306A;&#x308A;&#x307E;&#x3059;&#x304C;&#x753B;&#x50CF;&#x3092;&#x4E00;&#x3064;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x307E;&#x3068;&#x3081;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#x306E;&#x3067;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x3088;&#x3063;&#x3066;&#x306F;&#x5B9F;&#x88C5;&#x304C;&#x5BB9;&#x6613;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</li>
-<li>&#x65E2;&#x5B58;&#x306E;&#x56F3;&#x9762;&#x306B;&#x5225;&#x306E;&#x56F3;&#x9762;&#x3092;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3067;&#x8FFD;&#x52A0;&#x3059;&#x308B;&#x53EF;&#x80FD;&#x6027;&#x3092;&#x8003;&#x3048;&#x3066;src&#x306B;&#x4F7F;&#x3046;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x306E;&#x885D;&#x7A81;&#x3092;&#x907F;&#x3051;&#x308B;&#x305F;&#x3081;uuid&#x3092;&#x4F7F;&#x3046;&#x3053;&#x3068;&#x3092;&#x63A8;&#x5968;&#x3057;&#x307E;&#x3059;&#x3002;</li>
+<li>画像の種類はバイナリから判断できるためtypeタグは無くてもよい。今のところtypeタグはデバッグで使うことを想定する。</li>
+<li>imageタグとsrcタグは片方のみ有効。両方あった場合の動作は未定義。</li>
+<li>imageタグを使うとファイルサイズが大きくなりますが画像を一つのファイルにまとめることができるのでアプリケーションによっては実装が容易になります。</li>
+<li>既存の図面に別の図面をインポートで追加する可能性を考えてsrcに使うファイル名の衝突を避けるためuuidを使うことを推奨します。</li>
 </ul>
-<h3 class="mume-header" id="settings%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3-1">settings&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</h3>
-
-<p>&#x8A2D;&#x5B9A;&#x3092;&#x8A18;&#x8FF0;&#x3057;&#x307E;&#x3059;&#x3002;</p>
-<pre data-role="codeBlock" data-info class="language-"><code>settings(
- currentLayer(&quot;Lyer1&quot;)
- currentSheet(&quot;Sheet2&quot;)
+<h3 id="settingsセクション-1">settingsセクション </h3>
+<p>設定を記述します。</p>
+<pre data-role="codeBlock" data-info="" class="language-text text"><code>settings(
+ currentLayer("Lyer1")
+ currentSheet("Sheet2")
 )
-</code></pre><h4 class="mume-header" id="currentlayer">currentLayer</h4>
-
-<p>&#x9078;&#x629E;&#x4E2D;&#x306E;&#x30EC;&#x30A4;&#x30E4;&#x540D;</p>
-<h4 class="mume-header" id="currentsheet">currentSheet</h4>
-
-<p>&#x9078;&#x629E;&#x4E2D;&#x306E;&#x30B7;&#x30FC;&#x30C8;&#x540D;</p>
-<h2 class="mume-header" id="%E8%A3%9C%E8%B6%B3">&#x88DC;&#x8DB3;</h2>
-
-<h3 class="mume-header" id="%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3">&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;</h3>
-
+</code></pre><h4 id="currentlayer">currentLayer </h4>
+<p>選択中のレイヤ名</p>
+<h4 id="currentsheet">currentSheet </h4>
+<p>選択中のシート名</p>
+<h2 id="補足">補足 </h2>
+<h3 id="ファイルバージョン">ファイルバージョン </h3>
 <ul>
-<li>&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x56F3;&#x9762;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306F;&#x305D;&#x308C;&#x305E;&#x308C;&#x9055;&#x3046;&#x5024;&#x306B;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x3067;&#x304D;&#x307E;&#x3059;&#x304C;&#x3001;&#x30A4;&#x30F3;&#x30C7;&#x30AF;&#x30B9;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30E1;&#x30B8;&#x30E3;&#x30FC;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;2&#x4EE5;&#x964D;&#x306F;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x56F3;&#x9762;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#x540C;&#x3058;&#x3082;&#x306E;&#x306B;&#x3057;&#x3088;&#x3046;&#x3068;&#x601D;&#x3044;&#x307E;&#x3059;&#x3002;</li>
-<li>&#x30E1;&#x30B8;&#x30E3;&#x30FC;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x69CB;&#x9020;&#x304C;&#x5909;&#x308F;&#x3063;&#x3066;&#x4E0B;&#x4F4D;&#x4E92;&#x63DB;&#x6027;&#x304C;&#x7121;&#x304F;&#x306A;&#x3063;&#x305F;&#x5834;&#x5408;&#x306B;&#x4E0A;&#x3052;&#x307E;&#x3059;&#xFF08;&#x4F8B;&#x3048;&#x3070;&#x3001;&#x30E1;&#x30B8;&#x30E3;&#x30FC;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;1&#x306E;&#x307F;&#x306B;&#x5BFE;&#x5FDC;&#x3059;&#x308B;&#x30A2;&#x30D7;&#x30EA;&#x3067;&#x306F;&#x30E1;&#x30B8;&#x30E3;&#x30FC;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;2&#x306F;&#x8AAD;&#x3081;&#x306A;&#x3044;&#xFF09;&#x3002;<br>
-&#x305F;&#x3060;&#x3057;&#x3001;&#x65B0;&#x305F;&#x306A;&#x30BF;&#x30B0;&#x8981;&#x7D20;&#x306E;&#x8FFD;&#x52A0;&#x7B49;&#x3067;&#x305D;&#x306E;&#x30BF;&#x30B0;&#x3092;&#x8AAD;&#x307F;&#x98DB;&#x3070;&#x3059;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#x5834;&#x5408;&#x306F;&#x30E1;&#x30B8;&#x30E3;&#x30FC;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x4E0A;&#x3052;&#x305A;&#x30DE;&#x30A4;&#x30CA;&#x2015;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x4E0A;&#x3052;&#x307E;&#x3059;&#x3002;</li>
+<li>インデックスファイルと図面ファイルのバージョンはそれぞれ違う値にすることもできますが、インデクスファイルのメジャーバージョン2以降はインデックスファイルと図面ファイルは同じものにしようと思います。</li>
+<li>メジャーバージョンはファイル構造が変わって下位互換性が無くなった場合に上げます（例えば、メジャーバージョン1のみに対応するアプリではメジャーバージョン2は読めない）。<br>
+ただし、新たなタグ要素の追加等でそのタグを読み飛ばすことができる場合はメジャーバージョンを上げずマイナ―バージョンを上げます。</li>
 </ul>
-<h3 class="mume-header" id="%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%81%AB%E3%82%88%E3%82%8B%E9%81%95%E3%81%84">&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306B;&#x3088;&#x308B;&#x9055;&#x3044;</h3>
-
+<h3 id="バージョンによる違い">バージョンによる違い </h3>
 <ul>
-<li>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306F;&#x6587;&#x5B57;&#x5217;&#x3067;version&#x30BF;&#x30B0;&#x3092;&#x4F7F;&#x3044;&#x307E;&#x3059;&#x304C;&#x3001;&#x65E7;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3067;&#x306F;<code>fileversion(versionNumber)</code>&#x3092;&#x4F7F;&#x3044;&#x30E1;&#x30B8;&#x30E3;&#x30FC;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#xFF08;&#x6574;&#x6570;&#x5024;&#xFF09;&#x306E;&#x307F;&#x3067;&#x3057;&#x305F;&#x3002;</li>
-<li>&#x30E1;&#x30B8;&#x30E3;&#x30FC;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;1&#x306F;&#x30DA;&#x30FC;&#x30B8;&#x304C;&#xFF11;&#x3064;&#x3057;&#x304B;&#x306A;&#x304F;&#x3001;pages&#x30BF;&#x30B0;&#x304C;&#x306A;&#x3044;&#x4EE3;&#x308F;&#x308A;&#x306B;drawing&#x30BF;&#x30B0;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;&#x307E;&#x305F;&#x3001;settings&#x30BF;&#x30B0;&#x306F;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&#xFF08;&#x8A2D;&#x5B9A;&#x306F;drawing&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3042;&#x308A;&#x307E;&#x3059;&#xFF09;&#x3002;<br>
-&#x4EE5;&#x4E0B;&#x306F;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30E1;&#x30B8;&#x30E3;&#x30FC;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;1&#x306E;&#x4F8B;&#x3067;&#x3059;&#x3002;&#x30E1;&#x30B8;&#x30E3;&#x30FC;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#xFF11;&#x3067;&#x306F;&#x56F3;&#x9762;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x306F;<code>drawing</code>&#x3067;&#x3057;&#x305F;&#x3002;</li>
+<li>ファイルバージョンは文字列でversionタグを使いますが、旧バージョンでは<code>fileversion(versionNumber)</code>を使いメジャーバージョン（整数値）のみでした。</li>
+<li>メジャーバージョン1はページが１つしかなく、pagesタグがない代わりにdrawingタグがあります。また、settingsタグはありません（設定はdrawingファイルにあります）。<br>
+以下はインデックスファイルのメジャーバージョン1の例です。メジャーバージョン１では図面ファイル名は<code>drawing</code>でした。</li>
 </ul>
-<pre data-role="codeBlock" data-info class="language-"><code>filetype(&quot;precad_archive&quot;)
+<pre data-role="codeBlock" data-info="" class="language-text text"><code>filetype("precad_archive")
 fileinfo(
- fileversion(1)appinfo(&quot;precad for windows version 1.0.0.0&quot;)
+ fileversion(1)appinfo("precad for windows version 1.0.0.0")
 )
 contents(
- drawing(&quot;drawing&quot;)
+ drawing("drawing")
 )
 </code></pre><ul>
-<li>&#x7DDA;&#x56F3;&#x5F62;&#xFF08;Line&#xFF09;&#x306E;&#x59CB;&#x70B9;&#x3068;&#x7D42;&#x70B9;&#x306F;pp&#x30BF;&#x30B0;&#x3067;&#x307E;&#x3068;&#x3081;&#x3066;&#x66F8;&#x304D;&#x51FA;&#x3057;&#x307E;&#x3059;&#x304C;&#x3001;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;2.1.0&#x307E;&#x3067;&#x306F;&#x59CB;&#x70B9;&#x3068;&#x7D42;&#x70B9;&#x3092;&#x5225;&#x3005;&#x306B;&#x4EE5;&#x4E0B;&#x306E;&#x66F8;&#x5F0F;&#x3067;&#x8A18;&#x8FF0;&#x3057;&#x3066;&#x3044;&#x307E;&#x3057;&#x305F;&#x3002;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;2.2.0&#x4EE5;&#x964D;&#x3001;&#x5206;&#x3051;&#x3066;&#x8A18;&#x8FF0;&#x3059;&#x308B;&#x306E;&#x306F;&#x5197;&#x9577;&#x306A;&#x306E;&#x3067;pp&#x306E;&#x66F8;&#x5F0F;&#x306B;&#x5909;&#x66F4;&#x3057;&#x307E;&#x3057;&#x305F;&#x3002;&#x4E92;&#x63DB;&#x6027;&#x306E;&#x305F;&#x3081;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x306E;&#x307F;&#x5BFE;&#x5FDC;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;</li>
+<li>線図形（Line）の始点と終点はppタグでまとめて書き出しますが、バージョン2.1.0までは始点と終点を別々に以下の書式で記述していました。バージョン2.2.0以降、分けて記述するのは冗長なのでppの書式に変更しました。互換性のため読み込みのみ対応しています。</li>
 </ul>
-<pre data-role="codeBlock" data-info class="language-"><code>p0(x0,y0)p1(x1,y1)
+<pre data-role="codeBlock" data-info="" class="language-text text"><code>p0(x0,y0)p1(x1,y1)
 </code></pre><ul>
-<li>&#x9802;&#x70B9;&#x30EA;&#x30B9;&#x30C8;&#xFF08;vertices()&#xFF09;&#x306F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;2.0.0&#x4EE5;&#x4E0B;&#x3067;&#x306F;&#x6B21;&#x306E;&#x66F8;&#x5F0F;&#x3067;&#x3057;&#x305F;&#x3002;&#x4E92;&#x63DB;&#x6027;&#x306E;&#x305F;&#x3081;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x306E;&#x307F;&#x5BFE;&#x5FDC;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;</li>
+<li>頂点リスト（vertices()）はファイルバージョン2.0.0以下では次の書式でした。互換性のため読み込みのみ対応しています。</li>
 </ul>
-<pre data-role="codeBlock" data-info class="language-"><code>points(P(x0,y0)P(x1,y1)...)&#x3000;&#x3000;//P&#x306F;&#x5927;&#x6587;&#x5B57;
+<pre data-role="codeBlock" data-info="" class="language-text text"><code>points(P(x0,y0)P(x1,y1)...)　　//Pは大文字
 </code></pre><ul>
-<li>&#x30D9;&#x30B8;&#x30A7;&#x66F2;&#x7DDA;&#x306E;&#x9802;&#x70B9;&#x30EA;&#x30B9;&#x30C8;&#x306F;&#x4EE5;&#x4E0B;&#x306E;&#x65E7;&#x578B;&#x5F0F;(&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;2.0.0&#x4EE5;&#x4E0B;)&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#xFF08;&#x975E;&#x63A8;&#x5968;&#xFF09;&#x3002;&#x5404;&#x9802;&#x70B9;&#x3068;&#x305D;&#x306E;&#x5236;&#x5FA1;&#x70B9;&#x3092;&#x5206;&#x3051;&#x3066;&#x8A18;&#x8FF0;&#x3057;&#x307E;&#x3059;&#x3002;&#x5236;&#x5FA1;&#x70B9;&#x306F;&#x5404;&#x9802;&#x70B9;&#x306E;&#x59CB;&#x70B9;&#x5074;&#xFF08;s()&#xFF09;&#x3068;&#x7D42;&#x70B9;&#x5074;&#xFF08;e()&#xFF09;&#x306E;&#x5236;&#x5FA1;&#x70B9;&#x3092;&#x8A18;&#x8FF0;&#x3057;&#x307E;&#x3059;&#x3002;&#x958B;&#x3044;&#x305F;&#x30D9;&#x30B8;&#x30A7;&#x66F2;&#x7DDA;&#x306E;&#x5834;&#x5408;&#x306F;&#x59CB;&#x70B9;&#x306E;&#x7D42;&#x70B9;&#x5074;&#x306E;&#x5236;&#x5FA1;&#x70B9;&#x3001;&#x7D42;&#x70B9;&#x306E;&#x59CB;&#x70B9;&#x5074;&#x306E;&#x5236;&#x5FA1;&#x70B9;&#x306F;&#x7121;&#x8996;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;<br>
-&#x8A18;&#x8FF0;&#x304C;&#x5197;&#x9577;&#x306A;&#x306E;&#x3067;&#x3053;&#x306E;&#x5F62;&#x5F0F;&#x306F;&#x4E92;&#x63DB;&#x6027;&#x306E;&#x305F;&#x3081;&#x306B;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x306E;&#x307F;&#x5BFE;&#x5FDC;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;</li>
+<li>ベジェ曲線の頂点リストは以下の旧型式(ファイルバージョン2.0.0以下)があります（非推奨）。各頂点とその制御点を分けて記述します。制御点は各頂点の始点側（s()）と終点側（e()）の制御点を記述します。開いたベジェ曲線の場合は始点の終点側の制御点、終点の始点側の制御点は無視されます。<br>
+記述が冗長なのでこの形式は互換性のために読み込みのみ対応しています。</li>
 </ul>
-<pre data-role="codeBlock" data-info class="language-"><code>points(P(x0 y0)P(x1 y1)...)
+<pre data-role="codeBlock" data-info="" class="language-text text"><code>points(P(x0 y0)P(x1 y1)...)
 controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 </code></pre><ul>
 <li>
-<p>&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;2.1.0&#x4EE5;&#x524D;&#x306E;&#x76F4;&#x5F84;&#x5BF8;&#x6CD5;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x3068;&#x76F4;&#x7DDA;&#x5BF8;&#x6CD5;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x306E;&#x77E2;&#x5370;&#x306F;&#x59CB;&#x70B9;&#x7D42;&#x70B9;&#x540C;&#x3058;&#x3082;&#x306E;&#x3067;&#x3057;&#x305F;&#x3002;&#x305D;&#x306E;&#x305F;&#x3081;&#x77E2;&#x5370;&#x30B9;&#x30BF;&#x30A4;&#x30EB;&#x306E;&#x30BF;&#x30B0;&#x306F;<code>arrowStyle</code>&#x3067;&#x3057;&#x305F;&#x3002;</p>
+<p>バージョン2.1.0以前の直径寸法スタイルと直線寸法スタイルの矢印は始点終点同じものでした。そのため矢印スタイルのタグは<code>arrowStyle</code>でした。</p>
 </li>
 <li>
-<p>&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;2.3.0&#x304B;&#x3089;Image&#x306E;src&#x30BF;&#x30B0;&#x306B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x3092;&#x8FFD;&#x52A0;&#x3001;&#x5727;&#x7E2E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x5185;&#x306E;media&#x30D5;&#x30A9;&#x30EB;&#x30C0;&#x5185;&#x306B;&#x753B;&#x50CF;&#x3092;&#x4FDD;&#x5B58;&#x3057;&#x307E;&#x3059;&#x3002;&#x305D;&#x308C;&#x4EE5;&#x524D;&#x306F;image&#x30BF;&#x30B0;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x6587;&#x5B57;&#x5217;&#x3068;&#x3057;&#x3066;&#x540C;&#x68B1;&#x3057;&#x3066;&#x3044;&#x307E;&#x3057;&#x305F;&#xFF08;&#x3053;&#x306E;&#x65B9;&#x5F0F;&#x306F;&#x30AF;&#x30EA;&#x30C3;&#x30D7;&#x30DC;&#x30FC;&#x30C9;&#x7D4C;&#x7531;&#x306E;&#x30B3;&#x30D4;&#x30FC;&#x306E;&#x305F;&#x3081;&#x306B;&#x73FE;&#x5728;&#x3082;&#x4F7F;&#x308F;&#x308C;&#x3066;&#x3044;&#x307E;&#x3059;&#xFF09;&#x3002;</p>
+<p>バージョン2.3.0からImageのsrcタグにファイル名を追加、圧縮ファイル内のmediaフォルダ内に画像を保存します。それ以前はimageタグを使用し文字列として同梱していました（この方式はクリップボード経由のコピーのために現在も使われています）。</p>
 </li>
 </ul>
-<h3 class="mume-header" id="%E7%9F%AD%E7%B8%AE%E5%BD%A2%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">&#x77ED;&#x7E2E;&#x5F62;&#x306B;&#x3064;&#x3044;&#x3066;</h3>
-
-<p>&#x3082;&#x3068;&#x3082;&#x3068;&#x30BF;&#x30B0;&#x540D;&#x306F;&#x5185;&#x90E8;&#x3067;&#x4F7F;&#x3063;&#x3066;&#x3044;&#x308B;&#x5909;&#x6570;&#x540D;&#x3092;&#x5143;&#x306B;&#x6C7A;&#x3081;&#x307E;&#x3057;&#x305F;&#xFF08;kotlin&#x3067;&#x4F5C;&#x3063;&#x3066;&#x3044;&#x305F;&#x305F;&#x3081;&#x6700;&#x521D;&#x304C;&#x5C0F;&#x6587;&#x5B57;&#x304B;&#x3089;&#x59CB;&#x307E;&#x308A;&#x307E;&#x3059;&#xFF09;&#x3002;&#x305D;&#x306E;&#x305F;&#x3081;&#x6BD4;&#x8F03;&#x7684;&#x6587;&#x5B57;&#x6570;&#x304C;&#x591A;&#x304F;&#x306A;&#x3063;&#x3066;&#x3057;&#x307E;&#x3044;&#x307E;&#x3057;&#x305F;&#x3002;<br>
-&#x30BF;&#x30B0;&#x540D;&#x304C;&#x591A;&#x5C11;&#x9577;&#x304F;&#x3066;&#x3082;CPU&#x306F;&#x5341;&#x5206;&#x901F;&#x304F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#x5727;&#x7E2E;&#x3059;&#x308B;&#x305F;&#x3081;&#x3001;&#x305D;&#x308C;&#x307B;&#x3069;&#x554F;&#x984C;&#x306B;&#x306A;&#x3089;&#x306A;&#x3044;&#x3068;&#x601D;&#x3063;&#x3066;&#x3044;&#x307E;&#x3057;&#x305F;&#x3002;&#x5B9F;&#x969B;&#x3001;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B5;&#x30A4;&#x30BA;&#x306E;&#x5897;&#x52A0;&#x306F;&#x305D;&#x308C;&#x307B;&#x3069;&#x3067;&#x3082;&#x306A;&#x304F;&#x901F;&#x5EA6;&#x3082;&#xFF08;&#x666E;&#x901A;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306A;&#x3089;&#xFF09;&#x554F;&#x984C;&#x306B;&#x306A;&#x308A;&#x307E;&#x305B;&#x3093;&#x3067;&#x3057;&#x305F;&#x3002;<br>
-&#x3057;&#x304B;&#x3057;&#x3001;Android&#x3067;&#x30B5;&#x30A4;&#x30BA;&#x306E;&#x5927;&#x304D;&#x306A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#x3068;&#x901F;&#x5EA6;&#x306F;&#x5927;&#x304D;&#x304F;&#x843D;&#x3061;&#x307E;&#x3057;&#x305F;&#x3002;Android&#x306E;&#x30C7;&#x30A3;&#x30B9;&#x30AF;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x306F;&#x9045;&#x304B;&#x3063;&#x305F;&#x306E;&#x3067;&#x3059;&#x3002;<br>
-&#x305D;&#x306E;&#x305F;&#x3081;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;2.2.0&#x3067;&#x77ED;&#x7E2E;&#x5F62;&#x3092;&#x8A2D;&#x3051;&#x307E;&#x3057;&#x305F;&#x3002;</p>
-<h2 class="mume-header" id="%E5%B1%A5%E6%AD%B4">&#x5C65;&#x6B74;</h2>
-
+<h3 id="短縮形について">短縮形について </h3>
+<p>もともとタグ名は内部で使っている変数名を元に決めました（kotlinで作っていたため最初が小文字から始まります）。そのため比較的文字数が多くなってしまいました。<br>
+タグ名が多少長くてもCPUは十分速くファイルは圧縮するため、それほど問題にならないと思っていました。実際、ファイルサイズの増加はそれほどでもなく速度も（普通のファイルなら）問題になりませんでした。<br>
+しかし、Androidでサイズの大きなファイルを読み込むと速度は大きく落ちました。Androidのディスクアクセスは遅かったのです。<br>
+そのためバージョン2.2.0で短縮形を設けました。</p>
+<h2 id="履歴">履歴 </h2>
+<p>2024/02/08 2.4.1 Rev.0</p>
+<ul>
+<li>textStyleのflagの値の誤記を修正。</li>
+<li>textStyleのflagにTEXT_SLANT_ONLY_CHARACTERを追加。</li>
+</ul>
+<p>2023/04/28 2.4.0 Rev.2</p>
+<ul>
+<li>用紙名を保存するように変更。用紙の回転フラグ追加。</li>
+</ul>
 <p>2023/04/14 2.4.0 rev1</p>
 <ul>
-<li>Leader&#x306E;&#x4FEE;&#x6B63;</li>
-<li>&#x5BF8;&#x6CD5;&#x5024;&#x306E;&#x5909;&#x66F4;</li>
-<li>&#x3053;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x540D;&#x306E;&#x547D;&#x540D;&#x898F;&#x5247;&#x5909;&#x66F4;&#x3002;</li>
+<li>Leaderの修正</li>
+<li>寸法値の変更</li>
+<li>このファイルのバージョン名の命名規則変更。</li>
 </ul>
 <p>2023/04/12 2.4 rev0</p>
 <ul>
-<li>&#x5F15;&#x51FA;&#x7DDA;&#x306E;&#x4ED5;&#x69D8;&#x5909;&#x66F4;&#x3002;</li>
-<li>&#x534A;&#x5F84;&#x5BF8;&#x6CD5;&#x306E;dimensionLineExtension&#x8AAC;&#x660E;&#x8FFD;&#x52A0;&#x3001;flag&#x8FFD;&#x52A0;&#x3002;</li>
-<li>&#x5BF8;&#x6CD5;&#x7DDA;&#x95A2;&#x4FC2;&#x306E;&#x8AAC;&#x660E;&#x8FFD;&#x52A0;&#x3068;&#x4FEE;&#x6B63;&#x3002;</li>
+<li>引出線の仕様変更。</li>
+<li>半径寸法のdimensionLineExtension説明追加、flag追加。</li>
+<li>寸法線関係の説明追加と修正。</li>
 </ul>
 <p>2023/04/10 rev5</p>
 <ul>
-<li>&#x76F4;&#x5F84;&#x5BF8;&#x6CD5;&#x306E;dimensionLineExtension&#x304C;0&#x306E;&#x5834;&#x5408;&#x306E;&#x51E6;&#x7406;&#x3092;&#x8FFD;&#x52A0;&#x3002;</li>
-<li>leaderStyle&#x306B;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x8FFD;&#x52A0;&#x3002;</li>
+<li>直径寸法のdimensionLineExtensionが0の場合の処理を追加。</li>
+<li>leaderStyleにパラメータ追加。</li>
 </ul>
 <p>2023/04/9 rev4</p>
 <ul>
-<li>&#x5BF8;&#x6CD5;&#x7DDA;&#x3068;&#x89D2;&#x5EA6;&#x5BF8;&#x6CD5;&#x306E;dimensionLineExtension&#x304C;0&#x306E;&#x5834;&#x5408;&#x306E;&#x51E6;&#x7406;&#x3092;&#x8FFD;&#x52A0;&#x3002;</li>
+<li>寸法線と角度寸法のdimensionLineExtensionが0の場合の処理を追加。</li>
 </ul>
 <p>2023/03/23 rev3</p>
 <ul>
-<li>&#x7DDA;&#x7A2E;&#x8FFD;&#x52A0;</li>
+<li>線種追加</li>
 </ul>
 <p>2023/03/23 rev2</p>
 <ul>
-<li>&#x30DE;&#x30AF;&#x30ED;&#x6587;&#x5B57;&#x5217;&#x8FFD;&#x52A0;</li>
+<li>マクロ文字列追加</li>
 </ul>
 <p>2023/03/09</p>
 <ul>
-<li>&#x521D;&#x7248;</li>
+<li>初版</li>
 </ul>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
-<details style="padding:0;;padding-left:0px;" open>
+<details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#precad-file-format-ver-240&#x4ED5;&#x69D8;&#x66F8;-rev1" class="md-toc-link"><p>PreCad file format ver 2.4.0&#x4ED5;&#x69D8;&#x66F8;&#x3000;rev1</p>
+          <a href="#precad-file-format-ver-241仕様書-rev0" class="md-toc-link"><p>PreCad file format ver 2.4.1仕様書　Rev.0</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#precad&#x306E;&#x7279;&#x5FB4;" class="md-toc-link">
-            <p>PreCad&#x306E;&#x7279;&#x5FB4;</p>
+          <a href="#precadの特徴" class="md-toc-link">
+            <p>PreCadの特徴</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x69CB;&#x6210;" class="md-toc-link">
-            <p>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x69CB;&#x6210;</p>
+          <a href="#ファイル構成" class="md-toc-link">
+            <p>ファイル構成</p>
 
-          </a></div><details style="padding:0;;padding-left:24px;" open>
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="md-toc-link"><p>&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</p>
+          <a href="#インデックスファイル" class="md-toc-link"><p>インデックスファイル</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#fileinfo&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;" class="md-toc-link">
-            <p>fileinfo&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</p>
+          <a href="#fileinfoセクション" class="md-toc-link">
+            <p>fileinfoセクション</p>
 
-          </a></div><details style="padding:0;;padding-left:24px;" open>
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#contents&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;" class="md-toc-link"><p>contents&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</p>
+          <a href="#contentsセクション" class="md-toc-link"><p>contentsセクション</p>
 </a>
           </summary>
         <div>
@@ -2282,9 +2063,9 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
           </a></div>
         </div>
       </details>
-    <details style="padding:0;;padding-left:24px;" open>
+    <details style="padding:0;;padding-left:24px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#settings&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;" class="md-toc-link"><p>settings&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</p>
+          <a href="#settingsセクション" class="md-toc-link"><p>settingsセクション</p>
 </a>
           </summary>
         <div>
@@ -2310,19 +2091,19 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
     
         </div>
       </details>
-    <details style="padding:0;;padding-left:24px;" open>
+    <details style="padding:0;;padding-left:24px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#&#x56F3;&#x9762;&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="md-toc-link"><p>&#x56F3;&#x9762;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</p>
+          <a href="#図面ファイル" class="md-toc-link"><p>図面ファイル</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#fileinfo&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;-1" class="md-toc-link">
-            <p>fileinfo&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</p>
+          <a href="#fileinfoセクション-1" class="md-toc-link">
+            <p>fileinfoセクション</p>
 
-          </a></div><details style="padding:0;;padding-left:24px;" open>
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#contents&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;-1" class="md-toc-link"><p>contents&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</p>
+          <a href="#contentsセクション-1" class="md-toc-link"><p>contentsセクション</p>
 </a>
           </summary>
         <div>
@@ -2339,86 +2120,86 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
             <p>shapes</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#&#x56F3;&#x5F62;&#x5171;&#x901A;" class="md-toc-link">
-            <p>&#x56F3;&#x5F62;&#x5171;&#x901A;</p>
+          <a href="#図形共通" class="md-toc-link">
+            <p>図形共通</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#&#x56F3;&#x5F62;&#x5C5E;&#x6027;" class="md-toc-link">
-            <p>&#x56F3;&#x5F62;&#x5C5E;&#x6027;</p>
+          <a href="#図形属性" class="md-toc-link">
+            <p>図形属性</p>
 
-          </a></div><details style="padding:0;;padding-left:24px;" open>
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#&#x56F3;&#x5F62;&#x8981;&#x7D20;" class="md-toc-link"><p>&#x56F3;&#x5F62;&#x8981;&#x7D20;</p>
+          <a href="#図形要素" class="md-toc-link"><p>図形要素</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#line&#x7DDA;" class="md-toc-link">
-            <p>Line&#xFF08;&#x7DDA;&#xFF09;</p>
+          <a href="#line線" class="md-toc-link">
+            <p>Line（線）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#polyline&#x9023;&#x7D9A;&#x7DDA;" class="md-toc-link">
-            <p>Polyline&#xFF08;&#x9023;&#x7D9A;&#x7DDA;&#xFF09;</p>
+          <a href="#polyline連続線" class="md-toc-link">
+            <p>Polyline（連続線）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#spline&#x30B9;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#x66F2;&#x7DDA;" class="md-toc-link">
-            <p>Spline&#xFF08;&#x30B9;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#x66F2;&#x7DDA;&#xFF09;</p>
+          <a href="#splineスプライン曲線" class="md-toc-link">
+            <p>Spline（スプライン曲線）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#bezier&#x30D9;&#x30B8;&#x30A7;&#x66F2;&#x7DDA;" class="md-toc-link">
-            <p>Bezier&#xFF08;&#x30D9;&#x30B8;&#x30A7;&#x66F2;&#x7DDA;&#xFF09;</p>
+          <a href="#bezierベジェ曲線" class="md-toc-link">
+            <p>Bezier（ベジェ曲線）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#circle&#x5186;" class="md-toc-link">
-            <p>Circle&#xFF08;&#x5186;&#xFF09;</p>
+          <a href="#circle円" class="md-toc-link">
+            <p>Circle（円）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#arc&#x5186;&#x5F27;" class="md-toc-link">
-            <p>Arc&#xFF08;&#x5186;&#x5F27;&#xFF09;</p>
+          <a href="#arc円弧" class="md-toc-link">
+            <p>Arc（円弧）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#marker&#x70B9;" class="md-toc-link">
-            <p>Marker&#xFF08;&#x70B9;&#xFF09;</p>
+          <a href="#marker点" class="md-toc-link">
+            <p>Marker（点）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#text&#x6587;&#x5B57;" class="md-toc-link">
-            <p>Text&#xFF08;&#x6587;&#x5B57;&#xFF09;</p>
+          <a href="#text文字" class="md-toc-link">
+            <p>Text（文字）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#dimension&#x76F4;&#x7DDA;&#x5BF8;&#x6CD5;" class="md-toc-link">
-            <p>Dimension&#xFF08;&#x76F4;&#x7DDA;&#x5BF8;&#x6CD5;&#xFF09;</p>
+          <a href="#dimension直線寸法" class="md-toc-link">
+            <p>Dimension（直線寸法）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#radius&#x534A;&#x5F84;&#x5BF8;&#x6CD5;" class="md-toc-link">
-            <p>Radius&#xFF08;&#x534A;&#x5F84;&#x5BF8;&#x6CD5;&#xFF09;</p>
+          <a href="#radius半径寸法" class="md-toc-link">
+            <p>Radius（半径寸法）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#diameter&#x76F4;&#x5F84;&#x5BF8;&#x6CD5;" class="md-toc-link">
-            <p>Diameter&#xFF08;&#x76F4;&#x5F84;&#x5BF8;&#x6CD5;&#xFF09;</p>
+          <a href="#diameter直径寸法" class="md-toc-link">
+            <p>Diameter（直径寸法）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#angle&#x89D2;&#x5EA6;&#x5BF8;&#x6CD5;" class="md-toc-link">
-            <p>Angle&#xFF08;&#x89D2;&#x5EA6;&#x5BF8;&#x6CD5;&#xFF09;</p>
+          <a href="#angle角度寸法" class="md-toc-link">
+            <p>Angle（角度寸法）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#leader&#x5F15;&#x51FA;&#x7DDA;" class="md-toc-link">
-            <p>Leader&#xFF08;&#x5F15;&#x51FA;&#x7DDA;&#xFF09;</p>
+          <a href="#leader引出線" class="md-toc-link">
+            <p>Leader（引出線）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#balloon&#x30D0;&#x30EB;&#x30FC;&#x30F3;" class="md-toc-link">
-            <p>Balloon&#xFF08;&#x30D0;&#x30EB;&#x30FC;&#x30F3;&#xFF09;</p>
+          <a href="#balloonバルーン" class="md-toc-link">
+            <p>Balloon（バルーン）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#group&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x56F3;&#x5F62;" class="md-toc-link">
-            <p>Group&#xFF08;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x56F3;&#x5F62;&#xFF09;</p>
+          <a href="#groupグループ図形" class="md-toc-link">
+            <p>Group（グループ図形）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#path&#x30D1;&#x30B9;&#x56F3;&#x5F62;" class="md-toc-link">
-            <p>Path&#xFF08;&#x30D1;&#x30B9;&#x56F3;&#x5F62;&#xFF09;</p>
+          <a href="#pathパス図形" class="md-toc-link">
+            <p>Path（パス図形）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#image&#x753B;&#x50CF;&#x56F3;&#x5F62;" class="md-toc-link">
-            <p>Image&#xFF08;&#x753B;&#x50CF;&#x56F3;&#x5F62;&#xFF09;</p>
+          <a href="#image画像図形" class="md-toc-link">
+            <p>Image（画像図形）</p>
 
           </a></div>
         </div>
@@ -2426,9 +2207,9 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
     
         </div>
       </details>
-    <details style="padding:0;;padding-left:24px;" open>
+    <details style="padding:0;;padding-left:24px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#settings&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;-1" class="md-toc-link"><p>settings&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</p>
+          <a href="#settingsセクション-1" class="md-toc-link"><p>settingsセクション</p>
 </a>
           </summary>
         <div>
@@ -2446,30 +2227,30 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
     
         </div>
       </details>
-    <details style="padding:0;;padding-left:24px;" open>
+    <details style="padding:0;;padding-left:24px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#&#x88DC;&#x8DB3;" class="md-toc-link"><p>&#x88DC;&#x8DB3;</p>
+          <a href="#補足" class="md-toc-link"><p>補足</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;" class="md-toc-link">
-            <p>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;</p>
+          <a href="#ファイルバージョン" class="md-toc-link">
+            <p>ファイルバージョン</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306B;&#x3088;&#x308B;&#x9055;&#x3044;" class="md-toc-link">
-            <p>&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306B;&#x3088;&#x308B;&#x9055;&#x3044;</p>
+          <a href="#バージョンによる違い" class="md-toc-link">
+            <p>バージョンによる違い</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#&#x77ED;&#x7E2E;&#x5F62;&#x306B;&#x3064;&#x3044;&#x3066;" class="md-toc-link">
-            <p>&#x77ED;&#x7E2E;&#x5F62;&#x306B;&#x3064;&#x3044;&#x3066;</p>
+          <a href="#短縮形について" class="md-toc-link">
+            <p>短縮形について</p>
 
           </a></div>
         </div>
       </details>
     <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#&#x5C65;&#x6B74;" class="md-toc-link">
-            <p>&#x5C65;&#x6B74;</p>
+          <a href="#履歴" class="md-toc-link">
+            <p>履歴</p>
 
           </a></div>
         </div>
@@ -2477,9 +2258,7 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
     
 </div>
 </div>
-      <a id="sidebar-toc-btn">&#x2261;</a>
-    
-    
+      <a id="sidebar-toc-btn">≡</a>
     
     
     

@@ -8,7 +8,7 @@ print_background: false
 title: PreCad file format
 ---
 
-# PreCad file format ver 2.4.0仕様書　rev1
+# PreCad file format ver 2.4.1仕様書　Rev.0
 ## PreCadの特徴
 - PreCadは2DCADです。複数のページを作成することができます。
 - 各ページにはレイヤーの他にシートがあります。シートは縮尺を設定できます。
@@ -80,7 +80,7 @@ contents(
 )
 settings(
  pageIndex(0)
- paper(size(841.0 594.0))
+ paper(name("A3")size(297 210))
  grid(p0(0.0 0.0)spacing(10.0)div(10)isScaled(0)angle(0.0))
  printInfo(printPaperSize(420.0 297.0)printCenter(0.0 0.0)printScale(2.0))
 )
@@ -115,7 +115,7 @@ settings(
 ```
 settings(
  pageIndex(0)   
- paper(size(420 297))
+ paper(name("A3")size(297 210))rotatePaper
  grid(p0(0 0)spacing(10)div(5)isScaled(0)angle(0.0))
  printInfo(printPaperSize(420.0 297.0)printCenter(0.0 0.0)printScale(2.0))
 )
@@ -127,7 +127,23 @@ settings(
 用紙設定。画面上で表示される用紙のサイズで印刷用紙で無いことに注意。
 | 要素 | パラメータ | 説明 |
 |-----|------|-----|
-| size(width height) | width : Double,  height : Double| 用紙サイズ |
+| size(width height) | width : Double,  height : Double| 用紙サイズ。|
+
+PreCadでは以下の用紙リストから用紙を選択する。
+
+用紙名リスト（用紙は横向きが基準）
+|用紙名|サイズ(幅 x 高さ)[mm]|備考|
+|--|--|--|
+|Letter|279 x 216|11 x 8.5 in|
+|A4|297 x 210|  |
+|A3|420 x 297|  |
+|A2|594 x 420|  |
+|A1|841 x 594|  |
+|A0|1189 x 841|  |
+|2A|1682 x 1189|  |
+|3A|2378 x 1682|  |
+|4A|3364 x 2378|  |
+|5A|4756 x 3364|  |
 
 #### grid
 グリッドの設定
@@ -294,7 +310,8 @@ startArrow(size(3)type(1))
 | fontSkewAngle(a)<br>[ fa ] | a : Double | 傾斜角。省略時0 |
 | flag(f)<br>[ f ] | f : Int | フラグ。省略時0 |
 
-- フラグ<br>1:ColorByLayer, 0x2000:縦書き, 0x4000:イタリック, 0x8000:ボールド, 0x10_0000:下線, 0x20_0000:取り消し線, 0x80_0000:（予約：折り返し）
+- フラグ<br>1:ColorByLayer, 0x2_0000:縦書き, 0x4_0000:イタリック, 0x8_0000:ボールド, 0x10_0000:下線, 0x20_0000:取り消し線, 0x80_0000:（予約：折り返し）, 0x100_0000:TEXT_SLANT_ONLY_CHARACTER
+- TEXT_SLANT_ONLY_CHARACTERは、fontSkewAngleで文字のみを傾かせる（背景色を設定すると、背景が長方形になる）。フラグが立っていない場合は、文字列全体を歪ませる（背景色を設定すると、背景が平行四辺形になる。複数行の場合、2行目以降が横にずれる）。
 
 
 <a id="markerStyle"></a>
@@ -710,6 +727,13 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 そのためバージョン2.2.0で短縮形を設けました。
 
 ## 履歴
+2024/02/08 2.4.1 Rev.0
+- textStyleのflagの値の誤記を修正。
+- textStyleのflagにTEXT_SLANT_ONLY_CHARACTERを追加。
+
+2023/04/28 2.4.0 Rev.2
+- 用紙名を保存するように変更。用紙の回転フラグ追加。
+
 2023/04/14 2.4.0 rev1
 - Leaderの修正
 - 寸法値の変更
