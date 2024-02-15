@@ -329,7 +329,7 @@ startArrow(size(3)type(1))
 | ------ | -----|---|
 | asterisk| <center>*</center> |
 | circle| <center>円</center> |
-| dot| <center>点</center> |sizeを使わない。画面ズームしてもサイズは変わらない。|
+| dot| <center>点</center> |オブジェクトのsizeを使わず、すべての点の大きさは共通の設定を使用する。|
 | plus| <center>+</center> |
 | square| <center>四角</center> |
 | triangle| <center>三角形</center> |
