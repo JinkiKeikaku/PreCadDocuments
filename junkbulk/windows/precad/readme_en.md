@@ -61,7 +61,21 @@ However, when I start PreCad, draw a line, and enlarge the screen, I notice that
 So, select Run winconfig in Winetricks and add gdiplus from the libraries inside. This will make the line width normal.
 However, in the native version of gdiplus, if you do not properly specify the Japanese font, Japanese characters will be garbled (Japanese characters will also be garbled with this installer. In Windows, the characters will not be garbled because they will be displayed in an alternative font. The built-in version also doesn't seem to have garbled characters.I think you'll need to edit FontLink in the registry, but that seems difficult).
 If you don't have many Japanese fonts, run `winetricks allfonts` to install them (of course, you can select and install only Japanese fonts instead of all).
-However, PreCad does not embed fonts in files, so if the drawing you open uses fonts that are not installed, this can be a problem. In Windows, the text is readable because an alternative font is set, but in Wine, the text is garbled. Please specify an alternative font in PreCad settings. Now you can read it.
+However, PreCad does not embed fonts in files, so if the drawing you open uses fonts that are not installed, this can be a problem. In Windows, the text is readable because an alternative font is set, but in Wine, the text is garbled. Please specify an alternative font in PreCad option. Now you can read it.
 ## History
+- 2024/2/18 ver. 1.0.2.0
+     - Added Ellipse on 2 lines tool.
+     - Added shear option to select tool.
+     - Added a flag that only slants characters in text style.
+     - You can now change the auxiliary line color.
+     - You can now change the pitch of the dashed line.
+     - The marker dots were constant regardless of the screen magnification, but now they follow the screen magnification like normal markers.
+     - The page number is now displayed in the page list.
+     - Added an option to convert characters when the layer name contains non-ASCII characters when saving in DXF.
+     - Enabled character width and slant angle in the Outline text tool (character spacing cannot be used).
+     - Fixed an issue where the page name in the status bar did not change even if the page name was changed from the list.
+     - Moved some settings dialog items to the view menu, etc.
+     - Fixed an issue where snap settings could not be changed from the menu.
+     - Fixed an issue where bitmaps were being read correctly when loading SakraCad and LilliCad.
 - 2024/1/27 ver. 1.0.1.0
   - First release
