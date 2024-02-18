@@ -45,3 +45,7 @@ PreCad-1.0.1.0.zip (MD5 : c918d3ce6d854ae78295ce1e56c9a92d)
 [Readme](readme_en.html)
 - Manual
 [PreCAD_windows_manual.html](manual/en/PreCAD_windows_manual.html)
+
+
+## 4. Documentation
+- [File format v2.4.0 rev1](download/PreCadFormat_v2_4_0_rev1.html)

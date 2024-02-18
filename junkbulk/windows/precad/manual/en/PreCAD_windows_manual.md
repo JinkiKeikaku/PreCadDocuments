@@ -44,9 +44,136 @@ Use the mouse to draw figures with [DrawTools](#DrawTools). Mouse operations use
 - The cursor will display two coordinate values. The top is relative coordinates from the grid origin, and the bottom is relative coordinates from the anchor. The anchor is the last clicked point or the coordinates determined by the tool. For example, with the arc tool, the center of the circle is the anchor.
 - Coordinate values can be turned on and off from the menu.
 - The cursor is blue when normal, but turns red when snapped. When snapping, a mark indicating the type is displayed on the upper left of the cursor. See [Snap Toolbar](#SnapToolBar) for the marks that are displayed.
-- Cursors include a cross cursor and a full screen cross cursor that draws a line to the edge of the screen. Switch from the settings.
+- There are two types of cursors: a cross cursor and a full screen cross cursor that draws a line to the edge of the screen. Switching is done from the [View Menu](#ViewMenu).
 
 ### 2. Menu
+
+You can execute commands from the top menu. The same commands in the menu (but not all) are also found in the toolbar.
+![menu](./images/menu_0.png)
+#### File
+![file menu](./images/menu_file.png)
+1. New
+There are New file and New file from template.
+Creating a new file from a template creates a new file based on a previously created file.
+2. Open
+A file open dialog opens.
+3. Save
+Save the file. If you do not have a file name yet, a file save dialog will open where you can enter a file name.
+4. Save as
+A file save dialog opens.
+5.Print
+A print dialog opens.
+6. Set print area
+Switches to the print area setting tool. The cursor position becomes the center of the print area. The following options appear in the tool panel:
+![print area setting](./images/print_area_setting.png)
+    1. Adjust the print area to fit the paper and change the magnification.
+    2. Move the print area to the center.
+    3. Print magnification.
+    4. Exit the print area setting tool and return to the previous tool.
+7. Settings
+Configure various settings.
+![setting](./images/setting.png)
+    1. New file setting
+    Set the default paper and scale here when creating a new file.
+    2. Reset toolbar
+    Reset toolbar placement. The toolbar will be reset after restart.
+2. Opened recent
+Recently opened files are displayed and can be selected.
+3. End
+Exit this app.
+
+#### Edit
+![edit menu](./images/menu_edit.png)
+1. Undo
+Undo the previous operation.
+2. Redo
+Redo the undone operation.
+3. Select tool
+This is a tool that selects shapes and moves and transforms them ([See selection tool](#SelectTool)). You can do a lot of things.
+2. Cut
+Cuts the shape selected with the selection tool and copies it to the clipboard.
+3. Copy
+Copies the shape selected with the selection tool to the clipboard.
+1. Copy to clipboard as metafile
+Copies the shape selected with the selection tool as a metafile.
+2. Paste
+Paste shapes from the clipboard. The pasted shape will appear in the center of the editing screen.
+2. Paste selected layer
+Normal pasting pastes to the source layer, but this pastes to the currently selected layer.
+1. Paste special
+Select various formats (such as PNG) from the dialog and paste.
+1. Insert image
+Select the image file and paste it.
+1. Delete
+Deletes the shape selected with the selection tool.
+2. Cancel
+Cancels the operation being edited (same as ESC key).
+3. Find/Replace
+You can search and replace strings.
+
+<a id="ViewMenu"></a>
+#### View
+![view menu](./images/menu_view.png)
+1. Zoom
+The submenus include Zoom in, Zoom out, and Fit to paper.
+2. Status bar
+Show/hide the status bar at the bottom of the screen.
+3. Print area
+Show/hide the print area.
+4. Coordinate values
+Show/hide cursor coordinate values.
+5. Black background
+Switching the background color between white and black. If the background color is black, the line color will switch between white and black.
+6. Full screen cross cursor
+Switch between a cross cursor and a full screen cross cursor that draws a line to the edge of the screen.
+7. Option
+The option settings dialog will be displayed.
+![view option](./images/view_option.png)
+    1. Marker (dot) radius
+Specify the dot radius for the marker type here.
+    1. Auxiliary line color
+    You can change the color of the extension line here. Please note that if you use a color that is close to the background color, it will be difficult to see.
+    2. Dashed line scale
+    You can change the pitch of the dashed line. Please enter a value between 0.5 and 2.0.
+    3. Font
+    Specify here whether to use an alternative font when a font that is not installed on your computer is used.
+    Normally, you don't have to specify it because Windows will process it appropriately, but in Wine, if you do not specify it, garbled characters may occur.
+    4. Background
+    You can paste an image on the background of the editing screen. Enable it and choose your favorite image.
+    Lowering the opacity allows you to see the image clearly through the paper.
+    5. Polylining
+    Here you can set the criteria for dividing circles (including arcs) and spline (Bezier) curves into lines.
+    The number of divisions of a circle has a precision and a maximum number of divisions. A precision of 0 will always divide by the maximum number of divisions. Enter a value of 1/4 for the maximum number of divisions of the circle (the circle will actually be 4 times this value).
+    These values are also used to detect intersections when hatching, so making them too rough will affect the calculation results.
+    Also, setting a finer value will affect the amount of data and processing time after conversion, so please set an appropriate value.
+
+#### Tool
+![tool menu](./images/tool_menu.png)
+You can select [DrawTools](#DrawTools) from here.
+
+#### Style
+![style menu](./images/style_menu.png)
+You can set the style of the shape from here. The same items are also available in the toolbar, so please refer to the toolbar for details.
+
+#### Snap
+![style menu](./images/snap_menu.png)
+Snap settings (see [Snap Toolbar](#SnapToolBar)).
+
+#### Drawing
+![drawing menu](./images/drawing_menu.png)
+You can set layers, sheets, and pages, but I think the [Document Panel] (#DocumentPanel) and [Status Bar] (#StatusBar) are easier to use.
+
+#### Help
+![help menu](./images/help_menu.png)
+1. Manual
+The manual will open.
+2. About PreCad
+PreCad information will be displayed.
+3. Send feedback
+If you have any questions for the author, please ask them here. A mailer will open with the author's contact information in the recipient and the app name and version in the subject, so please write the text.
+4. Plugin information
+Many of PreCad's features are made up of plugins. That information will be displayed.
+
 
 ### 3. Toolbar
 
@@ -116,11 +243,24 @@ Cancels the editing operation (same as ESC key).
 4. Bold
 5. Italics
 6. Underlining
-7. Settings
-   The text style settings dialog will open. You can set the character spacing, etc.
-8. Align Left
-9. Central
-10. Right justification
+7. Strikeout
+8. Settings
+A settings window will open where you can configure other font settings.
+![text style option](./images/text_style_option.png)
+    1. Font width scale
+    Character width expansion rate.
+    2. Font space
+    Space between letters.
+    3. Font slant angle
+    The slant angle of the characters. The direction tilting to the right is positive.
+    4. Slant only character
+    If checked, each character will be slanted and the background frame will not be slanted. In the figure below, 1 is unchecked and 2 is checked.
+   ![text slant mode](./images/text_slant_mode.png)
+9. Align Left
+10. Central
+11. Right justification
+12. Setting dimension line, etc.
+From here you can set dimension line, leader, marker, etc.
 
 #### Zoom Toolbar
 
@@ -165,10 +305,12 @@ If checked, the cursor position is fixed when approaching the end point of the f
 grid spacing.
 2. Number of grid divisions
 Number of subgrid divisions.
-3. Scale effective
-If checked, the grid spacing will be a real number.
-4. Grid angle
+3. Grid angle
 You can give the grid a tilt angle.
+4. Scale effective
+If checked, the grid spacing will be a real number.
+5.Type
+Grid type. You can choose straight line or +.
 5. Snap angle
 Set the angle of the angle snap here.
 
@@ -1068,6 +1210,16 @@ Performs horizontally reversed copy and skew correction.
    - Horizontal Rotate so that the reference line is horizontal. Used for tilt correction.
    - Vertical Rotate so that the reference line is vertical. Used for tilt correction.
 
+#### Cross copy ![](./images/ic_tool_crosscopy_16.png)
+Place the copied shape at the intersection of the shapes.
+1. Select the shape and end the selection with the right button. The reference point is the point where you pressed the right button.
+2. Select the shapes where you want to find the intersection. Press the right button to complete the selection and copy.
+
+#### Evenly copy ![](./images/ic_tool_evenlycopy_16.png)
+Duplicate shapes evenly spaced between them. Applies to straight lines, circles, and arcs.
+If the target shape is a straight line, you can select from the options whether to divide the interval equally or divide the angle equally.
+1. Select two shapes to copy. The second shape selected must be the same as the first shape.
+
 ### Measurement Category
 
 #### Measurement (line) ![](./images/ic_tool_measure_16.png)
@@ -1130,3 +1282,21 @@ Create a hatch. Hatching becomes a group entity.
    angle of hatching
 - interval
    2 or 3 hatch style lines and line spacing
+
+#### Coordinate file ![](./images/ic_tool_measurecoordinate.png)
+When you load a coordinate file, this tool draws a shape connecting the coordinates with a line with the cursor position as the origin.
+A coordinate file consists of XY coordinates separated by spaces on each line.
+For details, please see the sample file that can be loaded from the options.
+
+#### Script ![](./images/ic_tool_script.png)
+You can load and use Jw_cad line symbol files.
+##### Options
+![script tool options](./images/scriptingtool_option.png)
+1. Open file button
+Clicking it will display a file open dialog.
+2. The opened file name will be displayed.
+3. Title
+4. When you open a file, an icon will appear that you can select to perform its function.
+  
+#### Milling G-Code (experimental) ![](./images/ic_tool_millinggcode_16.png)
+Create G-code for tabletop CNC milling plane cutting. I currently don't have a chance to test it on an actual machine, so I'm only checking it on a simulator.   
