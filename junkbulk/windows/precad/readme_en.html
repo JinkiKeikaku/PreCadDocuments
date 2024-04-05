@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="file:///c:\Users\yama\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.11\crossnote\dependencies\katex\katex.min.css">
+      <link rel="stylesheet" href="file:///c:\Users\yama\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.13\crossnote\dependencies\katex\katex.min.css">
       
       
       
@@ -93,7 +93,21 @@ If you don't have many Japanese fonts, run <code>winetricks allfonts</code> to i
 However, PreCad does not embed fonts in files, so if the drawing you open uses fonts that are not installed, this can be a problem. In Windows, the text is readable because an alternative font is set, but in Wine, the text is garbled. Please specify an alternative font in PreCad option. Now you can read it.</p>
 <h2 id="history">History </h2>
 <ul>
-<li>2024/2/18 ver. 1.0.2.0
+<li>
+<p>2024/3/20 ver. 1.0.3.0</p>
+<ul>
+<li>Supports Bezier curve and spline curve with offset tool.</li>
+<li>Added ellipse options to maintain flatness and convert to Bezier curve in the offset tool.</li>
+<li>Changed polyline offset algorithm.</li>
+<li>Cut line tool now supports Bezier curve and spline curve.</li>
+<li>Added clipping function to cut line tool.</li>
+<li>Fixed an issue where the text became dirty when saving as PNG or copying PNG to the clipboard.</li>
+<li>Supports pasting with DIB.</li>
+<li>Unnecessary files were copied to the plugin's ja folder, so they were deleted.</li>
+</ul>
+</li>
+<li>
+<p>2024/2/18 ver. 1.0.2.0</p>
 <ul>
 <li>Added Ellipse on 2 lines tool.</li>
 <li>Added shear option to select tool.</li>
@@ -110,7 +124,8 @@ However, PreCad does not embed fonts in files, so if the drawing you open uses f
 <li>Fixed an issue where bitmaps were being read correctly when loading SakraCad and LilliCad.</li>
 </ul>
 </li>
-<li>2024/1/27 ver. 1.0.1.0
+<li>
+<p>2024/1/27 ver. 1.0.1.0</p>
 <ul>
 <li>First release</li>
 </ul>
