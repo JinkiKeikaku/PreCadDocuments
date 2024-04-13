@@ -64,6 +64,28 @@ If you don't have many Japanese fonts, run `winetricks allfonts` to install them
 However, PreCad does not embed fonts in files, so if the drawing you open uses fonts that are not installed, this can be a problem. In Windows, the text is readable because an alternative font is set, but in Wine, the text is garbled. Please specify an alternative font in PreCad option. Now you can read it.
 
 ## History
+
+- 2024/4/13 ver. 1.0.5.0
+    - Added line connectivity check tool.
+    - Supported layer and sheet copy.
+    - Added page copy to menu.
+    - Changed UNDO algorithm for layers and sheets.
+    - Changed offset algorithm for straight line part of Bezier curve.
+    - Supported path shape offset.
+    - When a path shape is ungrouped, it is now decomposed into Bezier curves.
+    - Added "Below line" to the options of the text on line tool.
+    - Fixed an issue where various settings popups in the status bar could not be used.
+    - Changed the displayed line width when selecting lines.
+    - Added strings for tooltips, etc.
+
+- 2024/4/07 ver. 1.0.4.1
+    - Fixed an issue where lines were sometimes dirty depending on the resolution.
+    - Changed Bezier curve offset algorithm.
+    - Improved calculation speed of intersection points between Bezier curves.
+    - Fixed an issue where the direction of the leader line was incorrect when selecting an ellipse with the line dimension tool.
+    - Add favorite tools and recently used tools.
+    - The font size of the cursor coordinate display can now be changed.
+
 - 2024/3/20 ver. 1.0.3.0
      - Supports Bezier curve and spline curve with offset tool.
      - Added ellipse options to maintain flatness and convert to Bezier curve in the offset tool.
