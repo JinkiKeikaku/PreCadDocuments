@@ -65,18 +65,35 @@ However, PreCad does not embed fonts in files, so if the drawing you open uses f
 
 ## History
 
-- 2024/4/13 ver. 1.0.5.0
+- 2024/4/23 ver. 1.0.6.2
+    - Fixed that files could not be saved correctly in areas where the decimal point was a comma.
+    - Changed to reuse objects used for file save/read plugins.
+    - Added ViewBox get button to SVG save.
+  
+- 2024/4/21 ver. 1.0.6.1
+    - Added snap pause.
+    - Changed so that the effective snap radius can be set.
+    - Changed snap algorithm.
+    - Added option to output layers and sheets as a group when saving SVG.
+    - Fixed a problem with the conversion of arrows when dividing polylines.
+    - Fixed a problem with the tangent to the circle.
+    - Fixed a problem with the proximity points of Bezier and splines.
+
+- 2024/4/14 ver. 1.0.5.0
     - Added line connectivity check tool.
-    - Supported layer and sheet copy.
-    - Added page copy to menu.
+    - Added "Below line" to the options of the text on line tool.
+    - Supported duplicate layer and sheet.
+    - Added duplicate page to menu.
     - Changed UNDO algorithm for layers and sheets.
     - Changed offset algorithm for straight line part of Bezier curve.
     - Supported path shape offset.
     - When a path shape is ungrouped, it is now decomposed into Bezier curves.
-    - Added "Below line" to the options of the text on line tool.
     - Fixed an issue where various settings popups in the status bar could not be used.
+    - Fixed a bug in turning spline to polyline.
     - Changed the displayed line width when selecting lines.
     - Added strings for tooltips, etc.
+    - Changed the initial value of grid division to 1. 
+    - Document control tabs are now switched when adding/deleting layers, sheets, or pages.
 
 - 2024/4/07 ver. 1.0.4.1
     - Fixed an issue where lines were sometimes dirty depending on the resolution.

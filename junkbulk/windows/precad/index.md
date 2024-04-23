@@ -35,11 +35,23 @@ title: PreCad for Windows
 </a>
 
 ## 2. Download
+- PreCad ver1.0.6.2
+PreCad-1.0.6.2.zip (MD5 : 5acbd4f22ff5fb1ed9c95a97f8b0ae15)
+[ダウンロード](download/PreCad-1.0.6.2.zip)  (2689KB)
+
+
+- PreCad ver1.0.6.1
+PreCad-1.0.6.1.zip (MD5 : ded6ec261442c34140770de51f8e4812)
+[ダウンロード](download/PreCad-1.0.6.1.zip)  (2687KB)
+
+- PreCad ver1.0.5.0
+PreCad-1.0.5.0.zip (MD5 : 0e977855c5c82ccf6653c8eabf9654a4)
+[ダウンロード](download/PreCad-1.0.5.0.zip)  (2685KB)
+[ベクターからダウンロード](https://www.vector.co.jp/soft/dl/winnt/business/se526259.html)
 
 - PreCad ver1.0.4.1
 PreCad-1.0.4.1.zip (MD5 : dad675c3e0a6aab9f5eda0e7060d3fa5)
 [ダウンロード](download/PreCad-1.0.4.1.zip)  (2675KB)
-[ベクターからダウンロード](https://www.vector.co.jp/soft/dl/winnt/business/se526259.html)
 
 - PreCad ver1.0.3.0
 PreCad-1.0.3.0.zip (MD5 : 10169aa30eff6e1dd817106426faacec)
