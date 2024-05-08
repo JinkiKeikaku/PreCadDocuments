@@ -64,6 +64,10 @@ If you don't have many Japanese fonts, run `winetricks allfonts` to install them
 However, PreCad does not embed fonts in files, so if the drawing you open uses fonts that are not installed, this can be a problem. In Windows, the text is readable because an alternative font is set, but in Wine, the text is garbled. Please specify an alternative font in PreCad option. Now you can read it.
 
 ## History
+- 2024/5/08 ver. 1.1.0.1
+    - Fixed an issue that snapping could be done to invisible shapes when the sheet was invisible.
+
+
 - 2024/5/07 ver. 1.1.0.0
     - Added the function to register keyboard shortcuts (as a side effect of keyboard shortcuts, favorite tools registered in previous versions will be cleared).
     - Changed that hidden layers/sheets are not displayed even when selected.
