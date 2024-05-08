@@ -36,6 +36,10 @@ title: PreCad for Windows
 
 ## 2. Download
 
+- PreCad ver1.1.0.0
+PreCad-1.1.0.0.zip (MD5 : 222f820deecc1864a499fc43731f28d5)
+[Download](download/PreCad-1.1.0.0.zip)  (2701KB)
+
 - PreCad ver1.0.6.2
 PreCad-1.0.6.2.zip (MD5 : 5acbd4f22ff5fb1ed9c95a97f8b0ae15)
 [Download](download/PreCad-1.0.6.2.zip)  (2689KB)

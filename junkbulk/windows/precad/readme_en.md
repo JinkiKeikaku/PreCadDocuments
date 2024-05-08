@@ -64,6 +64,16 @@ If you don't have many Japanese fonts, run `winetricks allfonts` to install them
 However, PreCad does not embed fonts in files, so if the drawing you open uses fonts that are not installed, this can be a problem. In Windows, the text is readable because an alternative font is set, but in Wine, the text is garbled. Please specify an alternative font in PreCad option. Now you can read it.
 
 ## History
+- 2024/5/07 ver. 1.1.0.0
+    - Added the function to register keyboard shortcuts (as a side effect of keyboard shortcuts, favorite tools registered in previous versions will be cleared).
+    - Changed that hidden layers/sheets are not displayed even when selected.
+    - Added zoom to shapes display range.
+    - Changed to open the calculator by pressing the space key in the numerical input area.
+    - Changed the calculator button to be able to push from the keyboard's numeric keypad. However, ± is the TAB key. Equals is enter, and pressing enter again will make it OK.
+    - Added the function to change the orientation using the CTRL key in the horizontal/vertical mode of the dimension line tool.
+    - Supported dashed lines when saving SVG.
+    - Fixed an issue where changing layer colors etc. after loading a file was not reflected immediately.
+    - Fixed the issue where the Japanese manual could not be opened. However, the contents of the manual remain outdated.But the tooltips have been updated, so please refer to them.
 
 - 2024/4/23 ver. 1.0.6.2
     - Fixed that files could not be saved correctly in areas where the decimal point was a comma.
