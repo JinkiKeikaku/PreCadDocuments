@@ -65,6 +65,15 @@ However, PreCad does not embed fonts in files, so if the drawing you open uses f
 
 ## History
 
+- 2024/5/20 ver. 1.1.1.1
+   - Fixed an issue where main menu favorite tools and recent tools could not be used. 
+   - Changed that can snap to cross points within group shape.
+   - Manual updated.
+
+- 2024/5/17 ver. 1.1.1.0
+    - Fixed the free hand tool crashing.
+    - Changed that shortcuts can also be set for tools.
+
 - 2024/5/10 ver. 1.1.0.2
     - Fixed the grid origin setting button not working.
     - Changed to display a message on the screen when saving is completed.

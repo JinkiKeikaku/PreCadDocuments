@@ -106,6 +106,12 @@ Select various formats (such as PNG) from the dialog and paste.
 Select the image file and paste it.
 1. Delete
 Deletes the shape selected with the selection tool.
+1. Set
+Click again where you last clicked with the mouse. When you select this item from the right button menu, this is the position where you clicked the right button.
+1. Offset
+A dialog opens and if you enter a numerical value for the offset value, you will click the coordinates that are offset by the offset value from the position you last clicked with the mouse. When you select this item from the right button menu, the position where you click the right button becomes the reference.
+1. Mid point
+The click position is the midpoint between the last mouse click and the next mouse click. When you select this item from the right button menu, the starting point will be the position where you clicked the right button.
 2. Cancel
 Cancels the operation being edited (same as ESC key).
 3. Find/Replace
@@ -115,7 +121,7 @@ You can search and replace strings.
 #### View
 ![view menu](./images/menu_view.png)
 1. Zoom
-The submenus include Zoom in, Zoom out, and Fit to paper.
+The submenus include Zoom in, Zoom out, Fit to paper, and Zoom shapes.
 2. Status bar
 Show/hide the status bar at the bottom of the screen.
 3. Print area
@@ -149,7 +155,29 @@ Specify the dot radius for the marker type here.
 
 #### Tool
 ![tool menu](./images/tool_menu.png)
-You can select [DrawTools](#DrawTools) from here.
+1. Favorite tools
+You can register frequently used tools and access them from here. Registration is done through customize.
+2. Recent tools
+You can access recently used tools here.
+3. Tools
+You can access tools by category. For details, see [Tool Panel](#ToolPanel).
+1. Customize
+Register your favorite tools here.
+![customize](./images/customize.png)
+The tools list is on the left, and the favorites list is on the right.
+Select the tool you want to add to your favorites from the tool list, and add it to your favorites list using the button (1).
+Button (2) deletes the tool selected in the favorites list from the list.
+If you check (3), even if you use a tool in your favorites list, it will not be added to recent tools.
+
+1. Shortcuts
+Customize your shortcuts here.
+![shortcut](./images/shortcut.png)
+Switch the shortcut scope from (1). There are scopes for each tool (not all tools) and "Main". The main scope is the common shortcuts in the app. Tool shortcuts are valid only when that tool is selected.
+Shortcuts cannot assign the same key to different commands. However, the same keys may be assigned between tools.
+The shortcut for the item selected in the list above will be displayed in the combo box (2). You can delete it using the delete button.
+Enter the shortcut in the text box (3). For shortcuts, you can use the combination of each key and Shift and Ctrl (Alt key cannot be used because it overlaps with the menu). After entering the shortcut, press the Add button to add it. If you check "Warn when overwritten", a warning will be displayed if the same key is already used.
+(4) Reset all shortcuts to their initial values.
+(5) "Save" and "Load" save and load the shortcut settings to a file.
 
 #### Style
 ![style menu](./images/style_menu.png)
@@ -231,7 +259,7 @@ Cancels the editing operation (same as ESC key).
 1. Face color
    Select a face color. [L] uses [Layer Color](#LayerStyle).
 
-#### Character Style Toolbar
+#### Text Style Toolbar
 
 ![text style toolbar](./images/texttoolbar.png)
 
@@ -266,9 +294,10 @@ From here you can set dimension line, leader, marker, etc.
 
 ![zoom toolbar](./images/zoomtoolbar.png)
 
-1. Expand
-1. Shrink
-1. View the entire sheet.
+1. Zoom in
+1. Zoom out
+1. View the entire paper.
+2. Zoom area of shapes
 
 
 <a id="SnapToolBar"></a>
@@ -277,19 +306,19 @@ From here you can set dimension line, leader, marker, etc.
 ![snap toolbar](./images/snaptoolbar.png)
 
 If checked, the cursor position is fixed when approaching the end point of the figure.
-1. Endpoint
+1. Vertex
    Line endpoints, polygon vertices, etc. A "V" appears on the cursor when snapping.
 1. Midpoint
    Midpoint of a line, 1/4 point of a circle, etc. When snapping, an "M" appears on the cursor.
-1. center
+1. Center
    such as the center of a circle. A "C" appears on the cursor when snapped.
-1. intersection
+1. Cross
    The intersection of lines on the same layer. An "X" appears on the cursor.
-1. on the line
+1. On the line
    Snap on line. "L" is displayed on the cursor.
 1. Orthogonal
    A point perpendicular to a line or circle. A "P" appears on the cursor.
-1. Contact
+1. Tangential
    A point tangent to a circle. A "T" appears on the cursor.
 1. Angle
    The cursor position is constrained for each angle. "A" and the angle are displayed on the snap cursor.
@@ -297,7 +326,9 @@ If checked, the cursor position is fixed when approaching the end point of the f
    A grid appears and snaps when the cursor is close to it. "G" is displayed on the snap cursor.
 1. Grid origin setting
    The grid origin specification mode is entered. Click the mouse at the position where you want to specify the origin on the editing screen.
-1. Snap settings
+1. Pause snap
+   Temporarily stop all snaps.
+2. Snap settings
    The Snap Settings dialog will open. You can set the number of grid divisions and angle snap angle.
 
 ![grid settings](./images/snap_grid_setting.png)
@@ -307,16 +338,30 @@ grid spacing.
 Number of subgrid divisions.
 3. Grid angle
 You can give the grid a tilt angle.
-4. Scale effective
+1. Force snap to grid
+If checked, it will always snap to the grid when there is no other point to snap to.
+4. Scaled
 If checked, the grid spacing will be a real number.
 5.Type
 Grid type. You can choose straight line or +.
 5. Snap angle
 Set the angle of the angle snap here.
+1. Effective snap radius
+The distance from the mouse cursor position to search for the snap point.
 
+
+<a id="ToolPanel"></a>
 ### 4. Tools panel
-Select [Draw Tools](#DrawTools) from here. The tools are divided into categories. The categories are "Line", "Circle", "Text", "Dimension", "Transform", "Copy", "Measure", and "Other".
-If you press the displayed icon, the tool of that icon will be selected. Press the triangle button next to the icon to display the list of tools included in the category.
+![tool panel](./images/tool_panel.png)
+Select [DrawTools](#DrawTools) from here.
+There are tools, favorite, and recent tabs.
+1. Tools tab
+Select a tool from the category. The categories are "Line", "Circle", "Text", "Dimension", "Transform", "Copy", "Measure", and "Other".
+If you press the displayed icon, the tool with that icon will be selected. When you press the triangle button next to the icon, a list of tools included in the category will be displayed, so please select it.
+2. Favorite
+You can register frequently used tools and access them from here. Registration can be done from "Customize" in the "Tool" menu.
+3.Recent
+Displays recently used tools.
 
 ### 5. Tool Options Panel
 This panel is for entering numerical values such as the length and angle that can be set with the [Drawing Tools](#DrawTools).
