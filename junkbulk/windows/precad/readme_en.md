@@ -65,6 +65,9 @@ However, PreCad does not embed fonts in files, so if the drawing you open uses f
 
 ## History
 
+- 2024/6/21 ver. 1.1.1.2
+    - Fixed a bug in the circle tangent to three circles and the circle tangent to a line and two circles.
+
 - 2024/5/20 ver. 1.1.1.1
    - Fixed an issue where main menu favorite tools and recent tools could not be used. 
    - Changed that can snap to cross points within group shape.
