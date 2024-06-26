@@ -65,6 +65,10 @@ However, PreCad does not embed fonts in files, so if the drawing you open uses f
 
 ## History
 
+- 2024/6/26 ver. 1.1.1.3
+    - Changed the line erase tool to search for intersections across all layers.
+    - Changed the jww file reader to be able to import old formats (file versions 2.2.3 and later).
+
 - 2024/6/21 ver. 1.1.1.2
     - Fixed a bug in the circle tangent to three circles and the circle tangent to a line and two circles.
 
