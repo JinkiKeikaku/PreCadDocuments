@@ -65,6 +65,20 @@ However, PreCad does not embed fonts in files, so if the drawing you open uses f
 
 ## History
 
+- 2024/7/28 ver. 1.2.1.1
+    - Fixed a bug where the toolbar line color was not displayed correctly at startup.
+
+- 2024/7/28 ver. 1.2.1.0
+    - Fixed a bug in the line erase tool.
+    - Changed the timing for deselecting in the select tool.
+
+- 2024/7/21 ver. 1.2.0.0
+    - Added line intersection select mode to the line erase tool and line extension tool.
+    - Added the option of how to place the background image.
+    - Added wiring tool.
+    - Changed the text search dialog modeless.
+    - Changed how to handle cases where there is no solution for 3-point circle and 3-point arc.
+
 - 2024/6/26 ver. 1.1.1.3
     - Changed the line erase tool to search for intersections across all layers.
     - Changed the jww file reader to be able to import old formats (file versions 2.2.3 and later).

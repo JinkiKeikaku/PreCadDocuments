@@ -10,6 +10,8 @@ SakraCadはWindows用の2DCADです。特徴は、
 - Windows10
 ## <P style="BACKGROUND-COLOR: gainsboro">Download</P>
 ### SakraCad
+[skc095e.zip](download/skc095e.zip)(ver0.9.5e 3564KB) 2024/06/28
+- jwwファイルのバージョン2.23以降の読み込みに対応しました。
 
 [skc095d.zip](download/skc095d.zip)(ver0.9.5d 3.39MB) 2023/03/13
 - SFC読み込みで外部定義ハッチング(externally_defined_hatch_feature)があると読み込めなかったので修正しました（外部定義ハッチングのハッチ名の情報がないので無視します）。

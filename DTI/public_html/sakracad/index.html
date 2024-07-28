@@ -3,346 +3,105 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="file:///c:\Users\yama\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.6.8\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
-      
-      
-      
-      
+      <link rel="stylesheet" href="file:///c:\Users\yama\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.13\crossnote\dependencies\katex\katex.min.css">
       
       
       
       
       
       <style>
-      /**
- * prism.js Github theme based on GitHub's theme.
- * @author Sam Clarke
- */
-code[class*="language-"],
-pre[class*="language-"] {
-  color: #333;
-  background: none;
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  word-wrap: normal;
-  line-height: 1.4;
-
-  -moz-tab-size: 8;
-  -o-tab-size: 8;
-  tab-size: 8;
-
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
-}
-
-/* Code blocks */
-pre[class*="language-"] {
-  padding: .8em;
-  overflow: auto;
-  /* border: 1px solid #ddd; */
-  border-radius: 3px;
-  /* background: #fff; */
-  background: #f5f5f5;
-}
-
-/* Inline code */
-:not(pre) > code[class*="language-"] {
-  padding: .1em;
-  border-radius: .3em;
-  white-space: normal;
-  background: #f5f5f5;
-}
-
-.token.comment,
-.token.blockquote {
-  color: #969896;
-}
-
-.token.cdata {
-  color: #183691;
-}
-
-.token.doctype,
-.token.punctuation,
-.token.variable,
-.token.macro.property {
-  color: #333;
-}
-
-.token.operator,
-.token.important,
-.token.keyword,
-.token.rule,
-.token.builtin {
-  color: #a71d5d;
-}
-
-.token.string,
-.token.url,
-.token.regex,
-.token.attr-value {
-  color: #183691;
-}
-
-.token.property,
-.token.number,
-.token.boolean,
-.token.entity,
-.token.atrule,
-.token.constant,
-.token.symbol,
-.token.command,
-.token.code {
-  color: #0086b3;
-}
-
-.token.tag,
-.token.selector,
-.token.prolog {
-  color: #63a35c;
-}
-
-.token.function,
-.token.namespace,
-.token.pseudo-element,
-.token.class,
-.token.class-name,
-.token.pseudo-class,
-.token.id,
-.token.url-reference .token.variable,
-.token.attr-name {
-  color: #795da3;
-}
-
-.token.entity {
-  cursor: help;
-}
-
-.token.title,
-.token.title .token.punctuation {
-  font-weight: bold;
-  color: #1d3e81;
-}
-
-.token.list {
-  color: #ed6a43;
-}
-
-.token.inserted {
-  background-color: #eaffea;
-  color: #55a532;
-}
-
-.token.deleted {
-  background-color: #ffecec;
-  color: #bd2c00;
-}
-
-.token.bold {
-  font-weight: bold;
-}
-
-.token.italic {
-  font-style: italic;
-}
-
-
-/* JSON */
-.language-json .token.property {
-  color: #183691;
-}
-
-.language-markup .token.tag .token.punctuation {
-  color: #333;
-}
-
-/* CSS */
-code.language-css,
-.language-css .token.function {
-  color: #0086b3;
-}
-
-/* YAML */
-.language-yaml .token.atrule {
-  color: #63a35c;
-}
-
-code.language-yaml {
-  color: #183691;
-}
-
-/* Ruby */
-.language-ruby .token.function {
-  color: #333;
-}
-
-/* Markdown */
-.language-markdown .token.url {
-  color: #795da3;
-}
-
-/* Makefile */
-.language-makefile .token.symbol {
-  color: #795da3;
-}
-
-.language-makefile .token.variable {
-  color: #183691;
-}
-
-.language-makefile .token.builtin {
-  color: #0086b3;
-}
-
-/* Bash */
-.language-bash .token.keyword {
-  color: #0086b3;
-}
-
-/* highlight */
-pre[data-line] {
-  position: relative;
-  padding: 1em 0 1em 3em;
-}
-pre[data-line] .line-highlight-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: transparent;
-  display: block;
-  width: 100%;
-}
-
-pre[data-line] .line-highlight {
-  position: absolute;
-  left: 0;
-  right: 0;
-  padding: inherit 0;
-  margin-top: 1em;
-  background: hsla(24, 20%, 50%,.08);
-  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
-  pointer-events: none;
-  line-height: inherit;
-  white-space: pre;
-}
-
-pre[data-line] .line-highlight:before, 
-pre[data-line] .line-highlight[data-end]:after {
-  content: attr(data-start);
-  position: absolute;
-  top: .4em;
-  left: .6em;
-  min-width: 1em;
-  padding: 0 .5em;
-  background-color: hsla(24, 20%, 50%,.4);
-  color: hsl(24, 20%, 95%);
-  font: bold 65%/1.5 sans-serif;
-  text-align: center;
-  vertical-align: .3em;
-  border-radius: 999px;
-  text-shadow: none;
-  box-shadow: 0 1px white;
-}
-
-pre[data-line] .line-highlight[data-end]:after {
-  content: attr(data-end);
-  top: auto;
-  bottom: .4em;
-}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p,html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  300px/2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
 /* Please visit the URL below for more information: */
 /*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
 
       </style>
-    </head>
-    <body for="html-export">
-      <div class="mume markdown-preview  ">
-      <h1 class="mume-header" id="div-styletext-align-centersakracaddiv"><div style="text-align: center;">SakraCad</div></h1>
-
-<h2 class="mume-header" id="p-stylebackground-color-gainsborosakracadp"><p style="BACKGROUND-COLOR: gainsboro">SakraCad</p></h2>
-
-<p>SakraCad&#x306F;Windows&#x7528;&#x306E;2DCAD&#x3067;&#x3059;&#x3002;&#x7279;&#x5FB4;&#x306F;&#x3001;</p>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="div-styletext-align-centersakracaddiv"><div style="text-align: center;">SakraCad</div> </h1>
+<h2 id="p-stylebackground-color-gainsborosakracadp"><p style="BACKGROUND-COLOR: gainsboro">SakraCad</p> </h2>
+<p>SakraCadはWindows用の2DCADです。特徴は、</p>
 <ul>
-<li>&#x8907;&#x6570;&#x30DA;&#x30FC;&#x30B8;&#x3092;&#x6301;&#x3064;&#x3053;&#x3068;&#x306E;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</li>
-<li>&#x5404;&#x30DA;&#x30FC;&#x30B8;&#x306B;&#x306F;&#x30EC;&#x30A4;&#x30E4;&#x30FC;&#x3068;&#x306F;&#x5225;&#x306B;&#x30B7;&#x30FC;&#x30C8;&#x3092;&#x4F5C;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x3001;&#x5404;&#x30B7;&#x30FC;&#x30C8;&#x306B;&#x306F;&#x500B;&#x5225;&#x306B;&#x7E2E;&#x5C3A;&#x3092;&#x6301;&#x305F;&#x305B;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</li>
-<li>DXF, JWW, JWC, LCD, SFC&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x3068;&#x4FDD;&#x5B58;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#xFF08;&#x4E00;&#x90E8;&#x5236;&#x7D04;&#x3042;&#x308A;&#xFF09;&#x3002;</li>
-<li>&#x591A;&#x304F;&#x306E;&#x6A5F;&#x80FD;&#x306F;&#x30D7;&#x30E9;&#x30B0;&#x30A4;&#x30F3;&#x3068;&#x3057;&#x3066;&#x5B9F;&#x88C5;&#x3055;&#x308C;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;</li>
+<li>複数ページを持つことのできます。</li>
+<li>各ページにはレイヤーとは別にシートを作ることができ、各シートには個別に縮尺を持たせることができます。</li>
+<li>DXF, JWW, JWC, LCD, SFCのファイルの読み込みと保存ができます（一部制約あり）。</li>
+<li>多くの機能はプラグインとして実装されています。</li>
 </ul>
-<h2 class="mume-header" id="p-stylebackground-color-gainsboro%E5%8B%95%E4%BD%9C%E7%92%B0%E5%A2%83p"><p style="BACKGROUND-COLOR: gainsboro">&#x52D5;&#x4F5C;&#x74B0;&#x5883;</p></h2>
-
+<h2 id="p-stylebackground-color-gainsboro動作環境p"><p style="BACKGROUND-COLOR: gainsboro">動作環境</p> </h2>
 <ul>
 <li>Windows8.1</li>
 <li>Windows10</li>
 </ul>
-<h2 class="mume-header" id="p-stylebackground-color-gainsborodownloadp"><p style="BACKGROUND-COLOR: gainsboro">Download</p></h2>
-
-<h3 class="mume-header" id="sakracad">SakraCad</h3>
-
+<h2 id="p-stylebackground-color-gainsborodownloadp"><p style="BACKGROUND-COLOR: gainsboro">Download</p> </h2>
+<h3 id="sakracad">SakraCad </h3>
+<p><a href="download/skc095e.zip">skc095e.zip</a>(ver0.9.5e 3564KB) 2024/06/28</p>
+<ul>
+<li>jwwファイルのバージョン2.23以降の読み込みに対応しました。</li>
+</ul>
 <p><a href="download/skc095d.zip">skc095d.zip</a>(ver0.9.5d 3.39MB) 2023/03/13</p>
 <ul>
-<li>SFC&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x3067;&#x5916;&#x90E8;&#x5B9A;&#x7FA9;&#x30CF;&#x30C3;&#x30C1;&#x30F3;&#x30B0;(externally_defined_hatch_feature)&#x304C;&#x3042;&#x308B;&#x3068;&#x8AAD;&#x307F;&#x8FBC;&#x3081;&#x306A;&#x304B;&#x3063;&#x305F;&#x306E;&#x3067;&#x4FEE;&#x6B63;&#x3057;&#x307E;&#x3057;&#x305F;&#xFF08;&#x5916;&#x90E8;&#x5B9A;&#x7FA9;&#x30CF;&#x30C3;&#x30C1;&#x30F3;&#x30B0;&#x306E;&#x30CF;&#x30C3;&#x30C1;&#x540D;&#x306E;&#x60C5;&#x5831;&#x304C;&#x306A;&#x3044;&#x306E;&#x3067;&#x7121;&#x8996;&#x3057;&#x307E;&#x3059;&#xFF09;&#x3002;</li>
-<li>SFC&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x3067;&#x7528;&#x7D19;(drawing_sheet_feature)&#x5185;&#x306E;&#x56F3;&#x5F62;&#x304C;&#x8AAD;&#x307F;&#x8FBC;&#x3081;&#x306A;&#x3044;&#x6642;&#x304C;&#x3042;&#x3063;&#x305F;&#x306E;&#x3067;&#x4FEE;&#x6B63;&#x3057;&#x307E;&#x3057;&#x305F;&#x3002;</li>
+<li>SFC読み込みで外部定義ハッチング(externally_defined_hatch_feature)があると読み込めなかったので修正しました（外部定義ハッチングのハッチ名の情報がないので無視します）。</li>
+<li>SFC読み込みで用紙(drawing_sheet_feature)内の図形が読み込めない時があったので修正しました。</li>
 </ul>
 <p><a href="download/skc095c.zip">skc095c.zip</a>(ver0.9.5c 3.39MB) 2022/07/15</p>
 <ul>
-<li>&#x5BF8;&#x6CD5;&#x7DDA;&#x66F8;&#x5F0F;&#x8A2D;&#x5B9A;&#x30C0;&#x30A4;&#x30A2;&#x30ED;&#x30B0;&#x3067;&#x5165;&#x529B;&#x3067;&#x304D;&#x306A;&#x3044;&#x9805;&#x76EE;&#x304C;&#x3042;&#x3063;&#x305F;&#x306E;&#x3067;&#x4FEE;&#x6B63;&#x3057;&#x307E;&#x3057;&#x305F;&#x3002;</li>
+<li>寸法線書式設定ダイアログで入力できない項目があったので修正しました。</li>
 </ul>
 <p><a href="download/skc095b.zip">skc095b.zip</a>(ver0.9.5b 3.39MB) 2022/05/30</p>
 <ul>
-<li>&#x30B9;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#x63CF;&#x753B;&#x3067;&#x7570;&#x5E38;&#x7D42;&#x4E86;&#x3057;&#x305F;&#x306E;&#x3067;&#x4FEE;&#x6B63;&#x3057;&#x307E;&#x3057;&#x305F;&#x3002;</li>
+<li>スプライン描画で異常終了したので修正しました。</li>
 </ul>
 <p><a href="download/skc095a.zip">skc095a.zip</a>(ver0.9.5a 3.39MB) 2022/02/24</p>
 <ul>
-<li>DXF&#x4FDD;&#x5B58;&#x3067;&#x6570;&#x5024;&#x306B;&#x30B3;&#x30F3;&#x30DE;&#x304C;&#x5165;&#x3063;&#x3066;&#x3044;&#x305F;&#x306E;&#x3067;&#x4FEE;&#x6B63;&#x3057;&#x307E;&#x3057;&#x305F;&#x3002;</li>
+<li>DXF保存で数値にコンマが入っていたので修正しました。</li>
 </ul>
 <p><a href="download/skc095.zip">skc095.zip</a>(ver0.9.5 3.39MB) 2022/01/11</p>
 <ul>
-<li>&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30E9;&#x3092;&#x5909;&#x66F4;&#x3057;Windows10&#x5BFE;&#x5FDC;&#x3002;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30E9;&#x304C;&#x5909;&#x308F;&#x3063;&#x305F;&#x95A2;&#x4FC2;&#x3067;&#x4E0D;&#x5177;&#x5408;&#x304C;&#x3042;&#x308B;&#x304B;&#x3082;&#x3057;&#x308C;&#x307E;&#x305B;&#x3093;&#x3002;</li>
-<li>DXF&#x4FDD;&#x5B58;&#x3067;&#x30D8;&#x30C3;&#x30C0;&#x304C;&#x7121;&#x52B9;&#x3060;&#x3063;&#x305F;&#x306E;&#x3067;&#x4FEE;&#x6B63;&#x3002;</li>
-<li>DXF&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x5909;&#x6570;&#x306E;&#x56F3;&#x9762;&#x7BC4;&#x56F2;&#x3092;&#x5229;&#x7528;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x3057;&#x305F;&#x3002;</li>
-<li>DXF&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x3067;DIMENSION,LWPOLYLINE,MTEXT&#x306A;&#x3069;&#x5BFE;&#x5FDC;&#x3002;</li>
-<li>jww&#x5F62;&#x5F0F;&#x5BFE;&#x5FDC;&#x3002;</li>
+<li>コンパイラを変更しWindows10対応。コンパイラが変わった関係で不具合があるかもしれません。</li>
+<li>DXF保存でヘッダが無効だったので修正。</li>
+<li>DXF読み込みシステム変数の図面範囲を利用するようにした。</li>
+<li>DXF読み込みでDIMENSION,LWPOLYLINE,MTEXTなど対応。</li>
+<li>jww形式対応。</li>
 </ul>
 <p><a href="download/skc094y.zip">skc094y.zip</a>(ver0.9.4y 1.61MB) 2014/02/15</p>
 <ul>
-<li>Windows7&#x306E;64bit&#x4EE5;&#x964D;&#x3067;&#x30AB;&#x30E9;&#x30FC;&#x30E1;&#x30CB;&#x30E5;&#x30FC;&#x95A2;&#x4FC2;&#x304C;&#x6B63;&#x5E38;&#x306B;&#x50CD;&#x304B;&#x306A;&#x3044;&#x554F;&#x984C;&#x306E;&#x4FEE;&#x6B63;&#x3002;</li>
+<li>Windows7の64bit以降でカラーメニュー関係が正常に働かない問題の修正。</li>
 </ul>
-<h3 class="mume-header" id="cnchobby-plugin">CNCHobby plugin</h3>
-
-<p>CNC&#x30D5;&#x30E9;&#x30A4;&#x30B9;&#x306A;&#x3069;&#x3067;&#x677F;&#x3092;&#x5207;&#x308A;&#x51FA;&#x3059;&#x305F;&#x3081;&#x306E;G-CODE&#x51FA;&#x529B;&#x7528;&#x30D7;&#x30E9;&#x30B0;&#x30A4;&#x30F3;&#x306A;&#x3069;&#x3002; zip&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x89E3;&#x51CD;&#x3057;&#x3066;&#x300C;CNCHobby.dll&#x300D;&#x3092;SakraCad&#x306E;plugin&#x30D5;&#x30A9;&#x30EB;&#x30C0;&#x30FC;&#x306E;&#x4E0B;&#x306B;&#x30B3;&#x30D4;&#x30FC;&#x3059;&#x308B;&#x3068;&#x4F7F;&#x3048;&#x307E;&#x3059;&#x3002;&#x8A73;&#x7D30;&#x306F;&#x3001;<a href="download/CNCHobby.txt">CNCHobby.txt</a>&#x3092;&#x53C2;&#x7167;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</p>
+<h3 id="cnchobby-plugin">CNCHobby plugin </h3>
+<p>CNCフライスなどで板を切り出すためのG-CODE出力用プラグインなど。 zipファイルを解凍して「CNCHobby.dll」をSakraCadのpluginフォルダーの下にコピーすると使えます。詳細は、<a href="download/CNCHobby.txt">CNCHobby.txt</a>を参照してください。</p>
 <p><a href="download/cnc051.zip">cnc051.zip</a>(CNCHobby.DLL Ver0.51) 2022/01/11</p>
 <ul>
-<li>&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30E9;&#x3092;&#x5909;&#x3048;&#x3066;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x3057;&#x306A;&#x304A;&#x3057;&#x307E;&#x3057;&#x305F;&#x3002; &#x6A5F;&#x80FD;&#x306F;Ver0.50&#x3068;&#x5909;&#x308F;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;</li>
+<li>コンパイラを変えてコンパイルしなおしました。 機能はVer0.50と変わりません。</li>
 </ul>
 <p><a href="download/cnc050.zip">cnc050.zip</a>(CNCHobby.DLL Ver0.50) 2008/05/10</p>
 <ul>
-<li>&#x6700;&#x5F8C;&#x306B;&#x539F;&#x70B9;&#x3078;&#x79FB;&#x52D5;&#x3059;&#x308B;&#x3068;&#x304D;&#x306E;&#x52D5;&#x4F5C;&#x5909;&#x66F4;&#x3002;</li>
+<li>最後に原点へ移動するときの動作変更。</li>
 </ul>
-<h2 class="mume-header" id="p-stylebackground-color-gainsboro%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%ABp"><p style="BACKGROUND-COLOR: gainsboro">&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</p></h2>
-
+<h2 id="p-stylebackground-color-gainsboroインストールp"><p style="BACKGROUND-COLOR: gainsboro">インストール</p> </h2>
 <ul>
-<li>&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30E9;&#x306F;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;zip&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x89E3;&#x51CD;&#x3059;&#x308B;&#x3068;&#x3001;SakraCad&#x3068;&#x3044;&#x3046;&#x30D5;&#x30A9;&#x30EB;&#x30C0;&#x304C;&#x4F5C;&#x6210;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;&#x305D;&#x306E;&#x4E2D;&#x306B;SakraCad.exe&#x3068;&#x3044;&#x3046;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;&#x305D;&#x308C;&#x3092;&#x5B9F;&#x884C;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</li>
-<li>&#x30A2;&#x30A4;&#x30B3;&#x30F3;&#x306A;&#x3069;&#x3092;&#x767B;&#x9332;&#x3057;&#x305F;&#x3044;&#x6642;&#x306F;&#x7BA1;&#x7406;&#x8005;&#x6A29;&#x9650;&#x3067;SakraCad.exe&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3068;&#x767B;&#x9332;&#x3055;&#x308C;&#x308B;&#x3068;&#x601D;&#x3044;&#x307E;&#x3059;&#x3002;</li>
-<li>&#x30A2;&#x30F3;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x306F;SakraCad.exe&#x304C;&#x3042;&#x308B;&#x30D5;&#x30A9;&#x30EB;&#x30C0;&#x3092;&#x524A;&#x9664;&#x3059;&#x308B;&#x3060;&#x3051;&#x3067;&#x3059;&#x3002;&#x3057;&#x304B;&#x3057;&#x3001;&#x30EC;&#x30B8;&#x30B9;&#x30C8;&#x30EA;&#x306B;&#x3044;&#x304F;&#x3064;&#x304B;&#x306E;&#x60C5;&#x5831;&#x304C;&#x6B8B;&#x3063;&#x3066;&#x3044;&#x308B;&#x304B;&#x3082;&#x3057;&#x308C;&#x307E;&#x305B;&#x3093;&#x306E;&#x3067;&#x524A;&#x9664;&#x524D;&#x306B;SakraCad.exe&#x3068;&#x540C;&#x3058;&#x30D5;&#x30A9;&#x30EB;&#x30C0;&#x306B;&#x3042;&#x308B;Unregist.bat&#x3092;&#x5B9F;&#x884C;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</li>
+<li>インストーラはありません。zipファイルを解凍すると、SakraCadというフォルダが作成されます。その中にSakraCad.exeというファイルがあります。それを実行してください。</li>
+<li>アイコンなどを登録したい時は管理者権限でSakraCad.exeを実行すると登録されると思います。</li>
+<li>アンインストールはSakraCad.exeがあるフォルダを削除するだけです。しかし、レジストリにいくつかの情報が残っているかもしれませんので削除前にSakraCad.exeと同じフォルダにあるUnregist.batを実行してください。</li>
 </ul>
-<h2 class="mume-header" id="p-stylebackground-color-gainsborosxf%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6p"><p style="BACKGROUND-COLOR: gainsboro">SXF&#x306B;&#x3064;&#x3044;&#x3066;</p></h2>
-
-<p>SXF&#x306B;&#x3064;&#x3044;&#x3066;&#x3001;&#x79C1;&#x81EA;&#x8EAB;&#x307E;&#x3060;&#x3088;&#x304F;&#x7406;&#x89E3;&#x3057;&#x3066;&#x3044;&#x306A;&#x3044;&#x3068;&#x3053;&#x308D;&#x304C;&#x3042;&#x308B;&#x306E;&#x3067;&#x52D8;&#x9055;&#x3044;&#x7B49;&#x3042;&#x308B;&#x3068;&#x601D;&#x3044;&#x307E;&#x3059;&#x3002;&#x305D;&#x306E;&#x3053;&#x3068;&#x3092;&#x3054;&#x7406;&#x89E3;&#x306E;&#x3046;&#x3048;&#x4EE5;&#x4E0B;&#x306E;&#x6587;&#x7AE0;&#x3092;&#x304A;&#x8AAD;&#x307F;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</p>
+<h2 id="p-stylebackground-color-gainsborosxfについてp"><p style="BACKGROUND-COLOR: gainsboro">SXFについて</p> </h2>
+<p>SXFについて、私自身まだよく理解していないところがあるので勘違い等あると思います。そのことをご理解のうえ以下の文章をお読みください。</p>
 <ul>
 <li>
-<p>SFC&#x306E;&#x5909;&#x63DB;&#x306B;&#x306F;&#x300C;CAD &#x30C7;&#x30FC;&#x30BF;&#x4EA4;&#x63DB;&#x6A19;&#x6E96;&#x30BD;&#x30D5;&#x30C8;&#x30A6;&#x30A7;&#x30A2;&#x300D;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;</p>
+<p>SFCの変換には「CAD データ交換標準ソフトウェア」を使用しています。</p>
 </li>
 <li>
-<p>SakraCad&#x306B;&#x7121;&#x3044;&#x5BF8;&#x6CD5;&#x7DDA;&#x306E;&#x77E2;&#x5370;&#x304C;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306B;&#x5909;&#x63DB;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</p>
+<p>SakraCadに無い寸法線の矢印が以下のように変換されます。</p>
 <table>
 <thead>
 <tr>
-<th>&#x5909;&#x63DB;&#x524D;</th>
-<th>&#x5909;&#x63DB;&#x5F8C;</th>
+<th>変換前</th>
+<th>変換後</th>
 </tr>
 </thead>
 <tbody>
@@ -352,7 +111,7 @@ pre[data-line] .line-highlight[data-end]:after {
 </tr>
 <tr>
 <td>blanked box</td>
-<td>&#x56DB;&#x89D2;&#x306E;&#x4E2D;&#x5FC3;&#x307E;&#x3067;&#x7DDA;&#x304C;&#x4F38;&#x3073;&#x307E;&#x3059;</td>
+<td>四角の中心まで線が伸びます</td>
 </tr>
 <tr>
 <td>blanked dot</td>
@@ -366,86 +125,79 @@ pre[data-line] .line-highlight[data-end]:after {
 </table>
 </li>
 <li>
-<p>&#x76F4;&#x7DDA;&#x5BF8;&#x6CD5;&#x306E;&#x5909;&#x63DB;&#x306B;&#x554F;&#x984C;&#x304C;&#x3042;&#x308B;&#x304B;&#x3082;&#x3057;&#x308C;&#x307E;&#x305B;&#x3093;&#x3002;&#x5BF8;&#x6CD5;&#x56F3;&#x5F62;&#x5168;&#x3066;&#x306B;&#x8A00;&#x3048;&#x307E;&#x3059;&#x304C;&#x3001;SakraCad&#x3067;&#x8868;&#x73FE;&#x3067;&#x304D;&#x306A;&#x3044;&#x5834;&#x5408;&#x3001;&#x9069;&#x5F53;&#x306B;&#x5909;&#x63DB;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</p>
+<p>直線寸法の変換に問題があるかもしれません。寸法図形全てに言えますが、SakraCadで表現できない場合、適当に変換されます。</p>
 </li>
 <li>
-<p>&#x30CF;&#x30C3;&#x30C1;&#x30F3;&#x30B0;&#xFF08;&#x5857;&#x308A;&#xFF09;&#x306F;&#x672A;&#x5BFE;&#x5FDC;&#x3067;&#x3059;&#x3002;&#x307E;&#x305F;&#x3001;&#x30B0;&#x30E9;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x306F;&#x975E;&#x5BFE;&#x5FDC;&#x3067;&#x3059;&#x3002;</p>
+<p>ハッチング（塗り）は未対応です。また、グラデーションには非対応です。</p>
 </li>
 <li>
-<p>&#x30CF;&#x30C3;&#x30C1;&#x30F3;&#x30B0;&#xFF08;&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#xFF09;&#x306E;45&#x5EA6;&#x91CD;&#x306D;&#x3042;&#x3058;&#x308D;&#x306F;&#x672A;&#x5BFE;&#x5FDC;&#x3067;&#x3059;&#x3002;</p>
+<p>ハッチング（パターン）の45度重ねあじろは未対応です。</p>
 </li>
 <li>
-<p>&#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x5B9A;&#x7FA9;&#x7DDA;&#x7A2E;&#x306F;&#x975E;&#x5BFE;&#x5FDC;&#x3067;&#x3059;&#x3002;</p>
+<p>ユーザー定義線種は非対応です。</p>
 </li>
 <li>
-<p>SakraCad&#x3067;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x8272;&#x304C;256&#x8272;&#x4EE5;&#x4E0A;&#x306E;&#x5834;&#x5408;&#x306F;&#x9069;&#x5F53;&#x306A;&#xFF08;&#x3042;&#x308B;&#x7A0B;&#x5EA6;&#x8FD1;&#x3044;&#xFF09;&#x8272;&#x306B;&#x5909;&#x63DB;&#x3055;&#x308C;&#x307E;&#x3059;&#xFF08;&#x306F;&#x305A;&#x3067;&#x3059;&#xFF09;&#x3002;</p>
+<p>SakraCadで使用した色が256色以上の場合は適当な（ある程度近い）色に変換されます（はずです）。</p>
 </li>
 <li>
-<p>&#x30CF;&#x30C3;&#x30C1;&#x30F3;&#x30B0;&#x306F;&#x8907;&#x5408;&#x56F3;&#x5F62;&#xFF08;&#x4F5C;&#x56F3;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#xFF09;&#x306B;&#x5909;&#x63DB;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</p>
+<p>ハッチングは複合図形（作図グループ）に変換されます。</p>
 </li>
 <li>
-<p>&#x8907;&#x5408;&#x56F3;&#x5F62;&#xFF08;&#x4F5C;&#x56F3;&#x90E8;&#x54C1;&#xFF09;&#x306F;&#x4F5C;&#x56F3;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x5909;&#x63DB;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;&#x305D;&#x306E;&#x5404;&#x56F3;&#x5F62;&#x306B;&#x30EC;&#x30A4;&#x30E4;&#x30FC;&#x60C5;&#x5831;&#x304C;&#x3042;&#x308B;&#x5834;&#x5408;&#x306F;&#x6700;&#x521D;&#x306B;&#x73FE;&#x308C;&#x305F;&#x30EC;&#x30A4;&#x30E4;&#x30FC;&#x306B;&#x5168;&#x3066;&#x8868;&#x793A;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</p>
+<p>複合図形（作図部品）は作図グループに変換されます。その各図形にレイヤー情報がある場合は最初に現れたレイヤーに全て表示されます。</p>
 </li>
 <li>
-<p>&#x8907;&#x5408;&#x56F3;&#x5F62;&#xFF08;&#x4F5C;&#x56F3;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#xFF09;&#x3067;&#x5404;&#x56F3;&#x5F62;&#x306B;&#x30EC;&#x30A4;&#x30E4;&#x30FC;&#x60C5;&#x5831;&#x304C;&#x3042;&#x308B;&#x5834;&#x5408;&#x306F;&#x6700;&#x521D;&#x306B;&#x73FE;&#x308C;&#x305F;&#x30EC;&#x30A4;&#x30E4;&#x30FC;&#x306B;&#x5168;&#x3066;&#x8868;&#x793A;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</p>
+<p>複合図形（作図グループ）で各図形にレイヤー情報がある場合は最初に現れたレイヤーに全て表示されます。</p>
 </li>
 <li>
-<p>&#x7E26;&#x6A2A;&#x7570;&#x7E2E;&#x5C3A;&#x306B;&#x306F;&#x975E;&#x5BFE;&#x5FDC;&#x3067;&#x3059;&#x3002;</p>
+<p>縦横異縮尺には非対応です。</p>
 </li>
 <li>
-<p>&#x6587;&#x5B57;&#x306E;&#x9593;&#x9694;&#x306F;0&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;&#x305D;&#x306E;&#x4EE3;&#x308F;&#x308A;&#x3001;&#x5404;&#x6587;&#x5B57;&#x306E;&#x5E45;&#x304C;&#x5909;&#x308F;&#x308A;&#x307E;&#x3059;&#x3002;</p>
+<p>文字の間隔は0になります。その代わり、各文字の幅が変わります。</p>
 </li>
 <li>
-<p>&#x56F3;&#x9762;&#x8868;&#x984C;&#x6B04;&#x3001;&#x56F3;&#x9762;&#x60C5;&#x5831;&#x7B49;&#x306F;&#x672A;&#x5BFE;&#x5FDC;&#x3067;&#x3059;&#x3002;</p>
+<p>図面表題欄、図面情報等は未対応です。</p>
 </li>
 <li>
-<p>p21&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#x672A;&#x5BFE;&#x5FDC;&#x3067;&#x3059;&#x3002;</p>
+<p>p21ファイルは未対応です。</p>
 </li>
 <li>
-<p>&#x305D;&#x306E;&#x4ED6;&#x3044;&#x308D;&#x3044;&#x308D;&#x3042;&#x308B;&#x3068;&#x601D;&#x3044;&#x307E;&#x3059;&#x3002;</p>
+<p>その他いろいろあると思います。</p>
 </li>
 </ul>
-<h2 class="mume-header" id="p-stylebackground-color-gainsboro%E4%BD%BF%E7%94%A8%E4%B8%8A%E3%81%AE%E6%B3%A8%E6%84%8Fp"><p style="BACKGROUND-COLOR: gainsboro">&#x4F7F;&#x7528;&#x4E0A;&#x306E;&#x6CE8;&#x610F;</p></h2>
-
-<p>&#x4EE5;&#x4E0B;&#x306E;&#x4E8B;&#x9805;&#x306B;&#x7559;&#x610F;&#x306E;&#x4E0A;&#x3001;&#x3054;&#x4F7F;&#x7528;&#x3044;&#x305F;&#x3060;&#x304F;&#x3088;&#x3046;&#x304A;&#x9858;&#x3044;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+<h2 id="p-stylebackground-color-gainsboro使用上の注意p"><p style="BACKGROUND-COLOR: gainsboro">使用上の注意</p> </h2>
+<p>以下の事項に留意の上、ご使用いただくようお願いします。</p>
 <ul>
-<li>SakraCad&#x306F;&#x30D5;&#x30EA;&#x30FC;&#x30A6;&#x30A7;&#x30A2;&#x3067;&#x3059;&#x3002;&#x4F7F;&#x7528;&#x5236;&#x9650;&#x7B49;&#x7121;&#x304F;&#x7121;&#x6599;&#x3067;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</li>
-<li>&#x672C;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x306E;&#x8457;&#x4F5C;&#x6A29;&#x306F;&#x3001;&#x3089;&#x3093;&#x3000;&#x3086;&#x3046;&#x3058;&#x308D;&#x3046;(M.Yamaguchi)&#x306B;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;&#x672C;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x306E;&#x6539;&#x5909;&#x7B49;&#x306F;&#x5805;&#x304F;&#x7981;&#x3058;&#x307E;&#x3059;&#x3002;</li>
-<li>&#x672C;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x306E;&#x4F7F;&#x7528;&#x306B;&#x3088;&#x3063;&#x3066;&#x4F55;&#x3089;&#x304B;&#x306E;&#x969C;&#x5BB3;&#x304C;&#x767A;&#x751F;&#x3057;&#x305F;&#x5834;&#x5408;&#x3067;&#x3082;&#x3001;&#x4F5C;&#x8005;&#x306F;&#x4E00;&#x5207;&#x306E;&#x8CAC;&#x4EFB;&#x3092;&#x8CA0;&#x308F;&#x306A;&#x3044;&#x3082;&#x306E;&#x3068;&#x3057;&#x307E;&#x3059;&#x3002;</li>
-<li>&#x4F5C;&#x8005;&#x306F;&#x672C;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x306E;&#x30D0;&#x30B0;&#x4FEE;&#x6B63;&#x3001;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x30A2;&#x30C3;&#x30D7;&#x7B49;&#x306E;&#x4E00;&#x5207;&#x306E;&#x30B5;&#x30DD;&#x30FC;&#x30C8;&#x306E;&#x8CAC;&#x306F;&#x8CA0;&#x3044;&#x307E;&#x305B;&#x3093;&#x3002;</li>
-<li>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x3001;&#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;&#x7B49;&#x4E88;&#x544A;&#x7121;&#x304F;&#x5909;&#x66F4;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;</li>
+<li>SakraCadはフリーウェアです。使用制限等無く無料で使用できます。</li>
+<li>本プログラムの著作権は、らん　ゆうじろう(M.Yamaguchi)にあります。本プログラムの改変等は堅く禁じます。</li>
+<li>本プログラムの使用によって何らかの障害が発生した場合でも、作者は一切の責任を負わないものとします。</li>
+<li>作者は本プログラムのバグ修正、バージョンアップ等の一切のサポートの責は負いません。</li>
+<li>ファイルフォーマット、ユーザーインターフェース等予告無く変更することがあります。</li>
 </ul>
-<h2 class="mume-header" id="p-stylebackground-color-gainsboro%E8%B3%87%E6%96%99p"><p style="BACKGROUND-COLOR: gainsboro">&#x8CC7;&#x6599;</p></h2>
-
-<p><a href="./SakraCadFileFormat.html">SakraCad&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x4ED5;&#x69D8;</a></p>
-<h2 class="mume-header" id="p-stylebackground-color-gainsboro%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BCp"><p style="BACKGROUND-COLOR: gainsboro">&#x30D7;&#x30E9;&#x30A4;&#x30D0;&#x30B7;&#x30FC;&#x30DD;&#x30EA;&#x30B7;&#x30FC;</p></h2>
-
+<h2 id="p-stylebackground-color-gainsboro資料p"><p style="BACKGROUND-COLOR: gainsboro">資料</p> </h2>
+<p><a href="./SakraCadFileFormat.html">SakraCadファイル仕様</a></p>
+<h2 id="p-stylebackground-color-gainsboroプライバシーポリシーp"><p style="BACKGROUND-COLOR: gainsboro">プライバシーポリシー</p> </h2>
 <ul>
-<li>SakraCad&#x306F;&#x500B;&#x4EBA;&#x60C5;&#x5831;&#x306E;&#x53CE;&#x96C6;&#x3092;&#x884C;&#x3044;&#x307E;&#x305B;&#x3093;&#x3002;</li>
-<li>&#x4E0D;&#x5177;&#x5408;&#x306E;&#x9023;&#x7D61;&#x3092;&#x3044;&#x305F;&#x3060;&#x3044;&#x305F;&#x5834;&#x5408;&#x3001;&#x554F;&#x984C;&#x78BA;&#x8A8D;&#x306E;&#x305F;&#x3081;&#x56F3;&#x9762;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x63D0;&#x4F9B;&#x3092;&#x304A;&#x9858;&#x3044;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;&#x63D0;&#x4F9B;&#x3057;&#x3066;&#x3044;&#x305F;&#x3060;&#x3044;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#x554F;&#x984C;&#x89E3;&#x6C7A;&#x306E;&#x305F;&#x3081;&#x306B;&#x306E;&#x307F;&#x5229;&#x7528;&#x3057;&#x307E;&#x3059;&#x3002;</li>
+<li>SakraCadは個人情報の収集を行いません。</li>
+<li>不具合の連絡をいただいた場合、問題確認のため図面ファイルの提供をお願いすることがあります。提供していただいたファイルは問題解決のためにのみ利用します。</li>
 </ul>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
-<details style="padding:0;;padding-left:0px;" open>
+<details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#div-styletext-align-centersakracaddiv" class="md-toc-link"> <div style="text-align: center;">SakraCad</div>
-</a>
+          <a href="#div-styletext-align-centersakracaddiv" class="md-toc-link"><div style="text-align: center;">SakraCad</div></a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
           <a href="#p-stylebackground-color-gainsborosakracadp" class="md-toc-link">
-             <p style="BACKGROUND-COLOR: gainsboro">SakraCad</p>
-
+            <p style="BACKGROUND-COLOR: gainsboro">SakraCad</p>
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#p-stylebackground-color-gainsboro&#x52D5;&#x4F5C;&#x74B0;&#x5883;p" class="md-toc-link">
-             <p style="BACKGROUND-COLOR: gainsboro">&#x52D5;&#x4F5C;&#x74B0;&#x5883;</p>
-
-          </a></div><details style="padding:0;;padding-left:24px;" open>
+          <a href="#p-stylebackground-color-gainsboro動作環境p" class="md-toc-link">
+            <p style="BACKGROUND-COLOR: gainsboro">動作環境</p>
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#p-stylebackground-color-gainsborodownloadp" class="md-toc-link"> <p style="BACKGROUND-COLOR: gainsboro">Download</p>
-</a>
+          <a href="#p-stylebackground-color-gainsborodownloadp" class="md-toc-link"><p style="BACKGROUND-COLOR: gainsboro">Download</p></a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
@@ -460,34 +212,27 @@ pre[data-line] .line-highlight[data-end]:after {
         </div>
       </details>
     <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#p-stylebackground-color-gainsboro&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;p" class="md-toc-link">
-             <p style="BACKGROUND-COLOR: gainsboro">&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</p>
-
+          <a href="#p-stylebackground-color-gainsboroインストールp" class="md-toc-link">
+            <p style="BACKGROUND-COLOR: gainsboro">インストール</p>
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#p-stylebackground-color-gainsborosxf&#x306B;&#x3064;&#x3044;&#x3066;p" class="md-toc-link">
-             <p style="BACKGROUND-COLOR: gainsboro">SXF&#x306B;&#x3064;&#x3044;&#x3066;</p>
-
+          <a href="#p-stylebackground-color-gainsborosxfについてp" class="md-toc-link">
+            <p style="BACKGROUND-COLOR: gainsboro">SXFについて</p>
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#p-stylebackground-color-gainsboro&#x4F7F;&#x7528;&#x4E0A;&#x306E;&#x6CE8;&#x610F;p" class="md-toc-link">
-             <p style="BACKGROUND-COLOR: gainsboro">&#x4F7F;&#x7528;&#x4E0A;&#x306E;&#x6CE8;&#x610F;</p>
-
+          <a href="#p-stylebackground-color-gainsboro使用上の注意p" class="md-toc-link">
+            <p style="BACKGROUND-COLOR: gainsboro">使用上の注意</p>
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#p-stylebackground-color-gainsboro&#x8CC7;&#x6599;p" class="md-toc-link">
-             <p style="BACKGROUND-COLOR: gainsboro">&#x8CC7;&#x6599;</p>
-
+          <a href="#p-stylebackground-color-gainsboro資料p" class="md-toc-link">
+            <p style="BACKGROUND-COLOR: gainsboro">資料</p>
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#p-stylebackground-color-gainsboro&#x30D7;&#x30E9;&#x30A4;&#x30D0;&#x30B7;&#x30FC;&#x30DD;&#x30EA;&#x30B7;&#x30FC;p" class="md-toc-link">
-             <p style="BACKGROUND-COLOR: gainsboro">&#x30D7;&#x30E9;&#x30A4;&#x30D0;&#x30B7;&#x30FC;&#x30DD;&#x30EA;&#x30B7;&#x30FC;</p>
-
+          <a href="#p-stylebackground-color-gainsboroプライバシーポリシーp" class="md-toc-link">
+            <p style="BACKGROUND-COLOR: gainsboro">プライバシーポリシー</p>
           </a></div>
         </div>
       </details>
     
 </div>
 </div>
-      <a id="sidebar-toc-btn">&#x2261;</a>
-    
-    
+      <a id="sidebar-toc-btn">≡</a>
     
     
     
