@@ -64,6 +64,12 @@ If you don't have many Japanese fonts, run `winetricks allfonts` to install them
 However, PreCad does not embed fonts in files, so if the drawing you open uses fonts that are not installed, this can be a problem. In Windows, the text is readable because an alternative font is set, but in Wine, the text is garbled. Please specify an alternative font in PreCad option. Now you can read it.
 
 ## History
+- 2024/8/05 ver. 1.2.2.1
+    - Fixed a bug of "Fit to Object" to zoom to the selected shapes.
+
+- 2024/8/05 ver. 1.2.2.0
+    - Fixed an issue where the shape snapped to the select tool was not selected properly.
+    - Changed "Fit to Object" to zoom to the selected shapes.
 
 - 2024/7/28 ver. 1.2.1.1
     - Fixed a bug where the toolbar line color was not displayed correctly at startup.
