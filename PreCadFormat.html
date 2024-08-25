@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="file:///c:\Users\yama\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.11\crossnote\dependencies\katex\katex.min.css">
+      <link rel="stylesheet" href="file:///c:\Users\yama\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.13\crossnote\dependencies\katex\katex.min.css">
       
       
       
@@ -24,7 +24,7 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="precad-file-format-ver-241仕様書-rev0">PreCad file format ver 2.4.1仕様書　Rev.0 </h1>
+<h1 id="precad-file-format-ver-250仕様書-rev0">PreCad file format ver 2.5.0仕様書　Rev.0 </h1>
 <h2 id="precadの特徴">PreCadの特徴 </h2>
 <ul>
 <li>PreCadは2DCADです。複数のページを作成することができます。</li>
@@ -37,7 +37,7 @@
 <li>PreCadの図面ファイルはインデックスファイル及び複数の図面ファイルにより構成されています。それらをzipで圧縮後、拡張子をpcadに変更したものです。そのためPreCadのファイルの拡張子をzipに変更し解凍すると構成するファイルを確認することができます。<br>
 以下はファイル構成の例です。</li>
 </ul>
-<pre data-role="codeBlock" data-info="" class="language-text text"><code>/
+<pre data-role="codeBlock" data-info="" class="language-text"><code>/
  ├index
  ├drawing_1.pcdt
  ├drawing_2.pcdt
@@ -61,7 +61,7 @@
 <li>mediaフォルダは画像などを同梱する時に使います。画像はこのフォルダに保存する以外に各図面ファイル内に文字列として同梱することもできます。</li>
 <li>以下はタグパラメータ形式の例です。</li>
 </ul>
-<pre data-role="codeBlock" data-info="" class="language-text text"><code>filetype("sample")  //一行目はファイルタイプ。ここでは空白文字を使わないこと。
+<pre data-role="codeBlock" data-info="" class="language-text"><code>filetype("sample")  //一行目はファイルタイプ。ここでは空白文字を使わないこと。
 tag1(1)		//単独の数値。整数とするか実数とするかはタグの種類による。
 tag2("STRING")	//単独の文字列。
 tag3(10.0 15.5)	//座標。数値を空白文字で区切る。
@@ -79,7 +79,7 @@ tag6(tag2(123)tag1(5.5))
 <li>2行目以降にfileinfo、contents、settingsのセクションが続きます。この出現順は守ってください。バージョンアップ等で新たにセクションが加わるかもしれませんので未知のセクションは読み飛ばせるようにしてください。</li>
 </ul>
 <p>以下はindexファイルの例です。</p>
-<pre data-role="codeBlock" data-info="" class="language-text text"><code>filetype("precad_archive")
+<pre data-role="codeBlock" data-info="" class="language-text"><code>filetype("precad_archive")
 fileinfo(
  version(2.0.0)appinfo("precad for windows version 2.0.0.0")
 )
@@ -159,7 +159,7 @@ settings(
 </ul>
 <h3 id="settingsセクション">settingsセクション </h3>
 <p>設定を記述します。</p>
-<pre data-role="codeBlock" data-info="" class="language-text text"><code>settings(
+<pre data-role="codeBlock" data-info="" class="language-text"><code>settings(
  pageIndex(0)   
  paper(name("A3")size(297 210))rotatePaper
  grid(p0(0 0)spacing(10)div(5)isScaled(0)angle(0.0))
@@ -343,7 +343,7 @@ settings(
 <h3 id="contentsセクション-1">contentsセクション </h3>
 <p>レイヤ、シート、図形を記述します。<br>
 drawingファイルでは基本的に使用する要素は事前に定義されていなければいけません。したがってshapesはsheet及びlayerが必要になるのでshapesの前にlayers及びsheetsが必要になります（layersとsheetsの出現順には制約がありません）。</p>
-<pre data-role="codeBlock" data-info="" class="language-text text"><code>contents(
+<pre data-role="codeBlock" data-info="" class="language-text"><code>contents(
  layers(
   layer(name("テスト1")color(0xFF000000)lineWidth(0))
   layer(name("テスト2")color(0xFF000000)lineWidth(0))
@@ -421,8 +421,7 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <a id="lineStyle" href=""></a></p>
 <h6 id="linestyle線スタイル属性">lineStyle（線スタイル属性） </h6>
 <p>線のスタイル。省略時は黒、実線、線幅0です。</p>
-<pre data-role="codeBlock" data-info="" class="language-text text"><code>lineStyle(width(w)color(c)lineType(name)flag(f))
-[ ls ]
+<pre data-role="codeBlock" data-info="" class="language-text"><code>lineStyle(width(w)color(c)lineType(name)flag(f))
 </code></pre><table>
 <thead>
 <tr>
@@ -499,7 +498,7 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <p><a id="fillStyle" href=""></a></p>
 <h6 id="fillstyle塗りスタイル属性">fillStyle（塗りスタイル属性） </h6>
 <p>円や多角形の塗りのスタイルです。solid（単色）とbyLayerがあります。fillStyleのパラメータにはどちらかを指定してください。fillStyleタグが省略された場合は透明色です。</p>
-<pre data-role="codeBlock" data-info="" class="language-text text"><code>fillStyle(solid(0xFF00FF00))
+<pre data-role="codeBlock" data-info="" class="language-text"><code>fillStyle(solid(0xFF00FF00))
 </code></pre><table>
 <thead>
 <tr>
@@ -524,7 +523,7 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <p><a id="arrowStyle" href=""></a></p>
 <h6 id="arrow-startarrow-endarrow矢印-始点矢印-終点矢印スタイル属性">arrow, startArrow, endArrow（矢印、始点矢印、終点矢印スタイル属性） </h6>
 <p>矢印のスタイルです。省略時は矢印無し。</p>
-<pre data-role="codeBlock" data-info="" class="language-text text"><code>startArrow(size(3)type(1))
+<pre data-role="codeBlock" data-info="" class="language-text"><code>startArrow(size(3)type(1))
 </code></pre><table>
 <thead>
 <tr>
@@ -704,7 +703,7 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>dot</td>
 <td><center>点</center></td>
-<td>sizeを使わない。画面ズームしてもサイズは変わらない。</td>
+<td>オブジェクトのsizeを使わず、すべての点の大きさは共通の設定を使用する。</td>
 </tr>
 <tr>
 <td>plus</td>
@@ -983,6 +982,77 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 </tr>
 </tbody>
 </table>
+<p><a id="arcdimensionStyle" href=""></a></p>
+<h6 id="arcdimensionstyle弧長寸法スタイル">arcDimensionStyle（弧長寸法スタイル） </h6>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>extensionLineOffset(d)<br>[ eo ]</td>
+<td>d : Double</td>
+<td>引出位置から引出線までの離れ</td>
+</tr>
+<tr>
+<td>extensionLineOvershoot(d)<br>[ ev ]</td>
+<td>d : Double</td>
+<td>寸法線からの引出線の延長長さ</td>
+</tr>
+<tr>
+<td>dimensionLineExtension(d)<br>[ de ]</td>
+<td>d : Double</td>
+<td>寸法線の延長長さ</td>
+</tr>
+<tr>
+<td>textStyle(...)<br>[ ts ]</td>
+<td><a href="#textStyle">文字スタイル</a>参照</td>
+<td>文字スタイル</td>
+</tr>
+<tr>
+<td>textOffset(d)<br>[ to ]</td>
+<td>d : Double</td>
+<td>文字の寸法線との離れ。省略時0</td>
+</tr>
+<tr>
+<td>formatStyle(...)<br>[ fs ]</td>
+<td><a href="#formatStyle">寸法値フォーマット</a>参照</td>
+<td>寸法値フォーマット</td>
+</tr>
+<tr>
+<td>tolerance2LinesTextScale(s)<br>[ tt ]</td>
+<td>s:Double</td>
+<td>2行の許容差の文字サイズの比率。省略時0.75</td>
+</tr>
+<tr>
+<td>startArrow(...)<br>[ sa ]</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>始点の矢印スタイル。省略時矢印なし</td>
+</tr>
+<tr>
+<td>endArrow(...)<br>[ ea ]</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>終点の矢印スタイル。省略時矢印なし</td>
+</tr>
+<tr>
+<td>arrowMode(m)<br>[ am ]</td>
+<td>m:Int</td>
+<td>矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0</td>
+</tr>
+<tr>
+<td>em(m)<br></td>
+<td>m : Int</td>
+<td>引出線モード<br>0:自動, 1:平行, 2:放射状<br>省略時0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>引出線モード自動では、弧角が90度以内で平行、90度を超えると放射状になる。</li>
+</ul>
 <p><a id="formatStyle" href=""></a></p>
 <h6 id="formatstyle寸法値フォーマット">formatStyle（寸法値フォーマット） </h6>
 <table>
@@ -1702,6 +1772,82 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <ul>
 <li>引き出し線の長さがマイナスの場合、中心と反対側に引き出し線を伸ばす。</li>
 </ul>
+<h5 id="arcdimension弧長寸法">ArcDimension（弧長寸法） </h5>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p0(x y)</td>
+<td>x : Double,  y : Double</td>
+<td>中心</td>
+</tr>
+<tr>
+<td>radius(r)<br>[ r ]</td>
+<td>r : Double</td>
+<td>寸法線の半径</td>
+</tr>
+<tr>
+<td>startAngle(a)<br>[ st ]</td>
+<td>a : Double</td>
+<td>開始角（度）。省略時0</td>
+</tr>
+<tr>
+<td>sweepAngle(a)<br>[ sw ]</td>
+<td>a : Double</td>
+<td>角幅（度）。省略時90</td>
+</tr>
+<tr>
+<td>ar(r)<br></td>
+<td>r : Double</td>
+<td>弧長の半径</td>
+</tr>
+<tr>
+<td>text(t)<br>[ t ]</td>
+<td>t : String</td>
+<td>文字列</td>
+</tr>
+<tr>
+<td>tp(d)</td>
+<td>d : Double</td>
+<td>文字配置位置 0.0が始点、1.0が終点、0.5が寸法線の中央。省略時0.5</td>
+</tr>
+<tr>
+<td>enableAutoDimension(f)<br>[ ed ]</td>
+<td>f : Int</td>
+<td>1で寸法値自動。省略時1</td>
+</tr>
+<tr>
+<td>lineStyle(...)<br>[ ls ]</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
+</tr>
+<tr>
+<td>fillStyle(...)<br>[ fs ]</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>文字背景塗りスタイル。省略時塗りなし</td>
+</tr>
+<tr>
+<td>dimensionStyle(...)<br>[ ds ]</td>
+<td><a href="#arcdimensionStyle">弧長寸法スタイル</a>参照</td>
+<td>弧長寸法スタイル</td>
+</tr>
+<tr>
+<td>tolerance(...)<br>[ to ]</td>
+<td><a href="#tolerance">許容差</a>参照</td>
+<td>許容差。省略時、許容差なし</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>寸法線（寸法値が表示される）の半径と、弧長を測る半径があることに注意。</li>
+<li>延長線が平行（延長線モード自動で弧幅が90度以内の場合を含む）で寸法線の半径が弧長の半径より小さい時、寸法線が寸法線の半径で描画できないならば、寸法線の半径を無視し、寸法線を描画できる最小の半径を使い描画する。</li>
+</ul>
 <p><a id="Leader" href=""></a></p>
 <h5 id="leader引出線">Leader（引出線） </h5>
 <table>
@@ -1920,7 +2066,7 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 </ul>
 <h3 id="settingsセクション-1">settingsセクション </h3>
 <p>設定を記述します。</p>
-<pre data-role="codeBlock" data-info="" class="language-text text"><code>settings(
+<pre data-role="codeBlock" data-info="" class="language-text"><code>settings(
  currentLayer("Lyer1")
  currentSheet("Sheet2")
 )
@@ -1941,7 +2087,7 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <li>メジャーバージョン1はページが１つしかなく、pagesタグがない代わりにdrawingタグがあります。また、settingsタグはありません（設定はdrawingファイルにあります）。<br>
 以下はインデックスファイルのメジャーバージョン1の例です。メジャーバージョン１では図面ファイル名は<code>drawing</code>でした。</li>
 </ul>
-<pre data-role="codeBlock" data-info="" class="language-text text"><code>filetype("precad_archive")
+<pre data-role="codeBlock" data-info="" class="language-text"><code>filetype("precad_archive")
 fileinfo(
  fileversion(1)appinfo("precad for windows version 1.0.0.0")
 )
@@ -1951,16 +2097,16 @@ contents(
 </code></pre><ul>
 <li>線図形（Line）の始点と終点はppタグでまとめて書き出しますが、バージョン2.1.0までは始点と終点を別々に以下の書式で記述していました。バージョン2.2.0以降、分けて記述するのは冗長なのでppの書式に変更しました。互換性のため読み込みのみ対応しています。</li>
 </ul>
-<pre data-role="codeBlock" data-info="" class="language-text text"><code>p0(x0,y0)p1(x1,y1)
+<pre data-role="codeBlock" data-info="" class="language-text"><code>p0(x0,y0)p1(x1,y1)
 </code></pre><ul>
 <li>頂点リスト（vertices()）はファイルバージョン2.0.0以下では次の書式でした。互換性のため読み込みのみ対応しています。</li>
 </ul>
-<pre data-role="codeBlock" data-info="" class="language-text text"><code>points(P(x0,y0)P(x1,y1)...)　　//Pは大文字
+<pre data-role="codeBlock" data-info="" class="language-text"><code>points(P(x0,y0)P(x1,y1)...)　　//Pは大文字
 </code></pre><ul>
 <li>ベジェ曲線の頂点リストは以下の旧型式(ファイルバージョン2.0.0以下)があります（非推奨）。各頂点とその制御点を分けて記述します。制御点は各頂点の始点側（s()）と終点側（e()）の制御点を記述します。開いたベジェ曲線の場合は始点の終点側の制御点、終点の始点側の制御点は無視されます。<br>
 記述が冗長なのでこの形式は互換性のために読み込みのみ対応しています。</li>
 </ul>
-<pre data-role="codeBlock" data-info="" class="language-text text"><code>points(P(x0 y0)P(x1 y1)...)
+<pre data-role="codeBlock" data-info="" class="language-text"><code>points(P(x0 y0)P(x1 y1)...)
 controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 </code></pre><ul>
 <li>
@@ -1976,6 +2122,15 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 しかし、Androidでサイズの大きなファイルを読み込むと速度は大きく落ちました。Androidのディスクアクセスは遅かったのです。<br>
 そのためバージョン2.2.0で短縮形を設けました。</p>
 <h2 id="履歴">履歴 </h2>
+<p>2024/08/25 2.5.0 Rev.0</p>
+<ul>
+<li>ArcDimension（弧長寸法）、arcDimensionStyle（弧長寸法スタイル）追加</li>
+<li>誤記修正</li>
+</ul>
+<p>2024/02/08 2.4.1 Rev.1</p>
+<ul>
+<li>点（dot）のサイズについて修正</li>
+</ul>
 <p>2024/02/08 2.4.1 Rev.0</p>
 <ul>
 <li>textStyleのflagの値の誤記を修正。</li>
@@ -2024,7 +2179,7 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#precad-file-format-ver-241仕様書-rev0" class="md-toc-link"><p>PreCad file format ver 2.4.1仕様書　Rev.0</p>
+          <a href="#precad-file-format-ver-250仕様書-rev0" class="md-toc-link"><p>PreCad file format ver 2.5.0仕様書　Rev.0</p>
 </a>
           </summary>
         <div>
@@ -2180,6 +2335,10 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
           <a href="#angle角度寸法" class="md-toc-link">
             <p>Angle（角度寸法）</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#arcdimension弧長寸法" class="md-toc-link">
+            <p>ArcDimension（弧長寸法）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
           <a href="#leader引出線" class="md-toc-link">

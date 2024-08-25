@@ -8,7 +8,7 @@ print_background: false
 title: PreCad file format
 ---
 
-# PreCad file format ver 2.4.1仕様書　Rev.1
+# PreCad file format ver 2.5.0仕様書　Rev.0
 ## PreCadの特徴
 - PreCadは2DCADです。複数のページを作成することができます。
 - 各ページにはレイヤーの他にシートがあります。シートは縮尺を設定できます。
@@ -237,7 +237,6 @@ contents(
 線のスタイル。省略時は黒、実線、線幅0です。
 ```
 lineStyle(width(w)color(c)lineType(name)flag(f))
-[ ls ]
 ```
 
 | 要素 | パラメータ | 説明 |
@@ -405,6 +404,25 @@ startArrow(size(3)type(1))
 | startArrow(...)<br>[ sa ] | [矢印スタイル](#arrowStyle)参照 | 始点の矢印スタイル。省略時矢印なし |
 | endArrow(...)<br>[ ea ] | [矢印スタイル](#arrowStyle)参照 | 終点の矢印スタイル。省略時矢印なし |
 | arrowMode(m)<br>[ am ] | m:Int | 矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0 |
+
+<a id="arcdimensionStyle"></a>
+###### arcDimensionStyle（弧長寸法スタイル）
+| 要素 | パラメータ | 説明 |
+|-----|------|-----|
+| extensionLineOffset(d)<br>[ eo ] | d : Double | 引出位置から引出線までの離れ |
+| extensionLineOvershoot(d)<br>[ ev ] | d : Double | 寸法線からの引出線の延長長さ |
+| dimensionLineExtension(d)<br>[ de ] | d : Double | 寸法線の延長長さ |
+| textStyle(...)<br>[ ts ] | [文字スタイル](#textStyle)参照 | 文字スタイル |
+| textOffset(d)<br>[ to ] | d : Double | 文字の寸法線との離れ。省略時0 |
+| formatStyle(...)<br>[ fs ] | [寸法値フォーマット](#formatStyle)参照 | 寸法値フォーマット |
+| tolerance2LinesTextScale(s)<br>[ tt ] | s:Double | 2行の許容差の文字サイズの比率。省略時0.75 |
+| startArrow(...)<br>[ sa ] | [矢印スタイル](#arrowStyle)参照 | 始点の矢印スタイル。省略時矢印なし |
+| endArrow(...)<br>[ ea ] | [矢印スタイル](#arrowStyle)参照 | 終点の矢印スタイル。省略時矢印なし |
+| arrowMode(m)<br>[ am ] | m:Int | 矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0 |
+| em(m)<br> | m : Int | 引出線モード<br>0:自動, 1:平行, 2:放射状<br>省略時0 |
+
+- 引出線モード自動では、弧角が90度以内で平行、90度を超えると放射状になる。
+
 
 <a id="formatStyle"></a>
 ###### formatStyle（寸法値フォーマット）
@@ -600,6 +618,26 @@ startArrow(size(3)type(1))
 
 - 引き出し線の長さがマイナスの場合、中心と反対側に引き出し線を伸ばす。
 
+##### ArcDimension（弧長寸法）
+| 要素 | パラメータ | 説明 |
+|-----|------|-----|
+| p0(x y) | x : Double,  y : Double| 中心 |
+| radius(r)<br>[ r ] | r : Double| 寸法線の半径|
+| startAngle(a)<br>[ st ] | a : Double| 開始角（度）。省略時0|
+| sweepAngle(a)<br>[ sw ] | a : Double| 角幅（度）。省略時90|
+| ar(r)<br> | r : Double| 弧長の半径|
+| text(t)<br>[ t ] | t : String| 文字列|
+| tp(d) | d : Double| 文字配置位置 0.0が始点、1.0が終点、0.5が寸法線の中央。省略時0.5|
+| enableAutoDimension(f)<br>[ ed ]| f : Int | 1で寸法値自動。省略時1 |
+| lineStyle(...)<br>[ ls ] | [線スタイル](#lineStyle)参照 | 線スタイル。省略時、黒実線、幅0 |
+| fillStyle(...)<br>[ fs ] | [塗りスタイル](#fillStyle)参照 | 文字背景塗りスタイル。省略時塗りなし |
+| dimensionStyle(...)<br>[ ds ] | [弧長寸法スタイル](#arcdimensionStyle)参照 | 弧長寸法スタイル |
+| tolerance(...)<br>[ to ] | [許容差](#tolerance)参照 | 許容差。省略時、許容差なし |
+
+- 寸法線（寸法値が表示される）の半径と、弧長を測る半径があることに注意。
+- 延長線が平行（延長線モード自動で弧幅が90度以内の場合を含む）で寸法線の半径が弧長の半径より小さい時、寸法線が寸法線の半径で描画できないならば、寸法線の半径を無視し、寸法線を描画できる最小の半径を使い描画する。
+
+
 <a id="Leader"></a>
 ##### Leader（引出線）
 
@@ -727,6 +765,10 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 そのためバージョン2.2.0で短縮形を設けました。
 
 ## 履歴
+2024/08/25 2.5.0 Rev.0
+- ArcDimension（弧長寸法）、arcDimensionStyle（弧長寸法スタイル）追加
+- 誤記修正
+
 2024/02/08 2.4.1 Rev.1
 - 点（dot）のサイズについて修正
 
