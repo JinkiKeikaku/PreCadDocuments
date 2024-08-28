@@ -1,0 +1,2441 @@
+<!DOCTYPE html><html><head>
+      <title>PreCad file format</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\yama\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.13\crossnote\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="precad-file-format-ver-250仕様書-rev0">PreCad file format ver 2.5.0仕様書　Rev.0 </h1>
+<h2 id="precadの特徴">PreCadの特徴 </h2>
+<ul>
+<li>PreCadは2DCADです。複数のページを作成することができます。</li>
+<li>各ページにはレイヤーの他にシートがあります。シートは縮尺を設定できます。</li>
+<li>シートを複数使用することで縮尺の異なる部分図を作成することができます。</li>
+<li>PreCadのファイルは複数のファイルをZIP形式で圧縮し、拡張子をpcadとしたものです。拡張子をzipに変えて展開すると内容を確認することができます。</li>
+</ul>
+<h2 id="ファイル構成">ファイル構成 </h2>
+<ul>
+<li>PreCadの図面ファイルはインデックスファイル及び複数の図面ファイルにより構成されています。それらをzipで圧縮後、拡張子をpcadに変更したものです。そのためPreCadのファイルの拡張子をzipに変更し解凍すると構成するファイルを確認することができます。<br>
+以下はファイル構成の例です。</li>
+</ul>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>/
+ ├index
+ ├drawing_1.pcdt
+ ├drawing_2.pcdt
+ ├drawing_3.pcdt
+ └media/
+   ├ e87099e2-8962-4e33-9de5-87eda5b55270.jpg
+   └ 01ed77be-822f-474b-a297-6d4c025ba6be.jpg
+</code></pre><ul>
+<li>インデックスファイル及び図面ファイルはテキストファイルで文字コードはUTF8です。改行コードはLF(0x0A)もしくはCRLF(0x0D, 0x0A)です。</li>
+<li>ファイルフォーマットはタグパラメータ形式を使用しています。タグパラメータ形式はタグの次にパラメータを()で囲み記述します。パラメータは数値、文字列、タグパラメータを複数含めることができます。パラメータの区切りは空白文字です。またパラメータがないタグも存在します。タグの出現順は一部（セクション、ページ、レイヤ、シート、図形の順序など）を除き自由です。</li>
+<li>タグ名は大文字小文字を区別します。</li>
+<li>一部のタグには短縮形があります。この仕様書では短縮形があるものは[]で囲って併記します。</li>
+<li>改行や空白などは無視されます（ただし、ファイル先頭のfiletypeは除きます）。</li>
+<li>//から行末まではコメントです。</li>
+<li>数値は整数（Int）もしくは実数（Double）でタグごとに判断します。</li>
+<li>16進整数は先頭に0xを付けます。主に色値に使います。色値は32ビットARGBです。</li>
+<li>文字列はダブルクォーテーションでくくります。文字列中の行末の改行は無視されます。<code>\</code>はエスケープ文字です。改行は<code>\n</code>、タブは<code>\t</code>です。<code>\</code>の後にその他の文字が来た場合はその文字が使われます（例えばダブルクォーテーションは<code>\"</code>を使います）。</li>
+<li>ファイルの１行目に<code>filetype</code>タグを記入してください。</li>
+<li>たとえば、indexファイルは１行目に<code>filetype("precad_archive")</code>と記入します。これでファイルの種類を判別します。<code>filetype("precad_archive")</code>はタグパラメータ形式ですが、途中に空白や改行を入れず行の先頭から書いてください（ファイル種別の判別を簡略化するためです）。</li>
+<li>１行目のfiletypeはアプリケーション側で一行読み込んで文字列として比較しても通常のタグパラメータと同じように解析してもどちらでも問題ありません。</li>
+<li>mediaフォルダは画像などを同梱する時に使います。画像はこのフォルダに保存する以外に各図面ファイル内に文字列として同梱することもできます。</li>
+<li>以下はタグパラメータ形式の例です。</li>
+</ul>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>filetype("sample")  //一行目はファイルタイプ。ここでは空白文字を使わないこと。
+tag1(1)		//単独の数値。整数とするか実数とするかはタグの種類による。
+tag2("STRING")	//単独の文字列。
+tag3(10.0 15.5)	//座標。数値を空白文字で区切る。
+tag4(tag1(5.5)tag2("xyz"))	//複数のタグパラメータ。
+tag5(0xFF000000)	//16進数は整数として解釈する。主に色で使われる。
+byLayer()	//パラメータなし。
+//次の二つはどちらも同じ（順序は無関係）
+tag6(tag1(5.5)tag2(123))
+tag6(tag2(123)tag1(5.5))
+
+</code></pre><h2 id="インデックスファイル">インデックスファイル </h2>
+<p>インデックスファイルのファイル名は<code>index</code>です。このファイルにページの情報と共通する設定を記入します。</p>
+<ul>
+<li>1行目に<code>filetype("precad_archive")</code>を空白文字なしで記入してください。</li>
+<li>2行目以降にfileinfo、contents、settingsのセクションが続きます。この出現順は守ってください。バージョンアップ等で新たにセクションが加わるかもしれませんので未知のセクションは読み飛ばせるようにしてください。</li>
+</ul>
+<p>以下はindexファイルの例です。</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>filetype("precad_archive")
+fileinfo(
+ version(2.0.0)appinfo("precad for windows version 2.0.0.0")
+)
+contents(
+ pages(
+  page(
+   title("Page1")drawing("drawing_1.pcdt")
+  )
+  page(
+   title("Page2")drawing("drawing_2.pcdt")
+  )
+ )
+)
+settings(
+ pageIndex(0)
+ paper(name("A3")size(297 210))
+ grid(p0(0.0 0.0)spacing(10.0)div(10)isScaled(0)angle(0.0))
+ printInfo(printPaperSize(420.0 297.0)printCenter(0.0 0.0)printScale(2.0))
+)
+</code></pre><h3 id="fileinfoセクション">fileinfoセクション </h3>
+<p>ファイルの情報です。</p>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>version(version)</td>
+<td>version : String</td>
+<td>フォーマットのバージョン</td>
+</tr>
+<tr>
+<td>appinfo(name)</td>
+<td>name : String</td>
+<td>作成したアプリの情報</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>バージョンは2.1.0のようにメジャーバージョン、マイナ―バージョン、リビジョンを小数点で分割します。</li>
+<li>メジャーバージョンは大きなファイル構造の変更時に変更します。マルチページ対応時に1から2に上がりました。メジャーバージョンが上がり旧アプリで読めない場合はエラーを表示します（メジャーバージョンが上がった場合、おそらくそうなるでしょう）。</li>
+<li>マイナーバージョンは要素追加、タグ名の変更・削除などで変わります。この変更で新バージョンのファイルを旧バージョンで読むと情報の欠落などが起こるかもしれません。必要であれば警告を表示します。</li>
+<li>読み込み時、マイナーバージョンにより処理を変えることを推奨しません。マイナーバージョンはあくまでも参考とし、追加されたタグ（もしくは廃止されたタグ）をもとに読み込みを行うべきです。</li>
+<li>リビジョンはその他軽微な変更で変わります（タグ名のtypo修正など）。</li>
+</ul>
+<h3 id="contentsセクション">contentsセクション </h3>
+<h4 id="pages">pages </h4>
+<p>ページのリストです。1ページから順に並びます。</p>
+<h4 id="page">page </h4>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title(title)</td>
+<td>title : String</td>
+<td>図面のタイトル</td>
+</tr>
+<tr>
+<td>drawing(file)</td>
+<td>file : String</td>
+<td>図面のファイル名</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>図面ファイルの拡張子は<code>pcdt</code>(PreCad Drawing Text)です。</li>
+</ul>
+<h3 id="settingsセクション">settingsセクション </h3>
+<p>設定を記述します。</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>settings(
+ pageIndex(0)   
+ paper(name("A3")size(297 210))rotatePaper
+ grid(p0(0 0)spacing(10)div(5)isScaled(0)angle(0.0))
+ printInfo(printPaperSize(420.0 297.0)printCenter(0.0 0.0)printScale(2.0))
+)
+</code></pre><h4 id="pageindex--int">pageIndex : Int </h4>
+<p>選択されていたページのインデクス（0が1ページ目）。</p>
+<h4 id="paper">paper </h4>
+<p>用紙設定。画面上で表示される用紙のサイズで印刷用紙で無いことに注意。</p>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>size(width height)</td>
+<td>width : Double,  height : Double</td>
+<td>用紙サイズ。</td>
+</tr>
+</tbody>
+</table>
+<p>PreCadでは以下の用紙リストから用紙を選択する。</p>
+<p>用紙名リスト（用紙は横向きが基準）</p>
+<table>
+<thead>
+<tr>
+<th>用紙名</th>
+<th>サイズ(幅 x 高さ)[mm]</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Letter</td>
+<td>279 x 216</td>
+<td>11 x 8.5 in</td>
+</tr>
+<tr>
+<td>A4</td>
+<td>297 x 210</td>
+<td></td>
+</tr>
+<tr>
+<td>A3</td>
+<td>420 x 297</td>
+<td></td>
+</tr>
+<tr>
+<td>A2</td>
+<td>594 x 420</td>
+<td></td>
+</tr>
+<tr>
+<td>A1</td>
+<td>841 x 594</td>
+<td></td>
+</tr>
+<tr>
+<td>A0</td>
+<td>1189 x 841</td>
+<td></td>
+</tr>
+<tr>
+<td>2A</td>
+<td>1682 x 1189</td>
+<td></td>
+</tr>
+<tr>
+<td>3A</td>
+<td>2378 x 1682</td>
+<td></td>
+</tr>
+<tr>
+<td>4A</td>
+<td>3364 x 2378</td>
+<td></td>
+</tr>
+<tr>
+<td>5A</td>
+<td>4756 x 3364</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="grid">grid </h4>
+<p>グリッドの設定</p>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p0(x y)</td>
+<td>x : Double,  y : Double</td>
+<td>グリッド原点</td>
+</tr>
+<tr>
+<td>spacing(s)</td>
+<td>s : Double</td>
+<td>グリッド間隔</td>
+</tr>
+<tr>
+<td>div(n)</td>
+<td>n : Int</td>
+<td>グリッド間隔をn分割</td>
+</tr>
+<tr>
+<td>isScaled(f)</td>
+<td>f : Int</td>
+<td>0:グリッド間隔は用紙寸<br>1:グリッド間隔は実寸</td>
+</tr>
+<tr>
+<td>angle(s)</td>
+<td>s : Double</td>
+<td>グリッド角度（度）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="printinfo">printInfo </h4>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>printPaperSize(width height)</td>
+<td>width : Double,  height : Double</td>
+<td>印刷する用紙のサイズ</td>
+</tr>
+<tr>
+<td>printCenter(x y)</td>
+<td>x : Double, y : Double</td>
+<td>印刷領域の中心座標</td>
+</tr>
+<tr>
+<td>printScale(scale)</td>
+<td>scale : Double</td>
+<td>印刷倍率</td>
+</tr>
+</tbody>
+</table>
+<h2 id="図面ファイル">図面ファイル </h2>
+<p>図面ファイルは各ページの図面本体です。<br>
+１行目に<code>filetype("precad_document")</code>を記入してください。これでファイルの種類を判別します。<br>
+２行目以降にfileinfo、contents、settingsのセクションが続きます。この出現順は守ってください。バージョンアップ等で新たにセクションが加わるかもしれませんので未知のセクションは読み飛ばせるようにしてください。</p>
+<h3 id="fileinfoセクション-1">fileinfoセクション </h3>
+<p>ファイルの情報です。インデックスファイルに準拠します。</p>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>version(version)</td>
+<td>version : Stgring</td>
+<td>フォーマットのバージョン</td>
+</tr>
+<tr>
+<td>appinfo(name)</td>
+<td>name : String</td>
+<td>作成したアプリの情報</td>
+</tr>
+</tbody>
+</table>
+<h3 id="contentsセクション-1">contentsセクション </h3>
+<p>レイヤ、シート、図形を記述します。<br>
+drawingファイルでは基本的に使用する要素は事前に定義されていなければいけません。したがってshapesはsheet及びlayerが必要になるのでshapesの前にlayers及びsheetsが必要になります（layersとsheetsの出現順には制約がありません）。</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>contents(
+ layers(
+  layer(name("テスト1")color(0xFF000000)lineWidth(0))
+  layer(name("テスト2")color(0xFF000000)lineWidth(0))
+ )
+ sheets(
+  sheet(name("シート1")scale(0.3))
+  sheet(name("シート2")scale(0.3))
+ )
+ shapes(
+  sheet("シート2")
+   layer("テスト1")
+    Line(...)
+    Circle(...)
+   layer("テスト2")
+    Line(...)
+  ...
+ )
+)        
+</code></pre><h4 id="layers">layers </h4>
+<p>レイヤのリストです。並びは表示されるときの重ね順で下から上になります。</p>
+<h4 id="sheets">sheets </h4>
+<p>シートのリストです。並びは表示されるときの重ね順で下から上になります。</p>
+<h4 id="shapes">shapes </h4>
+<p>図形のリストです。図形以外にsheetおよびlayerタグがあらわれます。</p>
+<ul>
+<li>sheetタグで現在の書き込みシートを切り替えます。</li>
+<li>layerタグで現在の書き込みレイヤを切り替えます。</li>
+</ul>
+<p>並びは表示されるときの重ね順で下から上になります。</p>
+<h4 id="図形共通">図形共通 </h4>
+<ul>
+<li>座標及び大きさ（線幅、半径、文字サイズ等）は用紙寸です。シートの縮尺で割ることで実寸になります。</li>
+<li>座標原点は用紙の中心でX軸は右が正、Y軸は上が正です。</li>
+<li>角度は度(degree)です。左回りが正です。</li>
+<li>図形には線種など共通する属性があります。</li>
+<li>省略時の値が書かれていないパラメータもパラメータを省略できますが値は未定義です。</li>
+<li>文字図形や寸法線などの文字列にはページタイトルなどに置換できるマクロ文字列を使用できます。以下のマクロ文字列が使用できます。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>マクロ文字列</th>
+<th>値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>${$}</td>
+<td>$</td>
+</tr>
+<tr>
+<td>${PageTitle}</td>
+<td>ページのタイトル</td>
+</tr>
+<tr>
+<td>${PageNumber}</td>
+<td>ページ番号</td>
+</tr>
+<tr>
+<td>${PageCount}</td>
+<td>総ページ数</td>
+</tr>
+<tr>
+<td>${SheetName}</td>
+<td>シート名</td>
+</tr>
+<tr>
+<td>${SheetScale}</td>
+<td>シートの縮尺</td>
+</tr>
+</tbody>
+</table>
+<h4 id="図形属性">図形属性 </h4>
+<p>図形には以下の属性があります。<br>
+<a id="lineStyle" href=""></a></p>
+<h6 id="linestyle線スタイル属性">lineStyle（線スタイル属性） </h6>
+<p>線のスタイル。省略時は黒、実線、線幅0です。</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>lineStyle(width(w)color(c)lineType(name)flag(f))
+</code></pre><table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>width(w)<br>[ w ]</td>
+<td>w : Double</td>
+<td>線幅。省略時0.0</td>
+</tr>
+<tr>
+<td>color(c)<br>[ c ]</td>
+<td>c : Int</td>
+<td>線色。省略時0xff000000（黒）</td>
+</tr>
+<tr>
+<td>lineType(name)<br>[ t ]</td>
+<td>name : String</td>
+<td>線種名。省略時実線</td>
+</tr>
+<tr>
+<td>flag(f)<br>[ f ]</td>
+<td>f : Int</td>
+<td>フラグ。省略時0<br></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>線種</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>線種名</th>
+<th>パターン</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>solid</td>
+<td>なし</td>
+<td>実線</td>
+</tr>
+<tr>
+<td>dashed</td>
+<td>8.0, 4.0</td>
+<td>破線</td>
+</tr>
+<tr>
+<td>center</td>
+<td>24.0, 4.0, 8.0, 4.0</td>
+<td>一点鎖線</td>
+</tr>
+<tr>
+<td>center</td>
+<td>24.0, 4.0, 8.0, 4.0, 8.0, 4.0</td>
+<td>二点鎖線</td>
+</tr>
+<tr>
+<td>※パターンは線分長と空白のペアで長さはこれに線幅を掛ける。</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>フラグ<br>1:ColorByLayer, 0x1000:補助線, 0x2000:TypeByLayer, 0x8000:WidthByLayer</li>
+</ul>
+<p><a id="fillStyle" href=""></a></p>
+<h6 id="fillstyle塗りスタイル属性">fillStyle（塗りスタイル属性） </h6>
+<p>円や多角形の塗りのスタイルです。solid（単色）とbyLayerがあります。fillStyleのパラメータにはどちらかを指定してください。fillStyleタグが省略された場合は透明色です。</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>fillStyle(solid(0xFF00FF00))
+</code></pre><table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>solid(c)</td>
+<td>c : Int</td>
+<td>面色。省略時、透明（アルファ値が0）</td>
+</tr>
+<tr>
+<td>byLayer()</td>
+<td></td>
+<td>レイヤ色。パラメータはありません。</td>
+</tr>
+</tbody>
+</table>
+<p><a id="arrowStyle" href=""></a></p>
+<h6 id="arrow-startarrow-endarrow矢印-始点矢印-終点矢印スタイル属性">arrow, startArrow, endArrow（矢印、始点矢印、終点矢印スタイル属性） </h6>
+<p>矢印のスタイルです。省略時は矢印無し。</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>startArrow(size(3)type(1))
+</code></pre><table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>size(size)<br>[ s ]</td>
+<td>size : Double</td>
+<td>矢印の大きさ</td>
+</tr>
+<tr>
+<td>type(id)<br>[ t ]</td>
+<td>id : Int</td>
+<td>矢印の種類</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>矢印の種類</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>種類</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>なし</td>
+</tr>
+<tr>
+<td>1</td>
+<td>開いた矢印</td>
+</tr>
+<tr>
+<td>2</td>
+<td>三角形</td>
+</tr>
+<tr>
+<td>3</td>
+<td>塗りつぶした三角形</td>
+</tr>
+<tr>
+<td>4</td>
+<td>円</td>
+</tr>
+<tr>
+<td>5</td>
+<td>塗りつぶした円</td>
+</tr>
+<tr>
+<td>6</td>
+<td>四角形</td>
+</tr>
+<tr>
+<td>7</td>
+<td>塗りつぶした四角形</td>
+</tr>
+<tr>
+<td>8</td>
+<td>斜め線</td>
+</tr>
+<tr>
+<td>9</td>
+<td>S字</td>
+</tr>
+</tbody>
+</table>
+<p><a id="textStyle" href=""></a></p>
+<h6 id="textstyle文字スタイル">textStyle（文字スタイル） </h6>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>color(c)<br>[ c ]</td>
+<td>c : Int</td>
+<td>文字色。省略時黒</td>
+</tr>
+<tr>
+<td>textAlign(a)<br>[ ta ]</td>
+<td>a : Int</td>
+<td>文字配置 0:左 1:中央 2:右。省略時0</td>
+</tr>
+<tr>
+<td>fontName(name)<br>[ fn ]</td>
+<td>name : String</td>
+<td>フォント名</td>
+</tr>
+<tr>
+<td>fontHeight(h)<br>[ fh ]</td>
+<td>h : Double</td>
+<td>フォントサイズ</td>
+</tr>
+<tr>
+<td>fontWidthScale(w)<br>[ fw ]</td>
+<td>w : Double</td>
+<td>フォント横幅比。省略時1</td>
+</tr>
+<tr>
+<td>fontSpace(s)<br>[ fs ]</td>
+<td>s : Double</td>
+<td>文字間隔。省略時0</td>
+</tr>
+<tr>
+<td>fontSkewAngle(a)<br>[ fa ]</td>
+<td>a : Double</td>
+<td>傾斜角。省略時0</td>
+</tr>
+<tr>
+<td>flag(f)<br>[ f ]</td>
+<td>f : Int</td>
+<td>フラグ。省略時0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>フラグ<br>1:ColorByLayer, 0x2_0000:縦書き, 0x4_0000:イタリック, 0x8_0000:ボールド, 0x10_0000:下線, 0x20_0000:取り消し線, 0x80_0000:（予約：折り返し）, 0x100_0000:TEXT_SLANT_ONLY_CHARACTER</li>
+<li>TEXT_SLANT_ONLY_CHARACTERは、fontSkewAngleで文字のみを傾かせる（背景色を設定すると、背景が長方形になる）。フラグが立っていない場合は、文字列全体を歪ませる（背景色を設定すると、背景が平行四辺形になる。複数行の場合、2行目以降が横にずれる）。</li>
+</ul>
+<p><a id="markerStyle" href=""></a></p>
+<h6 id="markerstyle点スタイル">markerStyle（点スタイル） </h6>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type(name)<br>[ t ]</td>
+<td>name : String</td>
+<td>マーカー名</td>
+</tr>
+<tr>
+<td>size(s)<br>[ s ]</td>
+<td>s : Double</td>
+<td>サイズ</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>マーカー名</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>種類</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>asterisk</td>
+<td><center>*</center></td>
+<td></td>
+</tr>
+<tr>
+<td>circle</td>
+<td><center>円</center></td>
+<td></td>
+</tr>
+<tr>
+<td>dot</td>
+<td><center>点</center></td>
+<td>オブジェクトのsizeを使わず、すべての点の大きさは共通の設定を使用する。</td>
+</tr>
+<tr>
+<td>plus</td>
+<td><center>+</center></td>
+<td></td>
+</tr>
+<tr>
+<td>square</td>
+<td><center>四角</center></td>
+<td></td>
+</tr>
+<tr>
+<td>triangle</td>
+<td><center>三角形</center></td>
+<td></td>
+</tr>
+<tr>
+<td>x</td>
+<td><center>X</center></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a id="leaderStyle" href=""></a></p>
+<h6 id="leaderstyle引出線スタイル">leaderStyle（引出線スタイル） </h6>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>textOffset(d)<br>[ to ]</td>
+<td>d : Double</td>
+<td>文字の下線との縦方向の離れ。省略時0</td>
+</tr>
+<tr>
+<td>leaderOffset(d)<br>[ lo ]</td>
+<td>d : Double</td>
+<td>引出線の終点から文字横方向の離れ。省略時0</td>
+</tr>
+<tr>
+<td>extendLine(i)<br>[ el ]</td>
+<td>i : Int</td>
+<td>線を文字列まで延長。<br>0:延長なし 1:延長する<br>省略時1</td>
+</tr>
+<tr>
+<td>leaderOrientation(i)<br>[ lr ]</td>
+<td>i : Int</td>
+<td>文字の配置方向。<br> 0:水平 1:平行<br>省略時0</td>
+</tr>
+<tr>
+<td>leaderBasis(i)<br>[ lb ]</td>
+<td>i : Int</td>
+<td>文字の配置。<br> 0:上 1:下 2:中 3:自由<br>省略時0</td>
+</tr>
+<tr>
+<td>textStyle(...)<br>[ ts ]</td>
+<td><a href="#textStyle">文字スタイル</a>参照</td>
+<td>文字スタイル</td>
+</tr>
+<tr>
+<td>arrowStyle(...)<br>[ as ]</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>矢印スタイル</td>
+</tr>
+<tr>
+<td>textAngle(d)<br>[ ta ]</td>
+<td>d:Double</td>
+<td>文字角度。leaderBasisが3の時有効。 省略時0。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>extendLineの省略時の値は0でないことに注意。</li>
+<li>leaderBasisが3の場合、leaderOffsettとtextOffsetは文字配置の相対座標。extendLine及びleaderOrientationは無視される。</li>
+<li>textAngleはleaderBasisが3の時のみ有効。</li>
+</ul>
+<p><a id="balloonStyle" href=""></a></p>
+<h6 id="balloonstyleバルーンスタイル">balloonStyle（バルーンスタイル） </h6>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>radius(r)<br>[ r ]</td>
+<td>r : Double</td>
+<td>半径</td>
+</tr>
+<tr>
+<td>textStyle(...)<br>[ ts ]</td>
+<td><a href="#textStyle">文字スタイル</a>参照</td>
+<td>文字スタイル</td>
+</tr>
+<tr>
+<td>arrowStyle(...)<br>[ as ]</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>矢印スタイル</td>
+</tr>
+</tbody>
+</table>
+<p><a id="dimensionStyle" href=""></a></p>
+<h6 id="dimensionstyle直線寸法スタイル">dimensionStyle（直線寸法スタイル） </h6>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>extensionLineOffset(d)<br>[ eo ]</td>
+<td>d : Double</td>
+<td>引出位置から引出線までの離れ</td>
+</tr>
+<tr>
+<td>extensionLineOvershoot(d)<br>[ ev ]</td>
+<td>d : Double</td>
+<td>寸法線からの引出線の延長長さ</td>
+</tr>
+<tr>
+<td>dimensionLineExtension(d)<br>[ de ]</td>
+<td>d : Double</td>
+<td>寸法線の延長長さ</td>
+</tr>
+<tr>
+<td>textStyle(...)<br>[ ts ]</td>
+<td><a href="#textStyle">文字スタイル</a>参照</td>
+<td>文字スタイル</td>
+</tr>
+<tr>
+<td>textOffset(d)<br>[ to ]</td>
+<td>d : Double</td>
+<td>文字の寸法線との離れ。省略時0</td>
+</tr>
+<tr>
+<td>formatStyle(...)<br>[ fs ]</td>
+<td><a href="#formatStyle">寸法値フォーマット</a>参照</td>
+<td>寸法値フォーマット</td>
+</tr>
+<tr>
+<td>tolerance2LinesTextScale(s)<br>[ tt ]</td>
+<td>s:Double</td>
+<td>2行の許容差の文字サイズの比率。省略時0.75</td>
+</tr>
+<tr>
+<td>startArrow(...)<br>[ sa ]</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>始点の矢印スタイル。省略時矢印なし</td>
+</tr>
+<tr>
+<td>endArrow(...)<br>[ ea ]</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>終点の矢印スタイル。省略時矢印なし</td>
+</tr>
+<tr>
+<td>arrowMode(m)<br>[ am ]</td>
+<td>m:Int</td>
+<td>矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0</td>
+</tr>
+</tbody>
+</table>
+<p><a id="radiusStyle" href=""></a></p>
+<h6 id="radiusstyle半径寸法スタイル">radiusStyle（半径寸法スタイル） </h6>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dimensionLineExtension(d)<br>[de(d)]</td>
+<td>d : Double</td>
+<td>寸法線の延長長さ</td>
+</tr>
+<tr>
+<td>fromText(i)<br>[ ft ]</td>
+<td>i:Int</td>
+<td>0：中心から円周に向けて線を引く。<br>1：文字から円周に向けての線のみ。<br>省略時0</td>
+</tr>
+<tr>
+<td>textStyle(...)<br>[ ts ]</td>
+<td><a href="#textStyle">文字スタイル</a>参照</td>
+<td>文字スタイル</td>
+</tr>
+<tr>
+<td>textOffset(d)<br>[ to ]</td>
+<td>d : Double</td>
+<td>文字の寸法線との離れ。<br>省略時0</td>
+</tr>
+<tr>
+<td>formatStyle(...)<br>[ fs ]</td>
+<td><a href="#formatStyle">寸法値フォーマット</a>参照</td>
+<td>寸法値フォーマット</td>
+</tr>
+<tr>
+<td>tolerance2LinesTextScale(s)<br>[ tt ]</td>
+<td>s:Double</td>
+<td>2行の許容差の文字サイズの比率。省略時0.75</td>
+</tr>
+<tr>
+<td>arrowStyle(...)<br>[ as ]</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>矢印スタイル</td>
+</tr>
+<tr>
+<td>arrowMode(m)<br>[ am ]</td>
+<td>m:Int</td>
+<td>矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0</td>
+</tr>
+</tbody>
+</table>
+<p><a id="diameterStyle" href=""></a></p>
+<h6 id="diameterstyle直径寸法スタイル">diameterStyle（直径寸法スタイル） </h6>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dimensionLineExtension(d)<br>[de(d)]</td>
+<td>d : Double</td>
+<td>寸法線の延長長さ</td>
+</tr>
+<tr>
+<td>textStyle(...)<br>[ ts ]</td>
+<td><a href="#textStyle">文字スタイル</a>参照</td>
+<td>文字スタイル</td>
+</tr>
+<tr>
+<td>textOffset(d)<br>[ to ]</td>
+<td>d : Double</td>
+<td>文字の寸法線との離れ。省略時0</td>
+</tr>
+<tr>
+<td>formatStyle(...)<br>[ fs ]</td>
+<td><a href="#formatStyle">寸法値フォーマット</a>参照</td>
+<td>寸法値フォーマット</td>
+</tr>
+<tr>
+<td>tolerance2LinesTextScale(s)<br>[ tt ]</td>
+<td>s:Double</td>
+<td>2行の許容差の文字サイズの比率。省略時0.75</td>
+</tr>
+<tr>
+<td>startArrow(...)<br>[ sa ]</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>始点の矢印スタイル。省略時矢印なし</td>
+</tr>
+<tr>
+<td>endArrow(...)<br>[ ea ]</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>終点の矢印スタイル。省略時矢印なし</td>
+</tr>
+<tr>
+<td>arrowMode(m)<br>[ am ]</td>
+<td>m:Int</td>
+<td>矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0</td>
+</tr>
+</tbody>
+</table>
+<p><a id="arcdimensionStyle" href=""></a></p>
+<h6 id="arcdimensionstyle弧長寸法スタイル">arcDimensionStyle（弧長寸法スタイル） </h6>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>extensionLineOffset(d)<br>[ eo ]</td>
+<td>d : Double</td>
+<td>引出位置から引出線までの離れ</td>
+</tr>
+<tr>
+<td>extensionLineOvershoot(d)<br>[ ev ]</td>
+<td>d : Double</td>
+<td>寸法線からの引出線の延長長さ</td>
+</tr>
+<tr>
+<td>dimensionLineExtension(d)<br>[ de ]</td>
+<td>d : Double</td>
+<td>寸法線の延長長さ</td>
+</tr>
+<tr>
+<td>textStyle(...)<br>[ ts ]</td>
+<td><a href="#textStyle">文字スタイル</a>参照</td>
+<td>文字スタイル</td>
+</tr>
+<tr>
+<td>textOffset(d)<br>[ to ]</td>
+<td>d : Double</td>
+<td>文字の寸法線との離れ。省略時0</td>
+</tr>
+<tr>
+<td>formatStyle(...)<br>[ fs ]</td>
+<td><a href="#formatStyle">寸法値フォーマット</a>参照</td>
+<td>寸法値フォーマット</td>
+</tr>
+<tr>
+<td>tolerance2LinesTextScale(s)<br>[ tt ]</td>
+<td>s:Double</td>
+<td>2行の許容差の文字サイズの比率。省略時0.75</td>
+</tr>
+<tr>
+<td>startArrow(...)<br>[ sa ]</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>始点の矢印スタイル。省略時矢印なし</td>
+</tr>
+<tr>
+<td>endArrow(...)<br>[ ea ]</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>終点の矢印スタイル。省略時矢印なし</td>
+</tr>
+<tr>
+<td>arrowMode(m)<br>[ am ]</td>
+<td>m:Int</td>
+<td>矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0</td>
+</tr>
+<tr>
+<td>em(m)<br></td>
+<td>m : Int</td>
+<td>引出線モード<br>0:自動, 1:平行, 2:放射状<br>省略時0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>引出線モード自動では、弧角が90度以内で平行、90度を超えると放射状になる。</li>
+</ul>
+<p><a id="formatStyle" href=""></a></p>
+<h6 id="formatstyle寸法値フォーマット">formatStyle（寸法値フォーマット） </h6>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fractionDigits(d)<br>[ fd ]</td>
+<td>d : Int</td>
+<td>小数点桁数。省略時1</td>
+</tr>
+<tr>
+<td>usesGroupingSeparator(f)<br>[ gs ]</td>
+<td>f : Int</td>
+<td>0:区切りなし 1:桁区切り。省略時0</td>
+</tr>
+<tr>
+<td>prefix(s)<br>[ p ]</td>
+<td>s : String</td>
+<td>前置文字。省略時文字無し</td>
+</tr>
+<tr>
+<td>suffix(s)<br>[ s ]</td>
+<td>s : String</td>
+<td>後置文字。省略時文字無し</td>
+</tr>
+</tbody>
+</table>
+<p><a id="tolerance" href=""></a></p>
+<h6 id="tolerance許容差">tolerance（許容差） </h6>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>toleranceType(t)<br>[ tt ]</td>
+<td>t : Int</td>
+<td>許容差タイプ 0:無し 1:一段 2:二段。省略時0</td>
+</tr>
+<tr>
+<td>value0(v)<br>[ v0 ]</td>
+<td>v : Double</td>
+<td>許容差上、一段の時使用</td>
+</tr>
+<tr>
+<td>value1(v)<br>[ v1 ]</td>
+<td>v : Double</td>
+<td>許容差下。一段の時は省略</td>
+</tr>
+<tr>
+<td>fractionDigits(d)<br>[ fd ]</td>
+<td>d : Int</td>
+<td>小数点桁数。省略時1</td>
+</tr>
+<tr>
+<td>suffix(s)<br>[ s ]</td>
+<td>s : String</td>
+<td>後置文字。省略時文字無し</td>
+</tr>
+</tbody>
+</table>
+<h4 id="図形要素">図形要素 </h4>
+<h5 id="line線">Line（線） </h5>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pp(x0 y0 x1 y1)</td>
+<td>x0 : Double,  y0 : Double, <br>x1 : Double,  y1 : Double</td>
+<td>始点と終点</td>
+</tr>
+<tr>
+<td>p0(x y)</td>
+<td>x : Double,  y : Double</td>
+<td>始点</td>
+</tr>
+<tr>
+<td>p1(x y)</td>
+<td>x : Double,  y : Double</td>
+<td>終点</td>
+</tr>
+<tr>
+<td>lineStyle(...)<br>[ ls ]</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
+</tr>
+<tr>
+<td>startArrow(...)<br>[ sa ]</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>始点の矢印スタイル。省略時矢印なし</td>
+</tr>
+<tr>
+<td>endArrow(...)<br>[ ea ]</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>終点の矢印スタイル。省略時矢印なし</td>
+</tr>
+</tbody>
+</table>
+<h5 id="polyline連続線">Polyline（連続線） </h5>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vertices(x1 y1 x2 y2 x3 y3 ... xn yn)<br>[ vs ]</td>
+<td>x1..xn : Double,  y1..yn : Double</td>
+<td>頂点</td>
+</tr>
+<tr>
+<td>isClosed(flag)<br>[ ic ]</td>
+<td>flag : Int</td>
+<td>0:Open　1:Close 省略時0</td>
+</tr>
+<tr>
+<td>lineStyle(...)<br>[ ls ]</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
+</tr>
+<tr>
+<td>fillStyle(...)<br>[ fs ]</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>塗りスタイル。省略時塗りなし</td>
+</tr>
+<tr>
+<td>startArrow(...)<br>[ sa ]</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>始点矢印。省略時矢印なし</td>
+</tr>
+<tr>
+<td>endArrow(...)<br>[ ea ]</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>終点矢印。省略時矢印なし</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>isCloseが1の時は矢印スタイルは使われません。</li>
+</ul>
+<h5 id="splineスプライン曲線">Spline（スプライン曲線） </h5>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vertices(x1 y1 x2 y2 x3 y3 ... xn yn)<br>[ vs ]</td>
+<td>x1..xn : Double,  y1..yn : Double</td>
+<td>頂点</td>
+</tr>
+<tr>
+<td>isClosed(flag)<br>[ ic ]</td>
+<td>flag : Int</td>
+<td>0:Open　1:Close 省略時0</td>
+</tr>
+<tr>
+<td>lineStyle(...)<br>[ ls ]</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
+</tr>
+<tr>
+<td>fillStyle(...)<br>[ fs ]</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>塗りスタイル。省略時塗りなし</td>
+</tr>
+<tr>
+<td>startArrow(...)<br>[ sa ]</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>始点矢印。省略時矢印なし</td>
+</tr>
+<tr>
+<td>endArrow(...)<br>[ ea ]</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>終点矢印。省略時矢印なし</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>カーディナルスプラインでテンションは0.5です。</li>
+<li>isCloseが1の時は矢印スタイルは使われません。</li>
+</ul>
+<h5 id="bezierベジェ曲線">Bezier（ベジェ曲線） </h5>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vertices(x1 y1 x2 y2 x3 y3 ... xn yn)<br>[ vs ]</td>
+<td>x1..xn : Double,  y1..yn : Double</td>
+<td>頂点と制御点</td>
+</tr>
+<tr>
+<td>lineStyle(...)<br>[ ls ]</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
+</tr>
+<tr>
+<td>fillStyle(...)<br>[ fs ]</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>塗りスタイル。省略時塗りなし</td>
+</tr>
+<tr>
+<td>startArrow(...)<br>[ sa ]</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>始点矢印。省略時矢印なし</td>
+</tr>
+<tr>
+<td>endArrow(...)<br>[ ea ]</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>終点矢印。省略時矢印なし</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>3次ベジェ曲線です。頂点、制御点１、制御点2，頂点の順に並べてあります。頂点数をmとした場合、制御点と頂点の合計nはn=3*m+1になります。</li>
+<li>isCloseが1の時は始点と終点が直線で繋がれ矢印スタイルは使われません。</li>
+</ul>
+<h5 id="circle円">Circle（円） </h5>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p0(x y)</td>
+<td>x : Double,  y : Double</td>
+<td>中心点</td>
+</tr>
+<tr>
+<td>radius(r)<br>[ r ]</td>
+<td>r : Double</td>
+<td>半径</td>
+</tr>
+<tr>
+<td>flatness(f)<br>[ f ]</td>
+<td>f : Double</td>
+<td>扁平率。省略時1</td>
+</tr>
+<tr>
+<td>angle(a)<br>[ a ]</td>
+<td>a : Double</td>
+<td>角度（度）。省略時0</td>
+</tr>
+<tr>
+<td>lineStyle(...)<br>[ ls ]</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
+</tr>
+<tr>
+<td>fillStyle(...)<br>[ fs ]</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>塗りスタイル。省略時塗りなし</td>
+</tr>
+</tbody>
+</table>
+<h5 id="arc円弧">Arc（円弧） </h5>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p0(x y)</td>
+<td>x : Double,  y : Double</td>
+<td>中心点</td>
+</tr>
+<tr>
+<td>radius(r)<br>[ r ]</td>
+<td>r : Double</td>
+<td>半径</td>
+</tr>
+<tr>
+<td>flatness(f)<br>[ f ]</td>
+<td>f : Double</td>
+<td>扁平率。省略時1</td>
+</tr>
+<tr>
+<td>angle(a)<br>[ a ]</td>
+<td>a : Double</td>
+<td>角度（度）。省略時0</td>
+</tr>
+<tr>
+<td>startAngle(a)<br>[ st ]</td>
+<td>a : Double</td>
+<td>開始角（度）。省略時0</td>
+</tr>
+<tr>
+<td>sweepAngle(a)<br>[ sw ]</td>
+<td>a : Double</td>
+<td>角幅（度）。省略時90</td>
+</tr>
+<tr>
+<td>lineStyle(...)<br>[ ls ]</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
+</tr>
+<tr>
+<td>fillStyle(...)<br>[ fs ]</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>塗りスタイル。省略時塗りなし</td>
+</tr>
+<tr>
+<td>startArrow(...)<br>[ sa ]</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>始点矢印。省略時矢印なし</td>
+</tr>
+<tr>
+<td>endArrow(...)<br>[ ea ]</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>終点矢印。省略時矢印なし</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>開始角及び角幅は省略可能ですが省略値は暫定のため省略を推奨しません。</li>
+<li>角幅は左回りが正、右回りは負です。</li>
+</ul>
+<h5 id="marker点">Marker（点） </h5>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p0(x y)</td>
+<td>x : Double,  y : Double</td>
+<td>中心点</td>
+</tr>
+<tr>
+<td>angle(a)<br>[ a ]</td>
+<td>a : Double</td>
+<td>角度（度）。省略時0</td>
+</tr>
+<tr>
+<td>markerStyle(...)<br>[ ms ]</td>
+<td><a href="#markerStyle">点スタイル</a>参照</td>
+<td>点スタイル</td>
+</tr>
+<tr>
+<td>lineStyle(...)<br>[ ls ]</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>線スタイルの線種は無効で常に実線になります。</li>
+<li>フラグで線種がレイヤ線種になっていても実線で表示される。</li>
+<li>フラグが仮線の場合は仮線で表示される（印刷不可の仮点となる）。</li>
+</ul>
+<h5 id="text文字">Text（文字） </h5>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p0(x y)</td>
+<td>x : Double,  y : Double</td>
+<td>基準点</td>
+</tr>
+<tr>
+<td>width(w)<br>[ w ]</td>
+<td>w : Double</td>
+<td>幅</td>
+</tr>
+<tr>
+<td>height(h)<br>[ h ]</td>
+<td>h : Double</td>
+<td>高さ</td>
+</tr>
+<tr>
+<td>text(t)<br>[ t ]</td>
+<td>t : String</td>
+<td>文字列</td>
+</tr>
+<tr>
+<td>angle(a)<br>[ a ]</td>
+<td>a : Double</td>
+<td>角度（度）。省略時0</td>
+</tr>
+<tr>
+<td>basis(b)<br>[ b ]</td>
+<td>b : Int</td>
+<td>配置基準。省略時0（左下）</td>
+</tr>
+<tr>
+<td>textStyle(...)<br>[ ts ]</td>
+<td><a href="#textStyle">文字スタイル</a>参照</td>
+<td>文字スタイル。</td>
+</tr>
+<tr>
+<td>fillStyle(...)<br>[ fs ]</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>文字背景塗りスタイル。省略時塗りなし</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>幅と高さは文字列を囲む幅と高さではなく図形選択時に表示される矩形です。折り返しや背景色の範囲に使う予定でしたが実装できていません（折り返しが難しい）。将来的にフラグでそれらの機能を有効にするかもしれません。</li>
+<li>配置基準　0:左下, 1:中下, 2:右下, 3:左中, 4:中央, 5:右中, 6:左上, 7:中上, 8:右上</li>
+</ul>
+<h5 id="dimension直線寸法">Dimension（直線寸法） </h5>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p0(x y)</td>
+<td>x : Double,  y : Double</td>
+<td>寸法線始点</td>
+</tr>
+<tr>
+<td>p1(x y)</td>
+<td>x : Double,  y : Double</td>
+<td>寸法線終点</td>
+</tr>
+<tr>
+<td>direction(dx dy)<br>[ d ]</td>
+<td>dx : Double,  dy : Double</td>
+<td>寸法線から引出位置への方向単位ベクトル</td>
+</tr>
+<tr>
+<td>extensionLine0(d)<br>[ e0 ]</td>
+<td>d : Double</td>
+<td>始点側引き出し線の長さ</td>
+</tr>
+<tr>
+<td>extensionLine1(d)<br>[ e1 ]</td>
+<td>d : Double</td>
+<td>終点側引き出し線の長さ</td>
+</tr>
+<tr>
+<td>text(t)<br>[ t ]</td>
+<td>t : String</td>
+<td>文字列</td>
+</tr>
+<tr>
+<td>tp(d)</td>
+<td>d : Double</td>
+<td>文字配置位置 0.0が始点、1.0が終点、0.5が寸法線の中央。省略時0.5</td>
+</tr>
+<tr>
+<td>enableAutoDimension(f)<br>[ ed ]</td>
+<td>f : Int</td>
+<td>1で寸法値自動。省略時1</td>
+</tr>
+<tr>
+<td>lineStyle(...)<br>[ ls ]</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
+</tr>
+<tr>
+<td>fillStyle(...)<br>[ fs ]</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>文字背景塗りスタイル。省略時塗りなし</td>
+</tr>
+<tr>
+<td>dimensionStyle(...)<br>[ ds ]</td>
+<td><a href="#dimensionStyle">直線寸法スタイル</a>参照</td>
+<td>直線寸法スタイル</td>
+</tr>
+<tr>
+<td>tolerance(...)<br>[ to ]</td>
+<td><a href="#tolerance">許容差</a>参照</td>
+<td>許容差。省略時、許容差なし</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>引き出し線の長さがマイナスの場合、directionの逆向きに引き出し線を伸ばす。</li>
+</ul>
+<h5 id="radius半径寸法">Radius（半径寸法） </h5>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p0(x y)</td>
+<td>x : Double,  y : Double</td>
+<td>寸法線始点</td>
+</tr>
+<tr>
+<td>p1(x y)</td>
+<td>x : Double,  y : Double</td>
+<td>寸法線終点</td>
+</tr>
+<tr>
+<td>text(t)<br>[ t ]</td>
+<td>t : String</td>
+<td>文字列</td>
+</tr>
+<tr>
+<td>tp(d)</td>
+<td>d : Double</td>
+<td>文字配置位置 0.0が中心、1.0が終点、0.5が寸法線の中央。省略時0.5</td>
+</tr>
+<tr>
+<td>enableAutoDimension(f)<br>[ ed ]</td>
+<td>f : Int</td>
+<td>1で寸法値自動。省略時1</td>
+</tr>
+<tr>
+<td>lineStyle(...)<br>[ ls ]</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
+</tr>
+<tr>
+<td>fillStyle(...)<br>[ fs ]</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>文字背景塗りスタイル。省略時塗りなし</td>
+</tr>
+<tr>
+<td>dimensionStyle(...)<br>[ ds ]</td>
+<td><a href="#radiusStyle">半径寸法スタイル</a>参照</td>
+<td>半径寸法スタイル</td>
+</tr>
+<tr>
+<td>tolerance(...)<br>[ to ]</td>
+<td><a href="#tolerance">許容差</a>参照</td>
+<td>許容差。省略時、許容差なし</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>始点は円の中心。</li>
+</ul>
+<h5 id="diameter直径寸法">Diameter（直径寸法） </h5>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p0(x y)</td>
+<td>x : Double,  y : Double</td>
+<td>寸法線始点</td>
+</tr>
+<tr>
+<td>p1(x y)</td>
+<td>x : Double,  y : Double</td>
+<td>寸法線終点</td>
+</tr>
+<tr>
+<td>text(t)<br>[ t ]</td>
+<td>t : String</td>
+<td>文字列</td>
+</tr>
+<tr>
+<td>tp(d)</td>
+<td>d : Double</td>
+<td>文字配置位置 0.0が始点、1.0が終点、0.5が寸法線の中央。省略時0.5</td>
+</tr>
+<tr>
+<td>enableAutoDimension(f)<br>[ ed ]</td>
+<td>f : Int</td>
+<td>1で寸法値自動。省略時1</td>
+</tr>
+<tr>
+<td>lineStyle(...)<br>[ ls ]</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
+</tr>
+<tr>
+<td>fillStyle(...)<br>[ fs ]</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>文字背景塗りスタイル。省略時塗りなし</td>
+</tr>
+<tr>
+<td>dimensionStyle(...)<br>[ ds ]</td>
+<td><a href="#diameterStyle">直径寸法スタイル</a>参照</td>
+<td>直径寸法スタイル</td>
+</tr>
+<tr>
+<td>tolerance(...)<br>[ to ]</td>
+<td><a href="#tolerance">許容差</a>参照</td>
+<td>許容差。省略時、許容差なし</td>
+</tr>
+</tbody>
+</table>
+<h5 id="angle角度寸法">Angle（角度寸法） </h5>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p0(x y)</td>
+<td>x : Double,  y : Double</td>
+<td>中心</td>
+</tr>
+<tr>
+<td>radius(r)<br>[ r ]</td>
+<td>r : Double</td>
+<td>半径</td>
+</tr>
+<tr>
+<td>startAngle(a)<br>[ st ]</td>
+<td>a : Double</td>
+<td>開始角（度）。省略時0</td>
+</tr>
+<tr>
+<td>sweepAngle(a)<br>[ sw ]</td>
+<td>a : Double</td>
+<td>角幅（度）。省略時90</td>
+</tr>
+<tr>
+<td>extensionLine0(d)<br>[ e0 ]</td>
+<td>d : Double</td>
+<td>始点側引き出し線の長さ</td>
+</tr>
+<tr>
+<td>extensionLine1(d)<br>[ e1 ]</td>
+<td>d : Double</td>
+<td>終点側引き出し線の長さ</td>
+</tr>
+<tr>
+<td>text(t)<br>[ t ]</td>
+<td>t : String</td>
+<td>文字列</td>
+</tr>
+<tr>
+<td>tp(d)</td>
+<td>d : Double</td>
+<td>文字配置位置 0.0が始点、1.0が終点、0.5が寸法線の中央。省略時0.5</td>
+</tr>
+<tr>
+<td>enableAutoDimension(f)<br>[ ed ]</td>
+<td>f : Int</td>
+<td>1で寸法値自動。省略時1</td>
+</tr>
+<tr>
+<td>lineStyle(...)<br>[ ls ]</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
+</tr>
+<tr>
+<td>fillStyle(...)<br>[ fs ]</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>文字背景塗りスタイル。省略時塗りなし</td>
+</tr>
+<tr>
+<td>dimensionStyle(...)<br>[ ds ]</td>
+<td><a href="#dimensionStyle">直線寸法スタイル</a>参照</td>
+<td>寸法スタイル。直線寸法スタイルを使用</td>
+</tr>
+<tr>
+<td>tolerance(...)<br>[ to ]</td>
+<td><a href="#tolerance">許容差</a>参照</td>
+<td>許容差。省略時、許容差なし</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>引き出し線の長さがマイナスの場合、中心と反対側に引き出し線を伸ばす。</li>
+</ul>
+<h5 id="arcdimension弧長寸法">ArcDimension（弧長寸法） </h5>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p0(x y)</td>
+<td>x : Double,  y : Double</td>
+<td>中心</td>
+</tr>
+<tr>
+<td>radius(r)<br>[ r ]</td>
+<td>r : Double</td>
+<td>寸法線の半径</td>
+</tr>
+<tr>
+<td>startAngle(a)<br>[ st ]</td>
+<td>a : Double</td>
+<td>開始角（度）。省略時0</td>
+</tr>
+<tr>
+<td>sweepAngle(a)<br>[ sw ]</td>
+<td>a : Double</td>
+<td>角幅（度）。省略時90</td>
+</tr>
+<tr>
+<td>ar(r)<br></td>
+<td>r : Double</td>
+<td>弧長の半径</td>
+</tr>
+<tr>
+<td>text(t)<br>[ t ]</td>
+<td>t : String</td>
+<td>文字列</td>
+</tr>
+<tr>
+<td>tp(d)</td>
+<td>d : Double</td>
+<td>文字配置位置 0.0が始点、1.0が終点、0.5が寸法線の中央。省略時0.5</td>
+</tr>
+<tr>
+<td>enableAutoDimension(f)<br>[ ed ]</td>
+<td>f : Int</td>
+<td>1で寸法値自動。省略時1</td>
+</tr>
+<tr>
+<td>lineStyle(...)<br>[ ls ]</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
+</tr>
+<tr>
+<td>fillStyle(...)<br>[ fs ]</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>文字背景塗りスタイル。省略時塗りなし</td>
+</tr>
+<tr>
+<td>dimensionStyle(...)<br>[ ds ]</td>
+<td><a href="#arcdimensionStyle">弧長寸法スタイル</a>参照</td>
+<td>弧長寸法スタイル</td>
+</tr>
+<tr>
+<td>tolerance(...)<br>[ to ]</td>
+<td><a href="#tolerance">許容差</a>参照</td>
+<td>許容差。省略時、許容差なし</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>寸法線（寸法値が表示される）の半径と、弧長を測る半径があることに注意。</li>
+<li>延長線が平行（延長線モード自動で弧幅が90度以内の場合を含む）で寸法線の半径が弧長の半径より小さい時、寸法線が寸法線の半径で描画できないならば、寸法線の半径を無視し、寸法線を描画できる最小の半径を使い描画する。</li>
+</ul>
+<p><a id="Leader" href=""></a></p>
+<h5 id="leader引出線">Leader（引出線） </h5>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vertices(x1 y1 x2 y2 x3 y3 ... xn yn)<br>[ vs ]</td>
+<td>x1..xn : Double,  y1..yn : Double</td>
+<td>頂点</td>
+</tr>
+<tr>
+<td>text(t)<br>[ t ]</td>
+<td>t : String</td>
+<td>文字列</td>
+</tr>
+<tr>
+<td>leaderStyle.leaderBasisが3の時のみ有効。</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>lineStyle(...)<br>[ ls ]</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
+</tr>
+<tr>
+<td>fillStyle(...)<br>[ fs ]</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>文字背景塗りスタイル。省略時塗りなし</td>
+</tr>
+<tr>
+<td>leaderStyle(...)<br>[ lt ]</td>
+<td><a href="#leaderStyle">引出線スタイル</a>参照</td>
+<td>引出線スタイル</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>leaderStyle.leaderBasisが3（Free）の場合、文字列の配置点は最後の頂点にleaderStyle.textOffsetをX、leaderStyle.leaderOffsetをYとしてオフセットする（文字の基点は中心）。</li>
+<li>leaderStyle.leaderBasisが3（Free）の場合、leaderStyle.extendLineとleaderStyle.leaderOrientationは無視され文字列の傾きはleaderStyle.textAngleが使われる。</li>
+</ul>
+<h5 id="balloonバルーン">Balloon（バルーン） </h5>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vertices(x1 y1 x2 y2 x3 y3 ... xn yn)<br>[ vs ]</td>
+<td>x1..xn : Double,  y1..yn : Double</td>
+<td>頂点</td>
+</tr>
+<tr>
+<td>text(t)<br>[ t ]</td>
+<td>t : String</td>
+<td>文字列</td>
+</tr>
+<tr>
+<td>lineStyle(...)<br>[ ls ]</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
+</tr>
+<tr>
+<td>fillStyle(...)<br>[ fs ]</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>文字背景塗りスタイル。省略時塗りなし</td>
+</tr>
+<tr>
+<td>balloonStyle(...)<br>[ bs ]</td>
+<td><a href="#balloonStyle">バルーンスタイル</a>参照</td>
+<td>バルーンスタイル</td>
+</tr>
+</tbody>
+</table>
+<h5 id="groupグループ図形">Group（グループ図形） </h5>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shapes(S1()S2()...Sn())<br>[ ss ]</td>
+<td>S1..Sn:図形</td>
+<td>図形のリスト</td>
+</tr>
+</tbody>
+</table>
+<h5 id="pathパス図形">Path（パス図形） </h5>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p(...)<br></td>
+<td></td>
+<td>パスリスト</td>
+</tr>
+<tr>
+<td>lineStyle(...)<br>[ ls ]</td>
+<td><a href="#lineStyle">線スタイル</a>参照</td>
+<td>線スタイル。省略時、黒実線、幅0</td>
+</tr>
+<tr>
+<td>fillStyle(...)<br>[ fs ]</td>
+<td><a href="#fillStyle">塗りスタイル</a>参照</td>
+<td>塗りスタイル。省略時塗りなし</td>
+</tr>
+</tbody>
+</table>
+<p>パス要素</p>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s(x,y)<br></td>
+<td>x:Double, y:Double</td>
+<td>始点</td>
+</tr>
+<tr>
+<td>e(flag)<br></td>
+<td>flag:Int</td>
+<td>0：閉じない, 1:閉じる</td>
+</tr>
+<tr>
+<td>l(x1 y1 x2 y2 ... xn yn)<br></td>
+<td>x1..xn : Double,  y1..yn : Double</td>
+<td>直線</td>
+</tr>
+<tr>
+<td>b(x1 y1 x2 y2 ... xn yn)<br></td>
+<td>x1..xn : Double,  y1..yn : Double</td>
+<td>3次ベジェ曲線。2つの制御点と１つの頂点の組</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>パスはs()から始まること。e()のフラグが1の時は最後の点からまで始点まで直線を引く。</li>
+</ul>
+<h5 id="image画像図形">Image（画像図形） </h5>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p0(x y)</td>
+<td>x : Double,  y : Double</td>
+<td>中心</td>
+</tr>
+<tr>
+<td>width(w)<br>[ w ]</td>
+<td>w : Double</td>
+<td>幅</td>
+</tr>
+<tr>
+<td>height(h)<br>[ h ]</td>
+<td>h : Double</td>
+<td>高さ</td>
+</tr>
+<tr>
+<td>angle(a)<br>[ a ]</td>
+<td>a : Double</td>
+<td>角度（度）。省略時0</td>
+</tr>
+<tr>
+<td>image(bytes)<br>[ im ]</td>
+<td>bytes : Bytes</td>
+<td>画像データ</td>
+</tr>
+<tr>
+<td>src(file)<br></td>
+<td>file : String</td>
+<td>画像データファイルへのパス（フォルダ名含む）。例：src("media\\e1ed77be-822f-4743-a295-6d4c025ba6b0.png") フォルダの区切りの'\'は文字列では２つ必要なことに注意。ファイルに拡張子は無くてもよいが、あったほうがデバッグが楽になると思います。</td>
+</tr>
+<tr>
+<td>type(name)<br>[ t ]</td>
+<td>name : String</td>
+<td>画像の種類（jpg, png, bmp）<br>参考値。省略可。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>画像の種類はバイナリから判断できるためtypeタグは無くてもよい。今のところtypeタグはデバッグで使うことを想定する。</li>
+<li>imageタグとsrcタグは片方のみ有効。両方あった場合の動作は未定義。</li>
+<li>imageタグを使うとファイルサイズが大きくなりますが画像を一つのファイルにまとめることができるのでアプリケーションによっては実装が容易になります。</li>
+<li>既存の図面に別の図面をインポートで追加する可能性を考えてsrcに使うファイル名の衝突を避けるためuuidを使うことを推奨します。</li>
+</ul>
+<h3 id="settingsセクション-1">settingsセクション </h3>
+<p>設定を記述します。</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>settings(
+ currentLayer("Lyer1")
+ currentSheet("Sheet2")
+)
+</code></pre><h4 id="currentlayer">currentLayer </h4>
+<p>選択中のレイヤ名</p>
+<h4 id="currentsheet">currentSheet </h4>
+<p>選択中のシート名</p>
+<h2 id="補足">補足 </h2>
+<h3 id="ファイルバージョン">ファイルバージョン </h3>
+<ul>
+<li>インデックスファイルと図面ファイルのバージョンはそれぞれ違う値にすることもできますが、インデクスファイルのメジャーバージョン2以降はインデックスファイルと図面ファイルは同じものにしようと思います。</li>
+<li>メジャーバージョンはファイル構造が変わって下位互換性が無くなった場合に上げます（例えば、メジャーバージョン1のみに対応するアプリではメジャーバージョン2は読めない）。<br>
+ただし、新たなタグ要素の追加等でそのタグを読み飛ばすことができる場合はメジャーバージョンを上げずマイナ―バージョンを上げます。</li>
+</ul>
+<h3 id="バージョンによる違い">バージョンによる違い </h3>
+<ul>
+<li>ファイルバージョンは文字列でversionタグを使いますが、旧バージョンでは<code>fileversion(versionNumber)</code>を使いメジャーバージョン（整数値）のみでした。</li>
+<li>メジャーバージョン1はページが１つしかなく、pagesタグがない代わりにdrawingタグがあります。また、settingsタグはありません（設定はdrawingファイルにあります）。<br>
+以下はインデックスファイルのメジャーバージョン1の例です。メジャーバージョン１では図面ファイル名は<code>drawing</code>でした。</li>
+</ul>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>filetype("precad_archive")
+fileinfo(
+ fileversion(1)appinfo("precad for windows version 1.0.0.0")
+)
+contents(
+ drawing("drawing")
+)
+</code></pre><ul>
+<li>線図形（Line）の始点と終点はppタグでまとめて書き出しますが、バージョン2.1.0までは始点と終点を別々に以下の書式で記述していました。バージョン2.2.0以降、分けて記述するのは冗長なのでppの書式に変更しました。互換性のため読み込みのみ対応しています。</li>
+</ul>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>p0(x0,y0)p1(x1,y1)
+</code></pre><ul>
+<li>頂点リスト（vertices()）はファイルバージョン2.0.0以下では次の書式でした。互換性のため読み込みのみ対応しています。</li>
+</ul>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>points(P(x0,y0)P(x1,y1)...)　　//Pは大文字
+</code></pre><ul>
+<li>ベジェ曲線の頂点リストは以下の旧型式(ファイルバージョン2.0.0以下)があります（非推奨）。各頂点とその制御点を分けて記述します。制御点は各頂点の始点側（s()）と終点側（e()）の制御点を記述します。開いたベジェ曲線の場合は始点の終点側の制御点、終点の始点側の制御点は無視されます。<br>
+記述が冗長なのでこの形式は互換性のために読み込みのみ対応しています。</li>
+</ul>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>points(P(x0 y0)P(x1 y1)...)
+controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
+</code></pre><ul>
+<li>
+<p>バージョン2.1.0以前の直径寸法スタイルと直線寸法スタイルの矢印は始点終点同じものでした。そのため矢印スタイルのタグは<code>arrowStyle</code>でした。</p>
+</li>
+<li>
+<p>バージョン2.3.0からImageのsrcタグにファイル名を追加、圧縮ファイル内のmediaフォルダ内に画像を保存します。それ以前はimageタグを使用し文字列として同梱していました（この方式はクリップボード経由のコピーのために現在も使われています）。</p>
+</li>
+</ul>
+<h3 id="短縮形について">短縮形について </h3>
+<p>もともとタグ名は内部で使っている変数名を元に決めました（kotlinで作っていたため最初が小文字から始まります）。そのため比較的文字数が多くなってしまいました。<br>
+タグ名が多少長くてもCPUは十分速くファイルは圧縮するため、それほど問題にならないと思っていました。実際、ファイルサイズの増加はそれほどでもなく速度も（普通のファイルなら）問題になりませんでした。<br>
+しかし、Androidでサイズの大きなファイルを読み込むと速度は大きく落ちました。Androidのディスクアクセスは遅かったのです。<br>
+そのためバージョン2.2.0で短縮形を設けました。</p>
+<h2 id="履歴">履歴 </h2>
+<p>2024/08/25 2.5.0 Rev.0</p>
+<ul>
+<li>ArcDimension（弧長寸法）、arcDimensionStyle（弧長寸法スタイル）追加</li>
+<li>誤記修正</li>
+</ul>
+<p>2024/02/08 2.4.1 Rev.1</p>
+<ul>
+<li>点（dot）のサイズについて修正</li>
+</ul>
+<p>2024/02/08 2.4.1 Rev.0</p>
+<ul>
+<li>textStyleのflagの値の誤記を修正。</li>
+<li>textStyleのflagにTEXT_SLANT_ONLY_CHARACTERを追加。</li>
+</ul>
+<p>2023/04/28 2.4.0 Rev.2</p>
+<ul>
+<li>用紙名を保存するように変更。用紙の回転フラグ追加。</li>
+</ul>
+<p>2023/04/14 2.4.0 rev1</p>
+<ul>
+<li>Leaderの修正</li>
+<li>寸法値の変更</li>
+<li>このファイルのバージョン名の命名規則変更。</li>
+</ul>
+<p>2023/04/12 2.4 rev0</p>
+<ul>
+<li>引出線の仕様変更。</li>
+<li>半径寸法のdimensionLineExtension説明追加、flag追加。</li>
+<li>寸法線関係の説明追加と修正。</li>
+</ul>
+<p>2023/04/10 rev5</p>
+<ul>
+<li>直径寸法のdimensionLineExtensionが0の場合の処理を追加。</li>
+<li>leaderStyleにパラメータ追加。</li>
+</ul>
+<p>2023/04/9 rev4</p>
+<ul>
+<li>寸法線と角度寸法のdimensionLineExtensionが0の場合の処理を追加。</li>
+</ul>
+<p>2023/03/23 rev3</p>
+<ul>
+<li>線種追加</li>
+</ul>
+<p>2023/03/23 rev2</p>
+<ul>
+<li>マクロ文字列追加</li>
+</ul>
+<p>2023/03/09</p>
+<ul>
+<li>初版</li>
+</ul>
+
+      </div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#precad-file-format-ver-250仕様書-rev0" class="md-toc-link"><p>PreCad file format ver 2.5.0仕様書　Rev.0</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#precadの特徴" class="md-toc-link">
+            <p>PreCadの特徴</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#ファイル構成" class="md-toc-link">
+            <p>ファイル構成</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#インデックスファイル" class="md-toc-link"><p>インデックスファイル</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#fileinfoセクション" class="md-toc-link">
+            <p>fileinfoセクション</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#contentsセクション" class="md-toc-link"><p>contentsセクション</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#pages" class="md-toc-link">
+            <p>pages</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#page" class="md-toc-link">
+            <p>page</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#settingsセクション" class="md-toc-link"><p>settingsセクション</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#pageindex--int" class="md-toc-link">
+            <p>pageIndex : Int</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#paper" class="md-toc-link">
+            <p>paper</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#grid" class="md-toc-link">
+            <p>grid</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#printinfo" class="md-toc-link">
+            <p>printInfo</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#図面ファイル" class="md-toc-link"><p>図面ファイル</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#fileinfoセクション-1" class="md-toc-link">
+            <p>fileinfoセクション</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#contentsセクション-1" class="md-toc-link"><p>contentsセクション</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#layers" class="md-toc-link">
+            <p>layers</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#sheets" class="md-toc-link">
+            <p>sheets</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#shapes" class="md-toc-link">
+            <p>shapes</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#図形共通" class="md-toc-link">
+            <p>図形共通</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#図形属性" class="md-toc-link">
+            <p>図形属性</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#図形要素" class="md-toc-link"><p>図形要素</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#line線" class="md-toc-link">
+            <p>Line（線）</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#polyline連続線" class="md-toc-link">
+            <p>Polyline（連続線）</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#splineスプライン曲線" class="md-toc-link">
+            <p>Spline（スプライン曲線）</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#bezierベジェ曲線" class="md-toc-link">
+            <p>Bezier（ベジェ曲線）</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#circle円" class="md-toc-link">
+            <p>Circle（円）</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#arc円弧" class="md-toc-link">
+            <p>Arc（円弧）</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#marker点" class="md-toc-link">
+            <p>Marker（点）</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#text文字" class="md-toc-link">
+            <p>Text（文字）</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#dimension直線寸法" class="md-toc-link">
+            <p>Dimension（直線寸法）</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#radius半径寸法" class="md-toc-link">
+            <p>Radius（半径寸法）</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#diameter直径寸法" class="md-toc-link">
+            <p>Diameter（直径寸法）</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#angle角度寸法" class="md-toc-link">
+            <p>Angle（角度寸法）</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#arcdimension弧長寸法" class="md-toc-link">
+            <p>ArcDimension（弧長寸法）</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#leader引出線" class="md-toc-link">
+            <p>Leader（引出線）</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#balloonバルーン" class="md-toc-link">
+            <p>Balloon（バルーン）</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#groupグループ図形" class="md-toc-link">
+            <p>Group（グループ図形）</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#pathパス図形" class="md-toc-link">
+            <p>Path（パス図形）</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#image画像図形" class="md-toc-link">
+            <p>Image（画像図形）</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#settingsセクション-1" class="md-toc-link"><p>settingsセクション</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#currentlayer" class="md-toc-link">
+            <p>currentLayer</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#currentsheet" class="md-toc-link">
+            <p>currentSheet</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#補足" class="md-toc-link"><p>補足</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#ファイルバージョン" class="md-toc-link">
+            <p>ファイルバージョン</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#バージョンによる違い" class="md-toc-link">
+            <p>バージョンによる違い</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#短縮形について" class="md-toc-link">
+            <p>短縮形について</p>
+
+          </a></div>
+        </div>
+      </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#履歴" class="md-toc-link">
+            <p>履歴</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+</div>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+<script>
+document.body.setAttribute('html-show-sidebar-toc', true)
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    </body></html>

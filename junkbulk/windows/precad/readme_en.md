@@ -64,6 +64,13 @@ If you don't have many Japanese fonts, run `winetricks allfonts` to install them
 However, PreCad does not embed fonts in files, so if the drawing you open uses fonts that are not installed, this can be a problem. In Windows, the text is readable because an alternative font is set, but in Wine, the text is garbled. Please specify an alternative font in PreCad option. Now you can read it.
 
 ## History
+- 2024/8/20 ver. 1.2.3.0
+    - Added overlap line tool.
+    - Snapping is now possible on non-editable layers.
+    - Fixed bugs and changed specifications for arc shape and angle dimension shape.
+    - The 3-point arc tool and 3-point angle tool can now change orientation by pressing the Ctrl key.
+    - The hatch tool has been changed so that pressing the Ctrl key switches to continuous line selection mode.
+
 - 2024/8/05 ver. 1.2.2.1
     - Fixed a bug of "Fit to Object" to zoom to the selected shapes.
 
