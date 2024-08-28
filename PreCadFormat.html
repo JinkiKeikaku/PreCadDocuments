@@ -24,7 +24,7 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="precad-file-format-ver-250仕様書-rev0">PreCad file format ver 2.5.0仕様書　Rev.0 </h1>
+<h1 id="precad-file-format-ver-250仕様書-rev1">PreCad file format ver 2.5.0仕様書　Rev.1 </h1>
 <h2 id="precadの特徴">PreCadの特徴 </h2>
 <ul>
 <li>PreCadは2DCADです。複数のページを作成することができます。</li>
@@ -622,7 +622,7 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>fontName(name)<br>[ fn ]</td>
 <td>name : String</td>
-<td>フォント名</td>
+<td>フォント名。省略時、空文字列</td>
 </tr>
 <tr>
 <td>fontHeight(h)<br>[ fh ]</td>
@@ -1077,15 +1077,18 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>prefix(s)<br>[ p ]</td>
 <td>s : String</td>
-<td>前置文字。省略時文字無し</td>
+<td>前置文字。省略時、半径はR、直径はΦ、弧長は⌒、その他は文字無し</td>
 </tr>
 <tr>
 <td>suffix(s)<br>[ s ]</td>
 <td>s : String</td>
-<td>後置文字。省略時文字無し</td>
+<td>後置文字。省略時、角度は°、その他は文字無し</td>
 </tr>
 </tbody>
 </table>
+<ul>
+<li>prefix及びsuffixは図形により省略時の文字が違うことに注意。</li>
+</ul>
 <p><a id="tolerance" href=""></a></p>
 <h6 id="tolerance許容差">tolerance（許容差） </h6>
 <table>
@@ -2122,6 +2125,11 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 しかし、Androidでサイズの大きなファイルを読み込むと速度は大きく落ちました。Androidのディスクアクセスは遅かったのです。<br>
 そのためバージョン2.2.0で短縮形を設けました。</p>
 <h2 id="履歴">履歴 </h2>
+<p>2024/08/28 2.5.0 Rev.1</p>
+<ul>
+<li>formatStyleのprefix,suffix省略値修正。</li>
+<li>textStyleのfontName省略値追加。</li>
+</ul>
 <p>2024/08/25 2.5.0 Rev.0</p>
 <ul>
 <li>ArcDimension（弧長寸法）、arcDimensionStyle（弧長寸法スタイル）追加</li>
@@ -2179,7 +2187,7 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#precad-file-format-ver-250仕様書-rev0" class="md-toc-link"><p>PreCad file format ver 2.5.0仕様書　Rev.0</p>
+          <a href="#precad-file-format-ver-250仕様書-rev1" class="md-toc-link"><p>PreCad file format ver 2.5.0仕様書　Rev.1</p>
 </a>
           </summary>
         <div>

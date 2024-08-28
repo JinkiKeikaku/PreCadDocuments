@@ -8,7 +8,7 @@ print_background: false
 title: PreCad file format
 ---
 
-# PreCad file format ver 2.5.0仕様書　Rev.0
+# PreCad file format ver 2.5.0仕様書　Rev.1
 ## PreCadの特徴
 - PreCadは2DCADです。複数のページを作成することができます。
 - 各ページにはレイヤーの他にシートがあります。シートは縮尺を設定できます。
@@ -27,6 +27,7 @@ title: PreCad file format
    ├ e87099e2-8962-4e33-9de5-87eda5b55270.jpg
    └ 01ed77be-822f-474b-a297-6d4c025ba6be.jpg
 ```
+ 
  
 - インデックスファイル及び図面ファイルはテキストファイルで文字コードはUTF8です。改行コードはLF(0x0A)もしくはCRLF(0x0D, 0x0A)です。
 - ファイルフォーマットはタグパラメータ形式を使用しています。タグパラメータ形式はタグの次にパラメータを()で囲み記述します。パラメータは数値、文字列、タグパラメータを複数含めることができます。パラメータの区切りは空白文字です。またパラメータがないタグも存在します。タグの出現順は一部（セクション、ページ、レイヤ、シート、図形の順序など）を除き自由です。
@@ -302,7 +303,7 @@ startArrow(size(3)type(1))
 |-----|------|-----|
 | color(c)<br>[ c ] | c : Int | 文字色。省略時黒 |
 | textAlign(a)<br>[ ta ] | a : Int | 文字配置 0:左 1:中央 2:右。省略時0 |
-| fontName(name)<br>[ fn ] | name : String | フォント名 |
+| fontName(name)<br>[ fn ] | name : String | フォント名。省略時、空文字列 |
 | fontHeight(h)<br>[ fh ] | h : Double | フォントサイズ |
 | fontWidthScale(w)<br>[ fw ] | w : Double | フォント横幅比。省略時1 |
 | fontSpace(s)<br>[ fs ] | s : Double | 文字間隔。省略時0 |
@@ -431,8 +432,10 @@ startArrow(size(3)type(1))
 |-----|------|-----|
 | fractionDigits(d)<br>[ fd ] | d : Int | 小数点桁数。省略時1 |
 | usesGroupingSeparator(f)<br>[ gs ] | f : Int | 0:区切りなし 1:桁区切り。省略時0 |
-| prefix(s)<br>[ p ] | s : String | 前置文字。省略時文字無し |
-| suffix(s)<br>[ s ] | s : String | 後置文字。省略時文字無し |
+| prefix(s)<br>[ p ] | s : String | 前置文字。省略時、半径はR、直径はΦ、弧長は⌒、その他は文字無し |
+| suffix(s)<br>[ s ] | s : String | 後置文字。省略時、角度は°、その他は文字無し |
+
+- prefix及びsuffixは図形により省略時の文字が違うことに注意。
 
 <a id="tolerance"></a>
 ###### tolerance（許容差）
@@ -765,6 +768,10 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 そのためバージョン2.2.0で短縮形を設けました。
 
 ## 履歴
+2024/08/28 2.5.0 Rev.1
+- formatStyleのprefix,suffix省略値修正。
+- textStyleのfontName省略値追加。
+
 2024/08/25 2.5.0 Rev.0
 - ArcDimension（弧長寸法）、arcDimensionStyle（弧長寸法スタイル）追加
 - 誤記修正
