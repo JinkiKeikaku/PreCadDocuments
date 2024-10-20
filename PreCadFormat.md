@@ -8,7 +8,7 @@ print_background: false
 title: PreCad file format
 ---
 
-# PreCad file format ver 2.5.1仕様書　Rev.0
+# PreCad file format ver 2.6.0仕様書　Rev.0
 ## PreCadの特徴
 - PreCadは2DCADです。複数のページを作成することができます。
 - 各ページにはレイヤーの他にシートがあります。シートは縮尺を設定できます。
@@ -782,7 +782,11 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 そのためバージョン2.2.0で短縮形を設けました。
 
 ## 履歴
-2024/08/28 2.5.1 Rev.0
+2024/10/20 2.6.0 Rev.0
+- バージョン変更　2.5.1->2.6.0（線種追加したので）。
+- 履歴の日付修正。
+
+2024/10/20 2.5.1 Rev.0
 - 線種追加。
 - 線種名誤記修正。
 

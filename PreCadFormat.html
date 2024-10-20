@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="file:///c:\Users\yama\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.13\crossnote\dependencies\katex\katex.min.css">
+      <link rel="stylesheet" href="file:///c:\Users\yama\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.14\crossnote\dependencies\katex\katex.min.css">
       
       
       
@@ -24,7 +24,7 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="precad-file-format-ver-250仕様書-rev1">PreCad file format ver 2.5.0仕様書　Rev.1 </h1>
+<h1 id="precad-file-format-ver-260仕様書-rev0">PreCad file format ver 2.6.0仕様書　Rev.0 </h1>
 <h2 id="precadの特徴">PreCadの特徴 </h2>
 <ul>
 <li>PreCadは2DCADです。複数のページを作成することができます。</li>
@@ -472,28 +472,81 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 </tr>
 <tr>
 <td>dashed</td>
-<td>8.0, 4.0</td>
+<td>12.0, 3.0</td>
 <td>破線</td>
 </tr>
 <tr>
+<td>dash_space</td>
+<td>12.0, 12.0</td>
+<td>跳び破線</td>
+</tr>
+<tr>
 <td>center</td>
-<td>24.0, 4.0, 8.0, 4.0</td>
+<td>24.0, 3.0, 7.0, 3.0</td>
 <td>一点鎖線</td>
 </tr>
 <tr>
-<td>center</td>
-<td>24.0, 4.0, 8.0, 4.0, 8.0, 4.0</td>
+<td>phantom</td>
+<td>24.0, 3.0, 7.0, 3.0, 7.0, 3.0</td>
 <td>二点鎖線</td>
 </tr>
 <tr>
-<td>※パターンは線分長と空白のペアで長さはこれに線幅を掛ける。</td>
-<td></td>
-<td></td>
+<td>long-dash_dot</td>
+<td>24.0, 3.0, 0.5, 3.0</td>
+<td>一点長鎖線</td>
+</tr>
+<tr>
+<td>long-dash_2dot</td>
+<td>24.0, 3.0, 0.5, 3.0, 0.5, 3.0</td>
+<td>二点長鎖線</td>
+</tr>
+<tr>
+<td>long-dash_3dot</td>
+<td>24.0, 3.0, 0.5, 3.0, 0.5, 3.0, 0.5, 3.0</td>
+<td>二点長鎖線</td>
+</tr>
+<tr>
+<td>dot</td>
+<td>0.5, 3.0</td>
+<td>点線</td>
+</tr>
+<tr>
+<td>dash_dot</td>
+<td>12.0, 3.0, 0.5, 3.0</td>
+<td>一点短鎖線</td>
+</tr>
+<tr>
+<td>2dash_dot</td>
+<td>12.0, 3.0, 12.0, 3.0, 0.5, 3.0</td>
+<td>一点二短鎖線</td>
+</tr>
+<tr>
+<td>dash_2dot</td>
+<td>12.0, 3.0, 0.5, 3.0, 0.5, 3.0</td>
+<td>二点短鎖線</td>
+</tr>
+<tr>
+<td>2dash_2dot</td>
+<td>12.0, 3.0, 12.0, 3.0, 0.5, 3.0, 0.5, 3.0</td>
+<td>二点二短鎖線</td>
+</tr>
+<tr>
+<td>dash_3dot</td>
+<td>12.0, 3.0, 0.5, 3.0, 0.5, 3.0, 0.5, 3.0</td>
+<td>三点短鎖線</td>
+</tr>
+<tr>
+<td>2dash_3dot</td>
+<td>12.0, 3.0, 12.0, 3.0, 0.5, 3.0, 0.5, 3.0, 0.5, 3.0</td>
+<td>三点二短鎖線</td>
 </tr>
 </tbody>
 </table>
+<p>※パターンは線分長と空白のペアで、長さはこれに線幅を掛ける。<br>
+※パターンはSXF規格を参考にした。</p>
 <ul>
 <li>フラグ<br>1:ColorByLayer, 0x1000:補助線, 0x2000:TypeByLayer, 0x8000:WidthByLayer</li>
+<li>ColorByLayerの場合、線色があっても無視されます。その他の要素も同様です。</li>
 </ul>
 <p><a id="fillStyle" href=""></a></p>
 <h6 id="fillstyle塗りスタイル属性">fillStyle（塗りスタイル属性） </h6>
@@ -2125,6 +2178,16 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 しかし、Androidでサイズの大きなファイルを読み込むと速度は大きく落ちました。Androidのディスクアクセスは遅かったのです。<br>
 そのためバージョン2.2.0で短縮形を設けました。</p>
 <h2 id="履歴">履歴 </h2>
+<p>2024/10/20 2.6.0 Rev.0</p>
+<ul>
+<li>バージョン変更　2.5.1-&gt;2.6.0（線種追加したので）。</li>
+<li>履歴の日付修正。</li>
+</ul>
+<p>2024/10/20 2.5.1 Rev.0</p>
+<ul>
+<li>線種追加。</li>
+<li>線種名誤記修正。</li>
+</ul>
 <p>2024/08/28 2.5.0 Rev.1</p>
 <ul>
 <li>formatStyleのprefix,suffix省略値修正。</li>
@@ -2187,7 +2250,7 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#precad-file-format-ver-250仕様書-rev1" class="md-toc-link"><p>PreCad file format ver 2.5.0仕様書　Rev.1</p>
+          <a href="#precad-file-format-ver-260仕様書-rev0" class="md-toc-link"><p>PreCad file format ver 2.6.0仕様書　Rev.0</p>
 </a>
           </summary>
         <div>
