@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="file:///c:\Users\yama\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.13\crossnote\dependencies\katex\katex.min.css">
+      <link rel="stylesheet" href="file:///c:\Users\yama\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.14\crossnote\dependencies\katex\katex.min.css">
       
       
       
@@ -93,6 +93,61 @@ If you don't have many Japanese fonts, run <code>winetricks allfonts</code> to i
 However, PreCad does not embed fonts in files, so if the drawing you open uses fonts that are not installed, this can be a problem. In Windows, the text is readable because an alternative font is set, but in Wine, the text is garbled. Please specify an alternative font in PreCad option. Now you can read it.</p>
 <h2 id="history">History </h2>
 <ul>
+<li>
+<p>2024/11/02 ver. 1.4.2.0</p>
+<ul>
+<li>Added an option to display bitmaps faster.</li>
+<li>Added an option to display background images faster.</li>
+<li>Fixed when other layers were hidden and other sheets were displayed in gray, the hidden layers were displayed in gray.</li>
+<li>Fixed that single horizontal and vertical lines not be copied as bitmaps.</li>
+<li>Fixed when selecting a bitmap, the display was slightly misaligned.</li>
+<li>Reviewed the screen drawing method to improve memory consumption and speed.</li>
+<li>Changed command processing to reduce memory consumption.</li>
+</ul>
+</li>
+<li>
+<p>2024/10/29 ver. 1.4.1.0</p>
+<ul>
+<li>Added LTSCALE settings to DXF saving.</li>
+<li>Changed the specifications of the copy and paste plugin.</li>
+<li>Added support for pasting text from the clipboard.</li>
+<li>Change the ability to copy text such as text shape to the clipboard.</li>
+<li>It is now possible to change the resolution when copying shape as a bitmap.</li>
+<li>When saving text shapes to other formats, the background is now a closed polyline.</li>
+<li>Fixed a problem that bitmap was not being saved correctly to the clipboard when copying.</li>
+</ul>
+</li>
+<li>
+<p>2024/10/20 ver. 1.4.0.0</p>
+<ul>
+<li>Added line types. The line type patterns were based on SFC.</li>
+<li>The line type name is now displayed on the line type.</li>
+<li>Dashed lines are now drawn without using the API.</li>
+<li>Added an option to make dashed lines visible when zooming out.</li>
+<li>Added an option to specify the edge length to the chamfer tool.</li>
+<li>Supported Windows EMF file.</li>
+<li>Copy and paste has been made into a plugin, and SVG and EMF can now be copied and pasted.</li>
+<li>Updated the file format version from 2.5.0 to 2.6.0. In older apps, the added line types will be solid lines.</li>
+<li>Fixed the font name not being written when saving SVG.</li>
+<li>Changed so that the background color of the text shape is saved if possible when saving to other formats.</li>
+<li>Fixed a problem with the display position when the text shape has a slant.</li>
+</ul>
+</li>
+<li>
+<p>2024/9/01 ver. 1.3.1.0</p>
+<ul>
+<li>Added support for arc in the line dimension tool, but excluded ellipse.</li>
+<li>Fixed a bug with oval(2 points) tool.</li>
+</ul>
+</li>
+<li>
+<p>2024/8/28 ver. 1.3.0.0</p>
+<ul>
+<li>Added arc dimension shape.</li>
+<li>The message that was displayed when a shape could not be selected with the fillet tool was incorrect, so it has been fixed.</li>
+<li>Changed that a warning message is displayed when checking the minor version when loading a file.</li>
+</ul>
+</li>
 <li>
 <p>2024/8/20 ver. 1.2.3.0</p>
 <ul>

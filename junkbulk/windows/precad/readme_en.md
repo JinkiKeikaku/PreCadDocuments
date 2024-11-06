@@ -64,6 +64,47 @@ If you don't have many Japanese fonts, run `winetricks allfonts` to install them
 However, PreCad does not embed fonts in files, so if the drawing you open uses fonts that are not installed, this can be a problem. In Windows, the text is readable because an alternative font is set, but in Wine, the text is garbled. Please specify an alternative font in PreCad option. Now you can read it.
 
 ## History
+
+- 2024/11/02 ver. 1.4.2.0
+    - Added an option to display bitmaps faster.
+    - Added an option to display background images faster.
+    - Fixed when other layers were hidden and other sheets were displayed in gray, the hidden layers were displayed in gray.
+    - Fixed that single horizontal and vertical lines not be copied as bitmaps.
+    - Fixed when selecting a bitmap, the display was slightly misaligned.
+    - Reviewed the screen drawing method to improve memory consumption and speed.
+    - Changed command processing to reduce memory consumption.
+
+- 2024/10/29 ver. 1.4.1.0
+    - Added LTSCALE settings to DXF saving.
+    - Changed the specifications of the copy and paste plugin.
+    - Added support for pasting text from the clipboard.
+    - Change the ability to copy text such as text shape to the clipboard.
+    - It is now possible to change the resolution when copying shape as a bitmap.
+    - When saving text shapes to other formats, the background is now a closed polyline.
+    - Fixed a problem that bitmap was not being saved correctly to the clipboard when copying.
+
+- 2024/10/20 ver. 1.4.0.0
+    - Added line types. The line type patterns were based on SFC.
+    - The line type name is now displayed on the line type.
+    - Dashed lines are now drawn without using the API.
+    - Added an option to make dashed lines visible when zooming out.
+    - Added an option to specify the edge length to the chamfer tool.
+    - Supported Windows EMF file.
+    - Copy and paste has been made into a plugin, and SVG and EMF can now be copied and pasted.
+    - Updated the file format version from 2.5.0 to 2.6.0. In older apps, the added line types will be solid lines.
+    - Fixed the font name not being written when saving SVG.
+    - Changed so that the background color of the text shape is saved if possible when saving to other formats.
+    - Fixed a problem with the display position when the text shape has a slant.
+
+- 2024/9/01 ver. 1.3.1.0
+    - Added support for arc in the line dimension tool, but excluded ellipse.
+    - Fixed a bug with oval(2 points) tool.
+
+- 2024/8/28 ver. 1.3.0.0
+    - Added arc dimension shape.
+    - The message that was displayed when a shape could not be selected with the fillet tool was incorrect, so it has been fixed.
+    - Changed that a warning message is displayed when checking the minor version when loading a file.
+
 - 2024/8/20 ver. 1.2.3.0
     - Added overlap line tool.
     - Snapping is now possible on non-editable layers.
