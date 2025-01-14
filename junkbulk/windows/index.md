@@ -12,6 +12,9 @@ title: ソフトウェア(Windows)
 ## [PreCad](precad/index.html)
 マルチページ対応の2D CADです。
 
+## [JwwClipMonitor](JwwClipMonitor/index.html)
+クリップボードにコピーされた画像ファイルをJw_cadの形式に変換、もしくは逆にJw_cadでコピーされた図形を各種画像形式に変換するアプリです。
+
 ## [SvgToJwwConverter](SvgToJwwConverter/index.html)
 SVGファイルをJw_cadのjwwファイルに変換するプログラムです。
 

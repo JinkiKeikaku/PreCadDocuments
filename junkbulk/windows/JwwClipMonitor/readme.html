@@ -43,24 +43,10 @@
 実行時に「WindowsによってPCが保護されました」と言う画面が出ます。その画面の「詳細情報」をクリックすると「実行」ボタンがあらわれます。「実行」ボタンを押すとインストールプログラムが実行されます。<br>
 インストーラは以下のランタイムがインストールされていない場合、自動的に取得してインストールします。</p>
 <ul>
-<li>
-<p>Microsoft Visual C++ 再頒布可能パッケージ</p>
-<ul>
-<li>32ビット<br>
+<li>Microsoft Visual C++ 再頒布可能パッケージ（32ビット）<br>
 <a href="https://aka.ms/vs/17/release/vc_redist.x86.exe">https://aka.ms/vs/17/release/vc_redist.x86.exe</a></li>
-<li>64ビット<br>
-<a href="https://aka.ms/vs/17/release/vc_redist.x64.exe">https://aka.ms/vs/17/release/vc_redist.x64.exe</a></li>
-</ul>
-</li>
-<li>
-<p>.NET デスクトップ ランタイム 6.0.6</p>
-<ul>
-<li>32ビット<br>
+<li>.NET デスクトップ ランタイム 6.0.6（32ビット）<br>
 <a href="https://download.visualstudio.microsoft.com/download/pr/cc04076c-d188-4c20-9b4f-89be06f1a39c/32da746ef46fbeedb4f609b67cb451c3/windowsdesktop-runtime-6.0.6-win-x86.exe">https://download.visualstudio.microsoft.com/download/pr/cc04076c-d188-4c20-9b4f-89be06f1a39c/32da746ef46fbeedb4f609b67cb451c3/windowsdesktop-runtime-6.0.6-win-x86.exe</a></li>
-<li>64ビット<br>
-<a href="https://download.visualstudio.microsoft.com/download/pr/9d6b6b34-44b5-4cf4-b924-79a00deb9795/2f17c30bdf42b6a8950a8552438cf8c1/windowsdesktop-runtime-6.0.6-win-x64.exe">https://download.visualstudio.microsoft.com/download/pr/9d6b6b34-44b5-4cf4-b924-79a00deb9795/2f17c30bdf42b6a8950a8552438cf8c1/windowsdesktop-runtime-6.0.6-win-x64.exe</a></li>
-</ul>
-</li>
 </ul>
 <p>インターネットに接続できない環境でインストールする場合はあらかじめこれらのファイルをダウンロードして直接インストールしてください。</p>
 <h2 id="使い方">使い方 </h2>
@@ -109,7 +95,12 @@ PNG画像です。設定から背景を透明にすることもできます。</
 <li>Jw_cadのクリップボードフォーマットは変更される可能性があります。作者はバージョン8.25aで確認しました。それより前、もしくはそれより後のバージョンで動く保証はありません。</li>
 <li>他にも書きましたが、Jw_cadに画像を貼り付けた後は、画像同梱することをお勧めします。</li>
 <li>Jw_cadに画像を貼り付ける時は縮尺を設定することを忘れないでください。個人的には常に縮尺1:1のレイヤに貼り付けたほうが間違いがないと思います。</li>
+<li>EMFの中にあるビットマップはJw_cadに変換できません。</li>
+<li>Jw_cad内のビットマップをEMFにすることはできません。</li>
+<li>Jw_cadの文字の縦書きや特殊文字、文字間隔、文字幅など未対応です。それ以外に未対応要素は多くあります。</li>
 </ol>
+<h2 id="お願い">お願い </h2>
+<p>Jw_cadの寸法データの仕様がわかりません（おそらくSXFの寸法図形）。また、手元に寸法データが使用された図面がありません、作り方もわかりません。もしも情報があれば、URL等を教えてください。</p>
 <h2 id="連絡先等">連絡先等 </h2>
 <ul>
 <li>メール  <a href="mailto:ai@junkbulk.com">ai@junkbulk.com</a></li>
@@ -126,7 +117,16 @@ PNG画像です。設定から背景を透明にすることもできます。</
 </ul>
 <h2 id="履歴">履歴 </h2>
 <ul>
-<li>2024/11/20 最初のリリース</li>
+<li>2024/11/21 ver. 1.0.1.2
+<ul>
+<li>EMFファイルを選択状態でモードを切り替えると落ちることがあったので修正。</li>
+</ul>
+</li>
+<li>2024/11/20 ver. 1.0.0.0
+<ul>
+<li>最初のリリース</li>
+</ul>
+</li>
 </ul>
 
       </div>
@@ -157,6 +157,10 @@ PNG画像です。設定から背景を透明にすることもできます。</
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
           <a href="#注意点" class="md-toc-link">
             <p>注意点</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#お願い" class="md-toc-link">
+            <p>お願い</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
           <a href="#連絡先等" class="md-toc-link">

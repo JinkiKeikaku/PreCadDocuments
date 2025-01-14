@@ -18,17 +18,10 @@ JwwClipMonitorは、Windowsのクリップボードにコピーされた画像�
 zipファイルを解凍し、JwwClipMonitor_Setup.exeを実行してください。
 実行時に「WindowsによってPCが保護されました」と言う画面が出ます。その画面の「詳細情報」をクリックすると「実行」ボタンがあらわれます。「実行」ボタンを押すとインストールプログラムが実行されます。
 インストーラは以下のランタイムがインストールされていない場合、自動的に取得してインストールします。
-- Microsoft Visual C++ 再頒布可能パッケージ
-  - 32ビット
+- Microsoft Visual C++ 再頒布可能パッケージ（32ビット）
 https://aka.ms/vs/17/release/vc_redist.x86.exe
-  - 64ビット
-https://aka.ms/vs/17/release/vc_redist.x64.exe
-
-- .NET デスクトップ ランタイム 6.0.6
-  - 32ビット
+- .NET デスクトップ ランタイム 6.0.6（32ビット）
 https://download.visualstudio.microsoft.com/download/pr/cc04076c-d188-4c20-9b4f-89be06f1a39c/32da746ef46fbeedb4f609b67cb451c3/windowsdesktop-runtime-6.0.6-win-x86.exe
-  - 64ビット
-https://download.visualstudio.microsoft.com/download/pr/9d6b6b34-44b5-4cf4-b924-79a00deb9795/2f17c30bdf42b6a8950a8552438cf8c1/windowsdesktop-runtime-6.0.6-win-x64.exe
 
 インターネットに接続できない環境でインストールする場合はあらかじめこれらのファイルをダウンロードして直接インストールしてください。
 
@@ -71,6 +64,13 @@ https://download.visualstudio.microsoft.com/download/pr/9d6b6b34-44b5-4cf4-b924-
 1. Jw_cadのクリップボードフォーマットは変更される可能性があります。作者はバージョン8.25aで確認しました。それより前、もしくはそれより後のバージョンで動く保証はありません。
 1. 他にも書きましたが、Jw_cadに画像を貼り付けた後は、画像同梱することをお勧めします。
 1. Jw_cadに画像を貼り付ける時は縮尺を設定することを忘れないでください。個人的には常に縮尺1:1のレイヤに貼り付けたほうが間違いがないと思います。
+2. EMFの中にあるビットマップはJw_cadに変換できません。
+3. Jw_cad内のビットマップをEMFにすることはできません。
+4. Jw_cadの文字の縦書きや特殊文字、文字間隔、文字幅など未対応です。それ以外に未対応要素は多くあります。
+
+
+## お願い
+Jw_cadの寸法データの仕様がわかりません（おそらくSXFの寸法図形）。また、手元に寸法データが使用された図面がありません、作り方もわかりません。もしも情報があれば、URL等を教えてください。
 
 ## 連絡先等
 - メール  ai@junkbulk.com
@@ -85,4 +85,7 @@ https://download.visualstudio.microsoft.com/download/pr/9d6b6b34-44b5-4cf4-b924-
 - 作者は本プログラムのバグ修正、バージョンアップ等の一切のサポートの責は負いません。
 
 ## 履歴
-- 2024/11/20 最初のリリース
+- 2024/11/21 ver. 1.0.1.2
+    - EMFファイルを選択状態でモードを切り替えると落ちることがあったので修正。
+- 2024/11/20 ver. 1.0.0.0
+    - 最初のリリース

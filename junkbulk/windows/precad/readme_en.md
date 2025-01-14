@@ -65,6 +65,22 @@ However, PreCad does not embed fonts in files, so if the drawing you open uses f
 
 ## History
 
+- 2024/12/16 ver. 1.4.4.0
+    - Fixed an issue with the alignment of text shape.
+    - Changed the way the style of snapped shapes is obtained.
+
+- 2024/12/04 ver. 1.4.3.0
+    - Added ability to copy snapped line length, etc. to clipboard.
+    - Added ability to obtain line style and text style of snapped shape.
+    - Supports copy and paste in calculator.
+    - Changed settings and options dialog to tab switching.
+    - Added support for uniform width ring solid and ring solid for jww reading.
+    - Fixed text position when saving jww.
+    - Fixed bitmap size when saving jww.
+    - Changed not to output when polyline line color is transparent when saving jww.
+    - Fixed PolylineTo processing when loading emf.
+    - Fixed ExtTextOutW processing when loading emf.
+
 - 2024/11/02 ver. 1.4.2.0
     - Added an option to display bitmaps faster.
     - Added an option to display background images faster.
