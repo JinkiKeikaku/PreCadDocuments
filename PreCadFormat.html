@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="file:///c:\Users\yama\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.14\crossnote\dependencies\katex\katex.min.css">
+      <link rel="stylesheet" href="file:///c:\Users\yama\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.15\crossnote\dependencies\katex\katex.min.css">
       
       
       
@@ -24,7 +24,7 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="precad-file-format-ver-260仕様書-rev0">PreCad file format ver 2.6.0仕様書　Rev.0 </h1>
+<h1 id="precad-file-format-ver-270仕様書-rev0">PreCad file format ver 2.7.0仕様書　Rev.0 </h1>
 <h2 id="precadの特徴">PreCadの特徴 </h2>
 <ul>
 <li>PreCadは2DCADです。複数のページを作成することができます。</li>
@@ -127,7 +127,7 @@ settings(
 <li>メジャーバージョンは大きなファイル構造の変更時に変更します。マルチページ対応時に1から2に上がりました。メジャーバージョンが上がり旧アプリで読めない場合はエラーを表示します（メジャーバージョンが上がった場合、おそらくそうなるでしょう）。</li>
 <li>マイナーバージョンは要素追加、タグ名の変更・削除などで変わります。この変更で新バージョンのファイルを旧バージョンで読むと情報の欠落などが起こるかもしれません。必要であれば警告を表示します。</li>
 <li>読み込み時、マイナーバージョンにより処理を変えることを推奨しません。マイナーバージョンはあくまでも参考とし、追加されたタグ（もしくは廃止されたタグ）をもとに読み込みを行うべきです。</li>
-<li>リビジョンはその他軽微な変更で変わります（タグ名のtypo修正など）。</li>
+<li>リビジョンはその他軽微な変更で変わります。</li>
 </ul>
 <h3 id="contentsセクション">contentsセクション </h3>
 <h4 id="pages">pages </h4>
@@ -546,7 +546,7 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 ※パターンはSXF規格を参考にした。</p>
 <ul>
 <li>フラグ<br>1:ColorByLayer, 0x1000:補助線, 0x2000:TypeByLayer, 0x8000:WidthByLayer</li>
-<li>ColorByLayerの場合、線色があっても無視されます。その他の要素も同様です。</li>
+<li>ColorByLayerの場合、線色があっても無視されます。線種と線幅も同様です。</li>
 </ul>
 <p><a id="fillStyle" href=""></a></p>
 <h6 id="fillstyle塗りスタイル属性">fillStyle（塗りスタイル属性） </h6>
@@ -670,12 +670,12 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>textAlign(a)<br>[ ta ]</td>
 <td>a : Int</td>
-<td>文字配置 0:左 1:中央 2:右。省略時0</td>
+<td>文字配置<br>省略時0</td>
 </tr>
 <tr>
 <td>fontName(name)<br>[ fn ]</td>
 <td>name : String</td>
-<td>フォント名。省略時、空文字列</td>
+<td>フォント名<br>省略時、空文字列</td>
 </tr>
 <tr>
 <td>fontHeight(h)<br>[ fh ]</td>
@@ -685,28 +685,49 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>fontWidthScale(w)<br>[ fw ]</td>
 <td>w : Double</td>
-<td>フォント横幅比。省略時1</td>
+<td>フォント横幅比<br>省略時1</td>
 </tr>
 <tr>
 <td>fontSpace(s)<br>[ fs ]</td>
 <td>s : Double</td>
-<td>文字間隔。省略時0</td>
+<td>文字間隔<br>省略時0</td>
 </tr>
 <tr>
 <td>fontSkewAngle(a)<br>[ fa ]</td>
 <td>a : Double</td>
-<td>傾斜角。省略時0</td>
+<td>傾斜角<br>省略時0</td>
 </tr>
 <tr>
 <td>flag(f)<br>[ f ]</td>
 <td>f : Int</td>
-<td>フラグ。省略時0</td>
+<td>フラグ<br>省略時0</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>フラグ<br>1:ColorByLayer, 0x2_0000:縦書き, 0x4_0000:イタリック, 0x8_0000:ボールド, 0x10_0000:下線, 0x20_0000:取り消し線, 0x80_0000:（予約：折り返し）, 0x100_0000:TEXT_SLANT_ONLY_CHARACTER</li>
-<li>TEXT_SLANT_ONLY_CHARACTERは、fontSkewAngleで文字のみを傾かせる（背景色を設定すると、背景が長方形になる）。フラグが立っていない場合は、文字列全体を歪ませる（背景色を設定すると、背景が平行四辺形になる。複数行の場合、2行目以降が横にずれる）。</li>
+<li>
+<p>文字配置<br> 0:左 1:中央 2:右 3:両端揃え 4:均等揃え</p>
+</li>
+<li>
+<p>フラグ<br>
+フラグは以下の値の組み合わせです。<br>
+0x0000_0001 : | ColorByLayer<br>
+0x0002_0000 : （予約：縦書き？）<br>
+0x0004_0000 : イタリック<br>
+0x0008_0000 : ボールド<br>
+0x0010_0000 : 下線<br>
+0x0020_0000 : 取り消し線<br>
+0x0040_0000 : （予約：未定）<br>
+0x0080_0000 : （予約：折り返しなし？）<br>
+0x0100_0000 : 文字のみ傾斜<br>
+0x0200_0000 : 枠線</p>
+</li>
+<li>
+<p>「文字のみ傾斜」は、fontSkewAngleで文字のみを傾かせる（文字枠は長方形で文字のみ傾く）。フラグが立っていない場合は、文字枠を含め文字を歪ませる（文字枠は平行四辺形になる）。</p>
+</li>
+<li>
+<p>枠線は、太さ0.13mmの実線（下線等と同じ扱い）。</p>
+</li>
 </ul>
 <p><a id="markerStyle" href=""></a></p>
 <h6 id="markerstyle点スタイル">markerStyle（点スタイル） </h6>
@@ -1518,12 +1539,12 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>width(w)<br>[ w ]</td>
 <td>w : Double</td>
-<td>幅</td>
+<td>文字枠幅。省略時0。</td>
 </tr>
 <tr>
 <td>height(h)<br>[ h ]</td>
 <td>h : Double</td>
-<td>高さ</td>
+<td>文字枠高さ。省略時0。</td>
 </tr>
 <tr>
 <td>text(t)<br>[ t ]</td>
@@ -1541,6 +1562,11 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <td>配置基準。省略時0（左下）</td>
 </tr>
 <tr>
+<td>fm(m)</td>
+<td>m : Int</td>
+<td>文字枠モード。省略時0（自動）</td>
+</tr>
+<tr>
 <td>textStyle(...)<br>[ ts ]</td>
 <td><a href="#textStyle">文字スタイル</a>参照</td>
 <td>文字スタイル。</td>
@@ -1553,8 +1579,16 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 </tbody>
 </table>
 <ul>
-<li>幅と高さは文字列を囲む幅と高さではなく図形選択時に表示される矩形です。折り返しや背景色の範囲に使う予定でしたが実装できていません（折り返しが難しい）。将来的にフラグでそれらの機能を有効にするかもしれません。</li>
 <li>配置基準　0:左下, 1:中下, 2:右下, 3:左中, 4:中央, 5:右中, 6:左上, 7:中上, 8:右上</li>
+<li>文字枠内は背景色で塗りつぶしができます。また、文字枠の幅で文字列は折り返しされます。文字枠の大きさは、文字枠幅と文字枠高さと文字枠モードの組み合わせで決まります。</li>
+<li>文字枠モード
+<ul>
+<li>0：自動。文字枠の幅と高さは文字列を囲む範囲（折り返しなし）。width（文字枠幅）とheight（文字枠高さ）は省略できる（存在しても使われない）。</li>
+<li>1：幅可変。width（文字枠幅）が有効で、文字枠高さは文字列を囲む範囲。height（文字枠高さ）は省略できる（存在しても使われない）。</li>
+<li>2：幅と高さ可変。文字枠は、width（文字枠幅）とheight（文字枠高さ）で決まる。</li>
+</ul>
+</li>
+<li>必要な文字枠幅・高さが0の場合、文字列を囲む範囲を初期値としてとる。</li>
 </ul>
 <h5 id="dimension直線寸法">Dimension（直線寸法） </h5>
 <table>
@@ -2134,8 +2168,6 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <h3 id="ファイルバージョン">ファイルバージョン </h3>
 <ul>
 <li>インデックスファイルと図面ファイルのバージョンはそれぞれ違う値にすることもできますが、インデクスファイルのメジャーバージョン2以降はインデックスファイルと図面ファイルは同じものにしようと思います。</li>
-<li>メジャーバージョンはファイル構造が変わって下位互換性が無くなった場合に上げます（例えば、メジャーバージョン1のみに対応するアプリではメジャーバージョン2は読めない）。<br>
-ただし、新たなタグ要素の追加等でそのタグを読み飛ばすことができる場合はメジャーバージョンを上げずマイナ―バージョンを上げます。</li>
 </ul>
 <h3 id="バージョンによる違い">バージョンによる違い </h3>
 <ul>
@@ -2178,6 +2210,13 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 しかし、Androidでサイズの大きなファイルを読み込むと速度は大きく落ちました。Androidのディスクアクセスは遅かったのです。<br>
 そのためバージョン2.2.0で短縮形を設けました。</p>
 <h2 id="履歴">履歴 </h2>
+<p>2025/1/14 2.7.0 Rev.0</p>
+<ul>
+<li>textStyleのtextAlignに両端揃えと均等揃え追加。</li>
+<li>Text（文字）にfm（文字枠モード）追加。</li>
+<li>文字スタイルの縦書きは未実装のため、フラグを予約に変更。</li>
+<li>文字スタイルに枠線フラグ追加。</li>
+</ul>
 <p>2024/10/20 2.6.0 Rev.0</p>
 <ul>
 <li>バージョン変更　2.5.1-&gt;2.6.0（線種追加したので）。</li>
@@ -2250,7 +2289,7 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#precad-file-format-ver-260仕様書-rev0" class="md-toc-link"><p>PreCad file format ver 2.6.0仕様書　Rev.0</p>
+          <a href="#precad-file-format-ver-270仕様書-rev0" class="md-toc-link"><p>PreCad file format ver 2.7.0仕様書　Rev.0</p>
 </a>
           </summary>
         <div>
