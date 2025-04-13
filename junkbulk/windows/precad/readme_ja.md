@@ -1,5 +1,7 @@
 ---
 title: PreCad for Windows
+toc: false
+
 ---
 
 # PreCad for Windows
@@ -10,7 +12,7 @@ title: PreCad for Windows
 - Jw_cadの線記号変形が使えます。
 - Jw_cadの図形ファイル(*.jws)をパーツとして使用できます。
 - [Androidバージョン](https://play.google.com/store/apps/details?id=com.junkbulk.precad)もあります（ただし、ソースコードも開発言語も違うので別物です）
-- カンパウェアです。[開発支援](https://www.junkbulk.com/windows/precad/donate_ja.html)をお願いします。
+- カンパウェアです。[開発支援](https://junkbulk.com/windows/precad/donate_ja.html)をお願いします。
 
 ## 動作環境
 - Windows10, Windows11
@@ -28,13 +30,13 @@ https://download.visualstudio.microsoft.com/download/pr/9d6b6b34-44b5-4cf4-b924-
 
 ## 使用法
 - ヘルプのマニュアルを参照してください。最新のオンラインマニュアルは以下の場所にあります。
-https://www.junkbulk.com/windows/precad/manual/ja/PreCAD_windows_manual.html
+https://junkbulk.com/windows/precad/manual/ja/PreCAD_windows_manual.html
 
 ## 連絡先等
 - Mail : <a href="mailto:ai@junkbulk.com?subject=PreCadについて">ai@junkbulk.com</a>
-- Web : https://www.junkbulk.com/windows/precad/index.html
-- 開発支援 : https://www.junkbulk.com/windows/precad/donate_ja.html
-- Copyright(c) Junkbulk (Jinki-Keikaku) 2024
+- Web : https://junkbulk.com/windows/precad/index.html
+- 開発支援 : https://junkbulk.com/windows/precad/donate_ja.html
+- Copyright(c) Junkbulk (Jinki-Keikaku) 2024-2025
 
 
 ## 使用条件
@@ -66,6 +68,42 @@ Ubuntu 22.04とWine9.0で起動を確認しました。
 ところが、PreCadはファイルにフォントを埋め込まないので、開いた図面にインストールされていないフォントが使われていた場合、問題になります。Windowsでは代替フォントが設定されているので文字が読めますが、Wineでは文字化けします。その対策として、PreCadのオプションで代替フォントを指定してください。これで読めるようになります。
 
 ## 履歴
+
+- 2025/04/13 ver. 1.6.2.0
+    - 描画中、ドラッグしながら画面外に出るとスクロールするようにしました。
+    - 座標ファイルに円などの図形コマンドを追加しました。コマンドは、https://junkbulk.com/windows/precad/download/PrecoFormat.html 参照。
+    - アップデートの確認をメニューから出来るようにしました。
+
+- 2025/03/27 ver. 1.6.1.0
+    - 印刷ダイアログを修正しました。
+    - マーカー図形のドットのズーム倍率で大きさを変更しないオプションを追加しました。
+    - マーカー図形のハンドルを1点だけに変更しました。
+    - マーカー図形のダブルクリックでスタイルダイアログが表示されるようにしました。
+    - 選択ツールのサイズ変更オプションなどでマーカー図形も文字と同じように大きさが変わるようにしました。
+
+- 2025/03/19 ver. 1.6.0.0
+    - Jw_cad外部変形ツール（実験中）を追加しました。図形の選択方法やレイヤの構成などJw_cadと違いますが、単純なものは動くと思います。
+    - 編集メニューにコピーと貼り付けの設定を追加しました。
+    - マウス左ボタンドラッグで、カーソルが画面外に出ると画面スクロールするようにしました。
+    - 右ボタンメニューから2点間の距離と角度をクリップボードにコピー出来るようにしました。
+    - スクリプトツールで、ファイル読み込み後に先頭項目を選択するようにしました。
+    - スクリプトツールで、選択項目がない時に画面クリックするとエラー音が鳴るようにしました。
+
+- 2025/02/03 ver. 1.5.0.0
+    - 文字図形の文字枠での折り返しを実装しました。
+    - 文字図形に文字枠モード（自動、幅のみ可変、幅と高さ可変）を追加しました。普段は「自動」でいいと思います。
+    - 文字のスタイルに枠線、均等配置、両端揃えを追加しました。
+    - 円・円弧を選択時に中心点を表示するように変更しました。
+    - 線切断ツールの矩形選択をマウスドラッグから２点を指示する方法に変更しました。
+    - カラーボタンのツールチップにカラーコードを表示するようにしました。
+    - レイヤのスタイル表示ボタンにツールチップを表示するようにしました。
+    - PNG保存にアンチエイリアスオプションを追加しました。
+    - 文字図形の表示手法を変えました。
+    - カーソル位置の色の取得機能を修正しました。
+    - メニューの線スタイル、文字スタイルの表示を修正しました。
+    - 点の角度が保存されていなかったので修正しました。
+    - 弧長寸法が縮尺に対応していなかったので修正しました。
+    - 最近のファイルに開くことのできないタイプのファイルを追加しないようにしました。
 
 - 2024/12/16 ver. 1.4.4.0
     - 文字図形の配置に問題があったので修正しました。

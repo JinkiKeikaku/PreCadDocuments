@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="file:///c:\Users\yama\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.15\crossnote\dependencies\katex\katex.min.css">
+      <link rel="stylesheet" href="file:///c:\Users\yama\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.18\crossnote\dependencies\katex\katex.min.css">
       
       
       
@@ -32,7 +32,7 @@
 <li>Jw_cadの線記号変形が使えます。</li>
 <li>Jw_cadの図形ファイル(*.jws)をパーツとして使用できます。</li>
 <li><a href="https://play.google.com/store/apps/details?id=com.junkbulk.precad">Androidバージョン</a>もあります（ただし、ソースコードも開発言語も違うので別物です）</li>
-<li>カンパウェアです。<a href="https://www.junkbulk.com/windows/precad/donate_ja.html">開発支援</a>をお願いします。</li>
+<li>カンパウェアです。<a href="https://junkbulk.com/windows/precad/donate_ja.html">開発支援</a>をお願いします。</li>
 </ul>
 <h2 id="動作環境">動作環境 </h2>
 <ul>
@@ -57,14 +57,14 @@
 <h2 id="使用法">使用法 </h2>
 <ul>
 <li>ヘルプのマニュアルを参照してください。最新のオンラインマニュアルは以下の場所にあります。<br>
-<a href="https://www.junkbulk.com/windows/precad/manual/ja/PreCAD_windows_manual.html">https://www.junkbulk.com/windows/precad/manual/ja/PreCAD_windows_manual.html</a></li>
+<a href="https://junkbulk.com/windows/precad/manual/ja/PreCAD_windows_manual.html">https://junkbulk.com/windows/precad/manual/ja/PreCAD_windows_manual.html</a></li>
 </ul>
 <h2 id="連絡先等">連絡先等 </h2>
 <ul>
 <li>Mail : <a href="mailto:ai@junkbulk.com?subject=PreCadについて">ai@junkbulk.com</a></li>
-<li>Web : <a href="https://www.junkbulk.com/windows/precad/index.html">https://www.junkbulk.com/windows/precad/index.html</a></li>
-<li>開発支援 : <a href="https://www.junkbulk.com/windows/precad/donate_ja.html">https://www.junkbulk.com/windows/precad/donate_ja.html</a></li>
-<li>Copyright(c) Junkbulk (Jinki-Keikaku) 2024</li>
+<li>Web : <a href="https://junkbulk.com/windows/precad/index.html">https://junkbulk.com/windows/precad/index.html</a></li>
+<li>開発支援 : <a href="https://junkbulk.com/windows/precad/donate_ja.html">https://junkbulk.com/windows/precad/donate_ja.html</a></li>
+<li>Copyright(c) Junkbulk (Jinki-Keikaku) 2024-2025</li>
 </ul>
 <h2 id="使用条件">使用条件 </h2>
 <ul>
@@ -97,6 +97,54 @@
 ところが、PreCadはファイルにフォントを埋め込まないので、開いた図面にインストールされていないフォントが使われていた場合、問題になります。Windowsでは代替フォントが設定されているので文字が読めますが、Wineでは文字化けします。その対策として、PreCadのオプションで代替フォントを指定してください。これで読めるようになります。</p>
 <h2 id="履歴">履歴 </h2>
 <ul>
+<li>
+<p>2025/04/13 ver. 1.6.2.0</p>
+<ul>
+<li>描画中、ドラッグしながら画面外に出るとスクロールするようにしました。</li>
+<li>座標ファイルに円などの図形コマンドを追加しました。コマンドは、<a href="https://junkbulk.com/windows/precad/download/PrecoFormat.html">https://junkbulk.com/windows/precad/download/PrecoFormat.html</a> 参照。</li>
+<li>アップデートの確認をメニューから出来るようにしました。</li>
+</ul>
+</li>
+<li>
+<p>2025/03/27 ver. 1.6.1.0</p>
+<ul>
+<li>印刷ダイアログを修正しました。</li>
+<li>マーカー図形のドットのズーム倍率で大きさを変更しないオプションを追加しました。</li>
+<li>マーカー図形のハンドルを1点だけに変更しました。</li>
+<li>マーカー図形のダブルクリックでスタイルダイアログが表示されるようにしました。</li>
+<li>選択ツールのサイズ変更オプションなどでマーカー図形も文字と同じように大きさが変わるようにしました。</li>
+</ul>
+</li>
+<li>
+<p>2025/03/19 ver. 1.6.0.0</p>
+<ul>
+<li>Jw_cad外部変形ツール（実験中）を追加しました。図形の選択方法やレイヤの構成などJw_cadと違いますが、単純なものは動くと思います。</li>
+<li>編集メニューにコピーと貼り付けの設定を追加しました。</li>
+<li>マウス左ボタンドラッグで、カーソルが画面外に出ると画面スクロールするようにしました。</li>
+<li>右ボタンメニューから2点間の距離と角度をクリップボードにコピー出来るようにしました。</li>
+<li>スクリプトツールで、ファイル読み込み後に先頭項目を選択するようにしました。</li>
+<li>スクリプトツールで、選択項目がない時に画面クリックするとエラー音が鳴るようにしました。</li>
+</ul>
+</li>
+<li>
+<p>2025/02/03 ver. 1.5.0.0</p>
+<ul>
+<li>文字図形の文字枠での折り返しを実装しました。</li>
+<li>文字図形に文字枠モード（自動、幅のみ可変、幅と高さ可変）を追加しました。普段は「自動」でいいと思います。</li>
+<li>文字のスタイルに枠線、均等配置、両端揃えを追加しました。</li>
+<li>円・円弧を選択時に中心点を表示するように変更しました。</li>
+<li>線切断ツールの矩形選択をマウスドラッグから２点を指示する方法に変更しました。</li>
+<li>カラーボタンのツールチップにカラーコードを表示するようにしました。</li>
+<li>レイヤのスタイル表示ボタンにツールチップを表示するようにしました。</li>
+<li>PNG保存にアンチエイリアスオプションを追加しました。</li>
+<li>文字図形の表示手法を変えました。</li>
+<li>カーソル位置の色の取得機能を修正しました。</li>
+<li>メニューの線スタイル、文字スタイルの表示を修正しました。</li>
+<li>点の角度が保存されていなかったので修正しました。</li>
+<li>弧長寸法が縮尺に対応していなかったので修正しました。</li>
+<li>最近のファイルに開くことのできないタイプのファイルを追加しないようにしました。</li>
+</ul>
+</li>
 <li>
 <p>2024/12/16 ver. 1.4.4.0</p>
 <ul>

@@ -9,7 +9,7 @@ title: PreCad for Windows
 - You can use Jw_cad's line symbol transformation.
 - Jw_cad parts files (*.jws) can be used as parts.
 - There is also an [Android version](https://play.google.com/store/apps/details?id=com.junkbulk.precad) (but it is different because the source code and development language are different)
-- This is donationware. [Development support](https://www.junkbulk.com/windows/precad/donate_en.html)
+- This is donationware. [Development support](https://junkbulk.com/windows/precad/donate_en.html)
 
 ## Supported OS
 - Windows10, Windows11
@@ -26,13 +26,13 @@ https://download.visualstudio.microsoft.com/download/pr/9d6b6b34-44b5-4cf4-b924-
 
 ## How to use
 - See the manual in the Help menu. The latest online manual can be found at:
-https://www.junkbulk.com/windows/precad/manual/en/PreCAD_windows_manual.html
+https://junkbulk.com/windows/precad/manual/en/PreCAD_windows_manual.html
 
 ## Contact information
 - Mail : <a href="mailto:ai@junkbulk.com?subject=PreCad">ai@junkbulk.com</a>
-- Web : https://www.junkbulk.com/windows/precad/index_en.html
-- Donation : https://www.junkbulk.com/windows/precad/donate_en.html
-- Copyright(c) Junkbulk (Jinki-Keikaku) 2024
+- Web : https://junkbulk.com/windows/precad/index_en.html
+- Donation : https://junkbulk.com/windows/precad/donate_en.html
+- Copyright(c) Junkbulk (Jinki-Keikaku) 2024-2025
 
 
 ## Terms of use
@@ -65,6 +65,39 @@ However, PreCad does not embed fonts in files, so if the drawing you open uses f
 
 ## History
 
+- 2025/04/13 ver. 1.6.2.0
+    - When drawing, the screen will scroll if you drag it off the screen.
+    - Added shape commands such as circles to the coordinate file. For commands, see https://junkbulk.com/windows/precad/download/PrecoFormat_en.html.
+    - You can now check for updates from the menu.
+- 2025/03/27 ver. 1.6.1.0
+    - Fixed the print dialog.
+    - Added an option to not change the size of the dot marker with the zoom rate.
+    - Changed the marker handle to only one point.
+    - Double-clicking a marker shape now displays the style dialog.
+    - Marker shape can now be resized in the same way as text when using the resize option of the select tool.
+- 2025/03/19 ver. 1.6.0.0
+    - Added Jw_cad external transformation tool (experimental). The method of selecting shapes and the layer configuration are different from Jw_cad, but I think it works for simple things.
+    - Added copy and paste settings to the edit menu.
+    - When dragging the left mouse button, the screen scrolls when the cursor goes off the screen.
+    - The distance and angle between two points can now be copied to the clipboard from the right button menu.
+    - In the script tool, the first item is selected after the file is loaded.
+    - In the script tool, an error sound is now played when you click on the screen when there is no selection.
+
+- 2025/02/03 ver. 1.5.0.0
+    - Implemented wrapping in the text frame of text shape.
+    - Added text frame modes (Auto, Resize width only, Resize width and height) to text shape. Normally, "Auto" is fine.
+    - Added border, equal distribution, and justification to the text style.
+    - Changed to display the center point when selecting a circle and arc.
+    - Changed the rectangular selection of the line cut tool to a method of specifying two points, not dragging the mouse.
+    - Added the color code in the tooltip of the color button.
+    - Added the summary in the tooltip of the layer style button.
+    - Added anti-aliasing option to PNG save.
+    - Changed the method to draw the text shape.
+    - Fixed the function to obtain the color at the cursor position.
+    - Fixed the display of line style and text style in the menu.
+    - Fixed that the angle of the Marker was not being saved.
+    - Fixed that arc dimension was not to scale.
+  
 - 2024/12/16 ver. 1.4.4.0
     - Fixed an issue with the alignment of text shape.
     - Changed the way the style of snapped shapes is obtained.

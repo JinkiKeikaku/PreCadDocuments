@@ -1,0 +1,782 @@
+<!DOCTYPE html><html><head>
+      <title>PreCad preco format</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\yama\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.18\crossnote\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="precad-座標ファイルフォーマット-ver-10-仕様書-rev0">PreCad 座標ファイルフォーマット ver 1.0 仕様書　Rev.0 </h1>
+<h2 id="ファイル仕様">ファイル仕様 </h2>
+<h3 id="文字コード">文字コード </h3>
+<ul>
+<li>テキストファイルで文字コードはUTF8（BOM無し）です。改行コードはLF(0x0A)もしくはCRLF(0x0D, 0x0A)です。</li>
+</ul>
+<h3 id="コメント">コメント </h3>
+<ul>
+<li><code>#</code>以降は文字列内を除きコメントです。</li>
+<li>ファイルの一行目に<code>#preco</code>と記入すると、クリップボード経由などで貼り付けるとタイプ識別が行われます（予定）。</li>
+</ul>
+<h3 id="数値">数値 </h3>
+<ul>
+<li>数値は整数もしくは実数で小数点は<code>.</code>（ピリオド）です。</li>
+<li>整数は、16進表記も可能です（主に色に使います）。16進表記は最初に0xを付けます。xやaからfは大文字と小文字を区別しません（<code>0xffaa1234</code>や<code>0XCC1234AA</code>など）。</li>
+<li>色は32ビットで並びはARGBです。</li>
+<li>角度の単位は度(degree)で反時計回りが正です。ただし、フォントの傾きは右回りが正です。</li>
+</ul>
+<h3 id="文字列">文字列 </h3>
+<ul>
+<li>文字列は<code>"</code>(ダブルコーテーション)で囲みます。</li>
+<li>文字列は複数行にわたることがあります。ただし、改行文字は無視されます。文字列として改行したい場合は<code>\n</code>を使います。例えば、</li>
+</ul>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>"The Martians are
+ coming!"
+</code></pre><p>は、<code>The Martians are coming!</code> となります。改行が必要な場合は、<code>The Martians are\n coming!</code>とします。</p>
+<ul>
+<li>文字列中に<code>"</code>が必要な場合は<code>\"</code>とします。文字列中に<code>\</code>が必要な場合は<code>\\</code>です。</li>
+</ul>
+<h3 id="行">行 </h3>
+<ul>
+<li>一行ごとに図形、属性などを指示します（複数行にわたることもあります）。</li>
+<li>各行は、最初に数値がある場合は<a href="#coordinate_line">線の座標</a>、最初に識別子がある場合は<a href="#command_line">コマンド行</a>で、最初の識別子はコマンド、その後にパラメータが続きます。</li>
+<li>パラメータは数値、文字列、いくつかの識別子（色や線幅、線種で使われる<code>bylayer</code>、線種で使われる<code>construction</code>、色名など）があります。パラメータの区切りは少なくとも一つの空白文字（スペース、タブ）です。<br>
+ただし、パラメータが文字列の場合は区切り文字を省略できます（見にくいので推奨はしません）。</li>
+</ul>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>text"abcdefg"100 10#This line is OK, but not recommended. It's easier to read if there are spaces.
+</code></pre><ul>
+<li>複数のパラメータがある場合、行末に<code>&amp;</code>を付けることで次の行へ続けて書くことができます（<code>&amp;</code>はパラメータと同じ記法で書くこと）。</li>
+</ul>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>line 0 0 10 10 20 20
+#これを以下のように書くことはできない。
+line 0 0 10 10 20&amp;
+20
+#次のようにすること。
+line 0 0 10 10 &amp;
+20 20
+</code></pre><p>参考例</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>#preco
+
+line 0 0 100 0 100 -50  # lines (0,0)-(100,0)-(100,-50)
+lc red  # Line color is red.
+
+# Indent is OK.
+ circle 0 0 100  # circle center=(0,0) radius=100
+ text "The Martians are coming!" 100 100 0
+</code></pre><p><a id="coordinate_line" href=""></a></p>
+<h4 id="座標行">座標行 </h4>
+<p>行が数値から始まる場合、それ以降の数値を座標とみなして線分を引きます。<br>
+XY座標を空白文字（スペースorタブ）で区切ります。一行に複数のXY座標を書くことも可能です。<br>
+空行を含む数値以外の行があるまでが一つのセグメントで連続線を描きます。<br>
+以下の例では、辺の長さが40と80の２つの正方形（と円）を描きます。<br>
+線しかない場合はこれでもいいのですが、他の図形がある場合は<a href="#line">line</a>コマンドか<a href="#polyline">polyline</a>コマンドを使うことを推奨します。</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>-20 -20
+ 20 -20
+ 20  20
+-20  20
+-20 -20
+
+-40 -40 40 -40 40  40 -40  40
+-40 -40 
+circle 0 0 50
+</code></pre><p><a id="command_line" href=""></a></p>
+<h4 id="コマンド行">コマンド行 </h4>
+<p>コマンド行は、最初にコマンドがあり、パラメータが続きます。<br>
+パラメータは省略できるものがあります。パラメータが省略された場合、特別な意味がある場合とデフォルト値が使われる場合があります。パラメータは空白で区切るため、複数のパラメータの途中のパラメータのみを省略することはできません。<br>
+この仕様書上でのパラメータは次の記法によります。</p>
+<ul>
+<li>省略可能なパラメータは<code>[]</code>で囲みます。</li>
+<li>省略されたパラメータにデフォルト値があれば<code>=</code>で右辺に記入します。</li>
+</ul>
+<p>下記の例では、x, y, radiusは省略できませんが、angleを省略した場合はangle=0.0、flatnessも省略した場合は、flatness=1.0、angle=0.0となります。<br>
+<code>circle x y radius [flatness=1.0] [angle=0.0]</code><br>
+また、下記の例ではx, y片方のみは省略できませんが、x, yのペアは省略できます。<br>
+<code>p0 [x y]</code></p>
+<h3 id="用語">用語 </h3>
+<h4 id="属性">属性 </h4>
+<p>図形の色や線種など図形の装飾に関するもの。</p>
+<h4 id="カレント属性">カレント属性 </h4>
+<p>PreCadのツールバーで現在選択されている色、線種、線幅。<br>
+色については要素により、カレント線色、カレント文字色、カレント塗りつぶし色などと呼びます。<br>
+フォントについてもカレントフォント名等、同様です。</p>
+<h4 id="カレントレイヤ">カレントレイヤ </h4>
+<p>PreCadのレイヤリストで選択されている書き込みレイヤ。</p>
+<h4 id="用紙寸実寸">用紙寸・実寸 </h4>
+<p>用紙上で表示される大きさを用紙寸、それを縮尺で割った物が実寸です。<br>
+線幅は常に用紙寸で書かれます。</p>
+<h2 id="コマンド解説">コマンド解説 </h2>
+<h3 id="制御コマンド">制御コマンド </h3>
+<h4 id="ps">ps </h4>
+<p><code>ps f</code><br>
+<code>f</code>が0の時、座標や長さは実寸、<code>f</code>が1のときは用紙寸となります。初期値は0（実寸）です。<br>
+グループ化中は使用しないでください。</p>
+<h4 id="p0">p0 </h4>
+<p><code>p0 [x y]</code><br>
+マウスで指示する座標を(x, y)にします。<br>
+これは、座標を(-X, -Y)オフセットすることと同様です。設定される座標値は<a href="#ps">ps</a>コマンドの影響をうけます。<br>
+初期値は(0, 0)です。<br>
+パラメータなしの場合、初期値(0, 0)に戻します。<br>
+グループ化中は使用しないでください。<br>
+また、<code>p0</code>コマンドの値は加算されるので注意してください（通常は複数使うことはないと思います）。</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>p0 100 50
+line 100 50 200 50  # マウス位置から右横に100の長さの線を引きます。
+p0 10 20  # 座標値は(100+10, 50+20)
+line 100 50 200 50  # マウス位置から(-10, -20)の位置で右横に100の長さの線を引きます。
+p0        # 初期化
+line 100 50 200 50  # マウス位置から(100, 50)の位置で右横に100の長さの線を引きます。
+</code></pre><h3 id="ドキュメントコマンド">ドキュメントコマンド </h3>
+<p>文書構造に関するコマンドです。</p>
+<h4 id="layer">layer </h4>
+<p><code>layer [name]</code><br>
+書き込みレイヤを<code>name</code>のレイヤにします。<code>name</code>は文字列です。レイヤ名がない場合、カレントレイヤが書き込みレイヤになります。<br>
+初期値はカレントレイヤが書き込みレイヤです。<br>
+<code>name</code>のレイヤが存在しない場合、その名前のレイヤが新たに作られます。<br>
+グループ化中は使用しないでください。</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>layer "Layer1"  #　レイヤ名"Layer1"を選択
+layer           #　カレントレイヤを選択
+</code></pre><h3 id="属性コマンド">属性コマンド </h3>
+<p>色や線種などの図形の属性を指定するコマンドです。</p>
+<h4 id="lc">lc </h4>
+<p><code>lc [color]</code><br>
+これ以降の図形で使う線色を設定します。<code>color</code>がない場合、カレント線色が使われます。<br>
+初期値は黒（0xff000000）です。<br>
+<code>color</code>は整数値（32ビット、アルファ値も含む）及びいくつかの定義値が使えます。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>定義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bylayer</td>
+<td>レイヤカラー</td>
+</tr>
+<tr>
+<td>black</td>
+<td>黒（0xff000000）</td>
+</tr>
+<tr>
+<td>blue</td>
+<td>青（0xff0000ff）</td>
+</tr>
+<tr>
+<td>red</td>
+<td>赤（0xffff0000）</td>
+</tr>
+<tr>
+<td>magenta</td>
+<td>紫（0xffff00ff）</td>
+</tr>
+<tr>
+<td>green</td>
+<td>緑（0xff00ff00）</td>
+</tr>
+<tr>
+<td>cyan</td>
+<td>水色（0xff00ffff）</td>
+</tr>
+<tr>
+<td>yellow</td>
+<td>黄色（0xffffff00）</td>
+</tr>
+<tr>
+<td>white</td>
+<td>白（0xffffffff）</td>
+</tr>
+<tr>
+<td>gray</td>
+<td>灰色（0xff808080）</td>
+</tr>
+<tr>
+<td>lightgray</td>
+<td>明るい灰色（0xffd3d3d3）</td>
+</tr>
+<tr>
+<td>darkgray</td>
+<td>暗い灰色（0xffa9a9a9）</td>
+</tr>
+<tr>
+<td>transparent</td>
+<td>透明（0x00ffffff）</td>
+</tr>
+</tbody>
+</table>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>lc 4294901760 # 0xffff0000（赤）。32ビットで上位から、ARGB
+lc 0xffff0000 # 16進表記（赤）。xやaからfは大文字でも可
+lc red        # 赤
+lc bylayer    # レイヤ線色
+lc            # カレント線色
+</code></pre><h4 id="lt">lt </h4>
+<p><code>lt [name]</code><br>
+これ以降の図形で使う線種を設定します。<code>name</code>がない場合、カレント線種が使われます。<br>
+初期値は実線です。<br>
+bylayerはレイヤ線種、constructionは補助線、文字列の場合は線種名となります。<br>
+線種名は下表によります。</p>
+<table>
+<thead>
+<tr>
+<th>線種名</th>
+<th>パターン</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>solid</td>
+<td>なし</td>
+<td>実線</td>
+</tr>
+<tr>
+<td>dashed</td>
+<td>12.0, 3.0</td>
+<td>破線</td>
+</tr>
+<tr>
+<td>dash_space</td>
+<td>12.0, 12.0</td>
+<td>跳び破線</td>
+</tr>
+<tr>
+<td>center</td>
+<td>24.0, 3.0, 7.0, 3.0</td>
+<td>一点鎖線</td>
+</tr>
+<tr>
+<td>phantom</td>
+<td>24.0, 3.0, 7.0, 3.0, 7.0, 3.0</td>
+<td>二点鎖線</td>
+</tr>
+<tr>
+<td>long-dash_dot</td>
+<td>24.0, 3.0, 0.5, 3.0</td>
+<td>一点長鎖線</td>
+</tr>
+<tr>
+<td>long-dash_2dot</td>
+<td>24.0, 3.0, 0.5, 3.0, 0.5, 3.0</td>
+<td>二点長鎖線</td>
+</tr>
+<tr>
+<td>long-dash_3dot</td>
+<td>24.0, 3.0, 0.5, 3.0, 0.5, 3.0, 0.5, 3.0</td>
+<td>二点長鎖線</td>
+</tr>
+<tr>
+<td>dot</td>
+<td>0.5, 3.0</td>
+<td>点線</td>
+</tr>
+<tr>
+<td>dash_dot</td>
+<td>12.0, 3.0, 0.5, 3.0</td>
+<td>一点短鎖線</td>
+</tr>
+<tr>
+<td>2dash_dot</td>
+<td>12.0, 3.0, 12.0, 3.0, 0.5, 3.0</td>
+<td>一点二短鎖線</td>
+</tr>
+<tr>
+<td>dash_2dot</td>
+<td>12.0, 3.0, 0.5, 3.0, 0.5, 3.0</td>
+<td>二点短鎖線</td>
+</tr>
+<tr>
+<td>2dash_2dot</td>
+<td>12.0, 3.0, 12.0, 3.0, 0.5, 3.0, 0.5, 3.0</td>
+<td>二点二短鎖線</td>
+</tr>
+<tr>
+<td>dash_3dot</td>
+<td>12.0, 3.0, 0.5, 3.0, 0.5, 3.0, 0.5, 3.0</td>
+<td>三点短鎖線</td>
+</tr>
+<tr>
+<td>2dash_3dot</td>
+<td>12.0, 3.0, 12.0, 3.0, 0.5, 3.0, 0.5, 3.0, 0.5, 3.0</td>
+<td>三点二短鎖線</td>
+</tr>
+</tbody>
+</table>
+<p>※パターンは線分長と空白のペアで、長さはこれに線幅を掛ける。<br>
+※パターンはSXF規格を参考にした。<br>
+※個人的にはsolid, dashed, center, phantom, dotあたりを使うと思います。<br>
+※線種名が上記の表にない場合、エラーではなく警告レベルで線種はsolid（実線）とします。</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>lt "solid"      # 実線
+lt bylayer      # レイヤ線種
+lt construction # 補助線
+lt              # カレント線種
+</code></pre><h4 id="lw">lw </h4>
+<p><code>lw [width]</code><br>
+これ以降の図形で使う線幅を設定します。線幅は用紙上の寸法です。<code>width</code>がない場合、カレント線幅が使われます。<br>
+初期値は0.0です。<br>
+bylayerはレイヤ線幅です。</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>lw 0.25         # 太さ0.25mm
+lw bylayer      # レイヤ線幅
+lw              # カレント線幅
+</code></pre><h4 id="lz">lz </h4>
+<p><code>lz f</code><br>
+fが1の場合、以降の<a href="#line">line</a>, <a href="#arc">arc</a>, <a href="#polyline">polyline</a>, <a href="#spline">spline</a>, <a href="#bezier">bezier</a>の終点と始点が結ばれます（図形を閉じます）。<code>f</code>が0の場合は終点と始点を結びません。<br>
+初期値は0（終点と始点を結ばない）です。</p>
+<h4 id="fc">fc </h4>
+<p><code>fc [color]</code><br>
+これ以降の図形で使う塗りつぶし色を設定します。色の指定方法は<code>lc</code>と同じです。<br>
+初期値は透明色です。</p>
+<h4 id="mt">mt </h4>
+<p><code>mt [name]</code><br>
+マーカー名を文字列で設定します。マーカー名がない場合はカレントマーカー名が使われます。初期値は<code>"x"</code>です。マーカー名は下表によります。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>種類</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>asterisk</td>
+<td><center>*</center></td>
+<td></td>
+</tr>
+<tr>
+<td>circle</td>
+<td><center>円</center></td>
+<td></td>
+</tr>
+<tr>
+<td>dot</td>
+<td><center>点</center></td>
+<td>sizeを使わず、すべての点の大きさは共通の設定を使用する。</td>
+</tr>
+<tr>
+<td>plus</td>
+<td><center>+</center></td>
+<td></td>
+</tr>
+<tr>
+<td>square</td>
+<td><center>四角</center></td>
+<td></td>
+</tr>
+<tr>
+<td>triangle</td>
+<td><center>三角形</center></td>
+<td></td>
+</tr>
+<tr>
+<td>x</td>
+<td><center>X</center></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>mt "plus" # マーカー '+'
+mt    # カレントマーカー
+</code></pre><h4 id="ms">ms </h4>
+<p><code>ms [size]</code></p>
+<p>マーカーサイズを設定します。マーカーサイズは用紙寸になります。マーカーサイズがない場合はカレントマーカーサイズが使われます。初期値は2.5です。</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>ms 4  # マーカーサイズ 4
+ms    # カレントマーカーサイズ
+</code></pre><h4 id="tc">tc </h4>
+<p><code>tc [color]</code><br>
+これ以降の図形で使う文字色を設定します。色の指定方法は<a href="#lc">lc</a>と同じです。<br>
+初期値は黒（0xff000000）です。</p>
+<h4 id="tb">tb </h4>
+<p><code>tb f</code><br>
+文字の配置基準です。<code>f</code>は0：左下、1：中下、2：右下、3：左中、4：中央、5：右中、6：左上、7：中上、8：右上。<br>
+初期値は0（左下）です。</p>
+<h4 id="fn">fn </h4>
+<p><code>fn [name]</code><br>
+<code>name</code>のフォント名を指定します。<code>name</code>がない場合はカレントフォント名が使われます。<br>
+初期値はカレントフォント名です。</p>
+<h4 id="fh">fh </h4>
+<p><code>fh [h]</code><br>
+文字の高さを指定します。<code>h</code>がない場合はカレント文字高さが使われます。<br>
+<a href="#ps">ps</a>が0の場合、ここで指定するサイズは実寸になります。<br>
+初期値は4.0です。</p>
+<h4 id="fw">fw </h4>
+<p><code>fw [w]</code><br>
+文字幅の比率を指定します。<code>w</code>がない場合はカレント文字幅比率が使われます。<br>
+初期値は1.0です。</p>
+<h4 id="fs">fs </h4>
+<p><code>fs [s]</code><br>
+文字と文字の間隔を指定します。<code>s</code>がない場合はカレント文字間隔が使われます。<br>
+<a href="#ps">ps</a>が0の場合、ここで指定するサイズは実寸になります。<br>
+初期値は0.0です。</p>
+<h4 id="fa">fa </h4>
+<p><code>fa [a]</code><br>
+フォントの傾斜角を指定します。フォントの傾斜角は時計回りが正となるので注意してください。<code>a</code>がない場合はカレント傾斜角が使われます。<br>
+初期値は0.0です。</p>
+<h4 id="ff">ff </h4>
+<p><code>ff [f]</code><br>
+文字の修飾（イタリック、ボールドなど）を設定します。<br>
+<code>f</code>は、以下の値の組み合わせです。<br>
+1 : イタリック<br>
+2 : ボールド<br>
+4 : 下線<br>
+8 : 取り消し線<br>
+16 :（予約：不使用）<br>
+32 :（予約：不使用）<br>
+64 : 文字のみ傾斜<br>
+128 : 枠線<br>
+<code>f</code>がない場合はカレント文字修飾が使われます。<br>
+初期値は0です。</p>
+<h4 id="fnt">fnt </h4>
+<p><code>fnt [h] [w] [s] [a] [f]</code><br>
+フォントに関するフォント名以外のパラメータを設定します。<br>
+h: 文字高さ、w: 文字幅の比率、s: 文字間隔、a: 文字傾斜角、f:文字修飾<br>
+パラメータを全て省略した場合は全てカレント値が使われます。パラメータを一部省略した場合、そのパラメータは変更されません。<br>
+初期値などは<a href="#fh">fh</a>,<a href="#fw">fw</a>,<a href="#fs">fs</a>,<a href="#fa">fa</a>,<a href="#ff">ff</a>の値を参照してください。</p>
+<h3 id="図形コマンド">図形コマンド </h3>
+<h4 id="line">line </h4>
+<p><code>line [x0 y0] [x1 y1] [x2 y2] ... [xn yn]</code><br>
+線を引きます。複数のxy座標のペアをパラメータとして渡すとそれらを結んだ線を引きます。<br>
+<a href="#lz">lz</a>が1の場合は終点と始点の間に線を引きます。<br>
+通常、直線は2点が必要ですが、2点より少なくてもエラーにはなりません（何も書かれません）。また、パラメータは偶数個必要です。</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code># (0,0)、(100,0)、(100,50)の座標をつなぐ線。
+line 0 0 100 0 100 50  
+</code></pre><h4 id="circle">circle </h4>
+<p><code>circle x y radius [flatness=1.0] [angle=0.0]</code><br>
+中心座標(x,y)、半径radius、扁平率flatness、傾きangleの楕円を描きます。塗りつぶしができます。</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>circle 0 0 100        # 中心(0,0)、半径100の円
+circle 0 0 100 0.5    # 中心(0,0)、半径100、扁平率0.5の楕円
+circle 0 0 100 0.5 30 # 中心(0,0)、半径100、扁平率0.5、傾き30度の楕円
+</code></pre><h4 id="arc">arc </h4>
+<p><code>arc x y radius start sweep [flatness=1.0] [angle=0.0]</code><br>
+中心座標(x,y)、半径radius、開始角start、角幅sweep、扁平率flatness、傾きangleの楕円弧を描きます。塗りつぶしができます。startから、sweepが正の場合は左回り、負の場合は右回りの円弧になります。<br>
+<a href="#lz">lz</a>が1の場合は終点と始点の間に線を引きます（円弧ではなくベジェ曲線になります）。</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>arc 0 0 100 30 45         # 中心(0,0)、半径100、開始角30、角幅45の円弧
+arc 0 0 100 30 -45 0.5    # 中心(0,0)、半径100、開始角30、角幅-45（時計回りで45度）、扁平率0.5の楕円弧
+arc 0 0 100 30 -45 0.5 30 # 中心(0,0)、半径100、開始角30、角幅-45（時計回りで45度）、扁平率0.5、傾き30度の楕円弧
+arc 0 0 100 30 45         # 中心(0,0)、半径100、開始角30、角幅45の円弧
+arc 0 0 100 30 -45 0.5    # 中心(0,0)、半径100、開始角30、角幅-45（時計回りで45度）、扁平率0.5の楕
+</code></pre><h4 id="fan">fan </h4>
+<p><code>fan x y radius  start sweep [flatness=1.0] [angle=0.0]</code><br>
+中心座標(x,y)、半径radius、開始角start、角幅sweep、扁平率flatness、傾きangleの扇形（ベジェ曲線）を描きます。塗りつぶしができます。</p>
+<h4 id="polyline">polyline </h4>
+<p><code>polyline [x0 y0] [x1 y1] [x2 y2] ... [xn yn]</code><br>
+複数のxy座標のペアをパラメータとして渡すとそれらを結んだ線（ポリライン）を描きます。<br>
+<a href="#lz">lz</a>が1の場合は終点と始点の間に線を引きます。<br>
+塗りつぶしができます。</p>
+<h4 id="spline">spline </h4>
+<p><code>spline [x0 y0] [x1 y1] [x2 y2] ... [xn yn]</code><br>
+複数のxy座標のペアをパラメータとして渡すとそれらを結んだスプライン曲線を描きます。<br>
+<a href="#lz">lz</a>が1の場合は終点と始点を曲線で結びます。<br>
+塗りつぶしができます。</p>
+<h4 id="bezier">bezier </h4>
+<p><code>bezier x0 y0 dx0 dy0 cx1 cy1 x1 y1 [dx1 dy1 cx2 cy2 x2 y2] ... [dxn-1 dyn-1 cxn cyn xn yn]</code><br>
+3次ベジェ曲線です。頂点、制御点１(dx,dy)、制御点2(cx,cy)，頂点の順に並べてあります。頂点数をmとした場合、制御点と頂点の合計は3*m+1になります。<br>
+<a href="#lz">lz</a>が1の場合は終点と始点の間に直線を引きます。<br>
+塗りつぶしができます。</p>
+<h4 id="text">text </h4>
+<p><code>text str x y [angle=0.0]</code><br>
+文字列strを座標(x,y)、角度angleで描きます。塗りつぶし色で背景を塗ることができます。</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>text "test" 0 0
+text "test" 0 0 30
+</code></pre><h4 id="marker">marker </h4>
+<p><code>marker x y [angle=0.0]</code><br>
+マーカーを座標(x,y)、角度angleでマーカーを描きます。<br>
+スタイルはマーカーの種類は<a href="#mt">mt</a>、マーカーサイズは<a href="#ms">ms</a>、色などは線の属性を使用します（色は<a href="#lc">lc</a>、線幅は<a href="#lw">lw</a>、線種<a href="#lt">lt</a>はconstructionのみ有効）。</p>
+<h4 id="group">group </h4>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>group
+....
+....
+end group
+</code></pre><p><code>group</code>と<code>end group</code>間の図形をグループ化します。<code>group</code>中に<code>group</code>を入れることもできます。<br>
+<code>group</code>中では<a href="#layer">layer</a>コマンド、<a href="#ps">ps</a>コマンド、<a href="#p0">p0</a>コマンドは使えません。<br>
+また、<code>end group</code>が存在しない場合、そのグループ図形は追加されません（エラーにするか未定）。</p>
+<h2 id="履歴">履歴 </h2>
+<p>2025/04/08</p>
+<ul>
+<li>初版</li>
+</ul>
+
+      </div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#precad-座標ファイルフォーマット-ver-10-仕様書-rev0" class="md-toc-link"><p>PreCad 座標ファイルフォーマット ver 1.0 仕様書　Rev.0</p>
+</a>
+          </summary>
+        <div>
+          <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#ファイル仕様" class="md-toc-link"><p>ファイル仕様</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#文字コード" class="md-toc-link">
+            <p>文字コード</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#コメント" class="md-toc-link">
+            <p>コメント</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#数値" class="md-toc-link">
+            <p>数値</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#文字列" class="md-toc-link">
+            <p>文字列</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#行" class="md-toc-link"><p>行</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#座標行" class="md-toc-link">
+            <p>座標行</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#コマンド行" class="md-toc-link">
+            <p>コマンド行</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#用語" class="md-toc-link"><p>用語</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#属性" class="md-toc-link">
+            <p>属性</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#カレント属性" class="md-toc-link">
+            <p>カレント属性</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#カレントレイヤ" class="md-toc-link">
+            <p>カレントレイヤ</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#用紙寸実寸" class="md-toc-link">
+            <p>用紙寸・実寸</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#コマンド解説" class="md-toc-link"><p>コマンド解説</p>
+</a>
+          </summary>
+        <div>
+          <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#制御コマンド" class="md-toc-link"><p>制御コマンド</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#ps" class="md-toc-link">
+            <p>ps</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#p0" class="md-toc-link">
+            <p>p0</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#ドキュメントコマンド" class="md-toc-link"><p>ドキュメントコマンド</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#layer" class="md-toc-link">
+            <p>layer</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#属性コマンド" class="md-toc-link"><p>属性コマンド</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#lc" class="md-toc-link">
+            <p>lc</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#lt" class="md-toc-link">
+            <p>lt</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#lw" class="md-toc-link">
+            <p>lw</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#lz" class="md-toc-link">
+            <p>lz</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#fc" class="md-toc-link">
+            <p>fc</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#mt" class="md-toc-link">
+            <p>mt</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#ms" class="md-toc-link">
+            <p>ms</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#tc" class="md-toc-link">
+            <p>tc</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#tb" class="md-toc-link">
+            <p>tb</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#fn" class="md-toc-link">
+            <p>fn</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#fh" class="md-toc-link">
+            <p>fh</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#fw" class="md-toc-link">
+            <p>fw</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#fs" class="md-toc-link">
+            <p>fs</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#fa" class="md-toc-link">
+            <p>fa</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#ff" class="md-toc-link">
+            <p>ff</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#fnt" class="md-toc-link">
+            <p>fnt</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#図形コマンド" class="md-toc-link"><p>図形コマンド</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#line" class="md-toc-link">
+            <p>line</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#circle" class="md-toc-link">
+            <p>circle</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#arc" class="md-toc-link">
+            <p>arc</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#fan" class="md-toc-link">
+            <p>fan</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#polyline" class="md-toc-link">
+            <p>polyline</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#spline" class="md-toc-link">
+            <p>spline</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#bezier" class="md-toc-link">
+            <p>bezier</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#text" class="md-toc-link">
+            <p>text</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#marker" class="md-toc-link">
+            <p>marker</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#group" class="md-toc-link">
+            <p>group</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+        </div>
+      </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#履歴" class="md-toc-link">
+            <p>履歴</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+</div>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+<script>
+document.body.setAttribute('html-show-sidebar-toc', true)
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    </body></html>
