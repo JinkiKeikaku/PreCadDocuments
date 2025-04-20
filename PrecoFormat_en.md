@@ -27,7 +27,7 @@ title: PreCad preco format
 ### Strings
 
 - Strings are enclosed in `"` (double quotes).
-- Strings can span multiple lines. However, newline characters are ignored. If you want to break a string, use `\n`. For example,
+- Strings can span multiple lines. However, newline are ignored. If you want to break a string, use `\n`. For example,
 ```
 "The Martians are
 coming!"
@@ -55,8 +55,8 @@ line 0 0 10 10 20 20
 line 0 0 10 10 20&
 20
 #Do as follows.
-line 0 0 10 10 &
-20 20
+line 0 0 10 10 20 &
+20
 ```
 
 Example
@@ -121,8 +121,7 @@ Color, line type, and line width of shapes.
 #### Current Attributes
 
 Currently selected color, line type, and line width on the PreCad toolbar.
-
-Color is called current line color, current text color, current fill color, etc., depending on the element.
+Color is called current line color, current text color, current fill color, etc., depending on the element.It is sometimes simply called the current value.
 
 The same applies to fonts, such as the current font name.
 
@@ -187,7 +186,7 @@ Commands to specify shape attributes such as color and line type.
 
 `lc [color]`
 Sets the line color to be used for subsequent shapes. If there is no `color`, the current line color will be used.
-The default is black (0xff000000).
+The default is the current line color.
 `color` can be an integer value (32-bit, including alpha) or several defined values.
 | name | definition |
 |-----|------|
@@ -206,18 +205,18 @@ The default is black (0xff000000).
 | transparent | transparent (0x00ffffff) |
 
 ```
-lc 4294901760 # 0xffff0000 (red). 32 bits, starting from the upper, ARGB
+lc -65536     # 0xffff0000 (red). 32 bits, starting from the upper, ARGB
 lc 0xffff0000 # Hexadecimal notation (red). x and a to f can be capital letters
-lc red # Red
-lc bylayer # Layer line color
-lc # Current line color
+lc red        # Red
+lc bylayer    # Layer line color
+lc            # Current line color
 ```
 
 #### lt
 
 `lt [name]`
 Sets the line type to be used for subsequent shapes. If `name` is not specified, the current line type is used.
-The default is a solid line.
+The default is the current line type.
 bylayer is the layer line type, construction is the auxiliary line, and if it is a string, it is the line type name.
 The line type name is based on the table below.
 
@@ -245,17 +244,17 @@ The line type name is based on the table below.
 *If the line type name is not in the table above, it will be a warning rather than an error, and the line type will be solid.
 
 ```
-lt "solid" # Solid line
-lt bylayer # Layer line type
+lt "solid"      # Solid line
+lt bylayer      # Layer line type
 lt construction # Construction line
-lt # Current line type
+lt              # Current line type
 ```
 
 #### lw
 
 `lw [width]`
 Sets the line width to be used for subsequent shapes. Line width is the dimension on the paper. If `width` is not present, the current line width is used.
-The default is 0.0.
+The default is the current line width.
 bylayer is the layer line width.
 
 ```
@@ -274,12 +273,13 @@ The default is 0 (does not connect the end and start points).
 
 `fc [color]`
 Sets the fill color to be used for subsequent shapes. The color can be specified in the same way as for `lc`.
-The default is transparent.
+The default is the current fill color.
 
 #### mt
 
 `mt [name]`
-Sets the marker name as a string. If there is no marker name, the current marker name is used. The initial value is `"x"`. The marker name is based on the table below.
+Sets the marker name as a string. If there is no marker name, the current marker name is used. The default is the current marker name. 
+The marker name is based on the table below.
 | Name | Type | Notes|
 | ------ | -----|---|
 | asterisk| <center>*</center> |
@@ -292,13 +292,13 @@ Sets the marker name as a string. If there is no marker name, the current marker
 
 ```
 mt "plus" # marker '+'
-mt  # current marker
+mt        # current marker
 ```
 #### ms
 
 `ms [size]`
 
-Sets the marker size. The marker size is the paper size. If there is no marker size, the current marker size is used. The initial value is 2.5.
+Sets the marker size. The marker size is the paper size. If there is no marker size, the current marker size is used. The default value is the current marker size.
 If the marker name is `dot`, this size will not be used.
 *The marker size is the paper size, so care must be taken if [ps](#ps) is 0.
 ```
@@ -310,7 +310,7 @@ ms # current marker size
 
 `tc [color]`
 Sets the text color to be used for subsequent shapes. The color can be specified in the same way as [lc](#lc).
-The default is black (0xff000000).
+The default is the current text color.
 
 #### tb
 
@@ -333,26 +333,26 @@ Specifies the character height. If `h` is not specified, the current character h
 
 [ps](#ps) is 0, the size specified here is the actual size.
 
-The default is 4.0.
+The default is the current character height.
 
 #### fw
 
 `fw [w]`
 Specifies the character width ratio. If `w` is not specified, the current character width ratio is used.
-The default is 1.0.
+The default is the current character width ratio.
 
 #### fs
 
 `fs [s]`
 Specifies the spacing between characters. If `s` is not specified, the current character spacing is used.
 If [ps](#ps) is 0, the size specified here is actual size.
-The default is 0.0.
+The default is the current character spacing.
 
 #### fa
 
 `fa [a]`
-Specifies the font slant. Note that the font slant is positive clockwise. If `a` is not specified, the current slant is used.
-The default is 0.0.
+Specifies the font slant angle. Note that the font slant is positive clockwise. If `a` is not specified, the current slant angle is used.
+The default is the current slant angle.
 
 #### ff
 
@@ -368,7 +368,7 @@ Sets the character modification (italic, bold, etc.).
 64: Slant text only
 128: Border
 If `f` is not present, the current text modification is used.
-The default is 0.
+The default is the current text modification.
 #### fnt
 `fnt [h] [w] [s] [a] [f]`
 Sets font parameters other than the font name.
@@ -469,6 +469,10 @@ The [layer](#layer) command, [ps](#ps) command, and [p0](#p0) command cannot be 
 If `end group` does not exist, the group shape will not be added (it is not yet decided whether to cause an error).
 
 ## History
+2025/04/17
+- ver 1.1 Rev.0
+- Changed the initial value of the attribute to the current value.
+- Fixed some errors.
 
 2025/04/09
 - ver 1.0 Rev.0
