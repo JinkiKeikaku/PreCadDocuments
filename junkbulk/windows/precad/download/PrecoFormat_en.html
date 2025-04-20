@@ -53,7 +53,7 @@
 <h3 id="strings">Strings </h3>
 <ul>
 <li>Strings are enclosed in <code>"</code> (double quotes).</li>
-<li>Strings can span multiple lines. However, newline characters are ignored. If you want to break a string, use <code>\n</code>. For example,</li>
+<li>Strings can span multiple lines. However, newline are ignored. If you want to break a string, use <code>\n</code>. For example,</li>
 </ul>
 <pre data-role="codeBlock" data-info="" class="language-text"><code>"The Martians are
 coming!"
@@ -77,8 +77,8 @@ coming!"
 line 0 0 10 10 20&amp;
 20
 #Do as follows.
-line 0 0 10 10 &amp;
-20 20
+line 0 0 10 10 20 &amp;
+20
 </code></pre><p>Example</p>
 <pre data-role="codeBlock" data-info="" class="language-text"><code>#preco
 
@@ -121,8 +121,8 @@ Some parameters can be omitted. If a parameter is omitted, it may have a special
 <h4 id="attributes">Attributes </h4>
 <p>Color, line type, and line width of shapes.</p>
 <h4 id="current-attributes">Current Attributes </h4>
-<p>Currently selected color, line type, and line width on the PreCad toolbar.</p>
-<p>Color is called current line color, current text color, current fill color, etc., depending on the element.</p>
+<p>Currently selected color, line type, and line width on the PreCad toolbar.<br>
+Color is called current line color, current text color, current fill color, etc., depending on the <a href="http://element.It">element.It</a> is sometimes simply called the current value.</p>
 <p>The same applies to fonts, such as the current font name.</p>
 <h4 id="current-layer">Current layer </h4>
 <p>The layer selected in the PreCad layer list for writing.</p>
@@ -164,7 +164,7 @@ layer # Select current layer
 <h4 id="lc">lc </h4>
 <p><code>lc [color]</code><br>
 Sets the line color to be used for subsequent shapes. If there is no <code>color</code>, the current line color will be used.<br>
-The default is black (0xff000000).<br>
+The default is the current line color.<br>
 <code>color</code> can be an integer value (32-bit, including alpha) or several defined values.</p>
 <table>
 <thead>
@@ -228,15 +228,15 @@ The default is black (0xff000000).<br>
 </tr>
 </tbody>
 </table>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>lc 4294901760 # 0xffff0000 (red). 32 bits, starting from the upper, ARGB
+<pre data-role="codeBlock" data-info="" class="language-text"><code>lc -65536     # 0xffff0000 (red). 32 bits, starting from the upper, ARGB
 lc 0xffff0000 # Hexadecimal notation (red). x and a to f can be capital letters
-lc red # Red
-lc bylayer # Layer line color
-lc # Current line color
+lc red        # Red
+lc bylayer    # Layer line color
+lc            # Current line color
 </code></pre><h4 id="lt">lt </h4>
 <p><code>lt [name]</code><br>
 Sets the line type to be used for subsequent shapes. If <code>name</code> is not specified, the current line type is used.<br>
-The default is a solid line.<br>
+The default is the current line type.<br>
 bylayer is the layer line type, construction is the auxiliary line, and if it is a string, it is the line type name.<br>
 The line type name is based on the table below.</p>
 <table>
@@ -329,14 +329,14 @@ The line type name is based on the table below.</p>
 *The pattern was based on the SXF standard.<br>
 *Personally, I think I would use solid, dashed, center, phantom, or dot.<br>
 *If the line type name is not in the table above, it will be a warning rather than an error, and the line type will be solid.</p>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>lt "solid" # Solid line
-lt bylayer # Layer line type
+<pre data-role="codeBlock" data-info="" class="language-text"><code>lt "solid"      # Solid line
+lt bylayer      # Layer line type
 lt construction # Construction line
-lt # Current line type
+lt              # Current line type
 </code></pre><h4 id="lw">lw </h4>
 <p><code>lw [width]</code><br>
 Sets the line width to be used for subsequent shapes. Line width is the dimension on the paper. If <code>width</code> is not present, the current line width is used.<br>
-The default is 0.0.<br>
+The default is the current line width.<br>
 bylayer is the layer line width.</p>
 <pre data-role="codeBlock" data-info="" class="language-text"><code>lw 0.25 # Thickness 0.25mm
 lw bylayer # Layer line width
@@ -348,10 +348,11 @@ The default is 0 (does not connect the end and start points).</p>
 <h4 id="fc">fc </h4>
 <p><code>fc [color]</code><br>
 Sets the fill color to be used for subsequent shapes. The color can be specified in the same way as for <code>lc</code>.<br>
-The default is transparent.</p>
+The default is the current fill color.</p>
 <h4 id="mt">mt </h4>
 <p><code>mt [name]</code><br>
-Sets the marker name as a string. If there is no marker name, the current marker name is used. The initial value is <code>"x"</code>. The marker name is based on the table below.</p>
+Sets the marker name as a string. If there is no marker name, the current marker name is used. The default is the current marker name.<br>
+The marker name is based on the table below.</p>
 <table>
 <thead>
 <tr>
@@ -374,7 +375,7 @@ Sets the marker name as a string. If there is no marker name, the current marker
 <tr>
 <td>dot</td>
 <td><center>Dot</center></td>
-<td>Do not use size, use a common setting for the size of all dots.</td>
+<td>Do not use size, use a setting for the size of dot.</td>
 </tr>
 <tr>
 <td>plus</td>
@@ -399,16 +400,18 @@ Sets the marker name as a string. If there is no marker name, the current marker
 </tbody>
 </table>
 <pre data-role="codeBlock" data-info="" class="language-text"><code>mt "plus" # marker '+'
-mt  # current marker
+mt        # current marker
 </code></pre><h4 id="ms">ms </h4>
 <p><code>ms [size]</code></p>
-<p>Sets the marker size. The marker size is the paper size. If there is no marker size, the current marker size is used. The initial value is 2.5.</p>
+<p>Sets the marker size. The marker size is the paper size. If there is no marker size, the current marker size is used. The default value is the current marker size.<br>
+If the marker name is <code>dot</code>, this size will not be used.<br>
+*The marker size is the paper size, so care must be taken if <a href="#ps">ps</a> is 0.</p>
 <pre data-role="codeBlock" data-info="" class="language-text"><code>ms 4 # marker size 4
 ms # current marker size
 </code></pre><h4 id="tc">tc </h4>
 <p><code>tc [color]</code><br>
 Sets the text color to be used for subsequent shapes. The color can be specified in the same way as <a href="#lc">lc</a>.<br>
-The default is black (0xff000000).</p>
+The default is the current text color.</p>
 <h4 id="tb">tb </h4>
 <p><code>tb f</code><br>
 The alignment of the characters. <code>f</code> is 0: bottom left, 1: bottom center, 2: bottom right, 3: center left, 4: center, 5: center right, 6: top left, 7: top center, 8: top right.</p>
@@ -421,20 +424,20 @@ Specifies the font name of <code>name</code>. If <code>name</code> is not specif
 <p><code>fh [h]</code><br>
 Specifies the character height. If <code>h</code> is not specified, the current character height is used.</p>
 <p><a href="#ps">ps</a> is 0, the size specified here is the actual size.</p>
-<p>The default is 4.0.</p>
+<p>The default is the current character height.</p>
 <h4 id="fw">fw </h4>
 <p><code>fw [w]</code><br>
 Specifies the character width ratio. If <code>w</code> is not specified, the current character width ratio is used.<br>
-The default is 1.0.</p>
+The default is the current character width ratio.</p>
 <h4 id="fs">fs </h4>
 <p><code>fs [s]</code><br>
 Specifies the spacing between characters. If <code>s</code> is not specified, the current character spacing is used.<br>
 If <a href="#ps">ps</a> is 0, the size specified here is actual size.<br>
-The default is 0.0.</p>
+The default is the current character spacing.</p>
 <h4 id="fa">fa </h4>
 <p><code>fa [a]</code><br>
-Specifies the font slant. Note that the font slant is positive clockwise. If <code>a</code> is not specified, the current slant is used.<br>
-The default is 0.0.</p>
+Specifies the font slant angle. Note that the font slant is positive clockwise. If <code>a</code> is not specified, the current slant angle is used.<br>
+The default is the current slant angle.</p>
 <h4 id="ff">ff </h4>
 <p><code>ff [f]</code><br>
 Sets the character modification (italic, bold, etc.).<br>
@@ -448,7 +451,7 @@ Sets the character modification (italic, bold, etc.).<br>
 64: Slant text only<br>
 128: Border<br>
 If <code>f</code> is not present, the current text modification is used.<br>
-The default is 0.</p>
+The default is the current text modification.</p>
 <h4 id="fnt">fnt </h4>
 <p><code>fnt [h] [w] [s] [a] [f]</code><br>
 Sets font parameters other than the font name.<br>
@@ -514,8 +517,15 @@ end group
 The <a href="#layer">layer</a> command, <a href="#ps">ps</a> command, and <a href="#p0">p0</a> command cannot be used inside <code>group</code>.<br>
 If <code>end group</code> does not exist, the group shape will not be added (it is not yet decided whether to cause an error).</p>
 <h2 id="history">History </h2>
-<p>2025/04/08</p>
+<p>2025/04/17</p>
 <ul>
+<li>ver 1.1 Rev.0</li>
+<li>Changed the initial value of the attribute to the current value.</li>
+<li>Fixed some errors.</li>
+</ul>
+<p>2025/04/09</p>
+<ul>
+<li>ver 1.0 Rev.0</li>
 <li>First edition</li>
 </ul>
 

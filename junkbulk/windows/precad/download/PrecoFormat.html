@@ -45,7 +45,7 @@
 <h3 id="文字列">文字列 </h3>
 <ul>
 <li>文字列は<code>"</code>(ダブルコーテーション)で囲みます。</li>
-<li>文字列は複数行にわたることがあります。ただし、改行文字は無視されます。文字列として改行したい場合は<code>\n</code>を使います。例えば、</li>
+<li>文字列は複数行にわたることがあります。ただし、改行は無視されます。文字列として改行したい場合は<code>\n</code>を使います。例えば、</li>
 </ul>
 <pre data-role="codeBlock" data-info="" class="language-text"><code>"The Martians are
  coming!"
@@ -56,7 +56,7 @@
 <h3 id="行">行 </h3>
 <ul>
 <li>一行ごとに図形、属性などを指示します（複数行にわたることもあります）。</li>
-<li>各行は、最初に数値がある場合は<a href="#coordinate_line">線の座標</a>、最初に識別子がある場合は<a href="#command_line">コマンド行</a>で、最初の識別子はコマンド、その後にパラメータが続きます。</li>
+<li>各行は、最初に数値がある場合は<a href="#coordinate_line">線の座標</a>、最初に識別子がある場合は<a href="#command_line">コマンド行</a>です。コマンド行は、最初にコマンド、その後にパラメータが続きます。</li>
 <li>パラメータは数値、文字列、いくつかの識別子（色や線幅、線種で使われる<code>bylayer</code>、線種で使われる<code>construction</code>、色名など）があります。パラメータの区切りは少なくとも一つの空白文字（スペース、タブ）です。<br>
 ただし、パラメータが文字列の場合は区切り文字を省略できます（見にくいので推奨はしません）。</li>
 </ul>
@@ -69,8 +69,8 @@
 line 0 0 10 10 20&amp;
 20
 #次のようにすること。
-line 0 0 10 10 &amp;
-20 20
+line 0 0 10 10 20 &amp;
+20
 </code></pre><p>参考例</p>
 <pre data-role="codeBlock" data-info="" class="language-text"><code>#preco
 
@@ -114,7 +114,7 @@ circle 0 0 50
 <p>図形の色や線種など図形の装飾に関するもの。</p>
 <h4 id="カレント属性">カレント属性 </h4>
 <p>PreCadのツールバーで現在選択されている色、線種、線幅。<br>
-色については要素により、カレント線色、カレント文字色、カレント塗りつぶし色などと呼びます。<br>
+色については要素により、カレント線色、カレント文字色、カレント塗りつぶし色などと呼びます。単にカレント値と呼ぶこともあります。<br>
 フォントについてもカレントフォント名等、同様です。</p>
 <h4 id="カレントレイヤ">カレントレイヤ </h4>
 <p>PreCadのレイヤリストで選択されている書き込みレイヤ。</p>
@@ -156,7 +156,7 @@ layer           #　カレントレイヤを選択
 <h4 id="lc">lc </h4>
 <p><code>lc [color]</code><br>
 これ以降の図形で使う線色を設定します。<code>color</code>がない場合、カレント線色が使われます。<br>
-初期値は黒（0xff000000）です。<br>
+初期値はカレント線色です。<br>
 <code>color</code>は整数値（32ビット、アルファ値も含む）及びいくつかの定義値が使えます。</p>
 <table>
 <thead>
@@ -220,7 +220,7 @@ layer           #　カレントレイヤを選択
 </tr>
 </tbody>
 </table>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>lc 4294901760 # 0xffff0000（赤）。32ビットで上位から、ARGB
+<pre data-role="codeBlock" data-info="" class="language-text"><code>lc -65536     # 0xffff0000（赤）。32ビットで上位から、ARGB
 lc 0xffff0000 # 16進表記（赤）。xやaからfは大文字でも可
 lc red        # 赤
 lc bylayer    # レイヤ線色
@@ -228,7 +228,7 @@ lc            # カレント線色
 </code></pre><h4 id="lt">lt </h4>
 <p><code>lt [name]</code><br>
 これ以降の図形で使う線種を設定します。<code>name</code>がない場合、カレント線種が使われます。<br>
-初期値は実線です。<br>
+初期値はカレント線種です。<br>
 bylayerはレイヤ線種、constructionは補助線、文字列の場合は線種名となります。<br>
 線種名は下表によります。</p>
 <table>
@@ -328,7 +328,7 @@ lt              # カレント線種
 </code></pre><h4 id="lw">lw </h4>
 <p><code>lw [width]</code><br>
 これ以降の図形で使う線幅を設定します。線幅は用紙上の寸法です。<code>width</code>がない場合、カレント線幅が使われます。<br>
-初期値は0.0です。<br>
+初期値はカレント線幅です。<br>
 bylayerはレイヤ線幅です。</p>
 <pre data-role="codeBlock" data-info="" class="language-text"><code>lw 0.25         # 太さ0.25mm
 lw bylayer      # レイヤ線幅
@@ -340,10 +340,10 @@ fが1の場合、以降の<a href="#line">line</a>, <a href="#arc">arc</a>, <a h
 <h4 id="fc">fc </h4>
 <p><code>fc [color]</code><br>
 これ以降の図形で使う塗りつぶし色を設定します。色の指定方法は<code>lc</code>と同じです。<br>
-初期値は透明色です。</p>
+初期値はカレント塗りつぶし色です。</p>
 <h4 id="mt">mt </h4>
 <p><code>mt [name]</code><br>
-マーカー名を文字列で設定します。マーカー名がない場合はカレントマーカー名が使われます。初期値は<code>"x"</code>です。マーカー名は下表によります。</p>
+マーカー名を文字列で設定します。マーカー名がない場合はカレントマーカー名が使われます。初期値はカレントマーカー名です。マーカー名は下表によります。</p>
 <table>
 <thead>
 <tr>
@@ -366,7 +366,7 @@ fが1の場合、以降の<a href="#line">line</a>, <a href="#arc">arc</a>, <a h
 <tr>
 <td>dot</td>
 <td><center>点</center></td>
-<td>sizeを使わず、すべての点の大きさは共通の設定を使用する。</td>
+<td>sizeを使わず、大きさは設定を使用する。</td>
 </tr>
 <tr>
 <td>plus</td>
@@ -394,13 +394,15 @@ fが1の場合、以降の<a href="#line">line</a>, <a href="#arc">arc</a>, <a h
 mt    # カレントマーカー
 </code></pre><h4 id="ms">ms </h4>
 <p><code>ms [size]</code></p>
-<p>マーカーサイズを設定します。マーカーサイズは用紙寸になります。マーカーサイズがない場合はカレントマーカーサイズが使われます。初期値は2.5です。</p>
+<p>マーカーサイズを設定します。マーカーサイズは用紙寸になります。マーカーサイズがない場合はカレントマーカーサイズが使われます。初期値はカレントマーカーサイズです。<br>
+マーカー名が<code>dot</code>の場合、このサイズは使われません。<br>
+※マーカーサイズは用紙寸なので<a href="#ps">ps</a>が0の場合、注意が必要です。</p>
 <pre data-role="codeBlock" data-info="" class="language-text"><code>ms 4  # マーカーサイズ 4
 ms    # カレントマーカーサイズ
 </code></pre><h4 id="tc">tc </h4>
 <p><code>tc [color]</code><br>
 これ以降の図形で使う文字色を設定します。色の指定方法は<a href="#lc">lc</a>と同じです。<br>
-初期値は黒（0xff000000）です。</p>
+初期値はカレント文字色です。</p>
 <h4 id="tb">tb </h4>
 <p><code>tb f</code><br>
 文字の配置基準です。<code>f</code>は0：左下、1：中下、2：右下、3：左中、4：中央、5：右中、6：左上、7：中上、8：右上。<br>
@@ -413,20 +415,20 @@ ms    # カレントマーカーサイズ
 <p><code>fh [h]</code><br>
 文字の高さを指定します。<code>h</code>がない場合はカレント文字高さが使われます。<br>
 <a href="#ps">ps</a>が0の場合、ここで指定するサイズは実寸になります。<br>
-初期値は4.0です。</p>
+初期値はカレント文字高さです。</p>
 <h4 id="fw">fw </h4>
 <p><code>fw [w]</code><br>
 文字幅の比率を指定します。<code>w</code>がない場合はカレント文字幅比率が使われます。<br>
-初期値は1.0です。</p>
+初期値はカレント文字幅です。</p>
 <h4 id="fs">fs </h4>
 <p><code>fs [s]</code><br>
 文字と文字の間隔を指定します。<code>s</code>がない場合はカレント文字間隔が使われます。<br>
 <a href="#ps">ps</a>が0の場合、ここで指定するサイズは実寸になります。<br>
-初期値は0.0です。</p>
+初期値はカレント文字間隔です。</p>
 <h4 id="fa">fa </h4>
 <p><code>fa [a]</code><br>
 フォントの傾斜角を指定します。フォントの傾斜角は時計回りが正となるので注意してください。<code>a</code>がない場合はカレント傾斜角が使われます。<br>
-初期値は0.0です。</p>
+初期値はカレント傾斜角です。</p>
 <h4 id="ff">ff </h4>
 <p><code>ff [f]</code><br>
 文字の修飾（イタリック、ボールドなど）を設定します。<br>
@@ -440,13 +442,14 @@ ms    # カレントマーカーサイズ
 64 : 文字のみ傾斜<br>
 128 : 枠線<br>
 <code>f</code>がない場合はカレント文字修飾が使われます。<br>
-初期値は0です。</p>
+初期値はカレント文字修飾です。</p>
 <h4 id="fnt">fnt </h4>
 <p><code>fnt [h] [w] [s] [a] [f]</code><br>
 フォントに関するフォント名以外のパラメータを設定します。<br>
 h: 文字高さ、w: 文字幅の比率、s: 文字間隔、a: 文字傾斜角、f:文字修飾<br>
 パラメータを全て省略した場合は全てカレント値が使われます。パラメータを一部省略した場合、そのパラメータは変更されません。<br>
-初期値などは<a href="#fh">fh</a>,<a href="#fw">fw</a>,<a href="#fs">fs</a>,<a href="#fa">fa</a>,<a href="#ff">ff</a>の値を参照してください。</p>
+初期値はカレント値です。<br>
+各パラメータ詳細は、<a href="#fh">fh</a>,<a href="#fw">fw</a>,<a href="#fs">fs</a>,<a href="#fa">fa</a>,<a href="#ff">ff</a>を参照してください。</p>
 <h3 id="図形コマンド">図形コマンド </h3>
 <h4 id="line">line </h4>
 <p><code>line [x0 y0] [x1 y1] [x2 y2] ... [xn yn]</code><br>
@@ -506,8 +509,15 @@ end group
 <code>group</code>中では<a href="#layer">layer</a>コマンド、<a href="#ps">ps</a>コマンド、<a href="#p0">p0</a>コマンドは使えません。<br>
 また、<code>end group</code>が存在しない場合、そのグループ図形は追加されません（エラーにするか未定）。</p>
 <h2 id="履歴">履歴 </h2>
-<p>2025/04/08</p>
+<p>2025/04/17</p>
 <ul>
+<li>ver 1.1 Rev.0</li>
+<li>属性の初期値をカレント値に変更。</li>
+<li>誤記修正</li>
+</ul>
+<p>2025/04/09</p>
+<ul>
+<li>ver 1.0 Rev.0</li>
 <li>初版</li>
 </ul>
 

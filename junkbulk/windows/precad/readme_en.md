@@ -65,6 +65,11 @@ However, PreCad does not embed fonts in files, so if the drawing you open uses f
 
 ## History
 
+- 2025/04/20 ver. 1.6.3.0
+    - Changed the algorithm for a circle tangent to two lines.
+    - Supports changing attributes such as color and selected layer while drawing with the coordinate tool.
+    - Changed the initial value of the attributes of the coordinate file to the current selected attributes.
+    - Changed the priority order when pasting images etc. (for example, PNG is now given priority over EMF).
 - 2025/04/13 ver. 1.6.2.0
     - When drawing, the screen will scroll if you drag it off the screen.
     - Added shape commands such as circles to the coordinate file. For commands, see https://junkbulk.com/windows/precad/download/PrecoFormat_en.html.
