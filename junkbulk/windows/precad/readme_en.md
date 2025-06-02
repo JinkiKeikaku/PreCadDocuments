@@ -65,6 +65,12 @@ However, PreCad does not embed fonts in files, so if the drawing you open uses f
 
 ## History
 
+- 2025/04/28 ver. 1.6.4.0
+    - Added the buttons to the right-click menu.
+    - Improved file loading speed.
+    - Fixed an issue where shapes were not selected after pasting with the select tool.
+    - Minor changes.
+
 - 2025/04/20 ver. 1.6.3.0
     - Changed the algorithm for a circle tangent to two lines.
     - Supports changing attributes such as color and selected layer while drawing with the coordinate tool.
