@@ -65,6 +65,39 @@ However, PreCad does not embed fonts in files, so if the drawing you open uses f
 
 ## History
 
+- 2025/08/03 ver. 1.6.11.0
+    - Support UNDO for scale change.
+    - Fixed a bug when switching modes in the cut line tool.
+- 2025/07/26 ver. 1.6.10.0
+    - Supported polyline and elliptical arc by Extend line tool and Corner tool.
+    - Changed intersection processing.
+    - Fixed polyline degeneracy processing.
+    - Fixed a bug in partially erasing polylines.
+    - Fixed a bug in the area measurement tool.
+    - Fixed an issue with the CncHobby plugin.
+
+- 2025/07/09 ver. 1.6.9.0
+    - Fixed an issue where files could not be saved under certain conditions.
+
+- 2025/07/06 ver. 1.6.8.0
+    - Changed the algorithm for the Erase line tool.
+
+- 2025/06/29 ver. 1.6.7.0
+    - Added a clipping mode to the Erase line tool that leaves the clicked part.
+    - The number of shapes that can be searched for intersections by the Trim tool, Erase line tool, and Extend line tool has been increased.
+    - Supported the Jw_cad Unicode file.
+    - Changed the display range from LIMMIN, LIMMAX to EXTMIN, EXTMAX when importing DXF.
+    - Fixed polylines in block shape were sometimes filled in when importing DXF.
+    - Fixed issue with MTEXT when importing DXF.
+    - The conditions for whether an inverse matrix can be calculated have been relaxed a little.
+
+- 2025/06/14 ver. 1.6.6.0
+    - Changed the algorithm for the trim tool.
+    - Changed the specifications for text on line tool.
+
+- 2025/06/05 ver. 1.6.5.0
+    - Changed the plugin folder.
+    - Other minor changes.
 - 2025/04/28 ver. 1.6.4.0
     - Added the buttons to the right-click menu.
     - Improved file loading speed.
