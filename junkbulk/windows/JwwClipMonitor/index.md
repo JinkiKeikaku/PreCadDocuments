@@ -18,6 +18,11 @@ JwwClipMonitorは、Windowsのクリップボードにコピーされた画像�
 </a>
 
 ## 2. Download
+
+- JwwClipMonitor ver1.1.0.0
+JwwClipMonitor-1.1.0.0.zip (MD5 : a6948452cf27a6785503ee094f9252b7)
+[ダウンロード](download/JwwClipMonitor-1.1.0.0.zip)  (1470KB)
+
 - JwwClipMonitor ver1.0.1.2
 JwwClipMonitor-1.0.1.2.zip (MD5 : 8d410c7c63e126d07f7565c15d24d6e5)
 [ダウンロード](download/JwwClipMonitor-1.0.1.2.zip)  (1470KB)
