@@ -7,7 +7,7 @@ html:
 print_background: false
 title: PreCad preco format
 ---
-# PreCad coordinate file format ver 1.0 specification Rev.0
+# PreCad coordinate file format ver 1.1 specification Rev.0
 ## File specifications
 ### Character code
 - A text file with character code UTF8 (without BOM). Line break code is LF (0x0A) or CRLF (0x0D, 0x0A).

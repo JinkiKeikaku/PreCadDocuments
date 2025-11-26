@@ -8,7 +8,7 @@ print_background: false
 title: PreCad preco format
 ---
 
-# PreCad 座標ファイルフォーマット ver 1.0 仕様書　Rev.0
+# PreCad 座標ファイルフォーマット ver 1.1 仕様書　Rev.0
 
 ## ファイル仕様
 
