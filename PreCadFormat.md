@@ -8,7 +8,7 @@ print_background: false
 title: PreCad file format
 ---
 
-# PreCad file format ver 2.7.0仕様書　Rev.0
+# PreCad file format ver 2.8.0仕様書　Rev.0
 ## PreCadの特徴
 - PreCadは2DCADです。複数のページを作成することができます。
 - 各ページにはレイヤーの他にシートがあります。シートは縮尺を設定できます。
@@ -82,7 +82,8 @@ contents(
 settings(
  pageIndex(0)
  paper(name("A3")size(297 210))
- grid(p0(0.0 0.0)spacing(10.0)div(10)isScaled(0)angle(0.0))
+ unitOfLength(0)
+ grid(p0(0 0)gridSizeOnPaper(10)div(5)isScaled(0)angle(0.0))
  printInfo(printPaperSize(420.0 297.0)printCenter(0.0 0.0)printScale(2.0))
 )
 ```
@@ -118,7 +119,8 @@ settings(
 settings(
  pageIndex(0)   
  paper(name("A3")size(297 210))rotatePaper
- grid(p0(0 0)spacing(10)div(5)isScaled(0)angle(0.0))
+ unitOfLength(0)
+ grid(p0(0 0)gridSizeOnPaper(10)div(5)isScaled(0)angle(0.0))
  printInfo(printPaperSize(420.0 297.0)printCenter(0.0 0.0)printScale(2.0))
 )
 ```
@@ -147,17 +149,23 @@ PreCadでは以下の用紙リストから用紙を選択する。
 |4A|3364 x 2378|  |
 |5A|4756 x 3364|  |
 
+#### unitOfLength : Int
+カーソル座標表示、数値入力の線の長さなどの長さの単位。
+0:mm, 1:cm, 2:m, 3:inch
+
 #### grid
 グリッドの設定
 
 | 要素 | パラメータ | 説明 |
 |-----|------|-----|
 | p0(x y) | x : Double,  y : Double| グリッド原点 |
-| spacing(s) | s : Double| グリッド間隔 |
+| ~~spacing(s)~~ | s : Double| グリッド間隔(廃止) |
 | div(n) | n : Int| グリッド間隔をn分割 |
 | isScaled(f) | f : Int| 0:グリッド間隔は用紙寸<br>1:グリッド間隔は実寸 |
 | angle(s) | s : Double| グリッド角度（度） |
+| gridSizeOnPaper(s) | s : Double| 用紙上のグリッド間隔 |
 
+- spacingは2.8.0で追加された長さの単位と相性が悪いため2.8.0以降不使用。gridSizeOnPaperを使用する。
 
 #### printInfo
 
@@ -166,6 +174,8 @@ PreCadでは以下の用紙リストから用紙を選択する。
 | printPaperSize(width height) | width : Double,  height : Double| 印刷する用紙のサイズ |
 | printCenter(x y) | x : Double, y : Double| 印刷領域の中心座標 |
 | printScale(scale) | scale : Double| 印刷倍率 |
+
+#### 
 
 
 ## 図面ファイル
@@ -406,6 +416,22 @@ startArrow(size(3)type(1))
 | startArrow(...)<br>[ sa ] | [矢印スタイル](#arrowStyle)参照 | 始点の矢印スタイル。省略時矢印なし |
 | endArrow(...)<br>[ ea ] | [矢印スタイル](#arrowStyle)参照 | 終点の矢印スタイル。省略時矢印なし |
 | arrowMode(m)<br>[ am ] | m:Int | 矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0 |
+| ul(m)<br>| m:Int | 寸法値単位。寸法値自動の時に使用。<br>0:mm, 1:cm, 2:m, 3:inch<br>省略時0 |
+
+<a id="angleStyle"></a>
+###### angleStyle（角度寸法スタイル）
+| 要素 | パラメータ | 説明 |
+|-----|------|-----|
+| extensionLineOffset(d)<br>[ eo ] | d : Double | 引出位置から引出線までの離れ |
+| extensionLineOvershoot(d)<br>[ ev ] | d : Double | 寸法線からの引出線の延長長さ |
+| dimensionLineExtension(d)<br>[ de ] | d : Double | 寸法線の延長長さ |
+| textStyle(...)<br>[ ts ] | [文字スタイル](#textStyle)参照 | 文字スタイル |
+| textOffset(d)<br>[ to ] | d : Double | 文字の寸法線との離れ。省略時0 |
+| formatStyle(...)<br>[ fs ] | [寸法値フォーマット](#formatStyle)参照 | 寸法値フォーマット |
+| tolerance2LinesTextScale(s)<br>[ tt ] | s:Double | 2行の許容差の文字サイズの比率。省略時0.75 |
+| startArrow(...)<br>[ sa ] | [矢印スタイル](#arrowStyle)参照 | 始点の矢印スタイル。省略時矢印なし |
+| endArrow(...)<br>[ ea ] | [矢印スタイル](#arrowStyle)参照 | 終点の矢印スタイル。省略時矢印なし |
+| arrowMode(m)<br>[ am ] | m:Int | 矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0 |
 
 <a id="radiusStyle"></a>
 ###### radiusStyle（半径寸法スタイル）
@@ -419,6 +445,7 @@ startArrow(size(3)type(1))
 | tolerance2LinesTextScale(s)<br>[ tt ] | s:Double | 2行の許容差の文字サイズの比率。省略時0.75 |
 | arrowStyle(...)<br>[ as ] | [矢印スタイル](#arrowStyle)参照 | 矢印スタイル |
 | arrowMode(m)<br>[ am ] | m:Int | 矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0 |
+| ul(m)<br>| m:Int | 寸法値単位。寸法値自動の時に使用。<br>0:mm, 1:cm, 2:m, 3:inch<br>省略時0 |
 
 <a id="diameterStyle"></a>
 ###### diameterStyle（直径寸法スタイル）
@@ -433,6 +460,7 @@ startArrow(size(3)type(1))
 | startArrow(...)<br>[ sa ] | [矢印スタイル](#arrowStyle)参照 | 始点の矢印スタイル。省略時矢印なし |
 | endArrow(...)<br>[ ea ] | [矢印スタイル](#arrowStyle)参照 | 終点の矢印スタイル。省略時矢印なし |
 | arrowMode(m)<br>[ am ] | m:Int | 矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0 |
+| ul(m)<br>| m:Int | 寸法値単位。寸法値自動の時に使用。<br>0:mm, 1:cm, 2:m, 3:inch<br>省略時0 |
 
 <a id="arcdimensionStyle"></a>
 ###### arcDimensionStyle（弧長寸法スタイル）
@@ -449,6 +477,7 @@ startArrow(size(3)type(1))
 | endArrow(...)<br>[ ea ] | [矢印スタイル](#arrowStyle)参照 | 終点の矢印スタイル。省略時矢印なし |
 | arrowMode(m)<br>[ am ] | m:Int | 矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0 |
 | em(m)<br> | m : Int | 引出線モード<br>0:自動, 1:平行, 2:放射状<br>省略時0 |
+| ul(m)<br>| m:Int | 寸法値単位。寸法値自動の時に使用。<br>0:mm, 1:cm, 2:m, 3:inch<br>省略時0 |
 
 - 引出線モード自動では、弧角が90度以内で平行、90度を超えると放射状になる。
 
@@ -649,7 +678,7 @@ startArrow(size(3)type(1))
 | enableAutoDimension(f)<br>[ ed ]| f : Int | 1で寸法値自動。省略時1 |
 | lineStyle(...)<br>[ ls ] | [線スタイル](#lineStyle)参照 | 線スタイル。省略時、黒実線、幅0 |
 | fillStyle(...)<br>[ fs ] | [塗りスタイル](#fillStyle)参照 | 文字背景塗りスタイル。省略時塗りなし |
-| dimensionStyle(...)<br>[ ds ] | [直線寸法スタイル](#dimensionStyle)参照 | 寸法スタイル。直線寸法スタイルを使用 |
+| dimensionStyle(...)<br>[ ds ] | [角度寸法スタイル](#angleStyle)参照 | 角度寸法スタイル |
 | tolerance(...)<br>[ to ] | [許容差](#tolerance)参照 | 許容差。省略時、許容差なし |
 
 - 引き出し線の長さがマイナスの場合、中心と反対側に引き出し線を伸ばす。
@@ -799,6 +828,12 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 そのためバージョン2.2.0で短縮形を設けました。
 
 ## 履歴
+2025/12/05 2.8.0 Rev.0
+- 直線寸法、半径寸法、直径寸法、弧長寸法に長さの単位を追加。
+- インデックスファイルに長さの単位を追加。
+- グリッドのspacingタグ廃止、gridSizeOnPaperタグ追加。
+- 角度寸法スタイルを定義（2.7.0までは直線寸法スタイルを使用。直線寸法スタイルに長さの単位が加わったため、新たに定義）。
+
 2025/1/14 2.7.0 Rev.0
 - textStyleのtextAlignに両端揃えと均等揃え追加。
 - Text（文字）にfm（文字枠モード）追加。
