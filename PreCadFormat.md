@@ -82,7 +82,6 @@ contents(
 settings(
  pageIndex(0)
  paper(name("A3")size(297 210))
- unitOfLength(0)
  grid(p0(0 0)gridSizeOnPaper(10)div(5)isScaled(0)angle(0.0))
  printInfo(printPaperSize(420.0 297.0)printCenter(0.0 0.0)printScale(2.0))
 )
@@ -119,7 +118,6 @@ settings(
 settings(
  pageIndex(0)   
  paper(name("A3")size(297 210))rotatePaper
- unitOfLength(0)
  grid(p0(0 0)gridSizeOnPaper(10)div(5)isScaled(0)angle(0.0))
  printInfo(printPaperSize(420.0 297.0)printCenter(0.0 0.0)printScale(2.0))
 )
@@ -149,10 +147,6 @@ PreCadでは以下の用紙リストから用紙を選択する。
 |4A|3364 x 2378|  |
 |5A|4756 x 3364|  |
 
-#### unitOfLength : Int
-カーソル座標表示、数値入力の線の長さなどの長さの単位。
-0:mm, 1:cm, 2:m, 3:inch
-
 #### grid
 グリッドの設定
 
@@ -174,8 +168,6 @@ PreCadでは以下の用紙リストから用紙を選択する。
 | printPaperSize(width height) | width : Double,  height : Double| 印刷する用紙のサイズ |
 | printCenter(x y) | x : Double, y : Double| 印刷領域の中心座標 |
 | printScale(scale) | scale : Double| 印刷倍率 |
-
-#### 
 
 
 ## 図面ファイル
@@ -830,9 +822,8 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 ## 履歴
 2025/12/05 2.8.0 Rev.0
 - 直線寸法、半径寸法、直径寸法、弧長寸法に長さの単位を追加。
-- インデックスファイルに長さの単位を追加。
+- 角度寸法スタイルを定義（2.7.0までは直線寸法スタイルを使用。直線寸法スタイルに長さの単位を追加したため、新たに定義）。
 - グリッドのspacingタグ廃止、gridSizeOnPaperタグ追加。
-- 角度寸法スタイルを定義（2.7.0までは直線寸法スタイルを使用。直線寸法スタイルに長さの単位が加わったため、新たに定義）。
 
 2025/1/14 2.7.0 Rev.0
 - textStyleのtextAlignに両端揃えと均等揃え追加。

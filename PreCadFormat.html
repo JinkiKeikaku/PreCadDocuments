@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="file:///c:\Users\yama\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.15\crossnote\dependencies\katex\katex.min.css">
+      <link rel="stylesheet" href="file:///c:\Users\yama\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.20\crossnote\dependencies\katex\katex.min.css">
       
       
       
@@ -24,7 +24,7 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="precad-file-format-ver-270仕様書-rev0">PreCad file format ver 2.7.0仕様書　Rev.0 </h1>
+<h1 id="precad-file-format-ver-280仕様書-rev0">PreCad file format ver 2.8.0仕様書　Rev.0 </h1>
 <h2 id="precadの特徴">PreCadの特徴 </h2>
 <ul>
 <li>PreCadは2DCADです。複数のページを作成することができます。</li>
@@ -96,7 +96,7 @@ contents(
 settings(
  pageIndex(0)
  paper(name("A3")size(297 210))
- grid(p0(0.0 0.0)spacing(10.0)div(10)isScaled(0)angle(0.0))
+ grid(p0(0 0)gridSizeOnPaper(10)div(5)isScaled(0)angle(0.0))
  printInfo(printPaperSize(420.0 297.0)printCenter(0.0 0.0)printScale(2.0))
 )
 </code></pre><h3 id="fileinfoセクション">fileinfoセクション </h3>
@@ -162,7 +162,7 @@ settings(
 <pre data-role="codeBlock" data-info="" class="language-text"><code>settings(
  pageIndex(0)   
  paper(name("A3")size(297 210))rotatePaper
- grid(p0(0 0)spacing(10)div(5)isScaled(0)angle(0.0))
+ grid(p0(0 0)gridSizeOnPaper(10)div(5)isScaled(0)angle(0.0))
  printInfo(printPaperSize(420.0 297.0)printCenter(0.0 0.0)printScale(2.0))
 )
 </code></pre><h4 id="pageindex--int">pageIndex : Int </h4>
@@ -265,9 +265,9 @@ settings(
 <td>グリッド原点</td>
 </tr>
 <tr>
-<td>spacing(s)</td>
+<td><s>spacing(s)</s></td>
 <td>s : Double</td>
-<td>グリッド間隔</td>
+<td>グリッド間隔(廃止)</td>
 </tr>
 <tr>
 <td>div(n)</td>
@@ -284,8 +284,16 @@ settings(
 <td>s : Double</td>
 <td>グリッド角度（度）</td>
 </tr>
+<tr>
+<td>gridSizeOnPaper(s)</td>
+<td>s : Double</td>
+<td>用紙上のグリッド間隔</td>
+</tr>
 </tbody>
 </table>
+<ul>
+<li>spacingは2.8.0で追加された長さの単位と相性が悪いため2.8.0以降不使用。gridSizeOnPaperを使用する。</li>
+</ul>
 <h4 id="printinfo">printInfo </h4>
 <table>
 <thead>
@@ -948,6 +956,74 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <td>m:Int</td>
 <td>矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0</td>
 </tr>
+<tr>
+<td>ul(m)<br></td>
+<td>m:Int</td>
+<td>寸法値単位。寸法値自動の時に使用。<br>0:mm, 1:cm, 2:m, 3:inch<br>省略時0</td>
+</tr>
+</tbody>
+</table>
+<p><a id="angleStyle" href=""></a></p>
+<h6 id="anglestyle角度寸法スタイル">angleStyle（角度寸法スタイル） </h6>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>extensionLineOffset(d)<br>[ eo ]</td>
+<td>d : Double</td>
+<td>引出位置から引出線までの離れ</td>
+</tr>
+<tr>
+<td>extensionLineOvershoot(d)<br>[ ev ]</td>
+<td>d : Double</td>
+<td>寸法線からの引出線の延長長さ</td>
+</tr>
+<tr>
+<td>dimensionLineExtension(d)<br>[ de ]</td>
+<td>d : Double</td>
+<td>寸法線の延長長さ</td>
+</tr>
+<tr>
+<td>textStyle(...)<br>[ ts ]</td>
+<td><a href="#textStyle">文字スタイル</a>参照</td>
+<td>文字スタイル</td>
+</tr>
+<tr>
+<td>textOffset(d)<br>[ to ]</td>
+<td>d : Double</td>
+<td>文字の寸法線との離れ。省略時0</td>
+</tr>
+<tr>
+<td>formatStyle(...)<br>[ fs ]</td>
+<td><a href="#formatStyle">寸法値フォーマット</a>参照</td>
+<td>寸法値フォーマット</td>
+</tr>
+<tr>
+<td>tolerance2LinesTextScale(s)<br>[ tt ]</td>
+<td>s:Double</td>
+<td>2行の許容差の文字サイズの比率。省略時0.75</td>
+</tr>
+<tr>
+<td>startArrow(...)<br>[ sa ]</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>始点の矢印スタイル。省略時矢印なし</td>
+</tr>
+<tr>
+<td>endArrow(...)<br>[ ea ]</td>
+<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
+<td>終点の矢印スタイル。省略時矢印なし</td>
+</tr>
+<tr>
+<td>arrowMode(m)<br>[ am ]</td>
+<td>m:Int</td>
+<td>矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0</td>
+</tr>
 </tbody>
 </table>
 <p><a id="radiusStyle" href=""></a></p>
@@ -1001,6 +1077,11 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <td>m:Int</td>
 <td>矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0</td>
 </tr>
+<tr>
+<td>ul(m)<br></td>
+<td>m:Int</td>
+<td>寸法値単位。寸法値自動の時に使用。<br>0:mm, 1:cm, 2:m, 3:inch<br>省略時0</td>
+</tr>
 </tbody>
 </table>
 <p><a id="diameterStyle" href=""></a></p>
@@ -1053,6 +1134,11 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <td>arrowMode(m)<br>[ am ]</td>
 <td>m:Int</td>
 <td>矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0</td>
+</tr>
+<tr>
+<td>ul(m)<br></td>
+<td>m:Int</td>
+<td>寸法値単位。寸法値自動の時に使用。<br>0:mm, 1:cm, 2:m, 3:inch<br>省略時0</td>
 </tr>
 </tbody>
 </table>
@@ -1121,6 +1207,11 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <td>em(m)<br></td>
 <td>m : Int</td>
 <td>引出線モード<br>0:自動, 1:平行, 2:放射状<br>省略時0</td>
+</tr>
+<tr>
+<td>ul(m)<br></td>
+<td>m:Int</td>
+<td>寸法値単位。寸法値自動の時に使用。<br>0:mm, 1:cm, 2:m, 3:inch<br>省略時0</td>
 </tr>
 </tbody>
 </table>
@@ -1849,8 +1940,8 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 </tr>
 <tr>
 <td>dimensionStyle(...)<br>[ ds ]</td>
-<td><a href="#dimensionStyle">直線寸法スタイル</a>参照</td>
-<td>寸法スタイル。直線寸法スタイルを使用</td>
+<td><a href="#angleStyle">角度寸法スタイル</a>参照</td>
+<td>角度寸法スタイル</td>
 </tr>
 <tr>
 <td>tolerance(...)<br>[ to ]</td>
@@ -2210,6 +2301,12 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 しかし、Androidでサイズの大きなファイルを読み込むと速度は大きく落ちました。Androidのディスクアクセスは遅かったのです。<br>
 そのためバージョン2.2.0で短縮形を設けました。</p>
 <h2 id="履歴">履歴 </h2>
+<p>2025/12/05 2.8.0 Rev.0</p>
+<ul>
+<li>直線寸法、半径寸法、直径寸法、弧長寸法に長さの単位を追加。</li>
+<li>角度寸法スタイルを定義（2.7.0までは直線寸法スタイルを使用。直線寸法スタイルに長さの単位を追加したため、新たに定義）。</li>
+<li>グリッドのspacingタグ廃止、gridSizeOnPaperタグ追加。</li>
+</ul>
 <p>2025/1/14 2.7.0 Rev.0</p>
 <ul>
 <li>textStyleのtextAlignに両端揃えと均等揃え追加。</li>
@@ -2289,7 +2386,7 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#precad-file-format-ver-270仕様書-rev0" class="md-toc-link"><p>PreCad file format ver 2.7.0仕様書　Rev.0</p>
+          <a href="#precad-file-format-ver-280仕様書-rev0" class="md-toc-link"><p>PreCad file format ver 2.8.0仕様書　Rev.0</p>
 </a>
           </summary>
         <div>
