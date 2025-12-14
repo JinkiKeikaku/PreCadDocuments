@@ -65,6 +65,16 @@ However, PreCad does not embed fonts in files, so if the drawing you open uses f
 
 ## History
 
+- 2025/08/31 ver. 1.7.2.0
+    - Changed the plugin interface.
+    - Changed the calculator to a scientific calculator.
+    - Changed the sheet name for sfc file reading.
+    - Changed the behavior when constraining polyline vertices when editing with the select tool.
+    - Changed the behavior when constraining Bezier shape control points when editing with the select tool.
+    - Changed so that control points follow when moving Bezier shape vertices with the select tool.
+    - Fixed an issue with the arc when outputting HPGL.
+- 2025/08/05 ver. 1.6.12.0
+    - Fixed a freeze that occurred when selecting a page.
 - 2025/08/03 ver. 1.6.11.0
     - Support UNDO for scale change.
     - Fixed a bug when switching modes in the cut line tool.
