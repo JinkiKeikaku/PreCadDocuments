@@ -24,7 +24,7 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="precad-file-format-ver-280仕様書-rev0">PreCad file format ver 2.8.0仕様書　Rev.0 </h1>
+<h1 id="precad-file-format-ver-290仕様書-rev0">PreCad file format ver 2.9.0仕様書　Rev.0 </h1>
 <h2 id="precadの特徴">PreCadの特徴 </h2>
 <ul>
 <li>PreCadは2DCADです。複数のページを作成することができます。</li>
@@ -363,9 +363,11 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
  shapes(
   sheet("シート2")
    layer("テスト1")
+    ls(w(0.5))
     Line(...)
     Circle(...)
    layer("テスト2")
+    ls(w(1.0))
     Line(...)
   ...
  )
@@ -375,19 +377,33 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <h4 id="sheets">sheets </h4>
 <p>シートのリストです。並びは表示されるときの重ね順で下から上になります。</p>
 <h4 id="shapes">shapes </h4>
-<p>図形のリストです。図形以外にsheetおよびlayerタグがあらわれます。</p>
+<p>図形のリストです。図形以外にsheet、layer及び属性値タグがあらわれます。</p>
 <ul>
 <li>sheetタグで現在の書き込みシートを切り替えます。</li>
 <li>layerタグで現在の書き込みレイヤを切り替えます。</li>
+<li>属性値（線種など）は、以降の図形で使われます。<br>
+図形の並びは表示されるときの重ね順で下から上になります。</li>
 </ul>
-<p>並びは表示されるときの重ね順で下から上になります。</p>
 <h4 id="図形共通">図形共通 </h4>
 <ul>
 <li>座標及び大きさ（線幅、半径、文字サイズ等）は用紙寸です。シートの縮尺で割ることで実寸になります。</li>
 <li>座標原点は用紙の中心でX軸は右が正、Y軸は上が正です。</li>
 <li>角度は度(degree)です。左回りが正です。</li>
-<li>図形には線種など共通する属性があります。</li>
-<li>省略時の値が書かれていないパラメータもパラメータを省略できますが値は未定義です。</li>
+<li>図形のパラメータは省略でき、デフォルト値が定義されているものがあります。省略時の値が書かれていない場合、その値は未定義です。</li>
+<li>図形には、座標などのパラメータの他に線種などの属性があります。</li>
+<li>図形の属性は、現在選択されている属性（カレント属性）が使われます（ただし、すべての属性がカレント属性に指定できるわけではありません）。<br>
+また、図形内に属性を書くことで、その属性値を上書きすることができます。</li>
+<li>図形の属性は、その一部のみをを変更することができます（例えば、線スタイルはその色のみを変更することができます）。</li>
+</ul>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>// カレント線種を幅0.5、実線、黒にする。
+ls(w(0.5) t("solid") c(0xff000000))
+
+// 線種は幅1.0、実線、黒。カレント線種は変更しない。
+Line(ls(w(1.0)) pp(0 0 100 50))
+
+// カレント線種の色のみ変更（幅0.5、実線、赤）。
+ls(c(0xffff0000))
+</code></pre><ul>
 <li>文字図形や寸法線などの文字列にはページタイトルなどに置換できるマクロ文字列を使用できます。以下のマクロ文字列が使用できます。</li>
 </ul>
 <table>
@@ -442,22 +458,22 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>width(w)<br>[ w ]</td>
 <td>w : Double</td>
-<td>線幅。省略時0.0</td>
+<td>線幅</td>
 </tr>
 <tr>
 <td>color(c)<br>[ c ]</td>
 <td>c : Int</td>
-<td>線色。省略時0xff000000（黒）</td>
+<td>線色</td>
 </tr>
 <tr>
 <td>lineType(name)<br>[ t ]</td>
 <td>name : String</td>
-<td>線種名。省略時実線</td>
+<td>線種名</td>
 </tr>
 <tr>
 <td>flag(f)<br>[ f ]</td>
 <td>f : Int</td>
-<td>フラグ。省略時0<br></td>
+<td>フラグ</td>
 </tr>
 </tbody>
 </table>
@@ -558,8 +574,9 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 </ul>
 <p><a id="fillStyle" href=""></a></p>
 <h6 id="fillstyle塗りスタイル属性">fillStyle（塗りスタイル属性） </h6>
-<p>円や多角形の塗りのスタイルです。solid（単色）とbyLayerがあります。fillStyleのパラメータにはどちらかを指定してください。fillStyleタグが省略された場合は透明色です。</p>
+<p>円や多角形の塗りのスタイルです。solid（単色）とbyLayerがあります。fillStyleのパラメータにはどちらかを指定してください。</p>
 <pre data-role="codeBlock" data-info="" class="language-text"><code>fillStyle(solid(0xFF00FF00))
+fillStyle(byLayer())
 </code></pre><table>
 <thead>
 <tr>
@@ -572,18 +589,18 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>solid(c)</td>
 <td>c : Int</td>
-<td>面色。省略時、透明（アルファ値が0）</td>
+<td>面色</td>
 </tr>
 <tr>
 <td>byLayer()</td>
 <td></td>
-<td>レイヤ色。パラメータはありません。</td>
+<td>レイヤ色</td>
 </tr>
 </tbody>
 </table>
 <p><a id="arrowStyle" href=""></a></p>
 <h6 id="arrow-startarrow-endarrow矢印-始点矢印-終点矢印スタイル属性">arrow, startArrow, endArrow（矢印、始点矢印、終点矢印スタイル属性） </h6>
-<p>矢印のスタイルです。省略時は矢印無し。</p>
+<p>矢印のスタイルです。</p>
 <pre data-role="codeBlock" data-info="" class="language-text"><code>startArrow(size(3)type(1))
 </code></pre><table>
 <thead>
@@ -673,17 +690,17 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>color(c)<br>[ c ]</td>
 <td>c : Int</td>
-<td>文字色。省略時黒</td>
+<td>文字色</td>
 </tr>
 <tr>
 <td>textAlign(a)<br>[ ta ]</td>
 <td>a : Int</td>
-<td>文字配置<br>省略時0</td>
+<td>文字配置</td>
 </tr>
 <tr>
 <td>fontName(name)<br>[ fn ]</td>
 <td>name : String</td>
-<td>フォント名<br>省略時、空文字列</td>
+<td>フォント名</td>
 </tr>
 <tr>
 <td>fontHeight(h)<br>[ fh ]</td>
@@ -693,22 +710,22 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>fontWidthScale(w)<br>[ fw ]</td>
 <td>w : Double</td>
-<td>フォント横幅比<br>省略時1</td>
+<td>フォント横幅比</td>
 </tr>
 <tr>
 <td>fontSpace(s)<br>[ fs ]</td>
 <td>s : Double</td>
-<td>文字間隔<br>省略時0</td>
+<td>文字間隔</td>
 </tr>
 <tr>
 <td>fontSkewAngle(a)<br>[ fa ]</td>
 <td>a : Double</td>
-<td>傾斜角<br>省略時0</td>
+<td>傾斜角</td>
 </tr>
 <tr>
 <td>flag(f)<br>[ f ]</td>
 <td>f : Int</td>
-<td>フラグ<br>省略時0</td>
+<td>フラグ</td>
 </tr>
 </tbody>
 </table>
@@ -823,27 +840,27 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>textOffset(d)<br>[ to ]</td>
 <td>d : Double</td>
-<td>文字の下線との縦方向の離れ。省略時0</td>
+<td>文字の下線との縦方向の離れ</td>
 </tr>
 <tr>
 <td>leaderOffset(d)<br>[ lo ]</td>
 <td>d : Double</td>
-<td>引出線の終点から文字横方向の離れ。省略時0</td>
+<td>引出線の終点から文字横方向の離れ</td>
 </tr>
 <tr>
 <td>extendLine(i)<br>[ el ]</td>
 <td>i : Int</td>
-<td>線を文字列まで延長。<br>0:延長なし 1:延長する<br>省略時1</td>
+<td>線を文字列まで延長。<br>0:延長なし 1:延長する</td>
 </tr>
 <tr>
 <td>leaderOrientation(i)<br>[ lr ]</td>
 <td>i : Int</td>
-<td>文字の配置方向。<br> 0:水平 1:平行<br>省略時0</td>
+<td>文字の配置方向。<br> 0:水平 1:平行</td>
 </tr>
 <tr>
 <td>leaderBasis(i)<br>[ lb ]</td>
 <td>i : Int</td>
-<td>文字の配置。<br> 0:上 1:下 2:中 3:自由<br>省略時0</td>
+<td>文字の配置。<br> 0:上 1:下 2:中 3:自由</td>
 </tr>
 <tr>
 <td>textStyle(...)<br>[ ts ]</td>
@@ -858,12 +875,11 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>textAngle(d)<br>[ ta ]</td>
 <td>d:Double</td>
-<td>文字角度。leaderBasisが3の時有効。 省略時0。</td>
+<td>文字角度。leaderBasisが3の時有効</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>extendLineの省略時の値は0でないことに注意。</li>
 <li>leaderBasisが3の場合、leaderOffsettとtextOffsetは文字配置の相対座標。extendLine及びleaderOrientationは無視される。</li>
 <li>textAngleはleaderBasisが3の時のみ有効。</li>
 </ul>
@@ -939,27 +955,27 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>tolerance2LinesTextScale(s)<br>[ tt ]</td>
 <td>s:Double</td>
-<td>2行の許容差の文字サイズの比率。省略時0.75</td>
+<td>2行の許容差の文字サイズの比率</td>
 </tr>
 <tr>
 <td>startArrow(...)<br>[ sa ]</td>
 <td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>始点の矢印スタイル。省略時矢印なし</td>
+<td>始点の矢印スタイル</td>
 </tr>
 <tr>
 <td>endArrow(...)<br>[ ea ]</td>
 <td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>終点の矢印スタイル。省略時矢印なし</td>
+<td>終点の矢印スタイル</td>
 </tr>
 <tr>
 <td>arrowMode(m)<br>[ am ]</td>
 <td>m:Int</td>
-<td>矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0</td>
+<td>矢印モード<br>0:自動, 1:内側, 2:外側</td>
 </tr>
 <tr>
 <td>ul(m)<br></td>
 <td>m:Int</td>
-<td>寸法値単位。寸法値自動の時に使用。<br>0:mm, 1:cm, 2:m, 3:inch<br>省略時0</td>
+<td>寸法値単位。寸法値自動の時に使用。<br>0:mm, 1:cm, 2:m, 3:inch</td>
 </tr>
 </tbody>
 </table>
@@ -997,7 +1013,7 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>textOffset(d)<br>[ to ]</td>
 <td>d : Double</td>
-<td>文字の寸法線との離れ。省略時0</td>
+<td>文字の寸法線との離れ</td>
 </tr>
 <tr>
 <td>formatStyle(...)<br>[ fs ]</td>
@@ -1007,22 +1023,22 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>tolerance2LinesTextScale(s)<br>[ tt ]</td>
 <td>s:Double</td>
-<td>2行の許容差の文字サイズの比率。省略時0.75</td>
+<td>2行の許容差の文字サイズの比率</td>
 </tr>
 <tr>
 <td>startArrow(...)<br>[ sa ]</td>
 <td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>始点の矢印スタイル。省略時矢印なし</td>
+<td>始点の矢印スタイル</td>
 </tr>
 <tr>
 <td>endArrow(...)<br>[ ea ]</td>
 <td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>終点の矢印スタイル。省略時矢印なし</td>
+<td>終点の矢印スタイル</td>
 </tr>
 <tr>
 <td>arrowMode(m)<br>[ am ]</td>
 <td>m:Int</td>
-<td>矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0</td>
+<td>矢印モード<br>0:自動, 1:内側, 2:外側</td>
 </tr>
 </tbody>
 </table>
@@ -1045,7 +1061,7 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>fromText(i)<br>[ ft ]</td>
 <td>i:Int</td>
-<td>0：中心から円周に向けて線を引く。<br>1：文字から円周に向けての線のみ。<br>省略時0</td>
+<td>0：中心から円周に向けて線を引く。<br>1：文字から円周に向けての線のみ</td>
 </tr>
 <tr>
 <td>textStyle(...)<br>[ ts ]</td>
@@ -1055,7 +1071,7 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>textOffset(d)<br>[ to ]</td>
 <td>d : Double</td>
-<td>文字の寸法線との離れ。<br>省略時0</td>
+<td>文字の寸法線との離れ</td>
 </tr>
 <tr>
 <td>formatStyle(...)<br>[ fs ]</td>
@@ -1065,7 +1081,7 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>tolerance2LinesTextScale(s)<br>[ tt ]</td>
 <td>s:Double</td>
-<td>2行の許容差の文字サイズの比率。省略時0.75</td>
+<td>2行の許容差の文字サイズの比率</td>
 </tr>
 <tr>
 <td>arrowStyle(...)<br>[ as ]</td>
@@ -1075,12 +1091,12 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>arrowMode(m)<br>[ am ]</td>
 <td>m:Int</td>
-<td>矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0</td>
+<td>矢印モード<br>0:自動, 1:内側, 2:外側</td>
 </tr>
 <tr>
 <td>ul(m)<br></td>
 <td>m:Int</td>
-<td>寸法値単位。寸法値自動の時に使用。<br>0:mm, 1:cm, 2:m, 3:inch<br>省略時0</td>
+<td>寸法値単位。寸法値自動の時に使用。<br>0:mm, 1:cm, 2:m, 3:inch</td>
 </tr>
 </tbody>
 </table>
@@ -1108,7 +1124,7 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>textOffset(d)<br>[ to ]</td>
 <td>d : Double</td>
-<td>文字の寸法線との離れ。省略時0</td>
+<td>文字の寸法線との離れ</td>
 </tr>
 <tr>
 <td>formatStyle(...)<br>[ fs ]</td>
@@ -1118,27 +1134,27 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>tolerance2LinesTextScale(s)<br>[ tt ]</td>
 <td>s:Double</td>
-<td>2行の許容差の文字サイズの比率。省略時0.75</td>
+<td>2行の許容差の文字サイズの比率</td>
 </tr>
 <tr>
 <td>startArrow(...)<br>[ sa ]</td>
 <td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>始点の矢印スタイル。省略時矢印なし</td>
+<td>始点の矢印スタイル</td>
 </tr>
 <tr>
 <td>endArrow(...)<br>[ ea ]</td>
 <td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>終点の矢印スタイル。省略時矢印なし</td>
+<td>終点の矢印スタイル</td>
 </tr>
 <tr>
 <td>arrowMode(m)<br>[ am ]</td>
 <td>m:Int</td>
-<td>矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0</td>
+<td>矢印モード<br>0:自動, 1:内側, 2:外側</td>
 </tr>
 <tr>
 <td>ul(m)<br></td>
 <td>m:Int</td>
-<td>寸法値単位。寸法値自動の時に使用。<br>0:mm, 1:cm, 2:m, 3:inch<br>省略時0</td>
+<td>寸法値単位。寸法値自動の時に使用。<br>0:mm, 1:cm, 2:m, 3:inch</td>
 </tr>
 </tbody>
 </table>
@@ -1176,7 +1192,7 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>textOffset(d)<br>[ to ]</td>
 <td>d : Double</td>
-<td>文字の寸法線との離れ。省略時0</td>
+<td>文字の寸法線との離れ</td>
 </tr>
 <tr>
 <td>formatStyle(...)<br>[ fs ]</td>
@@ -1186,32 +1202,32 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>tolerance2LinesTextScale(s)<br>[ tt ]</td>
 <td>s:Double</td>
-<td>2行の許容差の文字サイズの比率。省略時0.75</td>
+<td>2行の許容差の文字サイズの比率</td>
 </tr>
 <tr>
 <td>startArrow(...)<br>[ sa ]</td>
 <td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>始点の矢印スタイル。省略時矢印なし</td>
+<td>始点の矢印スタイル</td>
 </tr>
 <tr>
 <td>endArrow(...)<br>[ ea ]</td>
 <td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>終点の矢印スタイル。省略時矢印なし</td>
+<td>終点の矢印スタイル</td>
 </tr>
 <tr>
 <td>arrowMode(m)<br>[ am ]</td>
 <td>m:Int</td>
-<td>矢印モード<br>0:自動, 1:内側, 2:外側<br>省略時0</td>
+<td>矢印モード<br>0:自動, 1:内側, 2:外側</td>
 </tr>
 <tr>
 <td>em(m)<br></td>
 <td>m : Int</td>
-<td>引出線モード<br>0:自動, 1:平行, 2:放射状<br>省略時0</td>
+<td>引出線モード<br>0:自動, 1:平行, 2:放射状</td>
 </tr>
 <tr>
 <td>ul(m)<br></td>
 <td>m:Int</td>
-<td>寸法値単位。寸法値自動の時に使用。<br>0:mm, 1:cm, 2:m, 3:inch<br>省略時0</td>
+<td>寸法値単位。寸法値自動の時に使用。<br>0:mm, 1:cm, 2:m, 3:inch</td>
 </tr>
 </tbody>
 </table>
@@ -1237,21 +1253,22 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>usesGroupingSeparator(f)<br>[ gs ]</td>
 <td>f : Int</td>
-<td>0:区切りなし 1:桁区切り。省略時0</td>
+<td>0:区切りなし 1:桁区切り</td>
 </tr>
 <tr>
 <td>prefix(s)<br>[ p ]</td>
 <td>s : String</td>
-<td>前置文字。省略時、半径はR、直径はΦ、弧長は⌒、その他は文字無し</td>
+<td>前置文字</td>
 </tr>
 <tr>
 <td>suffix(s)<br>[ s ]</td>
 <td>s : String</td>
-<td>後置文字。省略時、角度は°、その他は文字無し</td>
+<td>後置文字</td>
 </tr>
 </tbody>
 </table>
 <ul>
+<li>formatStyleは、寸法図形スタイル内で使用（カレント属性として指定できない）</li>
 <li>prefix及びsuffixは図形により省略時の文字が違うことに注意。</li>
 </ul>
 <p><a id="tolerance" href=""></a></p>
@@ -1268,30 +1285,143 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>toleranceType(t)<br>[ tt ]</td>
 <td>t : Int</td>
-<td>許容差タイプ 0:無し 1:一段 2:二段。省略時0</td>
+<td>許容差タイプ 0:無し 1:一段 2:二段</td>
 </tr>
 <tr>
 <td>value0(v)<br>[ v0 ]</td>
 <td>v : Double</td>
-<td>許容差上、一段の時使用</td>
+<td>許容差上（一段の時はこちらを使用）</td>
 </tr>
 <tr>
 <td>value1(v)<br>[ v1 ]</td>
 <td>v : Double</td>
-<td>許容差下。一段の時は省略</td>
+<td>許容差下（一段の時は使われない）</td>
 </tr>
 <tr>
 <td>fractionDigits(d)<br>[ fd ]</td>
 <td>d : Int</td>
-<td>小数点桁数。省略時1</td>
+<td>小数点桁数</td>
 </tr>
 <tr>
 <td>suffix(s)<br>[ s ]</td>
 <td>s : String</td>
-<td>後置文字。省略時文字無し</td>
+<td>後置文字</td>
 </tr>
 </tbody>
 </table>
+<ul>
+<li>toleranceは、寸法図形内で使用（カレント属性として指定できない）</li>
+</ul>
+<h5 id="カレント属性">カレント属性 </h5>
+<ul>
+<li>カレント属性は、以下のものが使えます。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>初期値</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lineStyle<br>[ls]</td>
+<td>lineStyle(w(0) c(0xff000000) t("solid") f(0))</td>
+<td></td>
+</tr>
+<tr>
+<td>fillStyle<br>[fs]</td>
+<td>fillStyle(solid(0x00ffffff))</td>
+<td></td>
+</tr>
+<tr>
+<td>startArrow</td>
+<td>startArrow(t(0) s(3.0))</td>
+<td>線の始点矢印</td>
+</tr>
+<tr>
+<td>endArrow</td>
+<td>endArrow(t(0) s(3.0))</td>
+<td>線の終点矢印</td>
+</tr>
+<tr>
+<td>textStyle<br>[ts]</td>
+<td>textStyle(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0))</td>
+<td></td>
+</tr>
+<tr>
+<td>markerStyle<br>[ms]</td>
+<td>markerStyle(t("x") s(2.5))</td>
+<td></td>
+</tr>
+<tr>
+<td>leaderStyle</td>
+<td>leaderStyle(to(0.0) lo(0.0) el(1) lr(0) lb(0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) as(t(1) s(3.0)) ta(0.0))</td>
+<td></td>
+</tr>
+<tr>
+<td>balloonStyle</td>
+<td>balloonStyle(r(4.0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) as(t(1) s(3.0)))</td>
+<td></td>
+</tr>
+<tr>
+<td>dimensionStyle</td>
+<td>dimensionStyle(eo(1.0) ev(2.0) de(5.0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) to(0.0) fs(fd(1) gs(0) p("") s("")) tt(0.75) sa(t(1) s(3.0)) ea(t(1) s(3.0)) am(0) ul(0))</td>
+<td></td>
+</tr>
+<tr>
+<td>angleStyle</td>
+<td>angleStyle(eo(1.0) ev(2.0) de(5.0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) to(0.0) fs(fd(1) gs(0) p("") s("°")) tt(0.75) sa(t(1) s(3.0)) ea(t(1) s(3.0)) am(0))</td>
+<td></td>
+</tr>
+<tr>
+<td>radiusStyle</td>
+<td>radiusStyle(de(5.0) ft(0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) to(0) fs(fd(1) gs(0) p("R") s("")) tt(0.75) as(t(1) s(3.0)) am(0) ul(0))</td>
+<td></td>
+</tr>
+<tr>
+<td>diameterStyle</td>
+<td>diameterStyle(de(5.0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) to(0) fs(fd(1) gs(0) p("Φ") s("")) tt(0.75) sa(t(1) s(3.0)) ea(t(1) s(3.0)) am(0) ul(0))</td>
+<td></td>
+</tr>
+<tr>
+<td>arcDimensionStyle</td>
+<td>arcDimensionStyle(eo(1.0) ev(2.0) de(5.0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) to(0.0) fs(fd(1) gs(0) p("⌒") s("")) tt(0.75) sa(t(1) s(3.0)) ea(t(1) s(3.0)) am(0) em(0) ul(0))</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>※　カレント属性の文字スタイル及び矢印スタイルは、カレント属性のleaderStyle、balloonStyle、dimensionStyle、angleStyle、radiusStyle、diameterStyle及びarcDimensionStyleへ影響を与えません。</p>
+<h4 id="コマンド">コマンド </h4>
+<p>以下のコマンドが使えます。</p>
+<table>
+<thead>
+<tr>
+<th>コマンド</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>save()</td>
+<td></td>
+<td>現在の属性をスタックに保存します。</td>
+</tr>
+<tr>
+<td>restore()</td>
+<td></td>
+<td>saveコマンドで保存した属性をスタックから戻します。</td>
+</tr>
+<tr>
+<td>clear()</td>
+<td></td>
+<td>現在の属性を初期値に変更します（スタックは変更しません）。</td>
+</tr>
+</tbody>
+</table>
+<p>※　このドキュメントを書いている時点でこれらのコマンドは未使用です。</p>
 <h4 id="図形要素">図形要素 </h4>
 <h5 id="line線">Line（線） </h5>
 <table>
@@ -1321,17 +1451,17 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
 <td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル。省略時、黒実線、幅0</td>
+<td>線スタイル</td>
 </tr>
 <tr>
 <td>startArrow(...)<br>[ sa ]</td>
 <td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>始点の矢印スタイル。省略時矢印なし</td>
+<td>始点の矢印スタイル</td>
 </tr>
 <tr>
 <td>endArrow(...)<br>[ ea ]</td>
 <td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>終点の矢印スタイル。省略時矢印なし</td>
+<td>終点の矢印スタイル</td>
 </tr>
 </tbody>
 </table>
@@ -1358,22 +1488,22 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
 <td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル。省略時、黒実線、幅0</td>
+<td>線スタイル</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
 <td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>塗りスタイル。省略時塗りなし</td>
+<td>塗りスタイル</td>
 </tr>
 <tr>
 <td>startArrow(...)<br>[ sa ]</td>
 <td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>始点矢印。省略時矢印なし</td>
+<td>始点矢印</td>
 </tr>
 <tr>
 <td>endArrow(...)<br>[ ea ]</td>
 <td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>終点矢印。省略時矢印なし</td>
+<td>終点矢印</td>
 </tr>
 </tbody>
 </table>
@@ -1403,22 +1533,22 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
 <td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル。省略時、黒実線、幅0</td>
+<td>線スタイル</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
 <td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>塗りスタイル。省略時塗りなし</td>
+<td>塗りスタイル</td>
 </tr>
 <tr>
 <td>startArrow(...)<br>[ sa ]</td>
 <td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>始点矢印。省略時矢印なし</td>
+<td>始点矢印</td>
 </tr>
 <tr>
 <td>endArrow(...)<br>[ ea ]</td>
 <td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>終点矢印。省略時矢印なし</td>
+<td>終点矢印</td>
 </tr>
 </tbody>
 </table>
@@ -1444,22 +1574,22 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
 <td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル。省略時、黒実線、幅0</td>
+<td>線スタイル</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
 <td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>塗りスタイル。省略時塗りなし</td>
+<td>塗りスタイル</td>
 </tr>
 <tr>
 <td>startArrow(...)<br>[ sa ]</td>
 <td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>始点矢印。省略時矢印なし</td>
+<td>始点矢印</td>
 </tr>
 <tr>
 <td>endArrow(...)<br>[ ea ]</td>
 <td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>終点矢印。省略時矢印なし</td>
+<td>終点矢印</td>
 </tr>
 </tbody>
 </table>
@@ -1500,12 +1630,12 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
 <td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル。省略時、黒実線、幅0</td>
+<td>線スタイル</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
 <td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>塗りスタイル。省略時塗りなし</td>
+<td>塗りスタイル</td>
 </tr>
 </tbody>
 </table>
@@ -1552,22 +1682,22 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
 <td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル。省略時、黒実線、幅0</td>
+<td>線スタイル</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
 <td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>塗りスタイル。省略時塗りなし</td>
+<td>塗りスタイル</td>
 </tr>
 <tr>
 <td>startArrow(...)<br>[ sa ]</td>
 <td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>始点矢印。省略時矢印なし</td>
+<td>始点矢印</td>
 </tr>
 <tr>
 <td>endArrow(...)<br>[ ea ]</td>
 <td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>終点矢印。省略時矢印なし</td>
+<td>終点矢印</td>
 </tr>
 </tbody>
 </table>
@@ -1603,7 +1733,7 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
 <td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル。省略時、黒実線、幅0</td>
+<td>線スタイル</td>
 </tr>
 </tbody>
 </table>
@@ -1665,7 +1795,7 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
 <td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>文字背景塗りスタイル。省略時塗りなし</td>
+<td>文字背景塗りスタイル</td>
 </tr>
 </tbody>
 </table>
@@ -1734,12 +1864,12 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
 <td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル。省略時、黒実線、幅0</td>
+<td>線スタイル</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
 <td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>文字背景塗りスタイル。省略時塗りなし</td>
+<td>文字背景塗りスタイル</td>
 </tr>
 <tr>
 <td>dimensionStyle(...)<br>[ ds ]</td>
@@ -1794,12 +1924,12 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
 <td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル。省略時、黒実線、幅0</td>
+<td>線スタイル</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
 <td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>文字背景塗りスタイル。省略時塗りなし</td>
+<td>文字背景塗りスタイル</td>
 </tr>
 <tr>
 <td>dimensionStyle(...)<br>[ ds ]</td>
@@ -1854,12 +1984,12 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
 <td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル。省略時、黒実線、幅0</td>
+<td>線スタイル</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
 <td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>文字背景塗りスタイル。省略時塗りなし</td>
+<td>文字背景塗りスタイル</td>
 </tr>
 <tr>
 <td>dimensionStyle(...)<br>[ ds ]</td>
@@ -1931,12 +2061,12 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
 <td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル。省略時、黒実線、幅0</td>
+<td>線スタイル</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
 <td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>文字背景塗りスタイル。省略時塗りなし</td>
+<td>文字背景塗りスタイル</td>
 </tr>
 <tr>
 <td>dimensionStyle(...)<br>[ ds ]</td>
@@ -2006,12 +2136,12 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
 <td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル。省略時、黒実線、幅0</td>
+<td>線スタイル</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
 <td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>文字背景塗りスタイル。省略時塗りなし</td>
+<td>文字背景塗りスタイル</td>
 </tr>
 <tr>
 <td>dimensionStyle(...)<br>[ ds ]</td>
@@ -2058,12 +2188,12 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
 <td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル。省略時、黒実線、幅0</td>
+<td>線スタイル</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
 <td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>文字背景塗りスタイル。省略時塗りなし</td>
+<td>文字背景塗りスタイル</td>
 </tr>
 <tr>
 <td>leaderStyle(...)<br>[ lt ]</td>
@@ -2099,12 +2229,12 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
 <td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル。省略時、黒実線、幅0</td>
+<td>線スタイル</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
 <td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>文字背景塗りスタイル。省略時塗りなし</td>
+<td>文字背景塗りスタイル</td>
 </tr>
 <tr>
 <td>balloonStyle(...)<br>[ bs ]</td>
@@ -2148,12 +2278,12 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
 <td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル。省略時、黒実線、幅0</td>
+<td>線スタイル</td>
 </tr>
 <tr>
 <td>fillStyle(...)<br>[ fs ]</td>
 <td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>塗りスタイル。省略時塗りなし</td>
+<td>塗りスタイル</td>
 </tr>
 </tbody>
 </table>
@@ -2242,8 +2372,8 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 <ul>
 <li>画像の種類はバイナリから判断できるためtypeタグは無くてもよい。今のところtypeタグはデバッグで使うことを想定する。</li>
 <li>imageタグとsrcタグは片方のみ有効。両方あった場合の動作は未定義。</li>
-<li>imageタグを使うとファイルサイズが大きくなりますが画像を一つのファイルにまとめることができるのでアプリケーションによっては実装が容易になります。</li>
-<li>既存の図面に別の図面をインポートで追加する可能性を考えてsrcに使うファイル名の衝突を避けるためuuidを使うことを推奨します。</li>
+<li>imageタグを使うとファイルサイズが大きくなりますが、画像を一つのファイルにまとめることができるのでアプリケーションによっては実装が容易になります。</li>
+<li>既存の図面に別の図面をインポートで追加する可能性を考えて、srcに使うファイル名は（ファイル名の衝突を避けるため）uuidを使うことを推奨します（そこまでしなくても、prefixを付けたミリ秒単位の日時をファイル名にしても大丈夫と思います）。</li>
 </ul>
 <h3 id="settingsセクション-1">settingsセクション </h3>
 <p>設定を記述します。</p>
@@ -2294,6 +2424,9 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 <li>
 <p>バージョン2.3.0からImageのsrcタグにファイル名を追加、圧縮ファイル内のmediaフォルダ内に画像を保存します。それ以前はimageタグを使用し文字列として同梱していました（この方式はクリップボード経由のコピーのために現在も使われています）。</p>
 </li>
+<li>
+<p>バージョン2.9.0からカレント属性を定義しました。</p>
+</li>
 </ul>
 <h3 id="短縮形について">短縮形について </h3>
 <p>もともとタグ名は内部で使っている変数名を元に決めました（kotlinで作っていたため最初が小文字から始まります）。そのため比較的文字数が多くなってしまいました。<br>
@@ -2301,6 +2434,11 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 しかし、Androidでサイズの大きなファイルを読み込むと速度は大きく落ちました。Androidのディスクアクセスは遅かったのです。<br>
 そのためバージョン2.2.0で短縮形を設けました。</p>
 <h2 id="履歴">履歴 </h2>
+<p>2025/12/22 2.9.0 Rev.0</p>
+<ul>
+<li>図形属性を図形外にも記載可能とした（カレント属性）。それに合わせ図形の属性値省略時の値を削除。</li>
+<li>toleranceのfractionDigitsの省略時の値を1から2へ変更。</li>
+</ul>
 <p>2025/12/05 2.8.0 Rev.0</p>
 <ul>
 <li>直線寸法、半径寸法、直径寸法、弧長寸法に長さの単位を追加。</li>
@@ -2386,7 +2524,7 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#precad-file-format-ver-280仕様書-rev0" class="md-toc-link"><p>PreCad file format ver 2.8.0仕様書　Rev.0</p>
+          <a href="#precad-file-format-ver-290仕様書-rev0" class="md-toc-link"><p>PreCad file format ver 2.9.0仕様書　Rev.0</p>
 </a>
           </summary>
         <div>
@@ -2485,9 +2623,22 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
           <a href="#図形共通" class="md-toc-link">
             <p>図形共通</p>
 
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#図形属性" class="md-toc-link">
-            <p>図形属性</p>
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#図形属性" class="md-toc-link"><p>図形属性</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#カレント属性" class="md-toc-link">
+            <p>カレント属性</p>
+
+          </a></div>
+        </div>
+      </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#コマンド" class="md-toc-link">
+            <p>コマンド</p>
 
           </a></div><details style="padding:0;;padding-left:24px;" open="">
         <summary class="md-toc-link-wrapper">
