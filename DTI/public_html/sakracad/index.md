@@ -10,6 +10,13 @@ SakraCadはWindows用の2DCADです。特徴は、
 - Windows10
 ## <P style="BACKGROUND-COLOR: gainsboro">Download</P>
 ### SakraCad
+
+[skc095f.zip](download/skc095f.zip)(ver0.9.5f 3673KB) 2026/01/01
+- OLE貼り付けしたアプリが存在しないと何も表示されなかったため、OLEオブジェクトの領域に四角形とそのオブジェクトのCLSIDを表示するようにした。
+例えば、ペイントのOLEで画像を貼り付けてWindows11環境でペイントがインストールしてない場合に問題があった。
+ペイントの場合は、Microsoft Storeからアプリをインストールすると画像が表示される。
+
+
 [skc095e.zip](download/skc095e.zip)(ver0.9.5e 3564KB) 2024/06/28
 - jwwファイルのバージョン2.23以降の読み込みに対応しました。
 
