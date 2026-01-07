@@ -8,7 +8,7 @@ print_background: false
 title: PreCad file format
 ---
 
-# PreCad file format ver 2.9.0仕様書　Rev.0
+# PreCad file format ver 2.9.1仕様書　Rev.0
 ## PreCadの特徴
 - PreCadは2DCADです。複数のページを作成することができます。
 - 各ページにはレイヤーの他にシートがあります。シートは縮尺を設定できます。
@@ -199,7 +199,7 @@ contents(
  shapes(
   sheet("シート2")
    layer("テスト1")
-    ls(w(0.5))
+    ls(w(0.5))  //線幅0.5に変更。lineStyle(width(0.5))の省略形
     Line(...)
     Circle(...)
    layer("テスト2")
@@ -524,17 +524,17 @@ startArrow(size(3)type(1))
 |-----|------|-----|
 | lineStyle<br>[ls] |lineStyle(w(0) c(0xff000000) t("solid") f(0))| |
 | fillStyle<br>[fs] |fillStyle(solid(0x00ffffff))| |
-| startArrow | startArrow(t(0) s(3.0))| 線の始点矢印 |
-| endArrow | endArrow(t(0) s(3.0))| 線の終点矢印 |
+| startArrow<br>[sa] | startArrow(t(0) s(3.0))| 線の始点矢印 |
+| endArrow<br>[ea] | endArrow(t(0) s(3.0))| 線の終点矢印 |
 | textStyle<br>[ts] | textStyle(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0))| |
 |markerStyle<br>[ms] | markerStyle(t("x") s(2.5)) |
-|leaderStyle | leaderStyle(to(0.0) lo(0.0) el(1) lr(0) lb(0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) as(t(1) s(3.0)) ta(0.0)) |
-|balloonStyle| balloonStyle(r(4.0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) as(t(1) s(3.0))) |
-|dimensionStyle| dimensionStyle(eo(1.0) ev(2.0) de(5.0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) to(0.0) fs(fd(1) gs(0) p("") s("")) tt(0.75) sa(t(1) s(3.0)) ea(t(1) s(3.0)) am(0) ul(0))|
-| angleStyle | angleStyle(eo(1.0) ev(2.0) de(5.0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) to(0.0) fs(fd(1) gs(0) p("") s("°")) tt(0.75) sa(t(1) s(3.0)) ea(t(1) s(3.0)) am(0)) |
-| radiusStyle | radiusStyle(de(5.0) ft(0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) to(0) fs(fd(1) gs(0) p("R") s("")) tt(0.75) as(t(1) s(3.0)) am(0) ul(0)) |
-| diameterStyle | diameterStyle(de(5.0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) to(0) fs(fd(1) gs(0) p("Φ") s("")) tt(0.75) sa(t(1) s(3.0)) ea(t(1) s(3.0)) am(0) ul(0)) |
-| arcDimensionStyle | arcDimensionStyle(eo(1.0) ev(2.0) de(5.0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) to(0.0) fs(fd(1) gs(0) p("⌒") s("")) tt(0.75) sa(t(1) s(3.0)) ea(t(1) s(3.0)) am(0) em(0) ul(0)) |
+|leaderStyle<br>[leas] | leaderStyle(to(0.0) lo(0.0) el(1) lr(0) lb(0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) as(t(1) s(3.0)) ta(0.0)) |
+|balloonStyle<br>[bals]| balloonStyle(r(4.0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) as(t(1) s(3.0))) |
+|dimensionStyle<br>[dims]| dimensionStyle(eo(1.0) ev(2.0) de(5.0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) to(0.0) fs(fd(1) gs(0) p("") s("")) tt(0.75) sa(t(1) s(3.0)) ea(t(1) s(3.0)) am(0) ul(0))|
+| angleStyle<br>[angs] | angleStyle(eo(1.0) ev(2.0) de(5.0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) to(0.0) fs(fd(1) gs(0) p("") s("°")) tt(0.75) sa(t(1) s(3.0)) ea(t(1) s(3.0)) am(0)) |
+| radiusStyle<br>[rads] | radiusStyle(de(5.0) ft(0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) to(0) fs(fd(1) gs(0) p("R") s("")) tt(0.75) as(t(1) s(3.0)) am(0) ul(0)) |
+| diameterStyle<br>[dias] | diameterStyle(de(5.0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) to(0) fs(fd(1) gs(0) p("Φ") s("")) tt(0.75) sa(t(1) s(3.0)) ea(t(1) s(3.0)) am(0) ul(0)) |
+| arcDimensionStyle<br>[arcs] | arcDimensionStyle(eo(1.0) ev(2.0) de(5.0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) to(0.0) fs(fd(1) gs(0) p("⌒") s("")) tt(0.75) sa(t(1) s(3.0)) ea(t(1) s(3.0)) am(0) em(0) ul(0)) |
 
 ※　カレント属性の文字スタイル及び矢印スタイルは、カレント属性のleaderStyle、balloonStyle、dimensionStyle、angleStyle、radiusStyle、diameterStyle及びarcDimensionStyleへ影響を与えません。
 
@@ -874,6 +874,9 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 
 
 ## 履歴
+2025/12/22 2.9.1 Rev.0
+- カレント属性の始点終点矢印、引出線、バルーン、寸法線類に省略形を追加。
+
 2025/12/22 2.9.0 Rev.0
 - 図形属性を図形外にも記載可能とした（カレント属性）。それに合わせ図形の属性値省略時の値を削除。
 - toleranceのfractionDigitsの省略時の値を1から2へ変更。
