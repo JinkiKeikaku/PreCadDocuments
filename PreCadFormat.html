@@ -24,7 +24,7 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="precad-file-format-ver-290仕様書-rev0">PreCad file format ver 2.9.0仕様書　Rev.0 </h1>
+<h1 id="precad-file-format-ver-2100仕様書-rev0">PreCad file format ver 2.10.0仕様書　Rev.0 </h1>
 <h2 id="precadの特徴">PreCadの特徴 </h2>
 <ul>
 <li>PreCadは2DCADです。複数のページを作成することができます。</li>
@@ -47,18 +47,19 @@
    └ 01ed77be-822f-474b-a297-6d4c025ba6be.jpg
 </code></pre><ul>
 <li>インデックスファイル及び図面ファイルはテキストファイルで文字コードはUTF8です。改行コードはLF(0x0A)もしくはCRLF(0x0D, 0x0A)です。</li>
-<li>ファイルフォーマットはタグパラメータ形式を使用しています。タグパラメータ形式はタグの次にパラメータを()で囲み記述します。パラメータは数値、文字列、タグパラメータを複数含めることができます。パラメータの区切りは空白文字です。またパラメータがないタグも存在します。タグの出現順は一部（セクション、ページ、レイヤ、シート、図形の順序など）を除き自由です。</li>
+<li>ファイルフォーマットはタグパラメータ形式を使用しています。タグパラメータ形式はタグの次にパラメータを()で囲み記述します。パラメータは、数値、文字列、ラベル及びタグパラメータを複数含めることができます。パラメータの区切りは空白文字です。また、パラメータがないタグも存在します。タグの出現順は一部（セクション、ページ、レイヤ、シート、図形の順序など）を除き自由です。</li>
 <li>タグ名は大文字小文字を区別します。</li>
 <li>一部のタグには短縮形があります。この仕様書では短縮形があるものは[]で囲って併記します。</li>
 <li>改行や空白などは無視されます（ただし、ファイル先頭のfiletypeは除きます）。</li>
 <li>//から行末まではコメントです。</li>
 <li>数値は整数（Int）もしくは実数（Double）でタグごとに判断します。</li>
-<li>16進整数は先頭に0xを付けます。主に色値に使います。色値は32ビットARGBです。</li>
+<li>整数は16進表記も使えます。16進表記では先頭に0xを付けます。16進表記は主に色値に使います。色値は32ビットARGBです。</li>
 <li>文字列はダブルクォーテーションでくくります。文字列中の行末の改行は無視されます。<code>\</code>はエスケープ文字です。改行は<code>\n</code>、タブは<code>\t</code>です。<code>\</code>の後にその他の文字が来た場合はその文字が使われます（例えばダブルクォーテーションは<code>\"</code>を使います）。</li>
+<li>ラベルは<code>%</code>で始まる任意の文字の集合です。例えば、色で<code>%l</code>はレイヤ線色を表します。文字のスタイルフラグの<code>%ib</code>はイタリックとボールドの組み合わせです。</li>
 <li>ファイルの１行目に<code>filetype</code>タグを記入してください。</li>
-<li>たとえば、indexファイルは１行目に<code>filetype("precad_archive")</code>と記入します。これでファイルの種類を判別します。<code>filetype("precad_archive")</code>はタグパラメータ形式ですが、途中に空白や改行を入れず行の先頭から書いてください（ファイル種別の判別を簡略化するためです）。</li>
+<li>例えば、indexファイルは１行目に<code>filetype("precad_archive")</code>と記入します。これでファイルの種類を判別します。<code>filetype("precad_archive")</code>はタグパラメータ形式ですが、途中に空白や改行を入れず行の先頭から書いてください（ファイル種別の判別を簡略化するためです）。</li>
 <li>１行目のfiletypeはアプリケーション側で一行読み込んで文字列として比較しても通常のタグパラメータと同じように解析してもどちらでも問題ありません。</li>
-<li>mediaフォルダは画像などを同梱する時に使います。画像はこのフォルダに保存する以外に各図面ファイル内に文字列として同梱することもできます。</li>
+<li>mediaフォルダは画像などを同梱する時に使います。画像はこのフォルダに保存する他に、図面ファイル内に文字列として同梱することもできます。</li>
 <li>以下はタグパラメータ形式の例です。</li>
 </ul>
 <pre data-role="codeBlock" data-info="" class="language-text"><code>filetype("sample")  //一行目はファイルタイプ。ここでは空白文字を使わないこと。
@@ -67,10 +68,12 @@ tag2("STRING")	//単独の文字列。
 tag3(10.0 15.5)	//座標。数値を空白文字で区切る。
 tag4(tag1(5.5)tag2("xyz"))	//複数のタグパラメータ。
 tag5(0xFF000000)	//16進数は整数として解釈する。主に色で使われる。
-byLayer()	//パラメータなし。
-//次の二つはどちらも同じ（順序は無関係）
-tag6(tag1(5.5)tag2(123))
-tag6(tag2(123)tag1(5.5))
+tag7(%ab)   //ラベル
+tag8(%)     //ラベル。%だけも有効
+byLayer()	  //パラメータなし。
+//次の二つはどちらも同じ（タグ（ここではtag1, tag2）の順序はどちらが先でもよいという例）
+tag9(tag1(5.5)tag2(123))
+tag9(tag2(123)tag1(5.5))
 
 </code></pre><h2 id="インデックスファイル">インデックスファイル </h2>
 <p>インデックスファイルのファイル名は<code>index</code>です。このファイルにページの情報と共通する設定を記入します。</p>
@@ -126,7 +129,7 @@ settings(
 <li>バージョンは2.1.0のようにメジャーバージョン、マイナ―バージョン、リビジョンを小数点で分割します。</li>
 <li>メジャーバージョンは大きなファイル構造の変更時に変更します。マルチページ対応時に1から2に上がりました。メジャーバージョンが上がり旧アプリで読めない場合はエラーを表示します（メジャーバージョンが上がった場合、おそらくそうなるでしょう）。</li>
 <li>マイナーバージョンは要素追加、タグ名の変更・削除などで変わります。この変更で新バージョンのファイルを旧バージョンで読むと情報の欠落などが起こるかもしれません。必要であれば警告を表示します。</li>
-<li>読み込み時、マイナーバージョンにより処理を変えることを推奨しません。マイナーバージョンはあくまでも参考とし、追加されたタグ（もしくは廃止されたタグ）をもとに読み込みを行うべきです。</li>
+<li>読み込み時、マイナーバージョンにより処理を変えることを推奨しません。マイナーバージョンはあくまでも参考とし、タグをもとに読み込みを行うべきです。</li>
 <li>リビジョンはその他軽微な変更で変わります。</li>
 </ul>
 <h3 id="contentsセクション">contentsセクション </h3>
@@ -191,7 +194,7 @@ settings(
 <thead>
 <tr>
 <th>用紙名</th>
-<th>サイズ(幅 x 高さ)[mm]</th>
+<th>サイズ(幅 x 高さ) mm</th>
 <th>備考</th>
 </tr>
 </thead>
@@ -363,7 +366,7 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
  shapes(
   sheet("シート2")
    layer("テスト1")
-    ls(w(0.5))
+    ls(w(0.5))  //線幅0.5に変更。lineStyle(width(0.5))の省略形
     Line(...)
     Circle(...)
    layer("テスト2")
@@ -374,15 +377,99 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 )        
 </code></pre><h4 id="layers">layers </h4>
 <p>レイヤのリストです。並びは表示されるときの重ね順で下から上になります。</p>
+<h5 id="layer">layer </h5>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name(name)</td>
+<td>name : String</td>
+<td>レイヤ名</td>
+</tr>
+<tr>
+<td>color(c)</td>
+<td>c : Int</td>
+<td>レイヤ色<br>省略時 0xff000000（黒）</td>
+</tr>
+<tr>
+<td>lineWidth(w)</td>
+<td>w : Double</td>
+<td>レイヤ線幅<br>省略時 0.0</td>
+</tr>
+<tr>
+<td>lineType(t)</td>
+<td>t : String</td>
+<td>レイヤ線種名<br>省略時 "solid"（実線）</td>
+</tr>
+<tr>
+<td>visible(f)</td>
+<td>f : Int</td>
+<td>0:非表示 1:表示<br>省略時 1</td>
+</tr>
+<tr>
+<td>printable(f)</td>
+<td>f : Int</td>
+<td>0:印刷不可 1:印刷可<br>省略時 1</td>
+</tr>
+<tr>
+<td>editable(f)</td>
+<td>f : Int</td>
+<td>0:編集不可 1:編集可<br>省略時 1</td>
+</tr>
+</tbody>
+</table>
 <h4 id="sheets">sheets </h4>
 <p>シートのリストです。並びは表示されるときの重ね順で下から上になります。</p>
+<h5 id="sheet">sheet </h5>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name(name)</td>
+<td>name : String</td>
+<td>レイヤ名</td>
+</tr>
+<tr>
+<td>scale(s)</td>
+<td>s : Double</td>
+<td>縮尺 <br>省略時 1.0</td>
+</tr>
+<tr>
+<td>visible(f)</td>
+<td>f : Int</td>
+<td>0:非表示 1:表示<br>省略時 1</td>
+</tr>
+<tr>
+<td>printable(f)</td>
+<td>f : Int</td>
+<td>0:印刷不可 1:印刷可<br>省略時 1</td>
+</tr>
+<tr>
+<td>editable(f)</td>
+<td>f : Int</td>
+<td>0:編集不可 1:編集可<br>省略時 1</td>
+</tr>
+</tbody>
+</table>
 <h4 id="shapes">shapes </h4>
 <p>図形のリストです。図形以外にsheet、layer及び属性値タグがあらわれます。</p>
 <ul>
-<li>sheetタグで現在の書き込みシートを切り替えます。</li>
-<li>layerタグで現在の書き込みレイヤを切り替えます。</li>
-<li>属性値（線種など）は、以降の図形で使われます。<br>
-図形の並びは表示されるときの重ね順で下から上になります。</li>
+<li>sheetコマンドで現在の書き込みシートを切り替えます。</li>
+<li>layerコマンドで現在の書き込みレイヤを切り替えます。</li>
+<li>属性値（線種など）が図形外で使われた場合、その属性は以降の図形で使われます。</li>
+<li>図形の並びは表示されるときの重ね順で下から上になります。</li>
 </ul>
 <h4 id="図形共通">図形共通 </h4>
 <ul>
@@ -395,14 +482,19 @@ drawingファイルでは基本的に使用する要素は事前に定義され�
 また、図形内に属性を書くことで、その属性値を上書きすることができます。</li>
 <li>図形の属性は、その一部のみをを変更することができます（例えば、線スタイルはその色のみを変更することができます）。</li>
 </ul>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>// カレント線種を幅0.5、実線、黒にする。
+<pre data-role="codeBlock" data-info="" class="language-text"><code>// カレント線スタイルを幅0.5、実線、黒にする。
 ls(w(0.5) t("solid") c(0xff000000))
 
-// 線種は幅1.0、実線、黒。カレント線種は変更しない。
+// 線スタイルは幅1.0、実線、黒。カレント線スタイルは変更しない。
 Line(ls(w(1.0)) pp(0 0 100 50))
 
-// カレント線種の色のみ変更（幅0.5、実線、赤）。
+// カレント線スタイルの色のみ変更（幅0.5、実線、赤）。
 ls(c(0xffff0000))
+
+//カレント線スタイルは、lsを使わずlc, lw, ltを使うこともできます
+lc(0xff000000)  // 線色
+lw(0.3)         // 線幅
+lt(%a)          // 線種
 </code></pre><ul>
 <li>文字図形や寸法線などの文字列にはページタイトルなどに置換できるマクロ文字列を使用できます。以下のマクロ文字列が使用できます。</li>
 </ul>
@@ -441,7 +533,7 @@ ls(c(0xffff0000))
 </tbody>
 </table>
 <h4 id="図形属性">図形属性 </h4>
-<p>図形には以下の属性があります。<br>
+<p>図形には以下の属性があります。要素名の<code>[]</code>内は短縮名です。<br>
 <a id="lineStyle" href=""></a></p>
 <h6 id="linestyle線スタイル属性">lineStyle（線スタイル属性） </h6>
 <p>線のスタイル。省略時は黒、実線、線幅0です。</p>
@@ -457,18 +549,18 @@ ls(c(0xffff0000))
 <tbody>
 <tr>
 <td>width(w)<br>[ w ]</td>
-<td>w : Double</td>
-<td>線幅</td>
+<td>w : Double / Label</td>
+<td>線幅<br>%l : レイヤ線幅</td>
 </tr>
 <tr>
 <td>color(c)<br>[ c ]</td>
-<td>c : Int</td>
-<td>線色</td>
+<td>c : Int / Label</td>
+<td>線色<br>%l : レイヤ線色</td>
 </tr>
 <tr>
 <td>lineType(name)<br>[ t ]</td>
-<td>name : String</td>
-<td>線種名</td>
+<td>name : String / Label</td>
+<td>線種名<br>%l : レイヤ線種<br>%a :  補助線</td>
 </tr>
 <tr>
 <td>flag(f)<br>[ f ]</td>
@@ -569,14 +661,21 @@ ls(c(0xffff0000))
 <p>※パターンは線分長と空白のペアで、長さはこれに線幅を掛ける。<br>
 ※パターンはSXF規格を参考にした。</p>
 <ul>
-<li>フラグ<br>1:ColorByLayer, 0x1000:補助線, 0x2000:TypeByLayer, 0x8000:WidthByLayer</li>
-<li>ColorByLayerの場合、線色があっても無視されます。線種と線幅も同様です。</li>
+<li>フラグ（フォーマット2.10.0からこのフラグの代わりに<code>%l</code>等のラベルを使用する。ラベルを使う場合、このフラグは使用しないこと。両方使われた場合の動作は未定義）<br>
+1:ColorByLayer<br>
+0x1000:補助線<br>
+0x2000:TypeByLayer<br>
+0x8000:WidthByLayer<br>
+※ ColorByLayerの場合、線色があっても無視されます。線種と線幅も同様です。</li>
 </ul>
 <p><a id="fillStyle" href=""></a></p>
 <h6 id="fillstyle塗りスタイル属性">fillStyle（塗りスタイル属性） </h6>
-<p>円や多角形の塗りのスタイルです。solid（単色）とbyLayerがあります。fillStyleのパラメータにはどちらかを指定してください。</p>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>fillStyle(solid(0xFF00FF00))
-fillStyle(byLayer())
+<p>円や多角形の塗りのスタイルです。solid（単色）とbyLayerがあります。</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>fillStyle(solid(0xFF00FF00))  // 緑単色塗り
+fillStyle(0xFF00FF00)         // 上と同じ。2.10.0よりこの書式も可
+
+fillStyle(byLayer())          // レイヤ色
+fillStyle(%l)                 // 上と同じ。2.10.0よりこの書式も可
 </code></pre><table>
 <thead>
 <tr>
@@ -595,6 +694,11 @@ fillStyle(byLayer())
 <td>byLayer()</td>
 <td></td>
 <td>レイヤ色</td>
+</tr>
+<tr>
+<td>c</td>
+<td>c:Int/Label</td>
+<td>面色<br> %l: レイヤ色</td>
 </tr>
 </tbody>
 </table>
@@ -689,8 +793,8 @@ fillStyle(byLayer())
 <tbody>
 <tr>
 <td>color(c)<br>[ c ]</td>
-<td>c : Int</td>
-<td>文字色</td>
+<td>c : Int/Label</td>
+<td>文字色<br>%l : レイヤ線色</td>
 </tr>
 <tr>
 <td>textAlign(a)<br>[ ta ]</td>
@@ -723,6 +827,11 @@ fillStyle(byLayer())
 <td>傾斜角</td>
 </tr>
 <tr>
+<td>sf(f)</td>
+<td>sf : Label</td>
+<td>文字修飾</td>
+</tr>
+<tr>
 <td>flag(f)<br>[ f ]</td>
 <td>f : Int</td>
 <td>フラグ</td>
@@ -730,13 +839,24 @@ fillStyle(byLayer())
 </tbody>
 </table>
 <ul>
+<li>文字配置<br> 0:左 1:中央 2:右 3:両端揃え 4:均等揃え</li>
+<li>文字修飾ラベル<br>
+以下の文字の組み合わせ<br>
+i : イタリック<br>
+b : ボールド<br>
+u : 下線<br>
+s : 取り消し線<br>
+l : 文字のみ傾斜<br>
+f : 枠線</li>
+</ul>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>  sf(%ib) // イタリック・ボールド
+  sf(%bi) // 上と同じ。順序は関係ない
+  sf(%)   // ラベル文字がない場合、修飾無し
+</code></pre><ul>
 <li>
-<p>文字配置<br> 0:左 1:中央 2:右 3:両端揃え 4:均等揃え</p>
-</li>
-<li>
-<p>フラグ<br>
+<p>フラグ（フォーマット2.10.0からこのフラグの代わりに<code>%l</code>等のラベルを使用する。ラベルを使う場合、このフラグは使用しないこと。両方使われた場合の動作は未定義）<br>
 フラグは以下の値の組み合わせです。<br>
-0x0000_0001 : | ColorByLayer<br>
+0x0000_0001 : ColorByLayer<br>
 0x0002_0000 : （予約：縦書き？）<br>
 0x0004_0000 : イタリック<br>
 0x0008_0000 : ボールド<br>
@@ -1314,7 +1434,7 @@ fillStyle(byLayer())
 </ul>
 <h5 id="カレント属性">カレント属性 </h5>
 <ul>
-<li>カレント属性は、以下のものが使えます。</li>
+<li>カレント属性は、以下のものが使えます。属性名の<code>[]</code>内は短縮名です。</li>
 </ul>
 <table>
 <thead>
@@ -1327,7 +1447,7 @@ fillStyle(byLayer())
 <tbody>
 <tr>
 <td>lineStyle<br>[ls]</td>
-<td>lineStyle(w(0) c(0xff000000) t("solid") f(0))</td>
+<td>lineStyle(w(0) c(0xff000000) t("solid"))</td>
 <td></td>
 </tr>
 <tr>
@@ -1336,18 +1456,18 @@ fillStyle(byLayer())
 <td></td>
 </tr>
 <tr>
-<td>startArrow</td>
+<td>startArrow<br>[sa]</td>
 <td>startArrow(t(0) s(3.0))</td>
 <td>線の始点矢印</td>
 </tr>
 <tr>
-<td>endArrow</td>
+<td>endArrow<br>[ea]</td>
 <td>endArrow(t(0) s(3.0))</td>
 <td>線の終点矢印</td>
 </tr>
 <tr>
 <td>textStyle<br>[ts]</td>
-<td>textStyle(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0))</td>
+<td>textStyle(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0))</td>
 <td></td>
 </tr>
 <tr>
@@ -1356,39 +1476,66 @@ fillStyle(byLayer())
 <td></td>
 </tr>
 <tr>
-<td>leaderStyle</td>
+<td>leaderStyle<br>[leas]</td>
 <td>leaderStyle(to(0.0) lo(0.0) el(1) lr(0) lb(0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) as(t(1) s(3.0)) ta(0.0))</td>
 <td></td>
 </tr>
 <tr>
-<td>balloonStyle</td>
+<td>balloonStyle<br>[bals]</td>
 <td>balloonStyle(r(4.0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) as(t(1) s(3.0)))</td>
 <td></td>
 </tr>
 <tr>
-<td>dimensionStyle</td>
+<td>dimensionStyle<br>[dims]</td>
 <td>dimensionStyle(eo(1.0) ev(2.0) de(5.0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) to(0.0) fs(fd(1) gs(0) p("") s("")) tt(0.75) sa(t(1) s(3.0)) ea(t(1) s(3.0)) am(0) ul(0))</td>
 <td></td>
 </tr>
 <tr>
-<td>angleStyle</td>
+<td>angleStyle<br>[angs]</td>
 <td>angleStyle(eo(1.0) ev(2.0) de(5.0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) to(0.0) fs(fd(1) gs(0) p("") s("°")) tt(0.75) sa(t(1) s(3.0)) ea(t(1) s(3.0)) am(0))</td>
 <td></td>
 </tr>
 <tr>
-<td>radiusStyle</td>
+<td>radiusStyle<br>[rads]</td>
 <td>radiusStyle(de(5.0) ft(0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) to(0) fs(fd(1) gs(0) p("R") s("")) tt(0.75) as(t(1) s(3.0)) am(0) ul(0))</td>
 <td></td>
 </tr>
 <tr>
-<td>diameterStyle</td>
+<td>diameterStyle<br>[dias]</td>
 <td>diameterStyle(de(5.0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) to(0) fs(fd(1) gs(0) p("Φ") s("")) tt(0.75) sa(t(1) s(3.0)) ea(t(1) s(3.0)) am(0) ul(0))</td>
 <td></td>
 </tr>
 <tr>
-<td>arcDimensionStyle</td>
+<td>arcDimensionStyle<br>[arcs]</td>
 <td>arcDimensionStyle(eo(1.0) ev(2.0) de(5.0) ts(c(0xff000000) ta(0) fn("") fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) to(0.0) fs(fd(1) gs(0) p("⌒") s("")) tt(0.75) sa(t(1) s(3.0)) ea(t(1) s(3.0)) am(0) em(0) ul(0))</td>
 <td></td>
+</tr>
+</tbody>
+</table>
+<p>線スタイルについては以下の属性も受け付ける（図形内には使用できません）</p>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lc(c)</td>
+<td>c:Int/Label</td>
+<td><code>lineStyle</code>の<code>c</code></td>
+</tr>
+<tr>
+<td>lw(w)</td>
+<td>w:Double/Label</td>
+<td><code>lineStyle</code>の<code>w</code></td>
+</tr>
+<tr>
+<td>lt(t)</td>
+<td>c:Int/Label</td>
+<td><code>lineStyle</code>の<code>t</code></td>
 </tr>
 </tbody>
 </table>
@@ -1419,11 +1566,22 @@ fillStyle(byLayer())
 <td></td>
 <td>現在の属性を初期値に変更します（スタックは変更しません）。</td>
 </tr>
+<tr>
+<td>layer(name)</td>
+<td>name:String</td>
+<td>書き込みレイヤを<code>name</code>のレイヤに切り替えます。</td>
+</tr>
+<tr>
+<td>sheet(name)</td>
+<td>name:String</td>
+<td>書き込みシートを<code>name</code>のシートに切り替えます。</td>
+</tr>
 </tbody>
 </table>
-<p>※　このドキュメントを書いている時点でこれらのコマンドは未使用です。</p>
+<p>※　このドキュメントを書いている時点でsave, restore, clearのコマンドは未使用です。</p>
 <h4 id="図形要素">図形要素 </h4>
-<h5 id="line線">Line（線） </h5>
+<p>図形名および要素名の<code>[]</code>内は短縮名です。</p>
+<h5 id="line--l-線">Line [ L ]（線） </h5>
 <table>
 <thead>
 <tr>
@@ -1465,7 +1623,7 @@ fillStyle(byLayer())
 </tr>
 </tbody>
 </table>
-<h5 id="polyline連続線">Polyline（連続線） </h5>
+<h5 id="polyline--p-ポリライン">Polyline [ P ]（ポリライン） </h5>
 <table>
 <thead>
 <tr>
@@ -1510,7 +1668,7 @@ fillStyle(byLayer())
 <ul>
 <li>isCloseが1の時は矢印スタイルは使われません。</li>
 </ul>
-<h5 id="splineスプライン曲線">Spline（スプライン曲線） </h5>
+<h5 id="spline--s-スプライン曲線">Spline [ S ]（スプライン曲線） </h5>
 <table>
 <thead>
 <tr>
@@ -1556,7 +1714,7 @@ fillStyle(byLayer())
 <li>カーディナルスプラインでテンションは0.5です。</li>
 <li>isCloseが1の時は矢印スタイルは使われません。</li>
 </ul>
-<h5 id="bezierベジェ曲線">Bezier（ベジェ曲線） </h5>
+<h5 id="bezier--b-ベジェ曲線">Bezier [ B ]（ベジェ曲線） </h5>
 <table>
 <thead>
 <tr>
@@ -1597,7 +1755,7 @@ fillStyle(byLayer())
 <li>3次ベジェ曲線です。頂点、制御点１、制御点2，頂点の順に並べてあります。頂点数をmとした場合、制御点と頂点の合計nはn=3*m+1になります。</li>
 <li>isCloseが1の時は始点と終点が直線で繋がれ矢印スタイルは使われません。</li>
 </ul>
-<h5 id="circle円">Circle（円） </h5>
+<h5 id="circle--c-円">Circle [ C ]（円） </h5>
 <table>
 <thead>
 <tr>
@@ -1639,7 +1797,7 @@ fillStyle(byLayer())
 </tr>
 </tbody>
 </table>
-<h5 id="arc円弧">Arc（円弧） </h5>
+<h5 id="arc--a-円弧">Arc [ A ]（円弧） </h5>
 <table>
 <thead>
 <tr>
@@ -1705,7 +1863,7 @@ fillStyle(byLayer())
 <li>開始角及び角幅は省略可能ですが省略値は暫定のため省略を推奨しません。</li>
 <li>角幅は左回りが正、右回りは負です。</li>
 </ul>
-<h5 id="marker点">Marker（点） </h5>
+<h5 id="marker--m-点">Marker [ M ]（点） </h5>
 <table>
 <thead>
 <tr>
@@ -1739,10 +1897,10 @@ fillStyle(byLayer())
 </table>
 <ul>
 <li>線スタイルの線種は無効で常に実線になります。</li>
-<li>フラグで線種がレイヤ線種になっていても実線で表示される。</li>
-<li>フラグが仮線の場合は仮線で表示される（印刷不可の仮点となる）。</li>
+<li>線種がレイヤ線種になっていても実線で表示される。</li>
+<li>線種が仮線の場合は印刷されない点となる。</li>
 </ul>
-<h5 id="text文字">Text（文字） </h5>
+<h5 id="text--t-文字">Text [ T ]（文字） </h5>
 <table>
 <thead>
 <tr>
@@ -1802,16 +1960,13 @@ fillStyle(byLayer())
 <ul>
 <li>配置基準　0:左下, 1:中下, 2:右下, 3:左中, 4:中央, 5:右中, 6:左上, 7:中上, 8:右上</li>
 <li>文字枠内は背景色で塗りつぶしができます。また、文字枠の幅で文字列は折り返しされます。文字枠の大きさは、文字枠幅と文字枠高さと文字枠モードの組み合わせで決まります。</li>
-<li>文字枠モード
-<ul>
-<li>0：自動。文字枠の幅と高さは文字列を囲む範囲（折り返しなし）。width（文字枠幅）とheight（文字枠高さ）は省略できる（存在しても使われない）。</li>
-<li>1：幅可変。width（文字枠幅）が有効で、文字枠高さは文字列を囲む範囲。height（文字枠高さ）は省略できる（存在しても使われない）。</li>
-<li>2：幅と高さ可変。文字枠は、width（文字枠幅）とheight（文字枠高さ）で決まる。</li>
-</ul>
-</li>
+<li>文字枠モード<br>
+0：自動。文字枠の幅と高さは文字列を囲む範囲（折り返しなし）。width（文字枠幅）とheight（文字枠高さ）は省略できる（存在しても使われない）。<br>
+1：幅可変。width（文字枠幅）が有効で、文字枠高さは文字列を囲む範囲。height（文字枠高さ）は省略できる（存在しても使われない）。<br>
+2：幅と高さ可変。文字枠は、width（文字枠幅）とheight（文字枠高さ）で決まる。</li>
 <li>必要な文字枠幅・高さが0の場合、文字列を囲む範囲を初期値としてとる。</li>
 </ul>
-<h5 id="dimension直線寸法">Dimension（直線寸法） </h5>
+<h5 id="dimension--dim-直線寸法">Dimension [ Dim ]（直線寸法） </h5>
 <table>
 <thead>
 <tr>
@@ -1886,7 +2041,7 @@ fillStyle(byLayer())
 <ul>
 <li>引き出し線の長さがマイナスの場合、directionの逆向きに引き出し線を伸ばす。</li>
 </ul>
-<h5 id="radius半径寸法">Radius（半径寸法） </h5>
+<h5 id="radius--rad-半径寸法">Radius [ Rad ]（半径寸法） </h5>
 <table>
 <thead>
 <tr>
@@ -1946,7 +2101,7 @@ fillStyle(byLayer())
 <ul>
 <li>始点は円の中心。</li>
 </ul>
-<h5 id="diameter直径寸法">Diameter（直径寸法） </h5>
+<h5 id="diameter--dia-直径寸法">Diameter [ Dia ]（直径寸法） </h5>
 <table>
 <thead>
 <tr>
@@ -2003,7 +2158,7 @@ fillStyle(byLayer())
 </tr>
 </tbody>
 </table>
-<h5 id="angle角度寸法">Angle（角度寸法） </h5>
+<h5 id="angle--ang-角度寸法">Angle [ Ang ]（角度寸法） </h5>
 <table>
 <thead>
 <tr>
@@ -2083,7 +2238,7 @@ fillStyle(byLayer())
 <ul>
 <li>引き出し線の長さがマイナスの場合、中心と反対側に引き出し線を伸ばす。</li>
 </ul>
-<h5 id="arcdimension弧長寸法">ArcDimension（弧長寸法） </h5>
+<h5 id="arcdimension--arcd-弧長寸法">ArcDimension [ ArcD ]（弧長寸法） </h5>
 <table>
 <thead>
 <tr>
@@ -2160,7 +2315,7 @@ fillStyle(byLayer())
 <li>延長線が平行（延長線モード自動で弧幅が90度以内の場合を含む）で寸法線の半径が弧長の半径より小さい時、寸法線が寸法線の半径で描画できないならば、寸法線の半径を無視し、寸法線を描画できる最小の半径を使い描画する。</li>
 </ul>
 <p><a id="Leader" href=""></a></p>
-<h5 id="leader引出線">Leader（引出線） </h5>
+<h5 id="leader--lea-引出線">Leader [ Lea ]（引出線） </h5>
 <table>
 <thead>
 <tr>
@@ -2179,11 +2334,6 @@ fillStyle(byLayer())
 <td>text(t)<br>[ t ]</td>
 <td>t : String</td>
 <td>文字列</td>
-</tr>
-<tr>
-<td>leaderStyle.leaderBasisが3の時のみ有効。</td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td>lineStyle(...)<br>[ ls ]</td>
@@ -2206,7 +2356,7 @@ fillStyle(byLayer())
 <li>leaderStyle.leaderBasisが3（Free）の場合、文字列の配置点は最後の頂点にleaderStyle.textOffsetをX、leaderStyle.leaderOffsetをYとしてオフセットする（文字の基点は中心）。</li>
 <li>leaderStyle.leaderBasisが3（Free）の場合、leaderStyle.extendLineとleaderStyle.leaderOrientationは無視され文字列の傾きはleaderStyle.textAngleが使われる。</li>
 </ul>
-<h5 id="balloonバルーン">Balloon（バルーン） </h5>
+<h5 id="balloon--bal-バルーン">Balloon [ Bal ]（バルーン） </h5>
 <table>
 <thead>
 <tr>
@@ -2243,7 +2393,7 @@ fillStyle(byLayer())
 </tr>
 </tbody>
 </table>
-<h5 id="groupグループ図形">Group（グループ図形） </h5>
+<h5 id="group--g-グループ図形">Group [ G ]（グループ図形） </h5>
 <table>
 <thead>
 <tr>
@@ -2260,7 +2410,7 @@ fillStyle(byLayer())
 </tr>
 </tbody>
 </table>
-<h5 id="pathパス図形">Path（パス図形） </h5>
+<h5 id="path--pa-パス図形">Path [ Pa ]（パス図形） </h5>
 <table>
 <thead>
 <tr>
@@ -2322,7 +2472,7 @@ fillStyle(byLayer())
 <ul>
 <li>パスはs()から始まること。e()のフラグが1の時は最後の点からまで始点まで直線を引く。</li>
 </ul>
-<h5 id="image画像図形">Image（画像図形） </h5>
+<h5 id="image--img-画像図形">Image [ Img ]（画像図形） </h5>
 <table>
 <thead>
 <tr>
@@ -2427,13 +2577,26 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 <li>
 <p>バージョン2.9.0からカレント属性を定義しました。</p>
 </li>
+<li>
+<p>バージョン2.10.0からラベル（%lなど）を追加しました。</p>
+</li>
+<li>
+<p>バージョン2.10.0から図形の短縮名を追加しました。</p>
+</li>
 </ul>
-<h3 id="短縮形について">短縮形について </h3>
-<p>もともとタグ名は内部で使っている変数名を元に決めました（kotlinで作っていたため最初が小文字から始まります）。そのため比較的文字数が多くなってしまいました。<br>
-タグ名が多少長くてもCPUは十分速くファイルは圧縮するため、それほど問題にならないと思っていました。実際、ファイルサイズの増加はそれほどでもなく速度も（普通のファイルなら）問題になりませんでした。<br>
-しかし、Androidでサイズの大きなファイルを読み込むと速度は大きく落ちました。Androidのディスクアクセスは遅かったのです。<br>
-そのためバージョン2.2.0で短縮形を設けました。</p>
 <h2 id="履歴">履歴 </h2>
+<p>2026/01/10 2.10.0 Rev.0</p>
+<ul>
+<li>パラメータにラベル（%lなど）を追加。</li>
+<li>カレント線スタイルにlc, lw, ltを追加。</li>
+<li>図形に短縮名を追加しました。</li>
+<li>レイヤとシートの説明が抜けていたので追加しました。</li>
+<li>誤記修正。</li>
+</ul>
+<p>2025/12/22 2.9.1 Rev.0</p>
+<ul>
+<li>カレント属性の始点終点矢印、引出線、バルーン、寸法線類に省略形を追加。</li>
+</ul>
 <p>2025/12/22 2.9.0 Rev.0</p>
 <ul>
 <li>図形属性を図形外にも記載可能とした（カレント属性）。それに合わせ図形の属性値省略時の値を削除。</li>
@@ -2524,7 +2687,7 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#precad-file-format-ver-290仕様書-rev0" class="md-toc-link"><p>PreCad file format ver 2.9.0仕様書　Rev.0</p>
+          <a href="#precad-file-format-ver-2100仕様書-rev0" class="md-toc-link"><p>PreCad file format ver 2.10.0仕様書　Rev.0</p>
 </a>
           </summary>
         <div>
@@ -2607,15 +2770,33 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
 </a>
           </summary>
         <div>
+          <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#layers" class="md-toc-link"><p>layers</p>
+</a>
+          </summary>
+        <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#layers" class="md-toc-link">
-            <p>layers</p>
+          <a href="#layer" class="md-toc-link">
+            <p>layer</p>
 
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#sheets" class="md-toc-link">
-            <p>sheets</p>
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#sheets" class="md-toc-link"><p>sheets</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#sheet" class="md-toc-link">
+            <p>sheet</p>
 
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          </a></div>
+        </div>
+      </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
           <a href="#shapes" class="md-toc-link">
             <p>shapes</p>
 
@@ -2647,76 +2828,76 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#line線" class="md-toc-link">
-            <p>Line（線）</p>
+          <a href="#line--l-線" class="md-toc-link">
+            <p>Line [ L ]（線）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#polyline連続線" class="md-toc-link">
-            <p>Polyline（連続線）</p>
+          <a href="#polyline--p-ポリライン" class="md-toc-link">
+            <p>Polyline [ P ]（ポリライン）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#splineスプライン曲線" class="md-toc-link">
-            <p>Spline（スプライン曲線）</p>
+          <a href="#spline--s-スプライン曲線" class="md-toc-link">
+            <p>Spline [ S ]（スプライン曲線）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#bezierベジェ曲線" class="md-toc-link">
-            <p>Bezier（ベジェ曲線）</p>
+          <a href="#bezier--b-ベジェ曲線" class="md-toc-link">
+            <p>Bezier [ B ]（ベジェ曲線）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#circle円" class="md-toc-link">
-            <p>Circle（円）</p>
+          <a href="#circle--c-円" class="md-toc-link">
+            <p>Circle [ C ]（円）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#arc円弧" class="md-toc-link">
-            <p>Arc（円弧）</p>
+          <a href="#arc--a-円弧" class="md-toc-link">
+            <p>Arc [ A ]（円弧）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#marker点" class="md-toc-link">
-            <p>Marker（点）</p>
+          <a href="#marker--m-点" class="md-toc-link">
+            <p>Marker [ M ]（点）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#text文字" class="md-toc-link">
-            <p>Text（文字）</p>
+          <a href="#text--t-文字" class="md-toc-link">
+            <p>Text [ T ]（文字）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#dimension直線寸法" class="md-toc-link">
-            <p>Dimension（直線寸法）</p>
+          <a href="#dimension--dim-直線寸法" class="md-toc-link">
+            <p>Dimension [ Dim ]（直線寸法）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#radius半径寸法" class="md-toc-link">
-            <p>Radius（半径寸法）</p>
+          <a href="#radius--rad-半径寸法" class="md-toc-link">
+            <p>Radius [ Rad ]（半径寸法）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#diameter直径寸法" class="md-toc-link">
-            <p>Diameter（直径寸法）</p>
+          <a href="#diameter--dia-直径寸法" class="md-toc-link">
+            <p>Diameter [ Dia ]（直径寸法）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#angle角度寸法" class="md-toc-link">
-            <p>Angle（角度寸法）</p>
+          <a href="#angle--ang-角度寸法" class="md-toc-link">
+            <p>Angle [ Ang ]（角度寸法）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#arcdimension弧長寸法" class="md-toc-link">
-            <p>ArcDimension（弧長寸法）</p>
+          <a href="#arcdimension--arcd-弧長寸法" class="md-toc-link">
+            <p>ArcDimension [ ArcD ]（弧長寸法）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#leader引出線" class="md-toc-link">
-            <p>Leader（引出線）</p>
+          <a href="#leader--lea-引出線" class="md-toc-link">
+            <p>Leader [ Lea ]（引出線）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#balloonバルーン" class="md-toc-link">
-            <p>Balloon（バルーン）</p>
+          <a href="#balloon--bal-バルーン" class="md-toc-link">
+            <p>Balloon [ Bal ]（バルーン）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#groupグループ図形" class="md-toc-link">
-            <p>Group（グループ図形）</p>
+          <a href="#group--g-グループ図形" class="md-toc-link">
+            <p>Group [ G ]（グループ図形）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#pathパス図形" class="md-toc-link">
-            <p>Path（パス図形）</p>
+          <a href="#path--pa-パス図形" class="md-toc-link">
+            <p>Path [ Pa ]（パス図形）</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#image画像図形" class="md-toc-link">
-            <p>Image（画像図形）</p>
+          <a href="#image--img-画像図形" class="md-toc-link">
+            <p>Image [ Img ]（画像図形）</p>
 
           </a></div>
         </div>
@@ -2757,10 +2938,6 @@ controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
           <a href="#バージョンによる違い" class="md-toc-link">
             <p>バージョンによる違い</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#短縮形について" class="md-toc-link">
-            <p>短縮形について</p>
 
           </a></div>
         </div>
