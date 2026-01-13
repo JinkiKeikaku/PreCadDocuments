@@ -36,37 +36,13 @@ title: PreCad for Windows
 
 ## 2. Download
 
+- PreCad ver1.8.0.0
+PreCad-1.8.0.0.zip (MD5 : 07dfb73b5c5bfd2c4b4ca3fa29605bef)
+[Download](download/PreCad-1.8.0.0.zip)  (3104KB)
+
 - PreCad ver1.7.2.0
 PreCad-1.7.2.0.zip (MD5 : d7ab1b0a77a2ac2d2324b7ba4d0b703f)
 [Download](download/PreCad-1.7.2.0.zip)  (3100KB)
-
-- PreCad ver1.6.12.0
-PreCad-1.6.12.0.zip (MD5 : 725b81de8a74effb395ede3d32f41e58)
-[Download](download/PreCad-1.6.12.0.zip)  (3093KB)
-
-- PreCad ver1.6.11.0
-PreCad-1.6.11.0.zip (MD5 : 1f5959f095cf7ccc711f07386465624c)
-[Download](download/PreCad-1.6.11.0.zip)  (3092KB)
-
-- PreCad ver1.6.10.0
-PreCad-1.6.10.0.zip (MD5 : d35f7419bf82d8a6392d91e1a016d5d0)
-[Download](download/PreCad-1.6.10.0.zip)  (3094KB)
-
-- PreCad ver1.6.9.0
-PreCad-1.6.9.0.zip (MD5 : 110e22509acff895f4eb3062e78d83dd)
-[Download](download/PreCad-1.6.9.0.zip)  (3085KB)
-
-- PreCad ver1.6.8.0
-PreCad-1.6.8.0.zip (MD5 : 227f7d55c565fbb895d2b4a3b5fc49d3)
-[Download](download/PreCad-1.6.8.0.zip)  (3085KB)
-
-- PreCad ver1.6.7.0
-PreCad-1.6.7.0.zip (MD5 : 35b10d53745b91b0f60e070d314c70c8)
-[Download](download/PreCad-1.6.7.0.zip)  (3084KB)
-
-- PreCad ver1.6.6.0
-PreCad-1.6.6.0.zip (MD5 : b3c993ca8e19c55ffbd28957dc3d4970)
-[Download](download/PreCad-1.6.6.0.zip)  (3079KB)
 
 ## 3. How to use
 - Installation method.
@@ -76,5 +52,10 @@ PreCad-1.6.6.0.zip (MD5 : b3c993ca8e19c55ffbd28957dc3d4970)
 
 
 ## 4. Documentation
-- [File format v2.7.0 rev0](download/PreCadFormat_v2_7_0_rev0.html)
+- [File format v2.10.0 rev0](download/PreCadFormat_v2_10_0_rev0.html)
 - [Coordinate file format](download/PrecoFormat_en.html)
+
+## 5. Tools
+- [PreCadExplorer](download/PreCadExplorer.zip)
+An app for checking the file structure of PreCad document files.
+

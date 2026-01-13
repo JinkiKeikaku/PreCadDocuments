@@ -65,6 +65,12 @@ However, PreCad does not embed fonts in files, so if the drawing you open uses f
 
 ## History
 
+- 2025/12/14 ver. 1.8.0.0
+    - Enabled mm, cm, m, and inch units. When using these units, please set them separately for coordinates and dimension shapes.
+    - Grid specifications have been changed. Previous grid settings will be invalidated, so please reset them.
+    - Added functions such as 10x to the calculator.
+    - Fixed a bug in the image saving tool.
+
 - 2025/08/31 ver. 1.7.2.0
     - Changed the plugin interface.
     - Changed the calculator to a scientific calculator.
