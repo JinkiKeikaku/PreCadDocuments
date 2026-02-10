@@ -1,0 +1,622 @@
+<!DOCTYPE html><html><head>
+      <title>PreCad for Windows</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\yama\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.20\crossnote\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="precad-for-windows">PreCad for Windows </h1>
+<h2 id="about-precad-for-windows">About PreCad for Windows </h2>
+<ul>
+<li>PreCad is a 2DCAD that supports multi-pages.</li>
+<li>Supports many file formats such as dxf, jww, jwc, sfc, lcd, skc, pdf, svg, hpgl (some can only be read).</li>
+<li>You can use Jw_cad's line symbol transformation.</li>
+<li>Jw_cad parts files (*.jws) can be used as parts.</li>
+<li>There is also an <a href="https://play.google.com/store/apps/details?id=com.junkbulk.precad">Android version</a> (but it is different because the source code and development language are different)</li>
+<li>This is donationware. <a href="https://junkbulk.com/windows/precad/donate_en.html">Development support</a></li>
+</ul>
+<h2 id="supported-os">Supported OS </h2>
+<ul>
+<li>Windows10, Windows11</li>
+</ul>
+<h2 id="install">Install </h2>
+<ol>
+<li>Unzip the zip file and run <code>PreCad_Setup.exe</code>.</li>
+<li>When you run it, a screen will appear saying "Windows protected your PC." Click "More info" on that screen and the "Run anyway" button will appear. Press it to run the installation program.</li>
+<li>The installer automatically retrieves and installs the following files. If you are installing in an environment where you cannot connect to the Internet, please download and run these files in advance.</li>
+</ol>
+<ul>
+<li>Microsoft Visual C++ Redistributable Package (64bit)<br>
+<a href="https://aka.ms/vs/17/release/vc_redist.x64.exe">https://aka.ms/vs/17/release/vc_redist.x64.exe</a></li>
+<li>.NET Desktop Runtime 6.0.6(64bit)<br>
+<a href="https://download.visualstudio.microsoft.com/download/pr/9d6b6b34-44b5-4cf4-b924-79a00deb9795/2f17c30bdf42b6a8950a8552438cf8c1/windowsdesktop-runtime-6.0.6-win-x64.exe">https://download.visualstudio.microsoft.com/download/pr/9d6b6b34-44b5-4cf4-b924-79a00deb9795/2f17c30bdf42b6a8950a8552438cf8c1/windowsdesktop-runtime-6.0.6-win-x64.exe</a></li>
+</ul>
+<h2 id="how-to-use">How to use </h2>
+<ul>
+<li>See the manual in the Help menu. The latest online manual can be found at:<br>
+<a href="https://junkbulk.com/windows/precad/manual/en/PreCAD_windows_manual.html">https://junkbulk.com/windows/precad/manual/en/PreCAD_windows_manual.html</a></li>
+</ul>
+<h2 id="contact-information">Contact information </h2>
+<ul>
+<li>Mail : <a href="mailto:ai@junkbulk.com?subject=PreCad">ai@junkbulk.com</a></li>
+<li>Web : <a href="https://junkbulk.com/windows/precad/index_en.html">https://junkbulk.com/windows/precad/index_en.html</a></li>
+<li>Donation : <a href="https://junkbulk.com/windows/precad/donate_en.html">https://junkbulk.com/windows/precad/donate_en.html</a></li>
+<li>Copyright(c) Junkbulk (Jinki-Keikaku) 2024-2026</li>
+</ul>
+<h2 id="terms-of-use">Terms of use </h2>
+<ul>
+<li>This software is provided by Donationware. You can use it for free, but if you like it, please support the development.</li>
+<li>The author will not be held responsible for any problems that may occur due to the use of this software. Please use at your own risk.</li>
+<li>The author is not responsible for any support such as bug fixes or version updates for this software.</li>
+<li>Modification of this software and its bundled materials is prohibited.</li>
+</ul>
+<h2 id="others">Others </h2>
+<h3 id="running-on-wine">Running on Wine </h3>
+<h4 id="note">Note </h4>
+<ul>
+<li>The procedure described below is a record of my trial and error, and does not guarantee that it will work.</li>
+<li>Since gdiplus.dll is changed to the native version, other software may be affected. In that case, please return gdiplus.dll to the built-in version.</li>
+<li>If you don't use Japanese for drawing, I don't think you need to do anything about fonts.</li>
+</ul>
+<h4 id="procedure">Procedure </h4>
+<p>I confirmed booting on Ubuntu 22.04 and Wine9.0.</p>
+<ul>
+<li>Install cjk fonts with Winetricks (to prevent garbled characters in the installer. It may not be necessary in an English environment)</li>
+<li>Install ie8 with Winetricks (some functions cannot be used. It is not required)</li>
+<li>Modify the registry with the following command<br>
+<code>wine reg.exe ADD "HKEY_CURRENT_USER\Software\Wine\X11 Driver" "/v" "UseXVidMode" "/t" "REG_SZ" "/d" "N"</code></li>
+</ul>
+<p>Now you can install it for now.<br>
+However, when I start PreCad, draw a line, and enlarge the screen, I notice that the line width is strange.<br>
+So, select Run winconfig in Winetricks and add gdiplus from the libraries inside. This will make the line width normal.<br>
+However, in the native version of gdiplus, if you do not properly specify the Japanese font, Japanese characters will be garbled (Japanese characters will also be garbled with this installer. In Windows, the characters will not be garbled because they will be displayed in an alternative font. The built-in version also doesn't seem to have garbled characters.I think you'll need to edit FontLink in the registry, but that seems difficult).<br>
+If you don't have many Japanese fonts, run <code>winetricks allfonts</code> to install them (of course, you can select and install only Japanese fonts instead of all).<br>
+However, PreCad does not embed fonts in files, so if the drawing you open uses fonts that are not installed, this can be a problem. In Windows, the text is readable because an alternative font is set, but in Wine, the text is garbled. Please specify an alternative font in PreCad option. Now you can read it.</p>
+<h2 id="history">History </h2>
+<ul>
+<li>
+<p>2026/02/10 ver. 1.9.1.0</p>
+<ul>
+<li>Revised drawing in radius dimension line mode.</li>
+<li>Fixed the inclination of arc arrows.</li>
+<li>Added options for importing jww and jwc.</li>
+<li>Fixed the default width and height values ​​for text shapes in text frame mode.</li>
+<li>Fixed a bug when loading multiple pages.</li>
+</ul>
+</li>
+<li>
+<p>2026/01/15 ver. 1.9.0.0</p>
+<ul>
+<li>Supports file format version 2.10.0. Please note that this file will no longer be readable in older versions of the app.</li>
+<li>Fixed a bug when transforming a line with the Select tool.</li>
+<li>Fixed a problem where the text size did not match the scale when pasting parts.</li>
+<li>Minor fixes to part file output.</li>
+<li>Added file location display to parts group tooltip.</li>
+<li>Fixed issues with the Cut line tool cancellation process.</li>
+</ul>
+</li>
+<li>
+<p>2025/12/14 ver. 1.8.0.0</p>
+<ul>
+<li>Enabled mm, cm, m, and inch units. When using these units, please set them separately for coordinates and dimension shapes.</li>
+<li>Grid specifications have been changed. Previous grid settings will be invalidated, so please reset them.</li>
+<li>Added functions such as 10x to the calculator.</li>
+<li>Fixed a bug in the image saving tool.</li>
+</ul>
+</li>
+<li>
+<p>2025/08/31 ver. 1.7.2.0</p>
+<ul>
+<li>Changed the plugin interface.</li>
+<li>Changed the calculator to a scientific calculator.</li>
+<li>Changed the sheet name for sfc file reading.</li>
+<li>Changed the behavior when constraining polyline vertices when editing with the select tool.</li>
+<li>Changed the behavior when constraining Bezier shape control points when editing with the select tool.</li>
+<li>Changed so that control points follow when moving Bezier shape vertices with the select tool.</li>
+<li>Fixed an issue with the arc when outputting HPGL.</li>
+</ul>
+</li>
+<li>
+<p>2025/08/05 ver. 1.6.12.0</p>
+<ul>
+<li>Fixed a freeze that occurred when selecting a page.</li>
+</ul>
+</li>
+<li>
+<p>2025/08/03 ver. 1.6.11.0</p>
+<ul>
+<li>Support UNDO for scale change.</li>
+<li>Fixed a bug when switching modes in the cut line tool.</li>
+</ul>
+</li>
+<li>
+<p>2025/07/26 ver. 1.6.10.0</p>
+<ul>
+<li>Supported polyline and elliptical arc by Extend line tool and Corner tool.</li>
+<li>Changed intersection processing.</li>
+<li>Fixed polyline degeneracy processing.</li>
+<li>Fixed a bug in partially erasing polylines.</li>
+<li>Fixed a bug in the area measurement tool.</li>
+<li>Fixed an issue with the CncHobby plugin.</li>
+</ul>
+</li>
+<li>
+<p>2025/07/09 ver. 1.6.9.0</p>
+<ul>
+<li>Fixed an issue where files could not be saved under certain conditions.</li>
+</ul>
+</li>
+<li>
+<p>2025/07/06 ver. 1.6.8.0</p>
+<ul>
+<li>Changed the algorithm for the Erase line tool.</li>
+</ul>
+</li>
+<li>
+<p>2025/06/29 ver. 1.6.7.0</p>
+<ul>
+<li>Added a clipping mode to the Erase line tool that leaves the clicked part.</li>
+<li>The number of shapes that can be searched for intersections by the Trim tool, Erase line tool, and Extend line tool has been increased.</li>
+<li>Supported the Jw_cad Unicode file.</li>
+<li>Changed the display range from LIMMIN, LIMMAX to EXTMIN, EXTMAX when importing DXF.</li>
+<li>Fixed polylines in block shape were sometimes filled in when importing DXF.</li>
+<li>Fixed issue with MTEXT when importing DXF.</li>
+<li>The conditions for whether an inverse matrix can be calculated have been relaxed a little.</li>
+</ul>
+</li>
+<li>
+<p>2025/06/14 ver. 1.6.6.0</p>
+<ul>
+<li>Changed the algorithm for the trim tool.</li>
+<li>Changed the specifications for text on line tool.</li>
+</ul>
+</li>
+<li>
+<p>2025/06/05 ver. 1.6.5.0</p>
+<ul>
+<li>Changed the plugin folder.</li>
+<li>Other minor changes.</li>
+</ul>
+</li>
+<li>
+<p>2025/04/28 ver. 1.6.4.0</p>
+<ul>
+<li>Added the buttons to the right-click menu.</li>
+<li>Improved file loading speed.</li>
+<li>Fixed an issue where shapes were not selected after pasting with the select tool.</li>
+<li>Minor changes.</li>
+</ul>
+</li>
+<li>
+<p>2025/04/20 ver. 1.6.3.0</p>
+<ul>
+<li>Changed the algorithm for a circle tangent to two lines.</li>
+<li>Supports changing attributes such as color and selected layer while drawing with the coordinate tool.</li>
+<li>Changed the initial value of the attributes of the coordinate file to the current selected attributes.</li>
+<li>Changed the priority order when pasting images etc. (for example, PNG is now given priority over EMF).</li>
+</ul>
+</li>
+<li>
+<p>2025/04/13 ver. 1.6.2.0</p>
+<ul>
+<li>When drawing, the screen will scroll if you drag it off the screen.</li>
+<li>Added shape commands such as circles to the coordinate file. For commands, see <a href="https://junkbulk.com/windows/precad/download/PrecoFormat_en.html">https://junkbulk.com/windows/precad/download/PrecoFormat_en.html</a>.</li>
+<li>You can now check for updates from the menu.</li>
+</ul>
+</li>
+<li>
+<p>2025/03/27 ver. 1.6.1.0</p>
+<ul>
+<li>Fixed the print dialog.</li>
+<li>Added an option to not change the size of the dot marker with the zoom rate.</li>
+<li>Changed the marker handle to only one point.</li>
+<li>Double-clicking a marker shape now displays the style dialog.</li>
+<li>Marker shape can now be resized in the same way as text when using the resize option of the select tool.</li>
+</ul>
+</li>
+<li>
+<p>2025/03/19 ver. 1.6.0.0</p>
+<ul>
+<li>Added Jw_cad external transformation tool (experimental). The method of selecting shapes and the layer configuration are different from Jw_cad, but I think it works for simple things.</li>
+<li>Added copy and paste settings to the edit menu.</li>
+<li>When dragging the left mouse button, the screen scrolls when the cursor goes off the screen.</li>
+<li>The distance and angle between two points can now be copied to the clipboard from the right button menu.</li>
+<li>In the script tool, the first item is selected after the file is loaded.</li>
+<li>In the script tool, an error sound is now played when you click on the screen when there is no selection.</li>
+</ul>
+</li>
+<li>
+<p>2025/02/03 ver. 1.5.0.0</p>
+<ul>
+<li>Implemented wrapping in the text frame of text shape.</li>
+<li>Added text frame modes (Auto, Resize width only, Resize width and height) to text shape. Normally, "Auto" is fine.</li>
+<li>Added border, equal distribution, and justification to the text style.</li>
+<li>Changed to display the center point when selecting a circle and arc.</li>
+<li>Changed the rectangular selection of the line cut tool to a method of specifying two points, not dragging the mouse.</li>
+<li>Added the color code in the tooltip of the color button.</li>
+<li>Added the summary in the tooltip of the layer style button.</li>
+<li>Added anti-aliasing option to PNG save.</li>
+<li>Changed the method to draw the text shape.</li>
+<li>Fixed the function to obtain the color at the cursor position.</li>
+<li>Fixed the display of line style and text style in the menu.</li>
+<li>Fixed that the angle of the Marker was not being saved.</li>
+<li>Fixed that arc dimension was not to scale.</li>
+</ul>
+</li>
+<li>
+<p>2024/12/16 ver. 1.4.4.0</p>
+<ul>
+<li>Fixed an issue with the alignment of text shape.</li>
+<li>Changed the way the style of snapped shapes is obtained.</li>
+</ul>
+</li>
+<li>
+<p>2024/12/04 ver. 1.4.3.0</p>
+<ul>
+<li>Added ability to copy snapped line length, etc. to clipboard.</li>
+<li>Added ability to obtain line style and text style of snapped shape.</li>
+<li>Supports copy and paste in calculator.</li>
+<li>Changed settings and options dialog to tab switching.</li>
+<li>Added support for uniform width ring solid and ring solid for jww reading.</li>
+<li>Fixed text position when saving jww.</li>
+<li>Fixed bitmap size when saving jww.</li>
+<li>Changed not to output when polyline line color is transparent when saving jww.</li>
+<li>Fixed PolylineTo processing when loading emf.</li>
+<li>Fixed ExtTextOutW processing when loading emf.</li>
+</ul>
+</li>
+<li>
+<p>2024/11/02 ver. 1.4.2.0</p>
+<ul>
+<li>Added an option to display bitmaps faster.</li>
+<li>Added an option to display background images faster.</li>
+<li>Fixed when other layers were hidden and other sheets were displayed in gray, the hidden layers were displayed in gray.</li>
+<li>Fixed that single horizontal and vertical lines not be copied as bitmaps.</li>
+<li>Fixed when selecting a bitmap, the display was slightly misaligned.</li>
+<li>Reviewed the screen drawing method to improve memory consumption and speed.</li>
+<li>Changed command processing to reduce memory consumption.</li>
+</ul>
+</li>
+<li>
+<p>2024/10/29 ver. 1.4.1.0</p>
+<ul>
+<li>Added LTSCALE settings to DXF saving.</li>
+<li>Changed the specifications of the copy and paste plugin.</li>
+<li>Added support for pasting text from the clipboard.</li>
+<li>Change the ability to copy text such as text shape to the clipboard.</li>
+<li>It is now possible to change the resolution when copying shape as a bitmap.</li>
+<li>When saving text shapes to other formats, the background is now a closed polyline.</li>
+<li>Fixed a problem that bitmap was not being saved correctly to the clipboard when copying.</li>
+</ul>
+</li>
+<li>
+<p>2024/10/20 ver. 1.4.0.0</p>
+<ul>
+<li>Added line types. The line type patterns were based on SFC.</li>
+<li>The line type name is now displayed on the line type.</li>
+<li>Dashed lines are now drawn without using the API.</li>
+<li>Added an option to make dashed lines visible when zooming out.</li>
+<li>Added an option to specify the edge length to the chamfer tool.</li>
+<li>Supported Windows EMF file.</li>
+<li>Copy and paste has been made into a plugin, and SVG and EMF can now be copied and pasted.</li>
+<li>Updated the file format version from 2.5.0 to 2.6.0. In older apps, the added line types will be solid lines.</li>
+<li>Fixed the font name not being written when saving SVG.</li>
+<li>Changed so that the background color of the text shape is saved if possible when saving to other formats.</li>
+<li>Fixed a problem with the display position when the text shape has a slant.</li>
+</ul>
+</li>
+<li>
+<p>2024/9/01 ver. 1.3.1.0</p>
+<ul>
+<li>Added support for arc in the line dimension tool, but excluded ellipse.</li>
+<li>Fixed a bug with oval(2 points) tool.</li>
+</ul>
+</li>
+<li>
+<p>2024/8/28 ver. 1.3.0.0</p>
+<ul>
+<li>Added arc dimension shape.</li>
+<li>The message that was displayed when a shape could not be selected with the fillet tool was incorrect, so it has been fixed.</li>
+<li>Changed that a warning message is displayed when checking the minor version when loading a file.</li>
+</ul>
+</li>
+<li>
+<p>2024/8/20 ver. 1.2.3.0</p>
+<ul>
+<li>Added overlap line tool.</li>
+<li>Snapping is now possible on non-editable layers.</li>
+<li>Fixed bugs and changed specifications for arc shape and angle dimension shape.</li>
+<li>The 3-point arc tool and 3-point angle tool can now change orientation by pressing the Ctrl key.</li>
+<li>The hatch tool has been changed so that pressing the Ctrl key switches to continuous line selection mode.</li>
+</ul>
+</li>
+<li>
+<p>2024/8/05 ver. 1.2.2.1</p>
+<ul>
+<li>Fixed a bug of "Fit to Object" to zoom to the selected shapes.</li>
+</ul>
+</li>
+<li>
+<p>2024/8/05 ver. 1.2.2.0</p>
+<ul>
+<li>Fixed an issue where the shape snapped to the select tool was not selected properly.</li>
+<li>Changed "Fit to Object" to zoom to the selected shapes.</li>
+</ul>
+</li>
+<li>
+<p>2024/7/28 ver. 1.2.1.1</p>
+<ul>
+<li>Fixed a bug where the toolbar line color was not displayed correctly at startup.</li>
+</ul>
+</li>
+<li>
+<p>2024/7/28 ver. 1.2.1.0</p>
+<ul>
+<li>Fixed a bug in the line erase tool.</li>
+<li>Changed the timing for deselecting in the select tool.</li>
+</ul>
+</li>
+<li>
+<p>2024/7/21 ver. 1.2.0.0</p>
+<ul>
+<li>Added line intersection select mode to the line erase tool and line extension tool.</li>
+<li>Added the option of how to place the background image.</li>
+<li>Added wiring tool.</li>
+<li>Changed the text search dialog modeless.</li>
+<li>Changed how to handle cases where there is no solution for 3-point circle and 3-point arc.</li>
+</ul>
+</li>
+<li>
+<p>2024/6/26 ver. 1.1.1.3</p>
+<ul>
+<li>Changed the line erase tool to search for intersections across all layers.</li>
+<li>Changed the jww file reader to be able to import old formats (file versions 2.2.3 and later).</li>
+</ul>
+</li>
+<li>
+<p>2024/6/21 ver. 1.1.1.2</p>
+<ul>
+<li>Fixed a bug in the circle tangent to three circles and the circle tangent to a line and two circles.</li>
+</ul>
+</li>
+<li>
+<p>2024/5/20 ver. 1.1.1.1</p>
+<ul>
+<li>Fixed an issue where main menu favorite tools and recent tools could not be used.</li>
+<li>Changed that can snap to cross points within group shape.</li>
+<li>Manual updated.</li>
+</ul>
+</li>
+<li>
+<p>2024/5/17 ver. 1.1.1.0</p>
+<ul>
+<li>Fixed the free hand tool crashing.</li>
+<li>Changed that shortcuts can also be set for tools.</li>
+</ul>
+</li>
+<li>
+<p>2024/5/10 ver. 1.1.0.2</p>
+<ul>
+<li>Fixed the grid origin setting button not working.</li>
+<li>Changed to display a message on the screen when saving is completed.</li>
+</ul>
+</li>
+<li>
+<p>2024/5/08 ver. 1.1.0.1</p>
+<ul>
+<li>Fixed an issue that snapping could be done to invisible shapes when the sheet was invisible.</li>
+</ul>
+</li>
+<li>
+<p>2024/5/07 ver. 1.1.0.0</p>
+<ul>
+<li>Added the function to register keyboard shortcuts (as a side effect of keyboard shortcuts, favorite tools registered in previous versions will be cleared).</li>
+<li>Changed that hidden layers/sheets are not displayed even when selected.</li>
+<li>Added zoom to shapes display range.</li>
+<li>Changed to open the calculator by pressing the space key in the numerical input area.</li>
+<li>Changed the calculator button to be able to push from the keyboard's numeric keypad. However, ± is the TAB key. Equals is enter, and pressing enter again will make it OK.</li>
+<li>Added the function to change the orientation using the CTRL key in the horizontal/vertical mode of the dimension line tool.</li>
+<li>Supported dashed lines when saving SVG.</li>
+<li>Fixed an issue where changing layer colors etc. after loading a file was not reflected immediately.</li>
+<li>Fixed the issue where the Japanese manual could not be opened. However, the contents of the manual remain outdated.But the tooltips have been updated, so please refer to them.</li>
+</ul>
+</li>
+<li>
+<p>2024/4/23 ver. 1.0.6.2</p>
+<ul>
+<li>Fixed that files could not be saved correctly in areas where the decimal point was a comma.</li>
+<li>Changed to reuse objects used for file save/read plugins.</li>
+<li>Added ViewBox get button to SVG save.</li>
+</ul>
+</li>
+<li>
+<p>2024/4/21 ver. 1.0.6.1</p>
+<ul>
+<li>Added snap pause.</li>
+<li>Changed so that the effective snap radius can be set.</li>
+<li>Changed snap algorithm.</li>
+<li>Added option to output layers and sheets as a group when saving SVG.</li>
+<li>Fixed a problem with the conversion of arrows when dividing polylines.</li>
+<li>Fixed a problem with the tangent to the circle.</li>
+<li>Fixed a problem with the proximity points of Bezier and splines.</li>
+</ul>
+</li>
+<li>
+<p>2024/4/14 ver. 1.0.5.0</p>
+<ul>
+<li>Added line connectivity check tool.</li>
+<li>Added "Below line" to the options of the text on line tool.</li>
+<li>Supported duplicate layer and sheet.</li>
+<li>Added duplicate page to menu.</li>
+<li>Changed UNDO algorithm for layers and sheets.</li>
+<li>Changed offset algorithm for straight line part of Bezier curve.</li>
+<li>Supported path shape offset.</li>
+<li>When a path shape is ungrouped, it is now decomposed into Bezier curves.</li>
+<li>Fixed an issue where various settings popups in the status bar could not be used.</li>
+<li>Fixed a bug in turning spline to polyline.</li>
+<li>Changed the displayed line width when selecting lines.</li>
+<li>Added strings for tooltips, etc.</li>
+<li>Changed the initial value of grid division to 1.</li>
+<li>Document control tabs are now switched when adding/deleting layers, sheets, or pages.</li>
+</ul>
+</li>
+<li>
+<p>2024/4/07 ver. 1.0.4.1</p>
+<ul>
+<li>Fixed an issue where lines were sometimes dirty depending on the resolution.</li>
+<li>Changed Bezier curve offset algorithm.</li>
+<li>Improved calculation speed of intersection points between Bezier curves.</li>
+<li>Fixed an issue where the direction of the leader line was incorrect when selecting an ellipse with the line dimension tool.</li>
+<li>Add favorite tools and recently used tools.</li>
+<li>The font size of the cursor coordinate display can now be changed.</li>
+</ul>
+</li>
+<li>
+<p>2024/3/20 ver. 1.0.3.0</p>
+<ul>
+<li>Supports Bezier curve and spline curve with offset tool.</li>
+<li>Added ellipse options to maintain flatness and convert to Bezier curve in the offset tool.</li>
+<li>Changed polyline offset algorithm.</li>
+<li>Cut line tool now supports Bezier curve and spline curve.</li>
+<li>Added clipping function to cut line tool.</li>
+<li>Fixed an issue where the text became dirty when saving as PNG or copying PNG to the clipboard.</li>
+<li>Supports pasting with DIB.</li>
+<li>Unnecessary files were copied to the plugin's ja folder, so they were deleted.</li>
+</ul>
+</li>
+<li>
+<p>2024/2/18 ver. 1.0.2.0</p>
+<ul>
+<li>Added Ellipse on 2 lines tool.</li>
+<li>Added shear option to select tool.</li>
+<li>Added a flag that only slants characters in text style.</li>
+<li>You can now change the auxiliary line color.</li>
+<li>You can now change the pitch of the dashed line.</li>
+<li>The marker dots were constant regardless of the screen magnification, but now they follow the screen magnification like normal markers.</li>
+<li>The page number is now displayed in the page list.</li>
+<li>Added an option to convert characters when the layer name contains non-ASCII characters when saving in DXF.</li>
+<li>Enabled character width and slant angle in the Outline text tool (character spacing cannot be used).</li>
+<li>Fixed an issue where the page name in the status bar did not change even if the page name was changed from the list.</li>
+<li>Moved some settings dialog items to the view menu, etc.</li>
+<li>Fixed an issue where snap settings could not be changed from the menu.</li>
+<li>Fixed an issue where bitmaps were being read correctly when loading SakraCad and LilliCad.</li>
+</ul>
+</li>
+<li>
+<p>2024/1/27 ver. 1.0.1.0</p>
+<ul>
+<li>First release</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#precad-for-windows" class="md-toc-link"><p>PreCad for Windows</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#about-precad-for-windows" class="md-toc-link">
+            <p>About PreCad for Windows</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#supported-os" class="md-toc-link">
+            <p>Supported OS</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#install" class="md-toc-link">
+            <p>Install</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#how-to-use" class="md-toc-link">
+            <p>How to use</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#contact-information" class="md-toc-link">
+            <p>Contact information</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#terms-of-use" class="md-toc-link">
+            <p>Terms of use</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#others" class="md-toc-link"><p>Others</p>
+</a>
+          </summary>
+        <div>
+          <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#running-on-wine" class="md-toc-link"><p>Running on Wine</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#note" class="md-toc-link">
+            <p>Note</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#procedure" class="md-toc-link">
+            <p>Procedure</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+        </div>
+      </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#history" class="md-toc-link">
+            <p>History</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+</div>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    </body></html>

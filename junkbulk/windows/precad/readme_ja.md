@@ -36,7 +36,7 @@ https://junkbulk.com/windows/precad/manual/ja/PreCAD_windows_manual.html
 - Mail : <a href="mailto:ai@junkbulk.com?subject=PreCadについて">ai@junkbulk.com</a>
 - Web : https://junkbulk.com/windows/precad/index.html
 - 開発支援 : https://junkbulk.com/windows/precad/donate_ja.html
-- Copyright(c) Junkbulk (Jinki-Keikaku) 2024-2025
+- Copyright(c) Junkbulk (Jinki-Keikaku) 2024-2026
 
 
 ## 使用条件
@@ -68,6 +68,20 @@ Ubuntu 22.04とWine9.0で起動を確認しました。
 ところが、PreCadはファイルにフォントを埋め込まないので、開いた図面にインストールされていないフォントが使われていた場合、問題になります。Windowsでは代替フォントが設定されているので文字が読めますが、Wineでは文字化けします。その対策として、PreCadのオプションで代替フォントを指定してください。これで読めるようになります。
 
 ## 履歴
+- 2026/02/10 ver. 1.9.1.0
+    - 半径寸法線のモードによる描画を見直しました。
+    - 円弧の矢印の傾きを修正しました。
+    - jww, jwcの読み込みにオプションを追加しました。
+    - 文字図形の文字枠モードによる幅と高さの初期値を修正しました。
+    - マルチページ読み込み時の不具合を修正しました。
+
+- 2026/01/15 ver. 1.9.0.0
+    - ファイルフォーマットバージョン2.10.0対応しました。旧アプリではこのファイルは読めなくなるので注意してください。
+    - 線を選択ツールで変形する時のバグを修正しました。
+    - パーツ貼り付けで文字サイズが縮尺とあっていなかったので修正しました。
+    - パーツファイル出力の軽微な修正しました。
+    - パーツグループのツールチップにファイルの場所を表示するようにした。
+    - 線切断ツールのキャンセル処理などを修正しました。
 
 - 2025/12/14 ver. 1.8.0.0
     - mm,cm,m,inchの単位を有効にしました。使うときは、座標と寸法図形で別々に設定してください。

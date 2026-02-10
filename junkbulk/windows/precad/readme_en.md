@@ -32,7 +32,7 @@ https://junkbulk.com/windows/precad/manual/en/PreCAD_windows_manual.html
 - Mail : <a href="mailto:ai@junkbulk.com?subject=PreCad">ai@junkbulk.com</a>
 - Web : https://junkbulk.com/windows/precad/index_en.html
 - Donation : https://junkbulk.com/windows/precad/donate_en.html
-- Copyright(c) Junkbulk (Jinki-Keikaku) 2024-2025
+- Copyright(c) Junkbulk (Jinki-Keikaku) 2024-2026
 
 
 ## Terms of use
@@ -64,7 +64,21 @@ If you don't have many Japanese fonts, run `winetricks allfonts` to install them
 However, PreCad does not embed fonts in files, so if the drawing you open uses fonts that are not installed, this can be a problem. In Windows, the text is readable because an alternative font is set, but in Wine, the text is garbled. Please specify an alternative font in PreCad option. Now you can read it.
 
 ## History
+- 2026/02/10 ver. 1.9.1.0
+    - Revised drawing in radius dimension line mode.
+    - Fixed the inclination of arc arrows.
+    - Added options for importing jww and jwc.
+    - Fixed the default width and height values ​​for text shapes in text frame mode.
+    - Fixed a bug when loading multiple pages.
 
+- 2026/01/15 ver. 1.9.0.0
+    - Supports file format version 2.10.0. Please note that this file will no longer be readable in older versions of the app.
+    - Fixed a bug when transforming a line with the Select tool.
+    - Fixed a problem where the text size did not match the scale when pasting parts.
+    - Minor fixes to part file output.
+    - Added file location display to parts group tooltip.
+    - Fixed issues with the Cut line tool cancellation process.
+  
 - 2025/12/14 ver. 1.8.0.0
     - Enabled mm, cm, m, and inch units. When using these units, please set them separately for coordinates and dimension shapes.
     - Grid specifications have been changed. Previous grid settings will be invalidated, so please reset them.
