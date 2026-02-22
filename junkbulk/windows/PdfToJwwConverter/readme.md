@@ -5,30 +5,26 @@ title: Pdf to jww converter
 
 ## 概要
 - PdfToJwwConverterはPDFファイルをJw_cadのjwwファイルへ変換するアプリです。
-- フリーソフトウエアです。
-
+- GUI版とコマンドライン版があります。
+- フリーソフトウエアです。無料で使用できますが、[開発支援](https://junkbulk.com/windows/donate/index.html)をお願いします。
 ## 動作環境
-- Windows10
+- Windows11
 
 ## インストール
-zipファイルを解凍し、install.exeを実行してください。
+zipファイルを解凍し、PdfToJww_Setup.exeを実行してください。
 実行時に「WindowsによってPCが保護されました」と言う画面が出ます。その画面の「詳細情報」をクリックすると「実行」ボタンがあらわれます。「実行」ボタンを押すとインストールプログラムが実行されます。
 インストーラは以下のランタイムがインストールされていない場合、自動的に取得してインストールします。
 - Microsoft Visual C++ 再頒布可能パッケージ
   - 32ビット
 https://aka.ms/vs/17/release/vc_redist.x86.exe
-  - 64ビット
-https://aka.ms/vs/17/release/vc_redist.x64.exe
 
 - .NET デスクトップ ランタイム 6.0.6
   - 32ビット
 https://download.visualstudio.microsoft.com/download/pr/cc04076c-d188-4c20-9b4f-89be06f1a39c/32da746ef46fbeedb4f609b67cb451c3/windowsdesktop-runtime-6.0.6-win-x86.exe
-  - 64ビット
-https://download.visualstudio.microsoft.com/download/pr/9d6b6b34-44b5-4cf4-b924-79a00deb9795/2f17c30bdf42b6a8950a8552438cf8c1/windowsdesktop-runtime-6.0.6-win-x64.exe
 
 インターネットに接続できない環境でインストールする場合はあらかじめこれらのファイルをダウンロードして直接インストールしてください。
 
-## 使用法
+## 使用法（GUI）
 - PDFファイルを選択してください。
 - ページに変換したいページ番号を入力してください。ページ番号はコンマで区切って複数のページを指定することもできます。また、1-4のようにハイフンで範囲を指定することもできます。
 - 用紙サイズを選択します。（PDFファイルにも用紙のサイズは記録されていますが、このアプリは使っていません。）
@@ -40,6 +36,24 @@ https://download.visualstudio.microsoft.com/download/pr/9d6b6b34-44b5-4cf4-b924-
   - 「文字を結合する」にチェックすると並んだ文字を結合し一つのテキストにします。
   - 「一部の文字を変換する」にチェックすると文字化けを少なくすることができます。
   - 「上書きする」にチェックすると同じファイル名が既に存在する時上書きします。
+
+## 使用法（CUI）
+```
+usage: ptjc.exe <PdfFiles> [Command]
+
+Command:
+-dxf: DXF ファイルに変換します。
+-n: PDF ファイルのページ番号を指定します（デフォルト = 1）。複数ページ指定も可能です。
+-y: 出力ファイルを自動的に上書きします。
+-u: 一部の文字（康熙部首など）を変換する。
+-d: 破線を結合します。
+-t: テキストを結合します。
+-a: 円弧を作成します。
+-s: jww の縮尺の分母を指定します（デフォルト = 1）。例: 100=1/100
+-p: jww の用紙コードを指定します（デフォルト = 3）。0=A0、1=A1、2=A2、3=A3、4=A4、8=2A、9=3A、10=4A、11=5A
+```
+
+
 
 ## 連絡先等
 - メール  ai@junkbulk.com
@@ -96,6 +110,11 @@ https://download.visualstudio.microsoft.com/download/pr/9d6b6b34-44b5-4cf4-b924-
   - PDFはクリッピングで図形の表示範囲を制御していますがこのアプリは対応していません。用紙外に図形が表示されることがあります。
 
 ## 履歴
+- 2026/02/22  version1.3.0
+  - DXF変換を追加。
+  - CUI版を追加。
+  - その他軽微な変更。
+
 - 2022/7/4 version1.2.1
   - 軽微な修正
 - 2022/7/3 version1.2.0
