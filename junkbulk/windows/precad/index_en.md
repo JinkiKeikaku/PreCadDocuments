@@ -1,16 +1,22 @@
 ---
 title: PreCad for Windows
+header-includes: |
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B2W8N0KM0J"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', 'G-B2W8N0KM0J');
+  </script>
 ---
 
-<div style="text-align: right"><a href=index.html>Japanese</a></div>
+<!-- <div style="text-align: right"><a href=index.html>Japanese</a></div> -->
+[[Top]](https://junkbulk.com)  [[Donation]](donate_en.html)  [[Japanese]](index.html)
 
-[Top](https://junkbulk.com)
+# Features
 
-[Donation](donate_en.html)
-
-# PreCad for Windows
-
-## 1. Features
 - 2DCAD with multi-page support
 - No limit on number of layers
 - Multiple scales can be set for one drawing using the sheet function
@@ -27,47 +33,46 @@ title: PreCad for Windows
    - PNG (*.png) (save only)
 - Jw_cad line symbol modification available
 - Jw_cad parts files (*.jws) can be used as parts
-- There is also an Android version (but it is different because the source code and development language are different)
+- There is also an Android version (but it is different because the source code and development language are different)  
 [PreCad for Android](https://play.google.com/store/apps/details?id=com.junkbulk.precad)
 
 <a href="images/image001.png">
 <img src="images/image001.png" href="images/image001.png" alt="sample image" width="300px">
 </a>
 
-## 2. Download
+# Download
 
-- PreCad ver1.9.2.0
-PreCad-1.9.2.0.zip (MD5 : e2c46326b5922fcdf26b9b3dc468ae61)
-[Download](download/PreCad-1.9.2.0.zip)  (3113KB)
+[PreCad v1.10.2.0](download/PreCad-1.10.2.0.zip)
+: > PreCad-1.10.2.0.zip  
+Size: 3132KB  
+MD5: 7b9a33e79287bda1bde2bb9655388304
 
-- PreCad ver1.9.1.0
-PreCad-1.9.1.0.zip (MD5 : 910a32058147d4f5b6f7be57996a7364)
-[Download](download/PreCad-1.9.1.0.zip)  (3113KB)
+[PreCad v1.10.1.0](download/PreCad-1.10.1.0.zip)  (3128KB)
+: > PreCad-1.10.1.0.zip  
+Size: 3128KB  
+MD5: 742f56e37fa1bb83539624ea5de6db58
 
-- PreCad ver1.9.0.0
-PreCad-1.9.0.0.zip (MD5 : ef002f81c6efa0a11826e9e1ca5472bc)
-[Download](download/PreCad-1.9.0.0.zip)  (3110KB)
+[PreCad v1.10.0.0](download/PreCad-1.10.0.0.zip)  
+: > PreCad-1.10.0.0.zip  
+Size: 3125KB  
+MD5: 006c9674cf298e42ebbc9465e430cee5
 
-- PreCad ver1.8.0.0
-PreCad-1.8.0.0.zip (MD5 : 07dfb73b5c5bfd2c4b4ca3fa29605bef)
-[Download](download/PreCad-1.8.0.0.zip)  (3104KB)
 
-- PreCad ver1.7.2.0
-PreCad-1.7.2.0.zip (MD5 : d7ab1b0a77a2ac2d2324b7ba4d0b703f)
-[Download](download/PreCad-1.7.2.0.zip)  (3100KB)
+# How to use  
 
-## 3. How to use
-- Installation method.
-[Readme](readme_en.html)
-- Manual
+- Installation method  
+[Readme](readme_en.html)  
+- Manual  
 [PreCAD_windows_manual.html](manual/en/PreCAD_windows_manual.html)
 
 
-## 4. Documentation
-- [File format v2.10.0 rev0](download/PreCadFormat_v2_10_0_rev0.html)
-- [Coordinate file format](download/PrecoFormat_en.html)
+# Documentation  
 
-## 5. Tools
+- [File format v2.11.0 rev0](download/PreCadFormat_v2_11_0_rev0.html)  
+- [Coordinate file format](download/PrecoFormat_en.html)  
+
+# Tools  
+
 - [PreCadExplorer](download/PreCadExplorer.zip)
 An app for checking the file structure of PreCad document files.
 

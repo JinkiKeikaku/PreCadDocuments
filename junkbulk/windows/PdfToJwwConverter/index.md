@@ -1,44 +1,52 @@
 ---
 title: PDF to JWW Converter
+header-includes: |
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B2W8N0KM0J"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', 'G-B2W8N0KM0J');
+  </script>
 ---
-[Top](https://junkbulk.com)
+[[Top]](https://junkbulk.com)  [[開発支援について]](../donate/index.html)
 
-[開発支援について](../donate/index.html)
-
-# PDF to JWW Converter
-## 1. 概要
-- PDFファイルをJw_cadのjwwファイルに変換するプログラムです。
+# 概要
+- PDFファイルをJw_cadのjwwファイルまたはDXFファイルに変換するプログラムです。
+- GUI版とCUI版があります。
+- 動作環境はWindows11です。
 - フリーソフトウェアです。無料で使用できますが、[開発支援](../donate/index.html)のカンパをお願いします。
 
-## 2. Download
+# Download
 
-- Vectorからダウンロード　https://www.vector.co.jp/soft/winnt/business/se524472.html
+[PDF to JWW Converter v1.3.0.0](download/PdfToJww-1.3.0.0.zip)
+: >  PdfToJww-1.3.0.0.zip  
+Size:   1664KB  
+MD5:    5c2855647f2118a482eab4d872f9e994
+    
 
-- [PdfToJww-1.3.0.0.zip](download/PdfToJww-1.3.0.0.zip) (2026/02/22)
-  - ver1.3.0
-  - DXF変換を追加。
-  - CUI版を追加。
-  - その他軽微な変更。
-  
-- [PdfToJww-1.2.1.zip](download/PdfToJww-1.2.1.zip) (2022/7/4)
-  - ver1.2.1
-  - 軽微な変更。
+[PDF to JWW Converter v1.2.1](download/PdfToJww-1.2.1.zip)  
+:  > PdfToJww-1.2.1.zip  
+Size:   1401KB  
+MD5:    1ebe5cf6204e9bc494708c946f120a7a
 
-- [PdfToJww-1.2.0.zip](download/PdfToJww-1.2.0.zip) (2022/7/3)
-  - ver1.2.0
-  - 「円・円弧を生成する」オプション追加。
 
-- [PdfToJww-1.1.0.zip](download/PdfToJww-1.1.0.zip) (2022/6/30)
-  - ver1.1.0
-  - 32ビットにしました。
-  - 用紙情報が保存されていなかったので修正。
-  - 「破線を結合する」オプション追加。
+[PDF to JWW Converter v1.2.0](download/PdfToJww-1.2.0.zip)
+:  > PdfToJww-1.2.0.zip  
+Size:   1402KB  
+MD5: 27f753630f756d820f334e5ad02380f0
 
-- [PdfToJww-x64-1.0.0.zip](download/PdfToJww-x64-1.0.0.zip) (2022/6/22)
-  - ver1.0.0
+Vector  
+<https://www.vector.co.jp/soft/winnt/business/se524472.html>
 
-## 3. 使い方
-- [readme.html](readme.html)
-## 画面
-![画面](images/PdfToJwwConverter.png)
+github  
+<https://github.com/JinkiKeikaku/PdfToJwwConverter>
+ 
+# 使い方
+[readme.html](readme.html)を参照してください。
+
+# 画面
+![](images/PdfToJwwConverter.png)
 

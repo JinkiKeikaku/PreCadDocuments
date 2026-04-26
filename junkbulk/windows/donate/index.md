@@ -1,7 +1,7 @@
 ---
 title: 開発支援
 ---
-[Top](https://junkbulk.com)
+[[Top]](https://junkbulk.com)
 
 # 開発支援について
 

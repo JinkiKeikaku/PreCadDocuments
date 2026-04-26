@@ -5,1343 +5,1480 @@ html:
    offline: true
    toc: true
 print_background: false
-title: PreCad Manual
+title: PreCad (Windows) Manual
 ---
 
 <style>
 img {
-     border: 1px gray solid;
+border: 1px gray solid;
 }
 </style>
 
-# PreCAD (Windows) Manual
-## Window structure
+# About this manual
+The manual is not yet up-to-date. Therefore, there are difference between the manual and the actual functionality.
+I recommend referring to the tooltips on buttons and other elements within the app for instructions on how to use the app.
 
-![main image](./images/main_window.png)
+# Screen Layout
 
-### 1.Edit panel
-#### Mouse operation
-Use the mouse to draw figures with [DrawTools](#DrawTools). Mouse operations used for drawing are as follows.
-- left click
-   Specifies the coordinates at the clicked position. Depending on the tool, you can constrain the direction of movement vertically and horizontally by clicking while holding down the Shift key.
-- left double click
-   Depending on the tool, it is used to end operations, etc.
-- right click
-   The context menu. Assigned to the end of entity selection depending on the tool.
-- left button drag
-   Some tools are used to select figures within a range.
-   With the selection tool, dragging from left to right selects all entities within the range, and dragging from right to left selects entities that are partially within the range.
-- mouse wheel
-   - Scale with rotation.
-   - Drag to scroll.
-   - Hold down the Shift key and drag to enlarge the area.
-   - Shift key and click to move the position to the center of the screen.
+![](./images/main_window.png)
 
-#### Cursor
+## Editing Screen
+### Mouse Operations
+You can create shapes using the mouse with the [Drawing Tools](#DrawTools). The mouse operations used for drawing are as follows:
 
-![normal cursor](./images/cursor_normal.png)
+- Left Click  
+Specifies coordinates at the clicked position. Depending on the tool, you can constrain the direction of movement vertically and horizontally by clicking while holding down the Shift key.
 
-- The cursor will display two coordinate values. The top is relative coordinates from the grid origin, and the bottom is relative coordinates from the anchor. The anchor is the last clicked point or the coordinates determined by the tool. For example, with the arc tool, the center of the circle is the anchor.
-- Coordinate values can be turned on and off from the menu.
-- The cursor is blue when normal, but turns red when snapped. When snapping, a mark indicating the type is displayed on the upper left of the cursor. See [Snap Toolbar](#SnapToolBar) for the marks that are displayed.
-- There are two types of cursors: a cross cursor and a full screen cross cursor that draws a line to the edge of the screen. Switching is done from the [View Menu](#ViewMenu).
+- Left Double Click  
+Used to end operations, etc., depending on the tool.
 
-### 2. Menu
+- Right Click  
+Displays a menu. Assigned to ending shape selection, depending on the tool.
 
-You can execute commands from the top menu. The same commands in the menu (but not all) are also found in the toolbar.
-![menu](./images/menu_0.png)
-#### File
-![file menu](./images/menu_file.png)
-1. New
-There are New file and New file from template.
-Creating a new file from a template creates a new file based on a previously created file.
-2. Open
-A file open dialog opens.
-3. Save
-Save the file. If you do not have a file name yet, a file save dialog will open where you can enter a file name.
-4. Save as
-A file save dialog opens.
-5.Print
-A print dialog opens.
-6. Set print area
-Switches to the print area setting tool. The cursor position becomes the center of the print area. The following options appear in the tool panel:
-![print area setting](./images/print_area_setting.png)
-    1. Adjust the print area to fit the paper and change the magnification.
-    2. Move the print area to the center.
-    3. Print magnification.
-    4. Exit the print area setting tool and return to the previous tool.
-7. Settings
-Configure various settings.
-![setting](./images/setting.png)
-    1. New file setting
-    Set the default paper and scale here when creating a new file.
-    2. Reset toolbar
-    Reset toolbar placement. The toolbar will be reset after restart.
-2. Opened recent
-Recently opened files are displayed and can be selected.
-3. End
-Exit this app.
+- Left Button Drag  
+Used to select shapes within a range, etc., depending on the tool.
+The selection tool allows you to select all shapes within a range by dragging from left to right, and select shapes that are partially within the range by dragging from right to left.
+- Mouse Wheel  
+    - Rotating zooms in and out.  
+    - Dragging scrolls the image.  
+    - Holding down the Shift key while dragging zooms in on the area.  
+    - Holding down the Shift key while clicking moves the selected area to the center of the screen.  
 
-#### Edit
-![edit menu](./images/menu_edit.png)
-1. Undo
-Undo the previous operation.
-2. Redo
-Redo the undone operation.
-3. Select tool
-This is a tool that selects shapes and moves and transforms them ([See selection tool](#SelectTool)). You can do a lot of things.
-2. Cut
-Cuts the shape selected with the selection tool and copies it to the clipboard.
-3. Copy
-Copies the shape selected with the selection tool to the clipboard.
-1. Copy to clipboard as metafile
-Copies the shape selected with the selection tool as a metafile.
-2. Paste
-Paste shapes from the clipboard. The pasted shape will appear in the center of the editing screen.
-2. Paste selected layer
-Normal pasting pastes to the source layer, but this pastes to the currently selected layer.
-1. Paste special
-Select various formats (such as PNG) from the dialog and paste.
-1. Insert image
-Select the image file and paste it.
-1. Delete
-Deletes the shape selected with the selection tool.
-1. Set
-Click again where you last clicked with the mouse. When you select this item from the right button menu, this is the position where you clicked the right button.
-1. Offset
-A dialog opens and if you enter a numerical value for the offset value, you will click the coordinates that are offset by the offset value from the position you last clicked with the mouse. When you select this item from the right button menu, the position where you click the right button becomes the reference.
-1. Mid point
-The click position is the midpoint between the last mouse click and the next mouse click. When you select this item from the right button menu, the starting point will be the position where you clicked the right button.
-2. Cancel
-Cancels the operation being edited (same as ESC key).
-3. Find/Replace
-You can search and replace strings.
+### Cursor
+
+![](./images/cursor_normal.png)
+
+- The cursor displays coordinate values ​​in two lines. The top line shows coordinates relative to the grid origin, and the bottom line shows coordinates relative to the anchor. The anchor is the point you last clicked, or a coordinate determined by the tool you're using. For example, with the arc tool, the center of the circle is the anchor.
+
+- You can turn the display of coordinate values ​​on and off from the [View Menu](#ViewMenu).  
+- Normally, the cursor is blue, but it changes to red when snapping. When snapping, a mark indicating the type of snap is displayed in the upper left corner of the cursor. See [Snap Toolbar](#SnapToolBar) for information on the displayed marks.  
+- There are two types of cursors: a crosshair cursor and a full-screen crosshair cursor that draws a line to the edge of the screen. You can switch between them using the [View Menu](#ViewMenu).  
+
+## Menus  
+Commands can be executed from the top menu. Some (though not all) of the commands in the menu are also available on the toolbar.  
+![](./images/menu_0.png)  
+
+### File  
+
+![](./images/menu_file.png)  
+
+1. New  
+There are two options: Create New File and Create New File from Template.
+Create New File from Template creates a new file based on a pre-existing file.  
+1. Open  
+Opens the File Open dialog.  
+3. Save  
+Saves the file. If there is no file name yet, the File Save dialog will open; please enter a file name.  
+4. Save As  
+Opens the File Save dialog.  
+5. Print  
+Opens the Print dialog.  
+6. Print Area Settings  
+Switches to the Print Area Settings tool. The cursor position will be the center of the print area. The following options will appear in the tool panel  
+![](./images/print_area_setting.png)
+
+    i. Adjust the print area to fit the paper and change the magnification.  
+    i. Move the print area to the center.  
+    i. Print magnification.  
+    i. Exit the print area setting tool and return to the original tool.  
+
+1. Settings  
+Allows you to configure various settings.  
+![](./images/setting.png)  
+
+      i. New File Settings  
+         Sets the default paper size and scale when creating a new file.
+      i. Toolbar Reset  
+         Resets the toolbar layout. The toolbar will be reset after restarting.  
+1. Recently Opened Files  
+Recently opened files are displayed and can be selected.  
+1. Exit  
+Exits this application.  
+
+### Edit
+
+![](./images/menu_edit.png)
+
+1. Undo  
+Reverts the last edited action.  
+
+1. Redo  
+Redoes the action that was undone.  
+
+3. Select Tool  
+A tool for selecting, moving, and transforming shapes (see Selection Tool (#SelectTool)). It offers various functions.  
+
+2. Cut  
+Cuts the shape selected with the Selection Tool and copies it to the clipboard.  
+
+3. Copy  
+Copies the shape selected with the Selection Tool to the clipboard.  
+
+1. Copy to Clipboard as Metafile  
+Copies the shape selected with the Selection Tool as a metafile.  
+
+2. Paste  
+Pastes the shape from the clipboard. The pasted shape appears in the center of the editing screen.  
+
+2. Paste Selected Layer  
+Normal pasting pastes to the source layer, but this pastes to the currently selected layer.  
+
+1. Paste Special  
+Select various formats (such as PNG) from the dialog box and paste.  
+
+1. Insert Image  
+Select an image file and paste it.  
+
+1. Delete  
+Delete the shape selected with the selection tool.  
+
+1. Set  
+Click again at the location where you last clicked with the mouse. When this item is   selected from the right-click menu, it is the location where you right-clicked.
+
+1. Offset  
+A dialog box opens. Enter an offset value, and the cursor will click at a coordinate shifted by the offset value from the location where you last clicked with the mouse. When this item is selected from the right-click menu, the location where you right-clicked is the reference point.
+
+1. Mid point  
+The midpoint of the location where you last clicked with the mouse and the location where you will next click becomes the click location. When this item is selected from the right-click menu, the location where you right-clicked is the starting point.
+
+2. Cancel  
+Cancels the operation being edited (same as pressing the ESC key).
+
+3. Find/Replace  
+Allows you to search and replace text. This is enabled with the selection tool.
 
 <a id="ViewMenu"></a>
-#### View
-![view menu](./images/menu_view.png)
-1. Zoom
-The submenus include Zoom in, Zoom out, Fit to paper, and Zoom shapes.
-2. Status bar
-Show/hide the status bar at the bottom of the screen.
-3. Print area
-Show/hide the print area.
-4. Coordinate values
-Show/hide cursor coordinate values.
-5. Black background
-Switching the background color between white and black. If the background color is black, the line color will switch between white and black.
-6. Full screen cross cursor
-Switch between a cross cursor and a full screen cross cursor that draws a line to the edge of the screen.
-7. Option
-The option settings dialog will be displayed.
-![view option](./images/view_option.png)
-    1. Marker (dot) radius
-Specify the dot radius for the marker type here.
-    1. Auxiliary line color
-    You can change the color of the extension line here. Please note that if you use a color that is close to the background color, it will be difficult to see.
-    2. Dashed line scale
-    You can change the pitch of the dashed line. Please enter a value between 0.5 and 2.0.
-    3. Font
-    Specify here whether to use an alternative font when a font that is not installed on your computer is used.
-    Normally, you don't have to specify it because Windows will process it appropriately, but in Wine, if you do not specify it, garbled characters may occur.
-    4. Background
-    You can paste an image on the background of the editing screen. Enable it and choose your favorite image.
-    Lowering the opacity allows you to see the image clearly through the paper.
-    5. Polylining
-    Here you can set the criteria for dividing circles (including arcs) and spline (Bezier) curves into lines.
-    The number of divisions of a circle has a precision and a maximum number of divisions. A precision of 0 will always divide by the maximum number of divisions. Enter a value of 1/4 for the maximum number of divisions of the circle (the circle will actually be 4 times this value).
-    These values are also used to detect intersections when hatching, so making them too rough will affect the calculation results.
-    Also, setting a finer value will affect the amount of data and processing time after conversion, so please set an appropriate value.
 
-#### Tool
-![tool menu](./images/tool_menu.png)
-1. Favorite tools
-You can register frequently used tools and access them from here. Registration is done through customize.
-2. Recent tools
-You can access recently used tools here.
-3. Tools
-You can access tools by category. For details, see [Tool Panel](#ToolPanel).
-1. Customize
-Register your favorite tools here.
-![customize](./images/customize.png)
-The tools list is on the left, and the favorites list is on the right.
-Select the tool you want to add to your favorites from the tool list, and add it to your favorites list using the button (1).
-Button (2) deletes the tool selected in the favorites list from the list.
-If you check (3), even if you use a tool in your favorites list, it will not be added to recent tools.
+### View
 
-1. Shortcuts
-Customize your shortcuts here.
-![shortcut](./images/shortcut.png)
-Switch the shortcut scope from (1). There are scopes for each tool (not all tools) and "Main". The main scope is the common shortcuts in the app. Tool shortcuts are valid only when that tool is selected.
-Shortcuts cannot assign the same key to different commands. However, the same keys may be assigned between tools.
-The shortcut for the item selected in the list above will be displayed in the combo box (2). You can delete it using the delete button.
-Enter the shortcut in the text box (3). For shortcuts, you can use the combination of each key and Shift and Ctrl (Alt key cannot be used because it overlaps with the menu). After entering the shortcut, press the Add button to add it. If you check "Warn when overwritten", a warning will be displayed if the same key is already used.
-(4) Reset all shortcuts to their initial values.
-(5) "Save" and "Load" save and load the shortcut settings to a file.
+![](./images/menu_view.png)
 
-#### Style
-![style menu](./images/style_menu.png)
-You can set the style of the shape from here. The same items are also available in the toolbar, so please refer to the toolbar for details.
+1. Zoom  
+The submenu includes options for zooming out, zooming in, fitting to paper, and fitting to all shapes.
 
-#### Snap
-![style menu](./images/snap_menu.png)
-Snap settings (see [Snap Toolbar](#SnapToolBar)).
+2. Status Bar  
+Toggles the display/hide of the status bar at the bottom of the screen.
 
-#### Drawing
-![drawing menu](./images/drawing_menu.png)
-You can set layers, sheets, and pages, but I think the [Document Panel] (#DocumentPanel) and [Status Bar] (#StatusBar) are easier to use.
+3. Print Area  
+Toggles the display/hide of the print area.
 
-#### Help
-![help menu](./images/help_menu.png)
-1. Manual
-The manual will open.
-2. About PreCad
-PreCad information will be displayed.
-3. Send feedback
-If you have any questions for the author, please ask them here. A mailer will open with the author's contact information in the recipient and the app name and version in the subject, so please write the text.
-4. Plugin information
-Many of PreCad's features are made up of plugins. That information will be displayed.
+4. Coordinate Values  
+Toggles the display/hide of the cursor's coordinate values.
+
+5. Black background  
+Toggles the background color between white and black. When the background color is black, the line color switches between white and black.
+
+6. Full screen crosshair cursor  
+Toggles between a crosshair cursor and a full-screen crosshair cursor that draws a line to the edge of the screen.
+
+1. Option  
+The options settings dialog box is displayed.  
+![](./images/view_option.png)  
+
+    i. Marker(Dot) radius  
+    Specify the radius of the dot marker type here.  
+    i. Auxilary line color  
+    You can change the guide line color here. Be careful, as using a color close to the background color may make it difficult to see.
+    i. Dashed line scale
+    You can change the dashed line pitch. Please enter a value between 0.5 and 2.0.
+    i. Font  
+    This specifies whether to use an alternative font if a font not installed on your computer is used.
+    Usually, Windows will handle it appropriately even if you don't specify it, but in Wine, not specifying it may cause garbled characters.
+    i. Background  
+    You can set an image as the background of the editing screen. Enable it and choose your favorite image.  
+    Lowering the opacity will allow the paper to show through and the image will be more visible.  
+    i. Polylining  
+    This sets the criteria for dividing circles (including arcs) and splines (Bezier curves) into lines.  
+    The number of divisions for circles has circle precision and maximum division. Setting the precision to 0 will always divide it to the maximum number of divisions. Enter a value of 1/4 for the maximum number of divisions of a circle (the actual circle used will be 4 times this value).  
+    These values ​​are also used for intersection detection during hatching, so setting them too coarse will affect the calculation results.  
+    Conversely, setting them too fine will affect the amount of data and processing time after conversion, so please set an appropriate value.  
+
+### Tools
+
+![](./images/tool_menu.png)
+
+1. Favorite Tools  
+You can register frequently used tools and access them from here. Registration is done from Customization.  
+
+1. Recent Tools  
+You can access recently used tools from here.  
+
+1. Tools  
+You can access tools by category. For details, please refer to [Tool Panel](#ToolPanel).
+
+1. Customize  
+Register your favorite tools from here.  
+![](./images/customize.png)  
+The tool list is on the left, and the favorites list is on the right.  
+Select the tool you want to add to your favorites from the tool list, and add it to the favorites list with button (1).  
+The button (2) removes the selected tool from the favorites list.  
+Checking (3) will prevent tools already in your favorites list from being added to recent tools when used.  
+
+1. Shortcut  
+Customize your shortcuts from here.  
+![](./images/shortcut.png)
+    i. Switch the shortcut scope. There are scopes for each tool (not all tools) and "Main". The Main scope is for shortcuts common to the app. Tool shortcuts are only valid when that tool is selected.  
+    Shortcuts cannot be assigned to the same key for different commands. However, the same key can be assigned between tools.  
+    i. The combo box displays the shortcut for the item selected in the list above. You can delete it with the delete button.  
+    i. Enter the shortcut in the text box. Shortcuts can be made using each key and combinations of Shift and Ctrl (the Alt key cannot be used as it conflicts with the menu). After entering the shortcut, press the add button to add it. Checking "Warn on overwriting" will display a warning if the same key is already in use.
+    i. Reset returns all shortcuts to their default values.  
+    i. "Save" and "Load" allow you to save and load shortcut settings to and from a file.  
+
+### Style  
+
+![](./images/style_menu.png)  
+
+You can set the style of the shape here. The same items are also available in the toolbar; please refer to the toolbar for details.  
+
+### Snap  
+
+![](./images/snap_menu.png)  
+
+Snap status and settings (see [Snap Toolbar](#SnapToolBar)).  
+
+### Drawing  
+
+![](./images/drawing_menu.png)  
+
+You can set layers, sheets, and pages, but the [Document Panel](#DocumentPanel) and [Status Bar](#StatusBar) are more user-friendly.
+
+### Help
+
+![](./images/help_menu.png)
+
+1. Manual  
+Opens the manual.
+
+2. About PreCad  
+Displays information about PreCad.
+
+3. Send Feedback  
+Please use this to send any questions to the author. Your email client will open, and the author's contact information will be in the recipient field, and the app name and version will be in the subject line. Please write your message in the body of the email.  
+4. Plugin Information  
+Many of PreCad's functions are made up of plugins. This information will be displayed.  
+
+## Toolbar
+
+### File Toolbar
+
+![](./images/filetoolbar.png)
+
+1. New  
+1. Open  
+1. Save  
+1. Save File As  
+1. Print  
+The print dialog box will appear. Select your printer, paper type, etc., and press the print button to print.  
+1. Print Area Settings  
+This determines the area that will be printed on the current printer's paper.
+
+### Edit Toolbar
+
+![](./images/edittoolbar.png)
+
+1. Selection Tool  
+This tool selects shapes and moves and transforms them (see [Selection Tool](#SelectTool)). It can do many things.
+
+2. Cut  
+Cuts the shape selected with the Selection Tool and copies it to the clipboard.
+
+3. Copy  
+Copys the shape selected with the Selection Tool to the clipboard.
+
+4. Paste  
+Pastes the shape from the clipboard. The pasted shape appears in the center of the editing screen.
+
+5. Undo  
+Undoes the last edit.
+
+6. Redo  
+Redoes the undo operation.
+
+7. Cancel  
+Cancels the current edit (same as the ESC key).
 
 
-### 3. Toolbar
+### Line Style Toolbar
 
-#### File Toolbar
+![](./images/linetoolbar.png)
 
-![file toolbar](./images/filetoolbar.png)
+1. Line Color  
+Selects the line color. [L] uses the [Layer color](#LayerStyle).
+1. Line Type  
+Select the line type. [L] uses the [Layer line type](#LayerStyle). [A] is a non-printable line (construction line).
+1. Line Weight  
+Select the line weight. [L] uses the [Layer line weight](#LayerStyle).
+1. Start Arrow Type  
+1. Start Arrow Size  
+1. End Arrow Type  
+1. End Arrow Size  
 
-1. New
-2. Open
-3. Overwrite save
-4. Save file as
-5. Print
-  A print dialog appears. You can print by selecting the printer, paper, etc. and pressing the print button.
-6. Print area setting
-  Determines the area that will be printed on the current printer's paper.
+### Face Style Toolbar
 
-#### Edit Toolbar
+![](./images/facetoolbar.png)
 
-![edit toolbar](./images/edittoolbar.png)
+1. Face Color  
+Select the face color. [L] uses the [Layer Color](#LayerStyle).
 
-1. Selection tool
-A tool that selects a shape and moves and transforms it. You can do many things.
-2. Cut
-Cuts the shape selected with the selection tool and copies it to the clipboard.
-3. Copy
-Copies the shape selected with the selection tool to the clipboard.
-4. Paste
-Paste a shape from the clipboard. The pasted figure appears in the center of the editing screen.
-5. Undo
-Undoes an editing operation.
-6. Redo
-Redo an operation that was undone.
-7. Cancel
-Cancels the editing operation (same as ESC key).
+### Text Style Toolbar
+![](./images/texttoolbar.png)
 
-#### Line Style Toolbar
+1. Text Color  
+Select the text color. [L] uses the [Layer Color](#LayerStyle).  
+1. Font Name  
+1. Font Size  
+Units are in mm.  
+4. Bold  
+5. Italic  
+6. Underline  
+7. Strikethrough  
+8. Settings  
+Opens a settings window where you can configure other font settings.  
+![](./images/text_style_option.png)  
 
-![line style toolbar](./images/linetoolbar.png)
+    i. Character Width Ratio  
+    Character width scaling factor  
+    i. Character Spacing  
+    Spacing between characters
+    i. Slant Angle  
+    Character slant angle. A rightward slant is considered positive.
+    i. Slant Text Only  
+    Checking this option slants each character, but the background frame remains slant. Image 1 below shows the option unchecked, and image 2 shows it checked.  
+    ![](./images/text_slant_mode.png)  
+1. Left-aligned text  
+1. Center-aligned text  
+1. Right-aligned text  
+12. Dimension line settings  
+You can set dimension lines, leader lines, points, etc. from here.
 
-1. Line color
-   Select a line color. [L] uses [Layer Color](#LayerStyle).
-1. Line type
-   Select a linetype. L uses [Layer Line Style](#LayerStyle). [A] is a non-printing line (construction line).
-1. Line width
-   Choose a line width. [L] uses [Layer line width](#LayerStyle).
-1. Start point arrow type
-1. Start arrow size
-1. End point arrow type
-1. End arrow size
+### Zoom Toolbar
 
-#### Face Style Toolbar
+![](./images/zoomtoolbar.png)  
 
-![face style toolbar](./images/facetoolbar.png)
-
-1. Face color
-   Select a face color. [L] uses [Layer Color](#LayerStyle).
-
-#### Text Style Toolbar
-
-![text style toolbar](./images/texttoolbar.png)
-
-1. Text color
-   Select a font color. [L] uses [Layer Color](#LayerStyle).
-1. Font name
-1. Font size
-   The unit is mm.
-4. Bold
-5. Italics
-6. Underlining
-7. Strikeout
-8. Settings
-A settings window will open where you can configure other font settings.
-![text style option](./images/text_style_option.png)
-    1. Font width scale
-    Character width expansion rate.
-    2. Font space
-    Space between letters.
-    3. Font slant angle
-    The slant angle of the characters. The direction tilting to the right is positive.
-    4. Slant only character
-    If checked, each character will be slanted and the background frame will not be slanted. In the figure below, 1 is unchecked and 2 is checked.
-   ![text slant mode](./images/text_slant_mode.png)
-9. Align Left
-10. Central
-11. Right justification
-12. Setting dimension line, etc.
-From here you can set dimension line, leader, marker, etc.
-
-#### Zoom Toolbar
-
-![zoom toolbar](./images/zoomtoolbar.png)
-
-1. Zoom in
-1. Zoom out
-1. View the entire paper.
-2. Zoom area of shapes
-
+1. Zoom In  
+1. Zoom Out  
+1. Displays the entire page.  
+1. Zooms to fit the drawing area of ​​all shapes.  
 
 <a id="SnapToolBar"></a>
-#### Snap Toolbar
 
-![snap toolbar](./images/snaptoolbar.png)
+### Snap Toolbar
 
-If checked, the cursor position is fixed when approaching the end point of the figure.
-1. Vertex
-   Line endpoints, polygon vertices, etc. A "V" appears on the cursor when snapping.
-1. Midpoint
-   Midpoint of a line, 1/4 point of a circle, etc. When snapping, an "M" appears on the cursor.
-1. Center
-   such as the center of a circle. A "C" appears on the cursor when snapped.
-1. Cross
-   The intersection of lines on the same layer. An "X" appears on the cursor.
-1. On the line
-   Snap on line. "L" is displayed on the cursor.
-1. Orthogonal
-   A point perpendicular to a line or circle. A "P" appears on the cursor.
-1. Tangential
-   A point tangent to a circle. A "T" appears on the cursor.
-1. Angle
-   The cursor position is constrained for each angle. "A" and the angle are displayed on the snap cursor.
-1. Grid
-   A grid appears and snaps when the cursor is close to it. "G" is displayed on the snap cursor.
-1. Grid origin setting
-   The grid origin specification mode is entered. Click the mouse at the position where you want to specify the origin on the editing screen.
-1. Pause snap
-   Temporarily stop all snaps.
-2. Snap settings
-   The Snap Settings dialog will open. You can set the number of grid divisions and angle snap angle.
+![](./images/snaptoolbar.png)
 
-![grid settings](./images/snap_grid_setting.png)
-1. Grid size
-grid spacing.
-2. Number of grid divisions
-Number of subgrid divisions.
-3. Grid angle
-You can give the grid a tilt angle.
-1. Force snap to grid
-If checked, it will always snap to the grid when there is no other point to snap to.
-4. Scaled
-If checked, the grid spacing will be a real number.
-5.Type
-Grid type. You can choose straight line or +.
-5. Snap angle
-Set the angle of the angle snap here.
-1. Effective snap radius
-The distance from the mouse cursor position to search for the snap point.
+Checking this option fixes the cursor position when approaching endpoints of shapes, etc.
 
+1. Endpoint  
+Endpoints of lines, vertices of polygons, etc. A "V" appears on the cursor when snapping.
+
+1. Midpoint  
+Midpoints of lines, quarter points of circles, etc. A "M" appears on the cursor when snapping.
+
+1. Center  
+Center of a circle, etc. A "C" appears on the cursor when snapping.  
+1. Intersection  
+Intersections of lines on the same layer. An "X" appears on the cursor.  
+1. On Line  
+Snaps onto lines. An "L" appears on the cursor.  
+1. Orthogonal  
+Points perpendicular to lines or circles. A "P" appears on the cursor.  
+1. Tangent  
+Points tangent to a circle. A "T" will appear on the cursor.  
+1. Angle  
+The cursor position is constrained for each angle. An "A" and the angle will be displayed on the cursor when snapping.  
+1. Snap to All Layers  
+When checked, snaps to shapes on all layers of the same sheet.  
+1. Grid  
+The grid will be displayed, and the cursor will snap when it approaches the grid. A "G" will appear on the cursor when snapping.  
+1. Grid Origin Setting  
+Enters grid origin setting mode. Click the mouse at the desired origin location on the editing screen.  
+1. Pause Snapping  
+Temporarily pauses all snapping.  
+1. Snap Settings  
+Opens the snap settings dialog. You can set the number of grid divisions and the angle of angle snapping.  
+![](./images/snap_grid_setting.png)  
+    i. Grid size  
+    Grid spacing.  
+    i. Grid div  
+    Number of sub-grid divisions.  
+    i. Grid angle  
+    You can set a tilt angle for the grid.  
+    i. Force snap to grid  
+    When checked, the object will always snap to the grid when there are no other points to snap to besides the grid.  
+    i. Scaled  
+    When checked, the grid spacing will be the effective value of the scale.  
+    i. Type  
+    Grid type. You can choose between straight lines and +.  
+    i. Snap angle  
+    Set the angle for angle snapping here.
+    i. Effective snap radius  
+    The distance from the mouse cursor position to find a snap point.
 
 <a id="ToolPanel"></a>
-### 4. Tools panel
-![tool panel](./images/tool_panel.png)
-Select [DrawTools](#DrawTools) from here.
-There are tools, favorite, and recent tabs.
-1. Tools tab
-Select a tool from the category. The categories are "Line", "Circle", "Text", "Dimension", "Transform", "Copy", "Measure", and "Other".
-If you press the displayed icon, the tool with that icon will be selected. When you press the triangle button next to the icon, a list of tools included in the category will be displayed, so please select it.
-2. Favorite
-You can register frequently used tools and access them from here. Registration can be done from "Customize" in the "Tool" menu.
-3.Recent
-Displays recently used tools.
 
-### 5. Tool Options Panel
-This panel is for entering numerical values such as the length and angle that can be set with the [Drawing Tools](#DrawTools).
+## Tool Panel
 
-### 6. Document Panel
-There are tabs for Layers, Sheets, Pages and Parts.
-#### Layer Tab
-Here you can set the layers and select the layers to write.
+![](./images/tool_panel.png)
 
-![layer tab](./images/layertab.png)
-1. Layer Add/Delete button. When there is only one layer, it cannot be deleted.
-2. Layer order button. Swap the order of the selected layers. You can also change the order by dragging the layer name part in the layer list.
-3. Layer display button. From left: all layers visible, non-selected gray, only selected layers visible
-4. Menu button. The following menu will be displayed.
-   - [Turn ON/OFF all visible flags] Turn ON/OFF all visible flags on the list.
-   - [Turn all editable flags ON/OFF] Turn ON/OFF all editable flags on the list.
-   - [Turn ON/OFF all printable flags] Turn ON/OFF the printable flags on the list all at once.
-   - [Layer settings] Displays a dialog for setting the name of the layer, etc. (The items that can be set in this dialog can be edited directly from the layer list, so you may not need to use them.)
-5. Layer list. A list of layers appears. Layers that go down in the layer list are displayed on top of each other on the screen.
-6. Layer name. Double click or F2 key to edit. End editing is decided by Enter key, cancel by Esc key. You cannot enter an anonymous name or the same name as another layer.
-7. Layer display / non-display switching. Layers that are selected but hidden are visible. Hidden layers are also not printed.
-8. Editable/non-editable toggle.
-9. Printable/non-printable switch.
+Select [Drawing Tools](#DrawTools) from here. There are tabs for Tools, Favorites, and Recent.
+
+1. Tools  
+Select a tool from the categories. The categories are "Line," "Circle," "Text," "Dimension," "Transform," "Copy," "Measure," and "Other."  
+Pressing the displayed icon selects the tool associated with that icon. Pressing the triangle button next to the icon displays a list of tools included in the category; select the one you want.  
+1. Favorites  
+You can register frequently used tools and access them from here. Registration can be done from "Customize" in the "Tools" menu.  
+3. Recent  
+This displays the tools you have used recently.  
+
+## Tool Options Panel
+
+This panel is for entering numerical values ​​for length, angle, and other settings that can be configured in the [Drawing Tools](#DrawTools).
+
+<a id="DocumentPanel"></a>
+
+## Document Panel
+
+Contains tabs for Layer, Sheet, Page, and Parts.
+
+### Layer Tab  
+This is where you configure layer settings and select the layer to write on.  
+![](./images/layertab.png)  
+
+1. Add/Delete Layer buttons. Deletion is not possible if there is only one layer.
+2. Move Layer Order button. Rearranges the order of selected layers. You can also rearrange the order by dragging the layer name in the layer list.  
+3. Layer Display button. From left to right: All layers visible, all layers grayed out except selected, only selected layers displayed.  
+1. Menu button. The following menus are displayed:  
+    - [Turn all visible flags ON/OFF] Turns all visible flags on/off in the list.  
+    - [Turn all editable flags ON/OFF] Turns all editable flags on/off in the list.  
+    - [Turn all printable flags ON/OFF] Turns all printable flags on/off in the list.  
+    - [Layer Settings] A dialog box for setting the layer name, etc., will appear (you may not need to use this as the items that can be set in this dialog box can be edited directly from the layer list).  
+1. Layer List. A list of layers is displayed. Layers are displayed stacked on top of each other on the screen, with those lower down in the layer list being the ones at the bottom.  
+1. Layer Name. You can edit it by double-clicking or pressing the F2 key. To finish editing, press the Enter key to confirm, and the Esc key to cancel. You cannot enter an unnamed layer or a name that is the same as another layer.  
+1. Layer Show/Hide Toggle. Even when a layer is hidden, the selected layer will still be displayed. Also, hidden layers will not be printed.  
+1. Editable/Non-Editable Toggle.  
+1. Printable/Non-Printable Toggle.  
 <a id="LayerStyle"></a>
-10. Layer style. Click to specify layer color, line type, and line thickness.
-   - line color
-     This is the line color used when the line color of the figure is set to L (ByLayer).
-   - Line type
-     This is the line type used when the line type of the figure is set to L (ByLayer).
-   - line width
-     This is the line width used when the line width of the figure is set to L (ByLayer).
+1. Layer Style. Clicking this allows you to specify the layer's color, line type, and line thickness.  
+    - Line color  
+    This is the line color used when the shape's line color is set to L (ByLayer).  
+    - Line type  
+    This is the line type used when the shape's line type is set to L (ByLayer).  
+    - Line width  
+    This is the line width used when the shape's line width is set to L (ByLayer).  
 
 <a id="SheetTab"></a>
-#### sheet tabs
-Here you can set the sheet and select the sheet to use for writing.
 
-![](./images/sheettab.png)
+### Sheet Tab
+This is where you configure sheet settings and select the sheet to write on.  
+![](./images/sheettab.png)  
 
-1. Add sheet, delete button. If there is only one sheet, it cannot be deleted.
-2. Sheet view button. From the left, all sheets are visible, other than selected sheets are gray, and only selected sheets are displayed.
-3. Menu button. The following menu will be displayed.
-   - [Turn ON/OFF all visible flags] Turn ON/OFF all visible flags on the list.
-   - [Turn all editable flags ON/OFF] Turn ON/OFF all editable flags on the list.
-   - [Turn ON/OFF all printable flags] Turn ON/OFF the printable flags on the list all at once.
-   - [Sheet Settings] Displays a dialog for setting the name of the sheet, etc. (The items that can be set in this dialog can be edited directly from the sheet list, so you may not need to use them.)
-4. Seat list. A list of sheets is displayed.
-5. Sheet name. Double click or F2 key to edit. End editing is decided by Enter key, cancel by Esc key. You cannot enter an anonymous name or the same name as another sheet.
-6. Sheet display / non-display switching. Sheets that are selected even if they are hidden are displayed. Hidden sheets are also not printed.
-7.Editable/non-editable toggle.
-8. Printable/non-printable switch.
-9. Scale button. Click to display the scale setting dialog.
+1. Add/Delete Sheet Buttons. Deletion is not possible if there is only one sheet.  
+1. Sheet Display Buttons. From left to right: All Sheets Visible, Unselected Sheets Grayed Out, Selected Sheet Only Displayed  
+1. Menu Button. The following menus are displayed:  
+    - [Turn All Visible Flags ON/OFF] Turns all visible flags on the list ON/OFF.
+    - [Turn All Editable Flags ON/OFF] Turns all editable flags on the list ON/OFF.
+    - [Turn All Printable Flags ON/OFF] Turns all printable flags on the list ON/OFF.
+    - [Sheet Settings] A dialog box for setting the sheet name, etc., will appear (you may not need to use this as the items that can be set in this dialog box can be edited directly from the sheet list).
+1. Sheet list. A list of sheets is displayed.
+5. Sheet name. You can edit by double-clicking or pressing the F2 key. To finish editing, press the Enter key to confirm, and the Esc key to cancel. You cannot enter an unnamed sheet or a name that is the same as another sheet.
+6. Sheet Show/Hide Toggle. Even when hidden, selected sheets will be displayed. Also, hidden sheets will not be printed.
+7. Editable/Not Editable Toggle.
+8. Printable/Not Printable Toggle.
+9. Scale Button. Clicking this will display the scale setting dialog box.
 
 <a id="PageTab"></a>
-#### page tabs
-Page settings and selection of pages to be written are performed here.
 
+### Page Tab
+This is where you configure page settings and select the page to write on.  
 ![](./images/pagetab.png)
 
-1. Add page, delete button. If there is only one page, it cannot be deleted.
-2. Add page from file button. Click to open a file selection dialog, and select a file to add a page.
-3. Page list. A list of pages is displayed.
+1. Add/Delete Page Buttons. You cannot delete a page if there is only one page.
+1. Add Page from File button. Clicking this opens a file selection dialog, allowing you to add a page by selecting a file.
+1. Page List. Displays a list of pages.
 
-
-#### Parts tab
-Shapes that are frequently used can be reused as parts. Parts are group entities.
-
+### Parts Tab
+Frequently used shapes can be reused as parts. Parts are group shapes.  
 ![](./images/partstab.png)
 
-1. Add/delete parts button. To add parts, select the shape you want to use as a part with the selection tool and press the Add Parts button. It will be added as a part to the selected parts file. If the part file does not yet exist, a file selection dialog will appear. Create a file with an appropriate name.
-2. Add part file button. A file selection dialog is displayed.
-3. Part file delete button. The file is removed from the list. The file itself is not deleted and remains on the disk.
-4. Other format parts import button. Parts format (jws) of jw_cad can be used.
-5. Paste button. Paste the selected part to the center of the screen.
-6. Scale Enabled checkbox. If checked, it will be pasted at the actual size. If the check is removed, it will be the size on the paper. Symbols should be unchecked.
-7. Part file switching. Click to switch part files.
-8. Parts list. A blue frame is displayed for the selected part. Double-click the part to paste it in the center of the screen.
+1. Add/Delete Parts button. To add a part, select the shape you want to make a part using the selection tool, and then press the Add Part button. It will be added as a part to the selected parts file. If the parts file does not yet exist, a file selection dialog will appear. Please create a file with an appropriate name.
+2. Add Part File button. A file selection dialog will appear.
+3. Delete Part File button. The file will be deleted from the list. The file itself is not deleted and remains on the disk.
+4. Import Other Part Formats button. You can use JW_CAD part formats (JWS), etc.
+5. Paste button. Pastes the selected part to the center of the screen.
+6. Enable Scale checkbox. When checked, the object will be pasted at its actual size. If unchecked, it will be pasted at the size of the paper. It's best to uncheck symbols and other elements.
+1. Switching Part Files. Clicking this allows you to switch between part files.
+1. Part List. The selected part will have a blue border. Double-clicking a part will paste it to the center of the screen.
 
-### 7. Preview panel
-The entire editing screen is displayed. If you select it with the mouse drag, the range will be displayed on the edit screen.
-If [Drawing] is checked, the drawing will be displayed. If the document panel is not checked, the selected layer will be displayed when the layer tab is selected, and the selected sheet will be displayed when the document panel is set to the sheet tab.
+## Preview Panel
+The entire editing screen is displayed. Selecting an area by dragging with the mouse will display that area on the editing screen.  
+If 'Drawing' is checked, the drawing is displayed; if unchecked, the selected layer is displayed when the Document panel is in the Layers tab, and the selected sheet is displayed when it's in the Sheets tab.
 
-### 8. Status Bar
+<a id="StatusBar"></a>
 
+## Status Bar
 ![](./images/statusbar.png)
 
-1. Information display
-   The name of the current tool and operation instructions are displayed. Errors during geometry editing are also displayed here.
-2. Layer button
-   Shows the current layer. You can also make changes from here.
-3. Seat button
-   Displays the current sheet. You can also make changes from here.
-4. Page button
-   You can view and change the current page from here.
-5. Paper size button
-   Displays the current paper size. You can also make changes from here.
+1. Information Display  
+The name and operation description of the current tool are displayed. Errors during drawing editing are also displayed here.  
+2. Layer Button  
+The current layer is displayed. Changes can also be made from here.  
+3. Sheet Button  
+The current sheet is displayed. Changes can also be made from here.  
+4. Page Button  
+The current page can be displayed and changed from here.  
+5. Paper Size Button  
+The current paper size is displayed. Changes can also be made from here.
 
+# Saving/Importing Files in Other Formats
+PreCAD supports saving and importing files from other CAD software. 
+However, compatibility for both saving and importing is not very high. <u>Even if you save an imported file in the same format, the resulting file will be completely different. Please be careful.</u>
 
-## Saving/loading other formats
+## jw_cad
+Conversion is difficult because the layer structure is quite different.  
 
-PreCAD supports saving and loading other CAD files.
+- jwc format is only supported for import.  
+    - Layer groups are converted to sheets.  
+    - Only layers and layer groups that are in use are imported.
+    - Line widths are not reflected. Line types are converted to the closest line type in PreCAD.
+- jww format saving
+    - Sheets are converted to layer groups.
+    - Group shapes are converted to block shapes.
+    - The font of text will be "MS Gothic".
+    - Attributes of various shapes are not saved.
+    - Color tables, etc., are reset. Colors other than solids are not saved.
+    - Line widths are not reflected.
+- jww format import
+    - Layer groups are converted to sheets. 
+    - Only layers and layer groups that are in use will be imported.
+    - Block shapes will be converted to group shapes.
+    - Font settings will not be reflected.
+    - Line width will not be reflected. Line types will be converted to the closest line type in PreCAD.
+    - Pasted images will not be imported.
 
-However, both saving and loading are not very compatible. <u>Even if you save the read file in the same format, the contents will be completely different. be careful. </u>
+## DXF
 
-### jw_cad
+- DXF Save
+    - Line width will not be reflected.
+    - Line colors will be limited to the 16 basic colors.
+    - MTEXT will be converted to multiple texts.
+    - Group shapes and dimension shapes will be saved separately (they will not become blocks).
+    - Sheet scale will not be reflected.
+    - The number of characters in layers and unusable characters are not checked. There may be problems.
+    - Only the minimum necessary information is written in the header, etc. There may be problems.
 
-Conversion is difficult because the layer structure is quite different.
-
-- The jwc format supports reading only.
-   - Layer groups are converted to sheets.
-   - Only used layers and layer groups are loaded.
-   - Line width is not reflected. Linetypes are converted to the closest linetype in PreCAD.
-- jww format save
-   - Sheets are converted to layer groups.
-   - Group entities are converted to block entities.
-   - The character font will be "MS Gothic".
-   - Attributes of various shapes are not saved.
-   - The color table etc. will be reset. Colors are not saved except for solids.
-   - Line width is not reflected.
-- read jww format
-   - Layer groups are converted to sheets.
-   - Only used layers and layer groups are loaded.
-   - Block shapes are converted to group shapes.
-   - Character font is not reflected.
-   - Line width is not reflected. Linetypes are converted to the closest linetype in PreCAD.
-   - Pasted images are not loaded.
-
-### DXF
-
-- Save DXF
-   - Line width is not reflected.
-   - There are 16 basic line colors.
-   - MTEXT will be multiple TEXTs.
-   - Group entities and dimension entities are saved exploded (not block).
-   - Sheet scale is not reflected.
-   - It does not check the number of characters in the layer, disabled characters, etc. there may be a problem.
-   - Only the minimum necessary information is written in the header etc. there may be a problem.
-
-- DXF import
-   - Line width is not reflected.
-   - Some MTEXT formats are supported.
-   - Block shapes are converted to group shapes.
-   - Many elements are not supported.
-   - Character font is not reflected.
-   - When importing, white color is not visible in PreCAD and is converted to black color.
+- DXF Import
+    - Line width will not be reflected.
+    - MTEXT formatting is partially supported.
+    - Block shapes will be converted to group shapes.
+    - Many elements are not supported. 
+    - Font settings will not be reflected.
+    - White color is not visible in PreCAD and will be converted to black.
 
 <a id="DrawTools"></a>
-## Drawing tools
 
-The tools used for drawing and transforming figures are divided into the categories of "Line", "Circle", "Text", "Dimension", "Transform", "Copy", "Measure", and "Other". Select from the "Tools Panel" or "Tools Menu".
+# Drawing Tools  
+Tools used for drawing and transforming shapes are divided into the following categories: "Line", "Circle", "Text", "Dimension", "Transform", "Copy", "Measure", and "Other". Please select from the "Tool Panel" or "Tool Menu".  
+Also, tools will be added and improved sequentially, so the content may often differ from this manual. We plan to display tool descriptions in tooltips and status bar messages.  
+When you select a tool, the following numerical input options will appear in the Tool Options panel.  
+![](./images/option_sample.png)  
+Tools with a checkbox before the numerical input field, like in 1, will only be valid when checked.
+Pressing the calculator icon in 2 will display a calculator, allowing you to input calculation results.  
 
-In addition, since tools are added and improved one by one, the contents of this manual may differ from those of this manual. I'm thinking of displaying tool descriptions in tooltips and status bar messages.
-When you select a tool, the following options for numeric input appear in the Tool Options panel.
+## Line Category
 
-![](./images/option_sample.png)
+### Line ![](./images/ic_tool_line_16.png)
 
-If there is a check box in front of the numerical input field like 1, the numerical value will be valid when it is checked.
-If you press the calculator icon of 2, the calculator will be displayed and you can enter the calculation result.
-### Line Category
+Draws a line by specifying two points. You can specify the line length and angle from the options.
 
-#### Line ![](./images/ic_tool_line_16.png)
+#### Options  
+![](./images/linetool_option.png)  
 
-Draw a line by specifying two points. You can specify the length and angle of the line from the options.
+- Length  
+Checking this option allows you to specify the length.  
+- Angle  
+Checking this option allows you to specify the angle.
 
-##### options
 
-![](./images/linetool_option.png)
+### Continuous Line ![](./images/ic_tool_polyline_16.png)
 
-- length
-   If checked, the length can be specified.
-- angle
-   If checked, the angle can be specified.
+Draw a line by specifying points consecutively. To finish, click the "Finish" button or double-click. Press the Esc key to return to the previous point.  
+Checking "Polyline" creates a polyline, and you can specify the face color.
 
-#### Polyline ![](./images/ic_tool_polyline_16.png)
-
-Draw a line by specifying a series of points. To finish, click the "Exit" button or double-click. Press the Esc key to return to the previous point.
-If you check Polyline, it becomes a polyline and you can specify the color of the face.
-
-##### options
-
+#### Options  
 ![](./images/polylinetool_option.png)
 
-- length
-   If checked, the length can be specified.
-- angle
-   If checked, the angle can be specified.
-- close
-   If checked, the shape will be closed at the start and end points.
-- polyline
-   If checked, it becomes a polyline. Polylines can specify face colors.
-- end
-   Finish drawing.
+- Length  
+Checking this option allows you to specify the length.  
+- Angle  
+Checking this option allows you to specify the angle.  
+- Close  
+Checking this option creates a closed shape with the start and end points closed.  
+- Polyline  
+Checking this option creates a polyline. You can specify the face color for polylines.  
+- Finish  
+Finishes drawing.  
 
+### Rectangle ![](./images/ic_tool_rectangle_16.png)  
 
-#### Rectangle ![](./images/ic_tool_rectangle_16.png)
+Draws a rectangle. If the "Center" option is not checked, specify two vertices. If "Center" is checked, specify the center and a vertex.
 
-Draw a rectangle. If the center option is not checked, specify two vertices. If the center is checked, specify the center and vertex.
+#### Options  
+![](./images/rectangletool_option.png)
 
-##### options
+- Width  
+Checking this option allows you to specify the width of the rectangle.  
+- Height  
+Checking this option allows you to specify the height of the rectangle.
+- Polyline  
+Checking this option creates a polyline. You can specify the face color for polylines.
+- Center  
+Checking this option draws the rectangle by specifying the center point and endpoints.
 
-  ![](./images/rectangletool_option.png)
+### Polygon ![](./images/ic_tool_npolygon_16.png)
 
-  - width
-   If checked, the width of the rectangle can be specified.
-- height
-   If checked, the height of the rectangle can be specified.
-- polyline
-   If checked, it becomes a polyline. Polylines can specify face colors.
-- Center
-   When checked, draws by specifying the center point and end points.
+Draws a regular polygon.  
 
+#### Options
 
+![](./images/npolygontool_option.png)
 
-#### Polygon ![](./images/ic_tool_npolygon_16.png)
+- Side  
+Number of sides of the polygon
+- Length  
+Enables when checked. Means as follows depending on the mode:
+    - Center->Vertex  
+    Distance from the center to the vertex
+    - Center->Edge  
+    Distance from the center to the edge
+    - Base  
+    Length of the base
+- Angle  
+Enables when checked. Means as follows depending on the mode:  
+    - Center->Vertex
+    Angle from the center to the vertex
+    - Center->Edge
+    Angle from the center to the edge
+    - Base
+    Angle of the base
+- Polyline  
+Checks to create a polyline. You can specify the face color for polylines.
+- Mode  
+    There are three modes: Center->Vertex, Center->Edge, and Base.
 
-Draw a regular polygon.
+### Double Line ![](./images/ic_tool_doubleline.png)
 
-##### options
-  ![](./images/npolygontool_option.png)
+Draws two parallel lines. Pressing the Ctrl key allows you to specify a starting point with the same X or Y coordinate.
 
-- side
-   number of sides of polygon
-- length
-   Check to enable. The mode has the following meanings.
-   - Center -> Vertex
-     Distance from center to vertex
-   - center -> edge
-     distance from center to edge
-   - bottom
-     base length
-- Angle: Check to enable. Depending on the mode,
-   - Center -> Vertex
-   center to vertex angle
-   - center -> edge
-   side angle from center
-   - bottom
-   base angle
-- polyline
-   If checked, it becomes a polyline. Polylines can specify face colors.
-- mode
-There are three modes: Center->Vertex, Center->Edge, and Base.
+#### Options
 
-#### double line ![](./images/ic_tool_doubleline.png)
-Draw two parallel lines. If you press the Ctrl key, you can specify a position that has the same X or Y coordinate as the start point.
+![](./images/doublelinetool_option.png)
 
-##### options
+- Gap  
+The distance between lines
+- Length  
+Checking this allows you to specify the length.
+- Angle  
+Checking this allows you to specify the angle.
+- Polyline  
+Checking this creates a polyline.
+- Endpoint Type  
+Specifies the treatment of the line ends.
+    - Open: The ends are not connected.  
+    - Closed: Two closed lines are created with the start and end points connected.
+    - Closed End: One closed line is created with the start and end points connected.
+- Exit
+Ends drawing.
 
-  ![](./images/doublelinetool_option.png)
+### Freehand ![](./images/ic_tool_freehand.png)
 
-- Gap
-   Spacing between lines
-- length
-   If checked, the length can be specified.
-- angle
-   If checked, the angle can be specified.
-- polyline
-   If checked, it becomes a polyline.
-- endpoint type
-   Specifies the treatment of line ends.
-   - Open: Both ends are not connected
-   - Closed: It will be two closed lines with connected start and end points.
-   - End Closed: A closed line that connects the start point and the end point.
-- end
-   Finish drawing.
+Draws lines by tracing the mouse movement. The lines are polylines.
 
-#### Freehand ![](./images/ic_tool_freehand.png)
-Draw a line by following the movement of the mouse. A line is a polyline.
+#### Options
 
-##### options
+![](./images/freehandtool_option.png)
 
-  ![](./images/freehandtool_option.png)
+- Interval  
+A point is added to the polyline when the mouse movement distance exceeds this value. Reducing this value will increase the data size, so please do not make it too small.
+- Close  
+Closes the start and end points.
+- Disable Snap  
+Check this if snapping interferes with drawing.
 
-- interval
-   Add a point to the polyline when the mouse moves more than this value. Decreasing this value increases the amount of data, so do not decrease it too much.
-- close
-   Close the start and end points.
-- disable snap
-   Check if snapping interferes with drawing.
+### Spline ![](./images/ic_tool_spline.png)
 
-#### Spline ![](./images/ic_tool_spline.png)
-Draw a cardinal spline.
+Draws a cardinal spline.
 
-##### options
+#### Options
 
-  ![](./images/splinetool_option.png)
+![](./images/splinetool_option.png)
 
-- close
-   If checked, the shape will be closed at the start and end points.
-- end
-   Finish drawing.
+- Close  
+Checking this will create a closed shape with the start and end points closed.
+- Exit  
+Ends drawing.
 
-#### Orthogonal line ![](./images/ic_tool_perpline_16.png)
-Draw a line perpendicular to the selected line/circle.
-1. Select line or circle
-2. Specify start and end points
-##### options
+### Perpendicular Line ![](./images/ic_tool_perpline_16.png)
 
-  ![](./images/perplinetool_option.png)
+Draws a line perpendicular to the selected line/circle.
 
-- length
-   If checked, the length can be specified.
+1. Select a line or circle
+1. Specify the start and end points
 
-#### Parallel line ![](./images/ic_tool_paraline_16.png)
-Draw a line parallel to the selected line.
-1. Select line
-2. Specify distance from selected line
-3. Specify start and end points
-##### options
+#### Options
 
-  ![](./images/perplinetool_option.png)
+![](./images/perplinetool_option.png)
 
-- length
-   If checked, the length can be specified.
+- Length  
+Check this box to specify the length.
 
-#### middle line ![](./images/ic_tool_middleline.png)
+### Parallel Line ![](./images/ic_tool_paraline_16.png)
 
-Draw a line between the two selected lines.
+Draws a line parallel to the selected line.
+
+1. Select a line
+2. Specify the distance from the selected line
+3. Specify the start and end points
+
+#### Options
+
+![](./images/perplinetool_option.png)
+
+- Length  
+Check this box to specify the length.
+
+### Middle Line ![](./images/ic_tool_middleline.png)
+
+Draws a line midway between the two selected lines.
 
 1. Select two lines
-2. Specify start and end points
+2. Specify the start and end points
 
-##### options
+#### Options
 
-  ![](./images/perplinetool_option.png)
+![](./images/perplinetool_option.png)
 
-- length
-   If checked, the length can be specified.
+- Length  
+Check this box to specify the length.
 
-#### Tangent line ![](./images/ic_tool_tangentline_16.png)
-Draw a tangent to the circle.
+### Tangent Line ![](./images/ic_tool_tangentline_16.png)
+
+Draws a tangent line to a circle.
+
 1. Select a circle
-2. Specify start and end points
-##### options
+2. Specify the start and end points
+
+#### Options
 
 ![](./images/linetool_option.png)
 
-- length
-   If checked, the length can be specified.
-- angle
-   If checked, the angle can be specified.
+- Length  
+Check this box to specify the length.
+- Angle  
+Check this box to specify the angle.
 
-#### Circle and line tangent to circle ![](./images/ic_tool_tangentline2_16.png)
-Draw a circle and a line tangent to the circle. A tangent is drawn from the vicinity of the selected point on each circle.
+### Line Tangent to Two Circles ![](./images/ic_tool_tangentline2_16.png)
 
-#### Circle center line ![](./images/ic_tool_circlecenter_16.png)
-Draw the center line of the selected circle.
-1. Select a circle
+Draws a line tangent to two circles. The tangent lines are drawn from the vicinity of the selected points on each circle.
+
+### Circle Centerline ![](./images/ic_tool_circlecenter_16.png)
+
+Draws the centerline of the selected circle.
+
+1. Select the circle
 2. Specify the length of the centerline
-##### options
+
+#### Options
 
 ![](./images/circlecentertool_option.png)
 
-- Ratio [%]
-   If checked, the length of the center line can be specified as a ratio of the diameter.
+- Ratio [%]  
+Checking this box allows you to specify the length of the centerline as a ratio to the diameter.
 
-#### Breakline ![](./images/ic_tool_breakline.png)
+### Break Line ![](./images/ic_tool_breakline.png)
 
-Draw a break line.
+Draws a break line.
 
-##### options
+#### Options
 
 ![](./images/breaklinetool_option.png)
 
-- kinds
-   Type of break line. Zigzag, wavy lines, and S can be selected.
-- size
-   Please think about it as a guideline.
+- Type  
+The type of break line. Zigzag, wavy, and S are available.
+- Size  
+Consider this as a guideline.
 
+## Circle Category
 
-### Circle Category
+### Circle ![](./images/ic_tool_circle_16.png)
 
-#### Circle ![](./images/ic_tool_circle_16.png)
-Draw a circle by specifying the center and radius.
-##### options
+Draws a circle by specifying the center and radius.
 
+#### Options
 ![](./images/circletool_option.png)
 
-- Radius
-   If checked, the radius can be specified.
+- Radius  
+Checking this box allows you to specify the radius.
 
-#### 3 point circle ![](./images/ic_tool_circle3p_16.png)
-Draw a circle that passes through the 3 points.
-##### options
+### 3-Point Circle ![](./images/ic_tool_circle3p_16.png)
 
+Draws a circle passing through three points.
+
+#### Options
 ![](./images/circletool_option.png)
 
-- Radius
-   If checked, the radius can be specified. The third point is the direction of the circle.
+- Radius  
+Checking this box allows you to specify the radius. The third point determines the direction of the circle.
 
-#### Ellipse ![](./images/ic_tool_oval_16.png)
-Draw an ellipse by specifying the center, radius, flatness, and angle.
-##### options
+### Ellipse ![](./images/ic_tool_oval_16.png)
 
+Draws an ellipse by specifying the center, radius, flattening ratio, and angle.
+
+#### Options
 ![](./images/ovaltool_option.png)
 
-- Radius
-   If checked, the radius can be specified.
-- Oblateness
-   If checked, the flatness can be specified.
-- angle
-   If checked, the inclination of the ellipse can be specified.
+- Radius  
+Checking this box allows you to specify the radius.
+- Flatness  
+Checking this box allows you to specify the aspect ratio.
+- Angle  
+Checking this box allows you to specify the ellipse's inclination.
 
-#### Ellipse (2 points) ![](./images/ic_tool_oval2p_16.png)
-Draw an ellipse by specifying two points.
-##### options
+### Ellipse (2 points) ![](./images/ic_tool_oval2p_16.png)
 
+Draws an ellipse by specifying two points.
+
+#### Options
 ![](./images/oval2ptool_option.png)
 
-- width
-   If checked, the width can be specified.
-- height
-   If checked, the height can be specified.
-- center
-   If checked, the center and vertex will be specified.
+- Width  
+Checking this box allows you to specify the width.
+- Height  
+Checking this box allows you to specify the height.
+- Center  
+Checking this box specifies the center and vertices.
 
-#### Circle tangent to line ![](./images/ic_tool_circleonline.png)
-Draw a circle tangent to one line or circle.
-1. Select line or circle
-2. Specify center point
-##### options
+### Circle Tangent to a Line ![](./images/ic_tool_circleonline.png)
 
+Draws a circle tangent to a line or circle.
+
+1. Select a line or circle
+2. Specify the center point
+
+#### Options
 ![](./images/circletool_option.png)
 
-- Radius
-   If checked, the radius can be specified.
+- Radius  
+Checking this box allows you to specify the radius.
 
-#### Two-line tangent circle ![](./images/ic_tool_circleon2line.png)
-Draw a circle tangent to two lines or circles.
+### Two-Line Tangent Circle ![](./images/ic_tool_circleon2line.png)
+
+Draws a circle tangent to two lines or circles.
+
 1. Select two lines or circles
 2. Specify a passing point
-##### options
 
+#### Options
 ![](./images/circletool_option.png)
 
-- Radius
-   If checked, the radius can be specified.
+- Radius  
+Checking this box allows you to specify the radius.
 
-#### 3-line tangent circle ![](./images/ic_tool_circleon3line.png)
-Draw a circle tangent to three lines or circles.
-1. Select 3 lines or circles. If all lines, the circle ends here.
-2. Select the target from multiple circles that can be drawn
+### Three-Line Tangent Circle ![](./images/ic_tool_circleon3line.png)
 
-#### Arc ![](./images/ic_tool_arc_16.png)
-Draw an arc by specifying the center, radius, starting angle, and width.
-##### options
+Draws a circle tangent to three lines or circles.
 
+1. Select three lines or circles. If all are lines, the circle will be drawn here.
+2. Select the desired circle from multiple drawable circles.
+
+### Ellipse Tangent to Two Lines ![](./images/ic_tool_ellipseon2line.png)
+
+Draws an ellipse tangent to two lines forming a parallelogram.
+
+### Arc ![](./images/ic_tool_arc_16.png)
+
+Draws an arc by specifying the center, radius, starting angle, and angle width.
+
+#### Options
 ![](./images/arctool_option.png)
 
-- Radius
-   If checked, the radius can be specified.
-- starting angle
-   If checked, the starting angle can be specified.
-- corner width
-   If checked, the width of the corner can be specified.
+- Radius  
+Check this to specify the radius.
+- Starting Angle  
+Check this to specify the starting angle.
+- Angular Width  
+Check this to specify the angle width.
 
-#### 3-point arc ![](./images/ic_tool_arc3p_16.png)
-Draw an arc by specifying the start point, end point, and passing point.
-##### options
+### Three-Point Arc ![](./images/ic_tool_arc3p_16.png)
 
+Draws an arc by specifying the start point, end point, and passing points.
+
+#### Options
 ![](./images/circletool_option.png)
 
 - Radius
-   If checked, the radius can be specified.
+Checking this box allows you to specify the radius.
 
-#### Semicircle ![](./images/ic_tool_halfcircle_16.png)
-Draw a semicircle by specifying the start point, end point, and direction.
-##### options
+### Semicircle ![](./images/ic_tool_halfcircle_16.png)
+
+Draws a semicircle by specifying the start point, end point, and direction.
+
+#### Options
+![](./images/halfcircletool_option.png)
+
+- Radius  
+Checking this box allows you to specify the radius.
+- Angle  
+Checking this box allows you to specify the slope of the semicircle.
+
+### Quartercircle ![](./images/ic_tool_quartercircle_16.png)
+
+Draws a semicircle by specifying the center, end point, and direction.
+
+#### Options
 
 ![](./images/halfcircletool_option.png)
 
-- Radius
-   If checked, the radius can be specified.
-- angle
-   If checked, the inclination of the semicircle can be specified.
+- Radius  
+Checking this box allows you to specify the radius.
+- Angle  
+Checking this box allows you to specify the angle of the semicircle.
 
-#### 1/4 yen ![](./images/ic_tool_quartercircle_16.png)
-Draw a semicircle by specifying the center, end point, and direction.
-##### options
+## Text Category
 
-![](./images/halfcircletool_option.png)
+### Text ![](./images/ic_tool_text_16.png)
 
-- Radius
-   If checked, the radius can be specified.
-- angle
-   If checked, the inclination of the semicircle can be specified.
+Draws a single line of text.  
+The background color of the text can be specified using the "Face" color of the style.  
+Due to font issues, the font and size of the text may vary depending on the device. Please position the text with sufficient margin.
 
-### Character category
-
-#### Characters ![](./images/ic_tool_text_16.png)
-Draw a line of letters.
-You can specify the background color of the text using the "face" color of the style.
-Due to font issues, characters may vary in typeface and size depending on the model. Arrange them so that there is room to spare in terms of size, etc.
-
-##### options
-
+#### Options
 ![](./images/texttool_option.png)
 
-- Character input area
-- text criteria
-   Reference point to place the characters.
-- angle
-- Vertical writing
-   If checked, it will be written vertically.
+- Text Input Area  
+- Text Reference Point  
+Reference point for placing text
+- Angle  
+- Vertical Writing  
+Checking this box enables vertical writing.
 
-#### Multi-line characters ![](./images/ic_tool_multitext.png)
-Draw multiple lines of text.
-You can specify the background color of the text using the "face" color of the style.
-Due to font issues, characters may vary in typeface and size depending on the model. Arrange them so that there is room to spare in terms of size, etc.
-##### options
+### Multi-Line Text ![](./images/ic_tool_multitext.png)
 
+Draws multiple lines of text.  
+The background color of the text can be specified using the "Face" color of the style.  
+Due to font issues, the font and size of the text may vary depending on the device. Please position the text with sufficient margin.
+
+#### Options
 ![](./images/multitexttool_option.png)
 
-- Character input area
-- Character Alignment Standard
-   Reference point to place the characters. You can set center, bottom left, etc.
-- angle
-- vertical text
-   If checked, it will be written vertically.
+- Text Input Area
+- Text Alignment Reference Point  
+The reference point for aligning text. You can set the center, bottom left, etc.
+- Angle
+- Vertical Text  
+Checking this will enable vertical writing.
 
-#### Leader line ![](./images/ic_tool_leader.png)
-Draw a leader line.
-##### options
+### Leader Line ![](./images/ic_tool_leader.png)
 
+Draws a leader line.
+
+#### Options
 ![](./images/leadertool_option.png)
 
-- Character input area.
-- setting
-   The Callout Settings dialog will open.
+- Text Input Area
+- Settings  
+Opens the leader line settings dialog.
 
-#### Balloon ![](./images/ic_tool_balloon.png)
-Draw a balloon.
-##### options
+### Balloon ![](./images/ic_tool_balloon.png)
 
+Draws a balloon.
+
+#### Options
 ![](./images/leadertool_option.png)
 
-- Character input area.
-- setting
-   The Callout Settings dialog will open.
+- Text Input Area
+- Settings  
+Opens the leader line settings dialog.
 
-### Dimension Category
+## Dimension Category
 
-#### Dimensions ![](./images/ic_tool_dimension.png)
-Draw a dimension shape.
-##### options
+### Dimension ![](./images/ic_tool_dimension.png)
 
+Draws a dimension shape.
+
+#### Options
 ![](./images/dimensiontool_option.png)
 
-- kinds
-   - normal: no constraint
-   - Horizontal: dimension lines constrained horizontally
-   - Vertical: dimension lines constrained vertically
-   - Horizontal Vertical: Dimension lines constrained horizontally and vertically
-- continue
-   If checked, the dimension line will be drawn continuously from the previous point. Exit with the Esc key.
-- center
-   If checked, the dimension value is drawn at the center of the dimension line.
-- letter
-   If checked, any character is drawn on the dimension line.
-- setting
-   Open the dimension line settings dialog.
-- tolerance
-     Type: Display method of tolerance (None: no display, One line: one line (±), Two lines: 2 lines)
-     Value Acceptable value
-     Number of digits after the decimal point
-     Suffix character Character to be added after the allowable value
+- Mode
+    - Normal: No constraints
+    - Horizontal: Dimension line constrained horizontally
+    - Vertical: Dimension line constrained vertically
+    - Horizontal/Vertical: Dimension line constrained horizontally and vertically
+- Continuous  
+When checked, the dimension line is drawn continuously from the previous point. Press the Esc key to exit.
+- Center  
+When checked, the dimension value is drawn at the center of the dimension line.
+- Text  
+When checked, arbitrary text is drawn on the dimension line.
+- Settings  
+Opens the dimension line settings dialog.
+- Tolerance  
+    - Type: How to display the tolerance value (None: No display; One line: One line (±);  Two lines: Two lines)  
+    -  Value: Tolerance value  
+    -  Decimal places: Number of decimal places  
+    -  Suffix: Characters to add after the tolerance value  
 
-#### Diameter ![](./images/ic_tool_diameter.png)
-Draw the diameter dimension of the circle.
-1. Select a circle
-2. Specify the angle and character position of the dimension figure
-##### options
+### Diameter ![](./images/ic_tool_diameter.png)
 
+Draws the diameter dimension of a circle.
+
+1. Select the circle
+2. Specify the angle of the dimension shape and the position of the text
+
+#### Options
 ![](./images/diametertool_option.png)
 
-- Center
-   If checked, the dimension value is drawn at the center of the dimension line.
-- letter
-   If checked, any character is drawn on the dimension line.
-- setting
-   Open the dimension line settings dialog.
-- tolerance
-     Type: Display method of tolerance (None: no display, One line: one line (±), Two lines: 2 lines)
-     Value Acceptable value
-     Number of digits after the decimal point
-     Suffix character Character to be added after the allowable value
+- Center  
+Checking this option draws the dimension value at the center of the dimension line.
+- Text  
+Checking this option draws arbitrary text on the dimension line.
+- Settings  
+Opens the dimension line settings dialog.
+- Tolerance
+    - Type: How the tolerance value is displayed (None: No display; One line: One line (±); Two lines: Two lines)
+    - Value: Tolerance value
+    - Decimal places: Number of decimal places
+    - Suffix: Character to add after the tolerance value
 
-#### Radius ![](./images/ic_tool_radius.png)
-Draw the radius dimension of the circle.
-1. Select a circle
-2. Specify the angle and character position of the dimension figure
-##### options
+### Radius ![](./images/ic_tool_radius.png)
 
+Draws the radius dimension of a circle.
+
+1. Select the circle
+2. Specify the angle of the dimension shape and the text position
+
+#### Options
 ![](./images/diametertool_option.png)
 
-- Center
-   If checked, the dimension value is drawn at the center of the dimension line.
-- letter
-   If checked, any character is drawn on the dimension line.
-- setting
-   Open the dimension line settings dialog.
-- tolerance
-     Type: Display method of tolerance (None: no display, One line: one line (±), Two lines: 2 lines)
-     Value Acceptable value
-     Number of digits after the decimal point
-     Suffix character Character to be added after the allowable value
+- Center  
+Checking this option draws the dimension value at the center of the dimension line.
+- Text  
+Checking this option draws arbitrary text on the dimension line.
+- Settings  
+Opens the dimension line settings dialog.
+- Tolerance  
+    - Type: Display method of tolerance value (None: No display; One line: One line (±); Two lines: Two lines)
+    - Value: Tolerance value
+    - Decimal places: Number of decimal places
+    - Suffix: Character to add after the tolerance value
 
-#### Angle ![](./images/ic_tool_angle3p.png)
-Draws an angle figure by specifying the center, two lead points, and the character position.
-##### options
+### Angle ![](./images/ic_tool_angle3p.png)
 
+Draws an angle shape by specifying the center, two leader points, and text position.
+
+#### Options
 ![](./images/diametertool_option.png)
 
-- Center
-   If checked, the dimension value is drawn at the center of the dimension line.
-- letter
-   If checked, any character is drawn on the dimension line.
-- setting
-   Open the dimension line settings dialog.
-- tolerance
-     Type: Display method of tolerance (None: no display, One line: one line (±), Two lines: 2 lines)
-     Value Acceptable value
-     Number of digits after the decimal point
-     Suffix character Character to be added after the allowable value
+- Center  
+Checking this option draws the dimension value at the center of the dimension line.
+- Text  
+Checking this option draws arbitrary text on the dimension line.
+- Settings  
+Opens the dimension line settings dialog.
+- Tolerance  
+    - Type: How to display the tolerance value (None: No display; One line: One line (±); Two lines: Two lines)
+    - Value: Tolerance value
+    - Decimal places: Number of decimal places
+    - Suffix: Character to add after the tolerance value
 
-####Angle between two lines ![](./images/ic_tool_angle.png)
-Draw an angle figure between two lines.
+### Angle between two lines ![](./images/ic_tool_angle.png)
+
+Draws the angle between two lines.
+
 1. Select two lines
-2. Specify character position
-##### options
+2. Specify the text position
+
+#### Options
 
 ![](./images/diametertool_option.png)
 
-- Center
-   If checked, the dimension value is drawn at the center of the dimension line.
-- letter
-   If checked, any character is drawn on the dimension line.
-- setting
-   Open the dimension line settings dialog.
-- tolerance
-     Type: Display method of tolerance (None: no display, One line: one line (±), Two lines: 2 lines)
-     Value Acceptable value
-     Number of digits after the decimal point
-     Suffix character Character to be added after the allowable value
+- Center  
+Checking this option draws the dimension value at the center of the dimension line.
+- Text  
+Checking this option draws arbitrary text on the dimension line.
+- Settings  
+Opens the dimension line settings dialog.
+- Tolerance  
+    - Type: How to display the tolerance value (None: No display; One line: One line (±); Two lines: Two lines)
+    - Value: Tolerance value
+    - Decimal places: Number of decimal places
+    - Suffix: Character to add after the tolerance value
 
-#### Line dimensions ![](./images/ic_tool_linedimension.png)
+### Line Dimensions ![](./images/ic_tool_linedimension.png)
 
-Draw the length of the selected line, the diameter of the circle.
-1. Select line/circle
-2. Specify character position
-  
+Draws the length of the selected line and the diameter of the circle.
+
+1. Select the line/circle
+2. Specify the text position
+
 ![](./images/linedimensiontool_option.png)
 
-- setting
-   Open the dimension line settings dialog.
-- tolerance
-     Type: Display method of tolerance (None: no display, One line: one line (±), Two lines: 2 lines)
-     Value Acceptable value
-     Number of digits after the decimal point
-     Suffix character Character to be added after the allowable value
+- Settings  
+Opens the dimension line settings dialog.
+- Tolerance  
+    - Type: How the tolerance value is displayed (None: No display; One line: One line (±); Two lines: Two lines)
+    - Value: Tolerance value
+    - Decimal places: Number of decimal places
+    - Suffix: Characters to add after the tolerance value
 
-#### Skewdimension ![](./images/ic_tool_skewdimension.png)
+### Dimension Line Skew ![](./images/ic_tool_skewdimension.png)
 
-Bevels the dimension line. After selecting the dimension line, specify the tilt angle. You can also choose to have the letters slanted together. Can be used to create dimensions for isometric drawings.
+Skews the dimension line. After selecting the dimension line, specify the angle to skew. You can also choose whether to skew the text. Can be used to create dimensions in isometric drawings.
 
-##### options
+#### Options
 
 ![](./images/skewdimensiontool_option.png)
 
-- Character tilt
+- Text Skew  
+When checked, the text will be skewed along with the dimension line.
 
 
-### Deformation category
+## Transformation Category
 
-#### Corner ![](./images/ic_tool_corner_16.png)
+### Corner ![](./images/ic_tool_corner_16.png)
 
-Select two lines or arcs to connect them to create a corner.
+Select two lines or arcs to connect them and create a corner.
 
-#### Chamfer ![](./images/ic_tool_chamfer_16.png)
+### Chamfer ![](./images/ic_tool_chamfer_16.png)
 
-2-line chamfer
+Two-line chamfer
+
 1. Select two lines
-2. Specify chamfer size
-##### options
+2. Specify the chamfer size
 
-  ![](./images/perplinetool_option.png)
+#### Options
 
-- length
-   When checked, the chamfer size can be specified.
+![](./images/perplinetool_option.png)
 
-#### Corner rounding ![](./images/ic_tool_fillet_16.png)
+- Length  
+Checking this allows you to specify the chamfer size.
 
-Select two lines or arcs to connect them and round the corners.
+### Round Corner ![](./images/ic_tool_fillet_16.png)
+
+Select two lines or arcs to connect them and round the corner.
+
 1. Select two lines
-2. Specify corner rounding radius
+2. Specify the radius for rounding the corners
 
-##### options
+#### Options
 
 ![](./images/circletool_option.png)
 
-- Radius
-   If checked, the radius can be specified.
+- Radius  
+Checking this box allows you to specify a radius.
 
-#### Line extension ![](./images/ic_tool_extendline_16.png)
+### Line Extension ![](./images/ic_tool_extendline_16.png)
 
-First select a line. Extends or shortens the next selected line to be tangent to the first selected line.
-You can select line, circle, arc, or polyline for the first figure. For the second line, you can select a line or an arc.
+First, select a line. Then, extend or shorten the selected line so that it is tangent to the first selected line.  
+The first shape can be a line, circle, arc, or polyline. The second shape can be a line or arc.
 
-#### Line Erase ![](./images/ic_tool_eraseline_16.png)
+### Line Deletion ![](./images/ic_tool_eraseline_16.png)
 
-Deletes the selected line/circle up to the intersection of other figures.
+Deletes the selected line or circle up to the intersection point of another shape.
 
-#### Line cut ![](./images/ic_tool_cutline.png)
+### Line Cutting ![](./images/ic_tool_cutline.png)
 
-Specify a rectangle with two points and erase the line between them.
+Specify a rectangle at two points and delete the line between them.
 
-#### Trim ![](./images/ic_tool_trim.png)
+### Trim ![](./images/ic_tool_trim.png)
 
-A rectangle is specified by two points, and the endpoints and intersections of the lines in it are cut and connected (envelope processing).
+Specify a rectangle with two points and cut or connect the endpoints and intersections of lines within it (envelope operation).
 
-#### operation ![](./images/ic_tool_operation.png)
+### Operation ![](./images/ic_tool_operation.png)
 
-Operate between two circles, closed polylines, etc. There are AND, OR, and SUB operations. Please choose from the options. The result of the operation is a closed polyline. A part of a circle, etc. becomes a segmented line segment.
+Perform an operation between two circles or a closed polyline. Operations include AND, OR, and SUB. Please select from the options. The result of the operation will be a closed polyline. Parts of circles, etc., will be divided into line segments.
 
-#### Stretch ![](./images/ic_tool_stretch.png)
+### Stretch ![](./images/ic_tool_stretch.png)
 
-Specify a rectangle with two points and extend the endpoints of the lines in it.
-1. Specify the area containing the endpoints with two points.
-2. Specify a reference point.
-3. Specify an extension point.
+Specify a rectangle with two points and extend the endpoints of lines within it.
 
-#### Selection Tool ![](./images/DirectSelection_16x.png)
+1. Specify the area including the endpoints with two points.
+2. Specify the reference point.
+3. Specify the extension point.
 
-- Select a shape and move/transform it. Group figures and parts are also done with this.
-- There are two ways to select a shape: directly clicking on the shape and encircling it with two points.
-- When enclosing with two points, enclosing from left to right selects the figure that is entirely within that range. If you select from right to left, part of the shape will be selected if it is in range.
-- Drag the selected shape to move the shape.
-- A handle is displayed on the selected figure, and you can scale it by dragging the handle. If "Move handle" is checked, it will be moved by dragging the handle.
-- If you move/resize while pressing the Ctrl key, the original shape remains (copy).
-- When moving while pressing the Shift key, the movement direction is constrained vertically and horizontally. The aspect ratio is fixed when scaling by dragging the handle.
+<a id="SelectTool"></a>
 
-##### options
+### Selection Tool ![](./images/DirectSelection_16x.png)
 
-![setect tool options](./images/selecttool_option.png)
+- Select shapes and perform actions such as moving and transforming them. Grouping shapes and creating parts are also done with this tool.
+- There are two ways to select shapes: by clicking directly on the shape, or by drawing a box around it with two points.
+- When drawing a box with two points, drawing from left to right selects the entire shape within that box. Drawing from right to left selects only a portion of the shape within the box.
+- Drag the selected shape to move it.
+- Handles will appear on the selected shape; dragging these handles will resize it. If "Handle Movement" is checked, dragging the handles will move the shape.
+- Holding down the Ctrl key while moving or resizing will leave a copy of the original shape.
+- Holding down the Shift key while moving restricts the movement direction to vertical and horizontal. Resizing by dragging the handles locks the aspect ratio.
 
-- mode
-    1. Move by dragging the handle
-   Normally, you can scale by dragging the handle, but if you turn it on, it will move without scaling.
-     1. Vertex edit mode
-   Handles are normally on the outline of the rectangular area of the figure, but when turned on, handles are displayed at the vertices of polylines and the like. In this mode you can edit the vertices of polylines.
-     1. Continuous line selection mode
-   When turned on, all lines connected to the clicked line can be selected at once.
-- deformation
-     1. Horizontal flip
-   Click to flip the selected shape horizontally.
-     1. Upside down
-   Click to flip the selected shape upside down.
-     1. left rotation
-   Click to rotate the selected figure 90 degrees to the left.
-     1. Right rotation
-   Click to rotate the selected shape 90 degrees to the right.
-     1. Right rotation
-   Click to rotate the selected shape 90 degrees to the right.
-     1. Rotation
-   When clicked, the rotation angle input dialog is displayed, and you can rotate by specifying the angle.
-     1. Move
-   When clicked, the move coordinate input dialog is displayed, and you can move by specifying relative coordinates.
-     1. Resize
-   When clicked, a resizing dialog is displayed, and you can specify the scaling factor to scale.
+#### Options
 
-- change
-     1. Grouping
-     Click to convert the selected shapes to group shapes.
-     1. Ungroup
-     Click to ungroup the selected group entities.
-     1. Polyline
-     Click to convert the selected shape to a polyline.
-     1. Line differentiation
-   Click to break the selected shape into line segments.
+![](./images/selecttool_option.png)
 
-- order
-     1. Top surface
-     Click to move the stacking order of the selected figure to the top.
-     1. Bottom surface
-     Click to move the stacking order of the selected shapes to the bottom.
-     1. Layer change
-   Click to display the layer change dialog and move the selected shape to another layer.
+- Mode
+    i. Move with Handle Drag  
+    Normally, dragging the handles resizes the object, but when enabled, it moves without resizing.
+    i. Vertex Editing Mode  
+    Normally, handles are on the outline of the rectangular area of ​​the shape, but when enabled, handles are displayed on the vertices of polylines, etc. In this mode, you can edit the vertices of polylines.
+    i. Continuous Line Selection Mode  
+    When enabled, you can select all lines connected to the clicked line at once.
 
-- Alignment
-   Align selected shapes.
+- Transform
+    i. Flip Horizontally  
+    Clicking flips the selected shape horizontally.
+    i. Flip Vertically  
+    Clicking flips the selected shape vertically.
+    i. Rotate Left  
+    Clicking rotates the selected shape 90 degrees to the left.
+    i. Rotate Right  
+    Clicking rotates the selected shape 90 degrees to the right.
+    i. Rotate  
+    Clicking this will display a rotation angle input dialog, allowing you to specify an angle for rotation.
+    i. Move  
+    Clicking this will display a move coordinate input dialog, allowing you to specify relative coordinates for movement.
+    i. Resize  
+    Clicking this will display a resize dialog, allowing you to specify a magnification for scaling.
+    i. Shear  
+    Performs shear deformation. Clicking this will display a dialog where you can select the type of shear.
 
-- Placement
-   Distribute the selected shapes evenly.
+- Change
+    i. Group  
+    Clicking this will convert the selected shapes into a group shape.
+    i. Ungroup  
+    Clicking this will ungroup the selected group shapes.
+    i. Convert to Polyline  
+    Clicking this will convert the selected shapes into a polyline.
+    i. Decompose into Line Segments  
+    Clicking this will decompose the selected shapes into line segments.
+
+- Order
+    i. Top Layer  
+    Clicking this will move the stacking order of the selected shapes to the top layer.
+    i. Bottom Layer  
+    Clicking this will move the stacking order of the selected shapes to the bottom layer.
+    i. Change Layer  
+    Clicking this will display the Change Layer dialog box, moving the selected shapes to another layer.
+
+- Align  
+Aligns the selected shapes.
+
+- Distribute  
+Distributes the selected shapes evenly.
 
 
-### Copy Category
+## Copy Category
 
-#### Offset ![](./images/ic_tool_offset_16.png)
+### Offset ![](./images/ic_tool_offset_16.png)
 
-Offset lines and circles.
+Offsets lines and circles.
 
-##### options
+#### Options
 
-![offset tool options](./images/offsettool_option.png)
+![](./images/offsettool_option.png)
 
-- Gap
-   You can specify the interval to offset.
-- copy
-   If checked, the original shape will remain.
-- format copy
-   When checked, the line color of the original figure is used. If there is no check, the current line color etc. will be used.
-- rerun
-   The offset is executed at the last executed interval.
+- Gap  
+Specifies the offset interval.
+- Copy  
+Checking this option preserves the original shape.
+- Copy Formatting  
+Checking this option uses the line color of the original shape. If unchecked, the current line color, etc., are used.
+- Re-execute  
+The offset is executed at the interval from the previous execution.
 
-#### Line Copy ![](./images/ic_tool_linecopy_16.png)
+### Line Copy ![](./images/ic_tool_linecopy_16.png)
 
-Copies the selected shape linearly.
-1. Select a shape and end the selection with the right button. The reference point is the point where the right button is pressed.
-2. Specify end point of copy
+Copies the selected shape along a straight line.
 
-##### options
+1. Select the shape and right-click to finish the selection. The reference point is the point where you right-clicked.
+1. Specify the End Point of the Copy
 
-![line-copy tool options](./images/linecopytool_option.png)
+#### Options
 
-- number of copies
-- interval
-   You can specify the interval to copy.
+![](./images/linecopytool_option.png)
 
-#### Circle Copy ![](./images/ic_tool_circlecopy_16.png)
+- Number of Copies
+- Interval  
+You can specify the interval for copying.
 
-Copies the selected shape into a circle.
-1. Select a shape and end the selection with the right button. The reference point is the point where the right button is pressed.
-2. Specify the center point of the copied shape.
+### Circle Copy ![](./images/ic_tool_circlecopy_16.png)
 
-##### options
+Copies the selected shape in a circle.
 
-![circle-copy tool options](./images/circlecopytool_option.png)
+1. Select the shape and finish the selection by right-clicking. The reference point is the point where you right-clicked.
+2. Specify the center point of the shape to be copied.
 
-- Radius
-   A numerical value can be specified for the radius of the circular copy.
-- rotate
-   If checked, the figure will be rotated.
-- number of copies
-  
-#### Array copy ![](./images/ic_tool_arraycopy_16.png)
+#### Options
 
-Copies the selected shape horizontally and vertically.
-1. Select a shape and end the selection with the right button. The reference point is the point where the right button is pressed.
+![](./images/circlecopytool_option.png)
+
+- Radius  
+You can specify the radius for the circle copy numerically.
+- Rotation  
+Checking this will rotate the shape.
+- Number of Copies  
+
+### Array Copy ![](./images/ic_tool_arraycopy_16.png)
+
+Copies the selected shape vertically and horizontally.
+
+1. Select the shape and right-click to finish the selection. The reference point is the point where you right-clicked.
 2. Specify the end point of the copy.
 
-##### options
+#### Options
 
-![array-copy tool options](./images/arraycopytool_option.png)
+![](./images/arraycopytool_option.png)
 
-- column
-   number of copies in column direction
-- row
-   number of copies in the horizontal direction
-- column spacing
-   You can specify the spacing between columns to copy.
-- line spacing
-   You can specify the spacing between lines to copy.
+- Column  
+Number of copies in the column direction
+- Row  
+Number of copies in the row direction
+- Column Spacing  
+You can specify the spacing of the columns to copy.
+- Row Spacing  
+You can specify the spacing of the rows to copy.
 
-#### Rotate ![](./images/ic_tool_rotate.png)
+### Rotation ![](./images/ic_tool_rotate.png)
 
-Rotate the shape.
-1. Select a shape and end the selection with the right button. The reference point is the point where the right button is pressed.
+Rotates the shape.
+
+1. Select the shape and right-click to finish the selection. The reference point is the point where you right-clicked.
 2. Specify the center point of the shape
-3. Specify rotation angle
+3. Specify the rotation angle
 
-##### options
+#### Options
 
-![rotate tool options](./images/rotatetool_option.png)
+![](./images/rotatetool_option.png)
 
-- angle
-   If checked, the angle can be specified.
-- copy
-   If checked, the original shape will remain.
+- Angle  
+Checking this box allows you to specify the angle.
+- Copy  
+Checking this option will keep the original shape.
 
-#### Baseline Copy ![](./images/ic_tool_baselinecopy_16.png)
+### Baseline Copy ![](./images/ic_tool_baselinecopy_16.png)
 
-Performs horizontally reversed copy and skew correction.
-1. Select a shape and end the selection with the right button.
-2. Specify the start point and end point of the reference line.
-##### options
+Performs horizontal flip and tilt correction.
 
-![baseline-copy tool options](./images/baselinecopytool_option.png)
+1. Select the shape and right-click to finish the selection.
+2. Specify the start and end points of the baseline.
 
-- copy
-   If checked, the original shape will remain.
-- type
-   - Mirror Reverses left and right with respect to the reference line.
-   - Horizontal Rotate so that the reference line is horizontal. Used for tilt correction.
-   - Vertical Rotate so that the reference line is vertical. Used for tilt correction.
+#### Options
+![](./images/baselinecopytool_option.png)
 
-#### Cross copy ![](./images/ic_tool_crosscopy_16.png)
-Place the copied shape at the intersection of the shapes.
-1. Select the shape and end the selection with the right button. The reference point is the point where you pressed the right button.
-2. Select the shapes where you want to find the intersection. Press the right button to complete the selection and copy.
+- Copy  
+Checking this option will keep the original shape.
+- Type  
+    - Mirror: Flips horizontally relative to the baseline.  
+    - Horizontal: Rotates the baseline to be horizontal. Used for tilt correction.
+    - Vertical: Rotates the baseline to be vertical. Used for tilt correction.
 
-#### Evenly copy ![](./images/ic_tool_evenlycopy_16.png)
-Duplicate shapes evenly spaced between them. Applies to straight lines, circles, and arcs.
-If the target shape is a straight line, you can select from the options whether to divide the interval equally or divide the angle equally.
+### Intersection Copy ![](./images/ic_tool_crosscopy_16.png)
+
+Places the copied shape at the intersection of the shapes.
+
+
+1. Select the shapes and right-click to finish the selection. The reference point is the point where you right-clicked.
+2. Select the shapes where you want to find the intersection. Right-click to finish the selection, and the copy will be executed.
+
+### Equally Spacing Copy ![](./images/ic_tool_evenlycopy_16.png)
+
+Duplicates shapes at equal intervals between them. Lines, circles, and arcs are targeted.
+
+If the target shape is a line, you can choose from the options to divide the interval equally or divide the angle equally.
+
 1. Select two shapes to copy. The second shape selected must be the same as the first shape.
 
-### Measurement Category
 
-#### Measurement (line) ![](./images/ic_tool_measure_16.png)
+## Measurement Categories
 
-Measure the distance and angle between two points.
+### Measurement (Line) ![](./images/ic_tool_measure_16.png)
 
-#### Measurement (area) ![](./images/ic_tool_measurearea.png)
+Measures the distance and angle between two points.
 
-Measures the area and length of a region bounded by multiple points.
+### Measurement (Area) ![](./images/ic_tool_measurearea.png)
 
-#### Measurement (shape) ![](./images/ic_tool_measureshape.png)
+Measures the area and length of a region enclosed by multiple points.
 
-Measures the area and length of figures.
+### Measurement (Shape) ![](./images/ic_tool_measureshape.png)
 
-### Other Categories
+Measures the area and length of a shape.
 
-#### point ![](./images/ic_tool_marker.png)
-Do a dot.
+## Other Categories
 
-##### options
+### Point ![](./images/ic_tool_marker.png)
 
-![marker tool options](./images/markertool_option.png)
+Places a point.
 
-- angle
-   slope of the point.
-- tentative point
-   If checked, auxiliary line types are used (not printed).
-- setting
-   Open the settings dialog. You can choose the type and size of the points. The point type "dot" is displayed in the same size regardless of the screen magnification (the size cannot be specified).
+#### Options
 
-#### Division point ![](./images/ic_tool_dividepoint.png)
+![](./images/markertool_option.png)
 
-Plot the points that divide the line or circle.
+- Angle  
+Point inclination
+- Temporary Point  
+Checking this option uses a guide line type (not printed).
+- Settings  
+Opens the settings dialog. You can choose the type and size of the point. The "dot" type of point will be displayed at the same size regardless of the screen zoom level (size cannot be specified).
 
-##### options
+### Divide Point ![](./images/ic_tool_dividepoint.png)
 
-![divide point tool options](./images/dividepointtool_option.png)
+Places points that divide lines or circles into equal parts.
 
-- Division number
-   - tentative point
-   If checked, auxiliary line types are used (not printed).
-- setting
-   Open the settings dialog. You can choose the type and size of the points. The point type "dot" is displayed in the same size regardless of the screen magnification (the size cannot be specified).
+#### Options
 
-#### hatching ![](./images/ic_tool_hatching.png)
+![](./images/dividepointtool_option.png)
 
-Create a hatch. Hatching becomes a group entity.
-1. Select the hatch area. The hatched area doesn't have to be closed, but it often fails.
-2. Perform hatching with a right-click. The point where the right button is pressed becomes the reference point for hatching.
+- Number of Divisions
+- Temporary Points  
+Checking this option uses auxiliary line types (they are not printed).
+- Settings  
+Opens the settings dialog. You can choose the type and size of the points. The "dot" type of point will be displayed at the same size regardless of the screen zoom level (size cannot be specified).
 
-##### options
+### Hatching ![](./images/ic_tool_hatching.png)
 
-![hatching tool options](./images/hatchingtool_option.png)
+Creates hatching. Hatching becomes a group shape.
 
-- kinds
-   Select a hatch type.
-- pitch
-   pitch of hatching
-- angle
-   angle of hatching
-- interval
-   2 or 3 hatch style lines and line spacing
+1. Select the hatching area. The hatching area does not need to be closed, but often fails if it is not.
+2. Right-click to perform hatching. The point where you press the right button becomes the hatching reference point.
 
-#### Coordinate file ![](./images/ic_tool_measurecoordinate.png)
-When you load a coordinate file, this tool draws a shape connecting the coordinates with a line with the cursor position as the origin.
-A coordinate file consists of XY coordinates separated by spaces on each line.
-For details, please see the sample file that can be loaded from the options.
+#### Options
 
-#### Script ![](./images/ic_tool_script.png)
-You can load and use Jw_cad line symbol files.
-##### Options
-![script tool options](./images/scriptingtool_option.png)
-1. Open file button
-Clicking it will display a file open dialog.
-2. The opened file name will be displayed.
+![](./images/hatchingtool_option.png)
+
+- Type  
+Select the hatching type.
+- Pitch  
+Hatching pitch
+- Angle  
+Hatching angle
+- Spacing  
+Spacing between lines for 2- or 3-line hatching styles
+
+### Coordinate File ![](./images/ic_tool_measurecoordinate.png)
+
+This tool draws a shape with the cursor position as the origin, connecting the coordinates in a loaded coordinate file.  
+The coordinate file consists of XY coordinates separated by spaces on each line. 
+For details, please refer to the sample file which can be loaded from the options.
+
+### Script ![](./images/ic_tool_script.png)
+
+Allows you to load and use Jw_cad line symbol files.
+
+#### Options
+
+![](./images/scriptingtool_option.png)
+
+1. Open File Button  
+Clicking this button displays the file open dialog.
+2. The opened file name is displayed.
 3. Title
-4. When you open a file, an icon will appear that you can select to perform its function.
-  
-#### Milling G-Code (experimental) ![](./images/ic_tool_millinggcode_16.png)
-Create G-code for tabletop CNC milling plane cutting. I currently don't have a chance to test it on an actual machine, so I'm only checking it on a simulator.   
+4. When a file is opened, an icon is displayed; selecting it executes its function.
+
+### Milling G-Code (Experimental) ![](./images/ic_tool_millinggcode_16.png)
+
+This creates G-code for planar milling on a desktop CNC milling machine. Currently, there is no opportunity to test it on a real machine, so it is only being tested on a simulator.
