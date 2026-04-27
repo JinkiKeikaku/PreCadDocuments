@@ -5,5 +5,4 @@ if errorlevel 1 (
   goto :EOF
 )
 index.html
-index_en.html
 rem pause
