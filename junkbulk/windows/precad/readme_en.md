@@ -1,11 +1,6 @@
 ---
 title: PreCad for Windows
 toc: false
-header-includes:
-  - |
-    <style>
-      h1.title { display: none; }
-    </style>
 ---
 
 # About PreCad for Windows
