@@ -4600,8 +4600,18 @@ $(window).bind('resizeEnd', function() {
 }).call(this);
 </script>
     <meta name="generator" content="pandoc" />
-  <title>PreCad file format</title>
+  <title>PreCad 座標ファイルフォーマット ver 1.1 仕様書　Rev.1</title>
   <style type="text/css">code{white-space: pre;}</style>
+  <style>
+@media print {
+
+pre, code {
+background-color: #f4f4f4 !important;
+-webkit-print-color-adjust: exact !important; 
+print-color-adjust: exact !important; 
+}
+}
+</style>
 </head>
 <body>
 
@@ -4609,7 +4619,8 @@ $(window).bind('resizeEnd', function() {
     <div class="navbar navbar-static-top">
     <div class="navbar-inner">
       <div class="container">
-        <span class="doc-title">PreCad file format</span>
+        <span class="doc-title">PreCad 座標ファイルフォーマット ver 1.1
+仕様書　Rev.1</span>
         <ul class="nav pull-right doc-info">
                             </ul>
       </div>
@@ -4621,16 +4632,70 @@ $(window).bind('resizeEnd', function() {
         <div class="well toc">
 
         <ul>
-        <li><a href="#precad-file-format-ver-2.11.0仕様書-rev.0" id="toc-precad-file-format-ver-2.11.0仕様書-rev.0"><span class="toc-section-number">1</span> PreCad file format ver
-        2.11.0仕様書　Rev.0</a>
+        <li><a href="#ファイル仕様" id="toc-ファイル仕様"><span class="toc-section-number">1</span> ファイル仕様</a>
         <ul>
-        <li><a href="#precadの特徴" id="toc-precadの特徴"><span class="toc-section-number">1.1</span> PreCadの特徴</a></li>
-        <li><a href="#インデックスファイル" id="toc-インデックスファイル"><span class="toc-section-number">1.2</span>
-        インデックスファイル</a></li>
-        <li><a href="#図面ファイル" id="toc-図面ファイル"><span class="toc-section-number">1.3</span> 図面ファイル</a></li>
-        <li><a href="#補足" id="toc-補足"><span class="toc-section-number">1.4</span> 補足</a></li>
-        <li><a href="#履歴" id="toc-履歴"><span class="toc-section-number">1.5</span> 履歴</a></li>
+        <li><a href="#文字コード" id="toc-文字コード"><span class="toc-section-number">1.1</span> 文字コード</a></li>
+        <li><a href="#コメント" id="toc-コメント"><span class="toc-section-number">1.2</span> コメント</a></li>
+        <li><a href="#数値" id="toc-数値"><span class="toc-section-number">1.3</span> 数値</a></li>
+        <li><a href="#文字列" id="toc-文字列"><span class="toc-section-number">1.4</span> 文字列</a></li>
+        <li><a href="#行" id="toc-行"><span class="toc-section-number">1.5</span> 行</a>
+        <ul>
+        <li><a href="#座標行" id="toc-座標行"><span class="toc-section-number">1.5.1</span> 座標行</a></li>
+        <li><a href="#コマンド行" id="toc-コマンド行"><span class="toc-section-number">1.5.2</span> コマンド行</a></li>
         </ul></li>
+        <li><a href="#用語" id="toc-用語"><span class="toc-section-number">1.6</span> 用語</a>
+        <ul>
+        <li><a href="#属性" id="toc-属性"><span class="toc-section-number">1.6.1</span> 属性</a></li>
+        <li><a href="#カレント属性" id="toc-カレント属性"><span class="toc-section-number">1.6.2</span> カレント属性</a></li>
+        <li><a href="#カレントレイヤ" id="toc-カレントレイヤ"><span class="toc-section-number">1.6.3</span> カレントレイヤ</a></li>
+        <li><a href="#用紙寸実寸" id="toc-用紙寸実寸"><span class="toc-section-number">1.6.4</span> 用紙寸・実寸</a></li>
+        </ul></li>
+        </ul></li>
+        <li><a href="#コマンド解説" id="toc-コマンド解説"><span class="toc-section-number">2</span> コマンド解説</a>
+        <ul>
+        <li><a href="#制御コマンド" id="toc-制御コマンド"><span class="toc-section-number">2.1</span> 制御コマンド</a>
+        <ul>
+        <li><a href="#ps" id="toc-ps"><span class="toc-section-number">2.1.1</span> ps</a></li>
+        <li><a href="#p0" id="toc-p0"><span class="toc-section-number">2.1.2</span> p0</a></li>
+        </ul></li>
+        <li><a href="#ドキュメントコマンド" id="toc-ドキュメントコマンド"><span class="toc-section-number">2.2</span> ドキュメントコマンド</a>
+        <ul>
+        <li><a href="#layer" id="toc-layer"><span class="toc-section-number">2.2.1</span> layer</a></li>
+        </ul></li>
+        <li><a href="#属性コマンド" id="toc-属性コマンド"><span class="toc-section-number">2.3</span> 属性コマンド</a>
+        <ul>
+        <li><a href="#lc" id="toc-lc"><span class="toc-section-number">2.3.1</span> lc</a></li>
+        <li><a href="#lt" id="toc-lt"><span class="toc-section-number">2.3.2</span> lt</a></li>
+        <li><a href="#lw" id="toc-lw"><span class="toc-section-number">2.3.3</span> lw</a></li>
+        <li><a href="#lz" id="toc-lz"><span class="toc-section-number">2.3.4</span> lz</a></li>
+        <li><a href="#fc" id="toc-fc"><span class="toc-section-number">2.3.5</span> fc</a></li>
+        <li><a href="#mt" id="toc-mt"><span class="toc-section-number">2.3.6</span> mt</a></li>
+        <li><a href="#ms" id="toc-ms"><span class="toc-section-number">2.3.7</span> ms</a></li>
+        <li><a href="#tc" id="toc-tc"><span class="toc-section-number">2.3.8</span> tc</a></li>
+        <li><a href="#tb" id="toc-tb"><span class="toc-section-number">2.3.9</span> tb</a></li>
+        <li><a href="#fn" id="toc-fn"><span class="toc-section-number">2.3.10</span> fn</a></li>
+        <li><a href="#fh" id="toc-fh"><span class="toc-section-number">2.3.11</span> fh</a></li>
+        <li><a href="#fw" id="toc-fw"><span class="toc-section-number">2.3.12</span> fw</a></li>
+        <li><a href="#fs" id="toc-fs"><span class="toc-section-number">2.3.13</span> fs</a></li>
+        <li><a href="#fa" id="toc-fa"><span class="toc-section-number">2.3.14</span> fa</a></li>
+        <li><a href="#ff" id="toc-ff"><span class="toc-section-number">2.3.15</span> ff</a></li>
+        <li><a href="#fnt" id="toc-fnt"><span class="toc-section-number">2.3.16</span> fnt</a></li>
+        </ul></li>
+        <li><a href="#図形コマンド" id="toc-図形コマンド"><span class="toc-section-number">2.4</span> 図形コマンド</a>
+        <ul>
+        <li><a href="#line" id="toc-line"><span class="toc-section-number">2.4.1</span> line</a></li>
+        <li><a href="#circle" id="toc-circle"><span class="toc-section-number">2.4.2</span> circle</a></li>
+        <li><a href="#arc" id="toc-arc"><span class="toc-section-number">2.4.3</span> arc</a></li>
+        <li><a href="#fan" id="toc-fan"><span class="toc-section-number">2.4.4</span> fan</a></li>
+        <li><a href="#polyline" id="toc-polyline"><span class="toc-section-number">2.4.5</span> polyline</a></li>
+        <li><a href="#spline" id="toc-spline"><span class="toc-section-number">2.4.6</span> spline</a></li>
+        <li><a href="#bezier" id="toc-bezier"><span class="toc-section-number">2.4.7</span> bezier</a></li>
+        <li><a href="#text" id="toc-text"><span class="toc-section-number">2.4.8</span> text</a></li>
+        <li><a href="#marker" id="toc-marker"><span class="toc-section-number">2.4.9</span> marker</a></li>
+        <li><a href="#group" id="toc-group"><span class="toc-section-number">2.4.10</span> group</a></li>
+        </ul></li>
+        </ul></li>
+        <li><a href="#履歴" id="toc-履歴"><span class="toc-section-number">3</span> 履歴</a></li>
         </ul>
 
         </div>
@@ -4638,424 +4703,223 @@ $(window).bind('resizeEnd', function() {
             <div class="span9">
 
       
-      <h1 data-number="1" id="precad-file-format-ver-2.11.0仕様書-rev.0"><span class="header-section-number">1</span> PreCad file format ver
-2.11.0仕様書　Rev.0</h1>
-<h2 data-number="1.1" id="precadの特徴"><span class="header-section-number">1.1</span> PreCadの特徴</h2>
+      <h1 data-number="1" id="ファイル仕様"><span class="header-section-number">1</span> ファイル仕様</h1>
+<h2 data-number="1.1" id="文字コード"><span class="header-section-number">1.1</span> 文字コード</h2>
 <ul>
-<li>PreCadは2DCADです。複数のページを作成することができます。</li>
-<li>各ページにはレイヤーの他にシートがあります。シートは縮尺を設定できます。</li>
-<li>シートを複数使用することで縮尺の異なる部分図を作成することができます。</li>
-<li>PreCadのファイルは複数のファイルをZIP形式で圧縮し、拡張子をpcadとしたものです。拡張子をzipに変えて展開すると内容を確認することができます。
-## ファイル構成</li>
-<li>PreCadの図面ファイルはインデックスファイル及び複数の図面ファイルにより構成されています。それらをzipで圧縮後、拡張子をpcadに変更したものです。そのためPreCadのファイルの拡張子をzipに変更し解凍すると構成するファイルを確認することができます。
-以下はファイル構成の例です。</li>
-</ul>
-<pre><code>/
- ├index
- ├drawing_1.pcdt
- ├drawing_2.pcdt
- ├drawing_3.pcdt
- └media/
-   ├ e87099e2-8962-4e33-9de5-87eda5b55270.jpg
-   └ 01ed77be-822f-474b-a297-6d4c025ba6be.jpg</code></pre>
-<ul>
-<li>インデックスファイル及び図面ファイルはテキストファイルで文字コードはUTF8です。改行コードはLF(0x0A)もしくはCRLF(0x0D,
+<li>テキストファイルで文字コードはUTF8（BOM無し）です。改行コードはLF(0x0A)もしくはCRLF(0x0D,
 0x0A)です。</li>
-<li>ファイルフォーマットはタグパラメータ形式を使用しています。タグパラメータ形式はタグの次にパラメータを()で囲み記述します。パラメータは、数値、文字列、ラベル及びタグパラメータを複数含めることができます。パラメータの区切りは空白文字です。また、パラメータがないタグも存在します。タグの出現順は一部（セクション、ページ、レイヤ、シート、図形の順序など）を除き自由です。</li>
-<li>タグ名は大文字小文字を区別します。</li>
-<li>一部のタグには短縮形があります。この仕様書では短縮形があるものは[]で囲って併記します。</li>
-<li>改行や空白などは無視されます（ただし、ファイル先頭のfiletypeは除きます）。</li>
-<li>//から行末まではコメントです。</li>
-<li>数値は整数（Int）もしくは実数（Double）でタグごとに判断します。</li>
-<li>整数は16進表記も使えます。16進表記では先頭に0xを付けます。16進表記は主に色値に使います。色値は32ビットARGBです。</li>
-<li>文字列はダブルクォーテーションでくくります。文字列中の行末の改行は無視されます。<code>\</code>はエスケープ文字です。改行は<code>\n</code>、タブは<code>\t</code>です。<code>\</code>の後にその他の文字が来た場合はその文字が使われます（例えばダブルクォーテーションは<code>\&quot;</code>を使います）。</li>
-<li>ラベルは<code>%</code>で始まる任意の文字の集合です。例えば、色で<code>%l</code>はレイヤ線色を表します。文字のスタイルフラグの<code>%ib</code>はイタリックとボールドの組み合わせです。</li>
-<li>ファイルの１行目に<code>filetype</code>タグを記入してください。</li>
-<li>例えば、indexファイルは１行目に<code>filetype(&quot;precad_archive&quot;)</code>と記入します。これでファイルの種類を判別します。<code>filetype(&quot;precad_archive&quot;)</code>はタグパラメータ形式ですが、途中に空白や改行を入れず行の先頭から書いてください（ファイル種別の判別を簡略化するためです）。</li>
-<li>１行目のfiletypeはアプリケーション側で一行読み込んで文字列として比較しても通常のタグパラメータと同じように解析してもどちらでも問題ありません。</li>
-<li>mediaフォルダは画像などを同梱する時に使います。画像はこのフォルダに保存する他に、図面ファイル内に文字列として同梱することもできます。</li>
-<li>以下はタグパラメータ形式の例です。</li>
 </ul>
-<pre><code>filetype(&quot;sample&quot;)  //一行目はファイルタイプ。ここでは空白文字を使わないこと。
-tag1(1)     //単独の数値。整数とするか実数とするかはタグの種類による。
-tag2(&quot;STRING&quot;)  //単独の文字列。
-tag3(10.0 15.5) //座標。数値を空白文字で区切る。
-tag4(tag1(5.5)tag2(&quot;xyz&quot;))  //複数のタグパラメータ。
-tag5(0xFF000000)    //16進数は整数として解釈する。主に色で使われる。
-tag7(%ab)   //ラベル
-tag8(%)     //ラベル。%だけも有効
-byLayer()     //パラメータなし。
-//次の二つはどちらも同じ（タグ（ここではtag1, tag2）の順序はどちらが先でもよいという例）
-tag9(tag1(5.5)tag2(123))
-tag9(tag2(123)tag1(5.5))
-</code></pre>
-<h2 data-number="1.2" id="インデックスファイル"><span class="header-section-number">1.2</span> インデックスファイル</h2>
-<p>インデックスファイルのファイル名は<code>index</code>です。このファイルにページの情報と共通する設定を記入します。
--
-1行目に<code>filetype(&quot;precad_archive&quot;)</code>を空白文字なしで記入してください。
--
-2行目以降にfileinfo、contents、settingsのセクションが続きます。この出現順は守ってください。バージョンアップ等で新たにセクションが加わるかもしれませんので未知のセクションは読み飛ばせるようにしてください。</p>
-<p>以下はindexファイルの例です。</p>
-<pre><code>filetype(&quot;precad_archive&quot;)
-fileinfo(
- version(2.0.0)appinfo(&quot;precad for windows version 2.0.0.0&quot;)
-)
-contents(
- pages(
-  page(
-   title(&quot;Page1&quot;)drawing(&quot;drawing_1.pcdt&quot;)
-  )
-  page(
-   title(&quot;Page2&quot;)drawing(&quot;drawing_2.pcdt&quot;)
-  )
- )
-)
-settings(
- pageIndex(0)
- paper(name(&quot;A3&quot;)size(297 210))
- grid(p0(0 0)gridSizeOnPaper(10)div(5)isScaled(0)angle(0.0))
- printInfo(printPaperSize(420.0 297.0)printCenter(0.0 0.0)printScale(2.0))
-)</code></pre>
-<h3 data-number="1.2.1" id="fileinfoセクション"><span class="header-section-number">1.2.1</span> fileinfoセクション</h3>
-<p>ファイルの情報です。</p>
-<table>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>version(version)</td>
-<td>version : String</td>
-<td>フォーマットのバージョン</td>
-</tr>
-<tr>
-<td>appinfo(name)</td>
-<td>name : String</td>
-<td>作成したアプリの情報</td>
-</tr>
-</tbody>
-</table>
+<h2 data-number="1.2" id="コメント"><span class="header-section-number">1.2</span> コメント</h2>
 <ul>
-<li>バージョンは2.1.0のようにメジャーバージョン、マイナ―バージョン、リビジョンを小数点で分割します。</li>
-<li>メジャーバージョンは大きなファイル構造の変更時に変更します。マルチページ対応時に1から2に上がりました。メジャーバージョンが上がり旧アプリで読めない場合はエラーを表示します（メジャーバージョンが上がった場合、おそらくそうなるでしょう）。</li>
-<li>マイナーバージョンは要素追加、タグ名の変更・削除などで変わります。この変更で新バージョンのファイルを旧バージョンで読むと情報の欠落などが起こるかもしれません。必要であれば警告を表示します。</li>
-<li>読み込み時、マイナーバージョンにより処理を変えることを推奨しません。マイナーバージョンはあくまでも参考とし、タグをもとに読み込みを行うべきです。</li>
-<li>リビジョンはその他軽微な変更で変わります。</li>
+<li><code>#</code>以降は文字列内を除きコメントです。</li>
+<li>ファイルの一行目に<code>#preco</code>と記入すると、クリップボード経由などで貼り付けるとタイプ識別が行われます（予定）。</li>
 </ul>
-<h3 data-number="1.2.2" id="contentsセクション"><span class="header-section-number">1.2.2</span> contentsセクション</h3>
-<h4 data-number="1.2.2.1" id="pages"><span class="header-section-number">1.2.2.1</span> pages</h4>
-<p>ページのリストです。1ページから順に並びます。</p>
-<h4 data-number="1.2.2.2" id="page"><span class="header-section-number">1.2.2.2</span> page</h4>
-<table>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>title(title)</td>
-<td>title : String</td>
-<td>図面のタイトル</td>
-</tr>
-<tr>
-<td>drawing(file)</td>
-<td>file : String</td>
-<td>図面のファイル名</td>
-</tr>
-</tbody>
-</table>
+<h2 data-number="1.3" id="数値"><span class="header-section-number">1.3</span> 数値</h2>
 <ul>
-<li>図面ファイルの拡張子は<code>pcdt</code>(PreCad Drawing
-Text)です。</li>
+<li>数値は整数もしくは実数で小数点は<code>.</code>（ピリオド）です。<br />
+</li>
+<li>整数は、16進表記も可能です（主に色に使います）。16進表記は最初に0xを付けます。xやaからfは大文字と小文字を区別しません（<code>0xffaa1234</code>や<code>0XCC1234AA</code>など）。<br />
+</li>
+<li>色は32ビットで並びはARGBです。<br />
+</li>
+<li>角度の単位は度(degree)で反時計回りが正です。ただし、フォントの傾きは右回りが正です。</li>
 </ul>
-<h3 data-number="1.2.3" id="settingsセクション"><span class="header-section-number">1.2.3</span> settingsセクション</h3>
-<p>設定を記述します。</p>
-<pre><code>settings(
- pageIndex(0)   
- paper(name(&quot;A3&quot;)size(297 210))
- grid(p0(0 0)gridSizeOnPaper(10)div(5)isScaled(0)angle(0.0))
- printInfo(printPaperSize(420.0 297.0)printCenter(0.0 0.0)printScale(2.0))
-)</code></pre>
-<h4 data-number="1.2.3.1" id="pageindex-int"><span class="header-section-number">1.2.3.1</span> pageIndex : Int</h4>
-<p>選択されていたページのインデクス（0が1ページ目）。</p>
-<h4 data-number="1.2.3.2" id="paper"><span class="header-section-number">1.2.3.2</span> paper</h4>
-<p>用紙設定。画面上で表示される用紙のサイズで印刷用紙で無いことに注意。
-| 要素 | パラメータ | 説明 | |—–|——|—–| | size(width height) | width :
-Double, height : Double| 用紙サイズ。|</p>
-<p>PreCadでは以下の用紙リストから用紙を選択する。</p>
-<p>用紙名リスト（用紙は横向きが基準） |用紙名|サイズ(幅 x 高さ) mm|備考|
-|–|–|–| |Letter|279 x 216|11 x 8.5 in| |A4|297 x 210| | |A3|420 x 297| |
-|A2|594 x 420| | |A1|841 x 594| | |A0|1189 x 841| | |2A|1682 x 1189| |
-|3A|2378 x 1682| | |4A|3364 x 2378| | |5A|4756 x 3364| |</p>
-<h4 data-number="1.2.3.3" id="grid"><span class="header-section-number">1.2.3.3</span> grid</h4>
-<p>グリッドの設定</p>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>p0(x y)</td>
-<td>x : Double, y : Double</td>
-<td>グリッド原点</td>
-</tr>
-<tr>
-<td><del>spacing(s)</del></td>
-<td>s : Double</td>
-<td>グリッド間隔(廃止)</td>
-</tr>
-<tr>
-<td>div(n)</td>
-<td>n : Int</td>
-<td>グリッド間隔をn分割</td>
-</tr>
-<tr>
-<td>isScaled(f)</td>
-<td>f : Int</td>
-<td>0:グリッド間隔は用紙寸<br>1:グリッド間隔は実寸</td>
-</tr>
-<tr>
-<td>angle(s)</td>
-<td>s : Double</td>
-<td>グリッド角度（度）</td>
-</tr>
-<tr>
-<td>gridSizeOnPaper(s)</td>
-<td>s : Double</td>
-<td>用紙上のグリッド間隔</td>
-</tr>
-</tbody>
-</table>
+<h2 data-number="1.4" id="文字列"><span class="header-section-number">1.4</span> 文字列</h2>
 <ul>
-<li>spacingは2.8.0で追加された長さの単位と相性が悪いため2.8.0以降不使用。gridSizeOnPaperを使用する。</li>
+<li>文字列は<code>&quot;</code>(ダブルクォーテーション)で囲みます。<br />
+</li>
+<li>文字列中に<code>&quot;</code>が必要な場合は<code>\&quot;</code>とします。文字列中に<code>\</code>が必要な場合は<code>\\</code>です。</li>
+<li>文字列は複数行にわたることがあります。ただし、改行は無視されます。文字列として改行したい場合は<code>\n</code>を使います。例えば、</li>
 </ul>
-<h4 data-number="1.2.3.4" id="printinfo"><span class="header-section-number">1.2.3.4</span> printInfo</h4>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>printPaperSize(width height)</td>
-<td>width : Double, height : Double</td>
-<td>印刷する用紙のサイズ</td>
-</tr>
-<tr>
-<td>printCenter(x y)</td>
-<td>x : Double, y : Double</td>
-<td>印刷領域の中心座標</td>
-</tr>
-<tr>
-<td>printScale(scale)</td>
-<td>scale : Double</td>
-<td>印刷倍率</td>
-</tr>
-</tbody>
-</table>
-<h2 data-number="1.3" id="図面ファイル"><span class="header-section-number">1.3</span> 図面ファイル</h2>
-<p>図面ファイルは各ページの図面本体です。
-１行目に<code>filetype(&quot;precad_document&quot;)</code>を記入してください。これでファイルの種類を判別します。
-２行目以降にfileinfo、contents、settingsのセクションが続きます。この出現順は守ってください。バージョンアップ等で新たにセクションが加わるかもしれませんので未知のセクションは読み飛ばせるようにしてください。</p>
-<h3 data-number="1.3.1" id="fileinfoセクション-1"><span class="header-section-number">1.3.1</span> fileinfoセクション</h3>
-<p>ファイルの情報です。インデックスファイルに準拠します。</p>
-<table>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>version(version)</td>
-<td>version : Stgring</td>
-<td>フォーマットのバージョン</td>
-</tr>
-<tr>
-<td>appinfo(name)</td>
-<td>name : String</td>
-<td>作成したアプリの情報</td>
-</tr>
-</tbody>
-</table>
-<h3 data-number="1.3.2" id="contentsセクション-1"><span class="header-section-number">1.3.2</span> contentsセクション</h3>
-<p>レイヤ、シート、図形を記述します。
-drawingファイルでは基本的に使用する要素は事前に定義されていなければいけません。したがってshapesはsheet及びlayerが必要になるのでshapesの前にlayers及びsheetsが必要になります（layersとsheetsの出現順には制約がありません）。</p>
-<pre><code>contents(
- layers(
-  layer(name(&quot;テスト1&quot;)color(0xFF000000)lineWidth(0))
-  layer(name(&quot;テスト2&quot;)color(0xFF000000)lineWidth(0))
- )
- sheets(
-  sheet(name(&quot;シート1&quot;)scale(0.3))
-  sheet(name(&quot;シート2&quot;)scale(0.3))
- )
- shapes(
-  sheet(&quot;シート2&quot;)
-   layer(&quot;テスト1&quot;)
-    ls(w(0.5))  //線幅0.5に変更。lineStyle(width(0.5))の省略形
-    Line(...)
-    Circle(...)
-   layer(&quot;テスト2&quot;)
-    ls(w(1.0))
-    Line(...)
-  ...
- )
-)        </code></pre>
-<h4 data-number="1.3.2.1" id="layers"><span class="header-section-number">1.3.2.1</span> layers</h4>
-<p>レイヤのリストです。並びは表示されるときの重ね順で下から上になります。
-##### layer | 要素 | パラメータ | 説明 | |—–|——|—–| | name(name) | name
-: String | レイヤ名 | | color(c) | c : Int | レイヤ色<br>省略時
-0xff000000（黒） | | lineWidth(w) | w : Double | レイヤ線幅<br>省略時
-0.0 | | lineType(t) | t : String | レイヤ線種名<br>省略時
-“solid”（実線） | | visible(f) | f : Int | 0:非表示 1:表示<br>省略時 1 |
-| printable(f) | f : Int | 0:印刷不可 1:印刷可<br>省略時 1 | |
-editable(f) | f : Int | 0:編集不可 1:編集可<br>省略時 1 |</p>
-<h4 data-number="1.3.2.2" id="sheets"><span class="header-section-number">1.3.2.2</span> sheets</h4>
-<p>シートのリストです。並びは表示されるときの重ね順で下から上になります。
-##### sheet | 要素 | パラメータ | 説明 | |—–|——|—–| | name(name) | name
-: String | レイヤ名 | | scale(s) | s : Double | 縮尺 <br>省略時 1.0| |
-visible(f) | f : Int | 0:非表示 1:表示<br>省略時 1 | | printable(f) | f
-: Int | 0:印刷不可 1:印刷可<br>省略時 1 | | editable(f) | f : Int |
-0:編集不可 1:編集可<br>省略時 1 |</p>
-<h4 data-number="1.3.2.3" id="shapes"><span class="header-section-number">1.3.2.3</span> shapes</h4>
-<p>図形のリストです。図形以外にsheet、layer及び属性値タグがあらわれます。
-- sheetコマンドで現在の書き込みシートを切り替えます。 -
-layerコマンドで現在の書き込みレイヤを切り替えます。 -
-属性値（線種など）が図形外で使われた場合、その属性は以降の図形で使われます。
-- 図形の並びは表示されるときの重ね順で下から上になります。</p>
-<h4 data-number="1.3.2.4" id="図形共通"><span class="header-section-number">1.3.2.4</span> 図形共通</h4>
+<pre><code>&quot;The Martians are
+ coming!&quot;</code></pre>
+<p>は、<code>The Martians are coming!</code>
+となります。改行が必要な場合は、<code>The Martians are\n coming!</code>とします。</p>
+<h2 data-number="1.5" id="行"><span class="header-section-number">1.5</span> 行</h2>
 <ul>
-<li>座標及び大きさ（線幅、半径、文字サイズ等）は用紙寸です。シートの縮尺で割ることで実寸になります。</li>
-<li>座標原点は用紙の中心でX軸は右が正、Y軸は上が正です。</li>
-<li>角度は度(degree)です。左回りが正です。</li>
-<li>図形には、座標などのパラメータの他に線種などの属性があります。</li>
-<li>図形のパラメータは省略でき、デフォルト値が定義されているものがあります。省略時の値が書かれていない場合、その値は未定義です。</li>
-<li>図形の属性は、現在選択されている属性（カレント属性）が使われます（ただし、すべての属性がカレント属性に指定できるわけではありません）。
-また、図形内に属性を書くことで、その属性値を上書きすることができます。</li>
-<li>図形の属性は、その一部のみをを変更することができます（例えば、線スタイルはその色のみを変更することができます）。
-ただし、fillStyleのうち、<a href="#gradation">グラデーション</a>のパラメータは一部のみの変更はできず、省略した場合はデフォルト値が使われます（図形パラメータと同等）。</li>
+<li>一行ごとに図形、属性などを指示します（複数行にわたることもあります）。<br />
+</li>
+<li>各行は、最初に数値がある場合は<a href="#coordinate_line">線の座標</a>、最初に識別子がある場合は<a href="#command_line">コマンド行</a>です。コマンド行は、最初にコマンド、その後にパラメータが続きます。<br />
+</li>
+<li>パラメータは数値、文字列、いくつかの識別子（色や線幅、線種で使われる<code>bylayer</code>、線種で使われる<code>construction</code>、色名など）があります。パラメータの区切りは少なくとも一つの空白文字（スペース、タブ）です。<br />
+ただし、パラメータが文字列の場合は区切り文字を省略できます（見にくいので推奨はしません）。</li>
 </ul>
-<pre><code>// カレント線スタイルを幅0.5、実線、黒にする。
-ls(w(0.5) t(&quot;solid&quot;) c(0xff000000))
+<pre><code>text&quot;abcdefg&quot;100 10#This line is OK, but not recommended. It&#39;s easier to read if there are spaces.</code></pre>
+<ul>
+<li>複数のパラメータがある場合、行末に<code>&amp;</code>を付けることで次の行へ続けて書くことができます（<code>&amp;</code>はパラメータと同じ記法で書くこと）。</li>
+</ul>
+<pre><code>
+line 0 0 10 10 20 20
+#これを以下のように書くことはできない。
+line 0 0 10 10 20&amp;
+20
+#次のようにすること。
+line 0 0 10 10 20 &amp;
+20</code></pre>
+<p>参考例</p>
+<pre><code>#preco
 
-// 線スタイルは幅1.0、実線、黒。カレント線スタイルは変更しない。
-Line(ls(w(1.0)) pp(0 0 100 50))
+line 0 0 100 0 100 -50  # lines (0,0)-(100,0)-(100,-50)
+lc red  # Line color is red.
 
-// カレント線スタイルの色のみ変更（幅0.5、実線、赤）。
-ls(c(0xffff0000))
+# Indent is OK.
+  circle 0 0 100  # circle center=(0,0) radius=100
+  text &quot;The Martians are coming!&quot; 100 100 0</code></pre>
+<p><a id="coordinate_line"></a></p>
+<h3 data-number="1.5.1" id="座標行"><span class="header-section-number">1.5.1</span> 座標行</h3>
+<p>行が数値から始まる場合、それ以降の数値を座標とみなして線分を引きます。<br />
+XY座標を空白文字（スペースorタブ）で区切ります。一行に複数のXY座標を書くことも可能です。<br />
+空行を含む数値以外の行があるまでが一つのセグメントで連続線を描きます。<br />
+以下の例では、辺の長さが40と80の２つの正方形（と円）を描きます。<br />
+線しかない場合はこれでもいいのですが、他の図形がある場合は<a href="#line">line</a>コマンドか<a href="#polyline">polyline</a>コマンドを使うことを推奨します。</p>
+<pre><code>-20 -20
+ 20 -20
+ 20  20
+-20  20
+-20 -20
 
-//カレント線スタイルは、lsを使わずlc, lw, ltを使うこともできます
-lc(0xff000000)  // 線色
-lw(0.3)         // 線幅
-lt(%a)          // 線種</code></pre>
+-40 -40 40 -40 40  40 -40  40
+-40 -40 
+circle 0 0 50</code></pre>
+<p><a id="command_line"></a></p>
+<h3 data-number="1.5.2" id="コマンド行"><span class="header-section-number">1.5.2</span> コマンド行</h3>
+<p>コマンド行は、最初にコマンドがあり、パラメータが続きます。<br />
+パラメータは省略できるものがあります。パラメータが省略された場合、特別な意味がある場合とデフォルト値が使われる場合があります。<br />
+パラメータは空白で区切るため、複数のパラメータの途中のパラメータのみを省略することはできません。<br />
+この仕様書上でのパラメータは次の記法によります。</p>
 <ul>
-<li>文字図形や寸法線などの文字列にはページタイトルなどに置換できるマクロ文字列を使用できます。以下のマクロ文字列が使用できます。</li>
+<li>省略可能なパラメータは<code>[]</code>で囲みます。<br />
+</li>
+<li>省略されたパラメータにデフォルト値があれば<code>=</code>で右辺に記入します。</li>
 </ul>
+<p>下記の例では、x, y,
+radiusは省略できませんが、angleを省略した場合はangle=0.0、flatnessも省略した場合は、flatness=1.0、angle=0.0となります。</p>
+<pre><code>circle x y radius [flatness=1.0] [angle=0.0]</code></pre>
+<p>また、下記の例ではx, y片方のみは省略できませんが、x,
+yのペアは省略できます。</p>
+<pre><code>p0 [x y]</code></pre>
+<h2 data-number="1.6" id="用語"><span class="header-section-number">1.6</span> 用語</h2>
+<h3 data-number="1.6.1" id="属性"><span class="header-section-number">1.6.1</span> 属性</h3>
+<p>図形の色や線種など図形の装飾に関するもの。</p>
+<h3 data-number="1.6.2" id="カレント属性"><span class="header-section-number">1.6.2</span> カレント属性</h3>
+<p>PreCadのツールバーで現在選択されている色、線種、線幅。<br />
+色については要素により、カレント線色、カレント文字色、カレント塗りつぶし色などと呼びます。単にカレント値と呼ぶこともあります。<br />
+フォントについてもカレントフォント名等、同様です。</p>
+<h3 data-number="1.6.3" id="カレントレイヤ"><span class="header-section-number">1.6.3</span> カレントレイヤ</h3>
+<p>PreCadのレイヤリストで選択されている書き込みレイヤ。</p>
+<h3 data-number="1.6.4" id="用紙寸実寸"><span class="header-section-number">1.6.4</span> 用紙寸・実寸</h3>
+<p>用紙上で表示される大きさを用紙寸、それを縮尺で割った物が実寸です。<br />
+線幅は常に用紙寸で書かれます。</p>
+<h1 data-number="2" id="コマンド解説"><span class="header-section-number">2</span> コマンド解説</h1>
+<h2 data-number="2.1" id="制御コマンド"><span class="header-section-number">2.1</span> 制御コマンド</h2>
+<h3 data-number="2.1.1" id="ps"><span class="header-section-number">2.1.1</span> ps</h3>
+<p><code>ps f</code></p>
+<p><code>f</code>が0の場合は座標や長さは実寸、<code>f</code>が1の場合は用紙寸となります。初期値は0（実寸）です。<br />
+グループ化中は使用しないでください。</p>
+<h3 data-number="2.1.2" id="p0"><span class="header-section-number">2.1.2</span> p0</h3>
+<p><code>p0 [x y]</code></p>
+<p>マウスで指示する座標を(x, y)にします。<br />
+これは、座標を(-X, -Y)オフセットすることと同様です。設定される座標値は<a href="#ps">ps</a>コマンドの影響をうけます。<br />
+初期値は(0, 0)です。<br />
+パラメータなしの場合、初期値(0, 0)に戻します。<br />
+グループ化中は使用しないでください。<br />
+また、<code>p0</code>コマンドの値は加算されるので注意してください（通常は複数使うことはないと思います）。</p>
+<pre><code>p0 100 50
+line 100 50 200 50  # マウス位置から右横に100の長さの線を引きます。
+p0 10 20  # 座標値は(100+10, 50+20)
+line 100 50 200 50  # マウス位置から(-10, -20)の位置で右横に100の長さの線を引きます。
+p0        # 初期化
+line 100 50 200 50  # マウス位置から(100, 50)の位置で右横に100の長さの線を引きます。</code></pre>
+<h2 data-number="2.2" id="ドキュメントコマンド"><span class="header-section-number">2.2</span> ドキュメントコマンド</h2>
+<p>文書構造に関するコマンドです。</p>
+<h3 data-number="2.2.1" id="layer"><span class="header-section-number">2.2.1</span> layer</h3>
+<p><code>layer [name]</code></p>
+<p>書き込みレイヤを<code>name</code>のレイヤにします。<code>name</code>は文字列です。レイヤ名がない場合、カレントレイヤが書き込みレイヤになります。<br />
+初期値はカレントレイヤが書き込みレイヤです。<br />
+<code>name</code>のレイヤが存在しない場合、その名前のレイヤが新たに作られます。<br />
+グループ化中は使用しないでください。</p>
+<pre><code>layer &quot;Layer1&quot;  #　レイヤ名&quot;Layer1&quot;を選択
+layer           #　カレントレイヤを選択</code></pre>
+<h2 data-number="2.3" id="属性コマンド"><span class="header-section-number">2.3</span> 属性コマンド</h2>
+<p>色や線種などの図形の属性を指定するコマンドです。</p>
+<h3 data-number="2.3.1" id="lc"><span class="header-section-number">2.3.1</span> lc</h3>
+<p><code>lc [color]</code></p>
+<p>これ以降の図形で使う線色を設定します。<code>color</code>がない場合、カレント線色が使われます。
+初期値はカレント線色です。<br />
+<code>color</code>は整数値（32ビット、アルファ値も含む）及びいくつかの定義値が使えます。</p>
 <table>
 <thead>
 <tr>
-<th>マクロ文字列</th>
-<th>値</th>
+<th>名称</th>
+<th>定義</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>${$}</td>
-<td>$</td>
+<td>bylayer</td>
+<td>レイヤカラー</td>
 </tr>
 <tr>
-<td>${PageTitle}</td>
-<td>ページのタイトル</td>
+<td>black</td>
+<td>黒（0xff000000）</td>
 </tr>
 <tr>
-<td>${PageNumber}</td>
-<td>ページ番号</td>
+<td>blue</td>
+<td>青（0xff0000ff）</td>
 </tr>
 <tr>
-<td>${PageCount}</td>
-<td>総ページ数</td>
+<td>red</td>
+<td>赤（0xffff0000）</td>
 </tr>
 <tr>
-<td>${SheetName}</td>
-<td>シート名</td>
+<td>magenta</td>
+<td>紫（0xffff00ff）</td>
 </tr>
 <tr>
-<td>${SheetScale}</td>
-<td>シートの縮尺</td>
+<td>green</td>
+<td>緑（0xff00ff00）</td>
+</tr>
+<tr>
+<td>cyan</td>
+<td>水色（0xff00ffff）</td>
+</tr>
+<tr>
+<td>yellow</td>
+<td>黄色（0xffffff00）</td>
+</tr>
+<tr>
+<td>white</td>
+<td>白（0xffffffff）</td>
+</tr>
+<tr>
+<td>gray</td>
+<td>灰色（0xff808080）</td>
+</tr>
+<tr>
+<td>lightgray</td>
+<td>明るい灰色（0xffd3d3d3）</td>
+</tr>
+<tr>
+<td>darkgray</td>
+<td>暗い灰色（0xffa9a9a9）</td>
+</tr>
+<tr>
+<td>transparent</td>
+<td>透明（0x00ffffff）</td>
 </tr>
 </tbody>
 </table>
-<h4 data-number="1.3.2.5" id="図形属性"><span class="header-section-number">1.3.2.5</span> 図形属性</h4>
-<p>図形には以下の属性があります。要素名の<code>[]</code>内は短縮名です。
-<a id="lineStyle"></a> ###### lineStyle（線スタイル属性）
-線のスタイルです。</p>
-<pre><code>lineStyle(width(w)color(c)lineType(name)flag(f))</code></pre>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>width(w)<br>[ w ]</td>
-<td>w : Double / Label</td>
-<td>線幅<br>%l : レイヤ線幅</td>
-</tr>
-<tr>
-<td>color(c)<br>[ c ]</td>
-<td>c : Int / Label</td>
-<td>線色<br>%l : レイヤ線色</td>
-</tr>
-<tr>
-<td>lineType(name)<br>[ t ]</td>
-<td>name : String / Label</td>
-<td>線種名<br>%l : レイヤ線種<br>%a : 補助線</td>
-</tr>
-<tr>
-<td>flag(f)<br>[ f ]</td>
-<td>f : Int</td>
-<td>フラグ</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>線種</li>
-</ul>
+<pre><code>lc -65536     # 0xffff0000（赤）。32ビットで上位から、ARGB
+lc 0xffff0000 # 16進表記（赤）。xやaからfは大文字でも可
+lc red        # 赤
+lc bylayer    # レイヤ線色
+lc            # カレント線色</code></pre>
+<h3 data-number="2.3.2" id="lt"><span class="header-section-number">2.3.2</span> lt</h3>
+<p><code>lt [name]</code></p>
+<p>これ以降の図形で使う線種を設定します。<code>name</code>がない場合、カレント線種が使われます。<br />
+初期値はカレント線種です。<br />
+bylayerはレイヤ線種、constructionは補助線、文字列の場合は線種名となります。<br />
+線種名は下表によります。</p>
 <table>
 <colgroup>
 <col style="width: 31%" />
@@ -5147,258 +5011,34 @@ lt(%a)          // 線種</code></pre>
 </tr>
 </tbody>
 </table>
-<p>※パターンは線分長と空白のペアで、長さはこれに線幅を掛ける。
-※パターンはSXF規格を参考にした。 -
-フラグ（フォーマット2.10.0からこのフラグの代わりに<code>%l</code>等のラベルを使用する。ラベルを使う場合、このフラグは使用しないこと。両方使われた場合の動作は未定義）
-1:ColorByLayer 0x1000:補助線 0x2000:TypeByLayer 0x8000:WidthByLayer ※
-ColorByLayerの場合、線色があっても無視されます。線種と線幅も同様です。</p>
-<p><a id="fillStyle"></a> ###### fillStyle（塗りスタイル属性）
-円や多角形の塗りのスタイルです。単色塗りは、solidとbyLayer、グラデーションとしてlg（線形グラデーション）とrg（放射状グラデーション）があります。</p>
-<pre><code>fillStyle(solid(0xFF00FF00))  // 緑単色塗り
-fillStyle(0xFF00FF00)         // 上と同じ。2.10.0よりこの書式も可
-
-fillStyle(byLayer())          // レイヤ色
-fillStyle(%l)                 // 上と同じ。2.10.0よりこの書式も可
-fillStyle(lg(c(0xff000000 0xffff0000)))   // 線形グラデーション
-fillStyle(lr(c(0xff000000 0xffff0000)))   // 放射状グラデーション
-</code></pre>
+<p>※パターンは線分長と空白のペアで、長さはこれに線幅を掛ける。<br />
+※パターンはSXF規格を参考にした。<br />
+※個人的にはsolid, dashed, center, phantom,
+dotあたりを使うと思います。<br />
+※線種名が上記の表にない場合、エラーではなく警告レベルで線種はsolid（実線）とします。</p>
+<pre><code>lt &quot;solid&quot;      # 実線
+lt bylayer      # レイヤ線種
+lt construction # 補助線
+lt              # カレント線種</code></pre>
+<h3 data-number="2.3.3" id="lw"><span class="header-section-number">2.3.3</span> lw</h3>
+<p><code>lw [width]</code></p>
+<p>これ以降の図形で使う線幅を設定します。線幅は用紙上の寸法です。<code>width</code>がない場合、カレント線幅が使われます。<br />
+初期値はカレント線幅です。<br />
+bylayerはレイヤ線幅です。</p>
+<pre><code>lw 0.25         # 太さ0.25mm
+lw bylayer      # レイヤ線幅
+lw              # カレント線幅</code></pre>
+<h3 data-number="2.3.4" id="lz"><span class="header-section-number">2.3.4</span> lz</h3>
+<p><code>lz f</code> fが1の場合、以降の<a href="#line">line</a>, <a href="#arc">arc</a>, <a href="#polyline">polyline</a>, <a href="#spline">spline</a>, <a href="#bezier">bezier</a>の終点と始点が結ばれます（図形を閉じます）。<code>f</code>が0の場合は終点と始点を結びません。<br />
+初期値は0（終点と始点を結ばない）です。</p>
+<h3 data-number="2.3.5" id="fc"><span class="header-section-number">2.3.5</span> fc</h3>
+<p><code>fc [color]</code></p>
+<p>これ以降の図形で使う塗りつぶし色を設定します。色の指定方法は<code>lc</code>と同じです。<br />
+初期値はカレント塗りつぶし色です。</p>
+<h3 data-number="2.3.6" id="mt"><span class="header-section-number">2.3.6</span> mt</h3>
+<p><code>mt [name]</code></p>
+<p>マーカー名を文字列で設定します。マーカー名がない場合はカレントマーカー名が使われます。初期値はカレントマーカー名です。マーカー名は下表によります。</p>
 <table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>solid(c)</td>
-<td>c : Int</td>
-<td>面色</td>
-</tr>
-<tr>
-<td>byLayer()</td>
-<td></td>
-<td>レイヤ色</td>
-</tr>
-<tr>
-<td>c</td>
-<td>c:Int/Label</td>
-<td>面色<br> %l: レイヤ色</td>
-</tr>
-<tr>
-<td>lg(…)</td>
-<td><a href="#gradation">グラデーション</a> <a href="#lg">lg</a>参照</td>
-<td>線形グラデーション</td>
-</tr>
-<tr>
-<td>rg(…)</td>
-<td><a href="#gradation">グラデーション</a> <a href="#rg">rg</a>参照</td>
-<td>放射状グラデーション</td>
-</tr>
-</tbody>
-</table>
-<p><a id="gradation"></a> ○ グラデーション <a id="lg"></a>
-lg（線形グラデーション） | 要素 | パラメータ | 説明 | |—–|——|—–| |
-c(start end) | start : Int, end : Int| 開始色、終了色。省略時は黒と白 |
-| a(angle)| angle: Double | 角度。省略時0.0 |</p>
-<p>斜めのグラデーションは図形を囲む矩形の対角頂点を開始・終了点とする。
-<a id="rg"></a> rg（放射状グラデーション） | 要素 | パラメータ | 説明 |
-|—–|——|—–| | c(start end) | start : Int, end : Int|
-開始色、終了色。省略時は黒と白 | | p0(x y)| x: Double, y: Double |
-中心座標（0.0～1.0）省略時(0.5, 0.5) |</p>
-<p>グラデーションは円形で、中心座標から図形を囲む矩形の最も遠い頂点までの距離を半径とする。
-中心座標は図形を囲む矩形の中心(0.5, 0.5)、左下(0.0, 0.0)、右上(1.0,
-1.0)とする。</p>
-<p><a id="arrowStyle"></a> ###### arrow, startArrow,
-endArrow（矢印、始点矢印、終点矢印スタイル属性）
-矢印のスタイルです。</p>
-<pre><code>arrow(size(3)type(1))</code></pre>
-<table>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>size(size)<br>[ s ]</td>
-<td>size : Double</td>
-<td>矢印の大きさ</td>
-</tr>
-<tr>
-<td>type(id)<br>[ t ]</td>
-<td>id : Int</td>
-<td>矢印の種類</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>矢印の種類</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>ID</th>
-<th>種類</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>なし</td>
-</tr>
-<tr>
-<td>1</td>
-<td>開いた矢印</td>
-</tr>
-<tr>
-<td>2</td>
-<td>三角形</td>
-</tr>
-<tr>
-<td>3</td>
-<td>塗りつぶした三角形</td>
-</tr>
-<tr>
-<td>4</td>
-<td>円</td>
-</tr>
-<tr>
-<td>5</td>
-<td>塗りつぶした円</td>
-</tr>
-<tr>
-<td>6</td>
-<td>四角形</td>
-</tr>
-<tr>
-<td>7</td>
-<td>塗りつぶした四角形</td>
-</tr>
-<tr>
-<td>8</td>
-<td>斜め線</td>
-</tr>
-<tr>
-<td>9</td>
-<td>S字</td>
-</tr>
-</tbody>
-</table>
-<p><a id="textStyle"></a> ###### textStyle（文字スタイル）</p>
-<table>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>color(c)<br>[ c ]</td>
-<td>c : Int/Label</td>
-<td>文字色<br>%l : レイヤ線色</td>
-</tr>
-<tr>
-<td>textAlign(a)<br>[ ta ]</td>
-<td>a : Int</td>
-<td>文字配置</td>
-</tr>
-<tr>
-<td>fontName(name)<br>[ fn ]</td>
-<td>name : String</td>
-<td>フォント名</td>
-</tr>
-<tr>
-<td>fontHeight(h)<br>[ fh ]</td>
-<td>h : Double</td>
-<td>フォントサイズ</td>
-</tr>
-<tr>
-<td>fontWidthScale(w)<br>[ fw ]</td>
-<td>w : Double</td>
-<td>フォント横幅比</td>
-</tr>
-<tr>
-<td>fontSpace(s)<br>[ fs ]</td>
-<td>s : Double</td>
-<td>文字間隔</td>
-</tr>
-<tr>
-<td>fontSkewAngle(a)<br>[ fa ]</td>
-<td>a : Double</td>
-<td>傾斜角</td>
-</tr>
-<tr>
-<td>sf(f)</td>
-<td>sf : Label</td>
-<td>文字修飾</td>
-</tr>
-<tr>
-<td>flag(f)<br>[ f ]</td>
-<td>f : Int</td>
-<td>フラグ</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>文字配置<br> 0:左 1:中央 2:右 3:両端揃え 4:均等揃え</li>
-<li>文字修飾ラベル 以下の文字の組み合わせ i : イタリック b : ボールド u
-: 下線 s : 取り消し線 l : 文字のみ傾斜 f : 枠線</li>
-</ul>
-<pre><code>  sf(%ib) // イタリック・ボールド
-  sf(%bi) // 上と同じ。順序は関係ない
-  sf(%)   // ラベル文字がない場合、修飾無し</code></pre>
-<ul>
-<li><p>フラグ（フォーマット2.10.0からこのフラグの代わりに<code>%l</code>等のラベルを使用する。ラベルを使う場合、このフラグは使用しないこと。両方使われた場合の動作は未定義）
-フラグは以下の値の組み合わせです。 0x0000_0001 : ColorByLayer
-0x0002_0000 : （予約：縦書き？） 0x0004_0000 : イタリック 0x0008_0000 :
-ボールド 0x0010_0000 : 下線 0x0020_0000 : 取り消し線 0x0040_0000 :
-（予約：未定） 0x0080_0000 : （予約：折り返しなし？） 0x0100_0000 :
-文字のみ傾斜 0x0200_0000 : 枠線</p></li>
-<li><p>「文字のみ傾斜」は、fontSkewAngleで文字のみを傾かせる（文字枠は長方形で文字のみ傾く）。フラグが立っていない場合は、文字枠を含め文字を歪ませる（文字枠は平行四辺形になる）。</p></li>
-<li><p>枠線は、太さ0.13mmの実線。</p></li>
-</ul>
-<p><a id="markerStyle"></a> ###### markerStyle（点スタイル）</p>
-<table>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type(name)<br>[ t ]</td>
-<td>name : String</td>
-<td>マーカー名</td>
-</tr>
-<tr>
-<td>size(s)<br>[ s ]</td>
-<td>s : Double</td>
-<td>サイズ</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>マーカー名</li>
-</ul>
-<table>
-<colgroup>
-<col style="width: 42%" />
-<col style="width: 35%" />
-<col style="width: 21%" />
-</colgroup>
 <thead>
 <tr>
 <th>名称</th>
@@ -5409,1569 +5049,183 @@ endArrow（矢印、始点矢印、終点矢印スタイル属性）
 <tbody>
 <tr>
 <td>asterisk</td>
-<td></td>
+<td>＊</td>
 <td></td>
 </tr>
 <tr>
 <td>circle</td>
-<td></td>
+<td>円</td>
 <td></td>
 </tr>
 <tr>
 <td>dot</td>
-<td></td>
-<td>オブジェクトのsizeを使わず、すべての点の大きさは共通の設定を使用する。</td>
+<td>点</td>
+<td>sizeを使わず、大きさは設定を使用する。</td>
 </tr>
 <tr>
 <td>plus</td>
-<td></td>
+<td>＋</td>
 <td></td>
 </tr>
 <tr>
 <td>square</td>
-<td></td>
+<td>四角</td>
 <td></td>
 </tr>
 <tr>
 <td>triangle</td>
-<td></td>
+<td>三角形</td>
 <td></td>
 </tr>
 <tr>
 <td>x</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><a id="leaderStyle"></a> ###### leaderStyle（引出線スタイル）</p>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>textOffset(d)<br>[ to ]</td>
-<td>d : Double</td>
-<td>文字の下線との縦方向の離れ</td>
-</tr>
-<tr>
-<td>leaderOffset(d)<br>[ lo ]</td>
-<td>d : Double</td>
-<td>引出線の終点から文字横方向の離れ</td>
-</tr>
-<tr>
-<td>extendLine(i)<br>[ el ]</td>
-<td>i : Int</td>
-<td>線を文字列まで延長。<br>0:延長なし 1:延長する</td>
-</tr>
-<tr>
-<td>leaderOrientation(i)<br>[ lr ]</td>
-<td>i : Int</td>
-<td>文字の配置方向。<br> 0:水平 1:平行</td>
-</tr>
-<tr>
-<td>leaderBasis(i)<br>[ lb ]</td>
-<td>i : Int</td>
-<td>文字の配置。<br> 0:上 1:下 2:中 3:自由</td>
-</tr>
-<tr>
-<td>textStyle(…)<br>[ ts ]</td>
-<td><a href="#textStyle">文字スタイル</a>参照</td>
-<td>文字スタイル</td>
-</tr>
-<tr>
-<td>arrowStyle(…)<br>[ as ]</td>
-<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>矢印スタイル</td>
-</tr>
-<tr>
-<td>textAngle(d)<br>[ ta ]</td>
-<td>d:Double</td>
-<td>文字角度。leaderBasisが3の時有効</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>leaderBasisが3の場合、leaderOffsettとtextOffsetは文字配置の相対座標。extendLine及びleaderOrientationは無視される。</li>
-<li>textAngleはleaderBasisが3の時のみ有効。</li>
-</ul>
-<p><a id="balloonStyle"></a> ###### balloonStyle（バルーンスタイル）</p>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>radius(r)<br>[ r ]</td>
-<td>r : Double</td>
-<td>半径</td>
-</tr>
-<tr>
-<td>textStyle(…)<br>[ ts ]</td>
-<td><a href="#textStyle">文字スタイル</a>参照</td>
-<td>文字スタイル</td>
-</tr>
-<tr>
-<td>arrowStyle(…)<br>[ as ]</td>
-<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>矢印スタイル</td>
-</tr>
-</tbody>
-</table>
-<p><a id="dimensionStyle"></a> ###### dimensionStyle（直線寸法スタイル）
-| 要素 | パラメータ | 説明 | |—–|——|—–| | extensionLineOffset(d)<br>[ eo
-] | d : Double | 引出位置から引出線までの離れ | |
-extensionLineOvershoot(d)<br>[ ev ] | d : Double |
-寸法線からの引出線の延長長さ | | dimensionLineExtension(d)<br>[ de ] | d
-: Double | 寸法線の延長長さ | | textStyle(…)<br>[ ts ] | <a href="#textStyle">文字スタイル</a>参照 | 文字スタイル | |
-textOffset(d)<br>[ to ] | d : Double | 文字の寸法線との離れ。省略時0 | |
-formatStyle(…)<br>[ fs ] | <a href="#formatStyle">寸法値フォーマット</a>参照 | 寸法値フォーマット | |
-tolerance2LinesTextScale(s)<br>[ tt ] | s:Double |
-2行の許容差の文字サイズの比率 | | startArrow(…)<br>[ sa ] | <a href="#arrowStyle">矢印スタイル</a>参照 | 始点の矢印スタイル | |
-endArrow(…)<br>[ ea ] | <a href="#arrowStyle">矢印スタイル</a>参照 |
-終点の矢印スタイル | | arrowMode(m)<br>[ am ] | m:Int |
-矢印モード<br>0:自動, 1:内側, 2:外側 | | ul(m)<br>| m:Int |
-寸法値単位。寸法値自動の時に使用。<br>0:mm, 1:cm, 2:m, 3:inch |</p>
-<p><a id="angleStyle"></a> ###### angleStyle（角度寸法スタイル） | 要素
-| パラメータ | 説明 | |—–|——|—–| | extensionLineOffset(d)<br>[ eo ] | d
-: Double | 引出位置から引出線までの離れ | |
-extensionLineOvershoot(d)<br>[ ev ] | d : Double |
-寸法線からの引出線の延長長さ | | dimensionLineExtension(d)<br>[ de ] | d
-: Double | 寸法線の延長長さ | | textStyle(…)<br>[ ts ] | <a href="#textStyle">文字スタイル</a>参照 | 文字スタイル | |
-textOffset(d)<br>[ to ] | d : Double | 文字の寸法線との離れ | |
-formatStyle(…)<br>[ fs ] | <a href="#formatStyle">寸法値フォーマット</a>参照 | 寸法値フォーマット | |
-tolerance2LinesTextScale(s)<br>[ tt ] | s:Double |
-2行の許容差の文字サイズの比率 | | startArrow(…)<br>[ sa ] | <a href="#arrowStyle">矢印スタイル</a>参照 | 始点の矢印スタイル | |
-endArrow(…)<br>[ ea ] | <a href="#arrowStyle">矢印スタイル</a>参照 |
-終点の矢印スタイル | | arrowMode(m)<br>[ am ] | m:Int |
-矢印モード<br>0:自動, 1:内側, 2:外側 |</p>
-<p><a id="radiusStyle"></a> ###### radiusStyle（半径寸法スタイル） |
-要素 | パラメータ | 説明 | |—–|——|—–| |
-dimensionLineExtension(d)<br>[de(d)] | d : Double | 寸法線の延長長さ | |
-fromText(i)<br>[ ft ] | i:Int |
-0：中心から円周に向けて線を引く。<br>1：文字から円周に向けての線のみ| |
-textStyle(…)<br>[ ts ] | <a href="#textStyle">文字スタイル</a>参照 |
-文字スタイル | | textOffset(d)<br>[ to ] | d : Double |
-文字の寸法線との離れ| | formatStyle(…)<br>[ fs ] | <a href="#formatStyle">寸法値フォーマット</a>参照 | 寸法値フォーマット | |
-tolerance2LinesTextScale(s)<br>[ tt ] | s:Double |
-2行の許容差の文字サイズの比率| | arrowStyle(…)<br>[ as ] | <a href="#arrowStyle">矢印スタイル</a>参照 | 矢印スタイル | |
-arrowMode(m)<br>[ am ] | m:Int | 矢印モード<br>0:自動, 1:内側, 2:外側 |
-| ul(m)<br>| m:Int | 寸法値単位。寸法値自動の時に使用。<br>0:mm, 1:cm,
-2:m, 3:inch |</p>
-<p><a id="diameterStyle"></a> ######
-diameterStyle（直径寸法スタイル）</p>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>dimensionLineExtension(d)<br>[de(d)]</td>
-<td>d : Double</td>
-<td>寸法線の延長長さ</td>
-</tr>
-<tr>
-<td>textStyle(…)<br>[ ts ]</td>
-<td><a href="#textStyle">文字スタイル</a>参照</td>
-<td>文字スタイル</td>
-</tr>
-<tr>
-<td>textOffset(d)<br>[ to ]</td>
-<td>d : Double</td>
-<td>文字の寸法線との離れ</td>
-</tr>
-<tr>
-<td>formatStyle(…)<br>[ fs ]</td>
-<td><a href="#formatStyle">寸法値フォーマット</a>参照</td>
-<td>寸法値フォーマット</td>
-</tr>
-<tr>
-<td>tolerance2LinesTextScale(s)<br>[ tt ]</td>
-<td>s:Double</td>
-<td>2行の許容差の文字サイズの比率</td>
-</tr>
-<tr>
-<td>startArrow(…)<br>[ sa ]</td>
-<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>始点の矢印スタイル</td>
-</tr>
-<tr>
-<td>endArrow(…)<br>[ ea ]</td>
-<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>終点の矢印スタイル</td>
-</tr>
-<tr>
-<td>arrowMode(m)<br>[ am ]</td>
-<td>m:Int</td>
-<td>矢印モード<br>0:自動, 1:内側, 2:外側</td>
-</tr>
-<tr>
-<td>ul(m)<br></td>
-<td>m:Int</td>
-<td>寸法値単位。寸法値自動の時に使用。<br>0:mm, 1:cm, 2:m, 3:inch</td>
-</tr>
-</tbody>
-</table>
-<p><a id="arcdimensionStyle"></a> ######
-arcDimensionStyle（弧長寸法スタイル） | 要素 | パラメータ | 説明 |
-|—–|——|—–| | extensionLineOffset(d)<br>[ eo ] | d : Double |
-引出位置から引出線までの離れ | | extensionLineOvershoot(d)<br>[ ev ] | d
-: Double | 寸法線からの引出線の延長長さ | |
-dimensionLineExtension(d)<br>[ de ] | d : Double | 寸法線の延長長さ | |
-textStyle(…)<br>[ ts ] | <a href="#textStyle">文字スタイル</a>参照 |
-文字スタイル | | textOffset(d)<br>[ to ] | d : Double |
-文字の寸法線との離れ| | formatStyle(…)<br>[ fs ] | <a href="#formatStyle">寸法値フォーマット</a>参照 | 寸法値フォーマット | |
-tolerance2LinesTextScale(s)<br>[ tt ] | s:Double |
-2行の許容差の文字サイズの比率| | startArrow(…)<br>[ sa ] | <a href="#arrowStyle">矢印スタイル</a>参照 | 始点の矢印スタイル | |
-endArrow(…)<br>[ ea ] | <a href="#arrowStyle">矢印スタイル</a>参照 |
-終点の矢印スタイル | | arrowMode(m)<br>[ am ] | m:Int |
-矢印モード<br>0:自動, 1:内側, 2:外側 | | em(m)<br> | m : Int |
-引出線モード<br>0:自動, 1:平行, 2:放射状 | | ul(m)<br>| m:Int |
-寸法値単位。寸法値自動の時に使用。<br>0:mm, 1:cm, 2:m, 3:inch |</p>
-<ul>
-<li>引出線モード自動では、弧角が90度以内で平行、90度を超えると放射状になる。</li>
-</ul>
-<p><a id="formatStyle"></a> ###### formatStyle（寸法値フォーマット）</p>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>fractionDigits(d)<br>[ fd ]</td>
-<td>d : Int</td>
-<td>小数点桁数。省略時1</td>
-</tr>
-<tr>
-<td>usesGroupingSeparator(f)<br>[ gs ]</td>
-<td>f : Int</td>
-<td>0:区切りなし 1:桁区切り</td>
-</tr>
-<tr>
-<td>prefix(s)<br>[ p ]</td>
-<td>s : String</td>
-<td>前置文字</td>
-</tr>
-<tr>
-<td>suffix(s)<br>[ s ]</td>
-<td>s : String</td>
-<td>後置文字</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>formatStyleは、寸法図形スタイル内で使用（カレント属性として指定できない）</li>
-<li>prefix及びsuffixは図形により省略時の文字が違うことに注意。</li>
-</ul>
-<p><a id="tolerance"></a> ###### tolerance（許容差）</p>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>toleranceType(t)<br>[ tt ]</td>
-<td>t : Int</td>
-<td>許容差タイプ 0:無し 1:一段 2:二段</td>
-</tr>
-<tr>
-<td>value0(v)<br>[ v0 ]</td>
-<td>v : Double</td>
-<td>許容差上（一段の時はこちらを使用）</td>
-</tr>
-<tr>
-<td>value1(v)<br>[ v1 ]</td>
-<td>v : Double</td>
-<td>許容差下（一段の時は使われない）</td>
-</tr>
-<tr>
-<td>fractionDigits(d)<br>[ fd ]</td>
-<td>d : Int</td>
-<td>小数点桁数</td>
-</tr>
-<tr>
-<td>suffix(s)<br>[ s ]</td>
-<td>s : String</td>
-<td>後置文字</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>toleranceは、寸法図形内で使用（カレント属性として指定できない）</li>
-</ul>
-<p>#####　カレント属性 -
-カレント属性は、以下のものが使えます。属性名の<code>[]</code>内は短縮名です。</p>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>属性</th>
-<th>初期値</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>lineStyle<br>[ls]</td>
-<td>lineStyle(w(0) c(0xff000000) t(“solid”))</td>
-<td></td>
-</tr>
-<tr>
-<td>fillStyle<br>[fs]</td>
-<td>fillStyle(solid(0x00ffffff))</td>
-<td></td>
-</tr>
-<tr>
-<td>startArrow<br>[sa]</td>
-<td>startArrow(t(0) s(3.0))</td>
-<td>線の始点矢印</td>
-</tr>
-<tr>
-<td>endArrow<br>[ea]</td>
-<td>endArrow(t(0) s(3.0))</td>
-<td>線の終点矢印</td>
-</tr>
-<tr>
-<td>textStyle<br>[ts]</td>
-<td>textStyle(c(0xff000000) ta(0) fn(““) fh(4.0) fw(1.0) fs(0.0)
-fa(0.0))</td>
-<td></td>
-</tr>
-<tr>
-<td>markerStyle<br>[ms]</td>
-<td>markerStyle(t(“x”) s(2.5))</td>
-<td></td>
-</tr>
-<tr>
-<td>leaderStyle<br>[leas]</td>
-<td>leaderStyle(to(0.0) lo(0.0) el(1) lr(0) lb(0) ts(c(0xff000000) ta(0)
-fn(““) fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) as(t(1) s(3.0))
-ta(0.0))</td>
-<td></td>
-</tr>
-<tr>
-<td>balloonStyle<br>[bals]</td>
-<td>balloonStyle(r(4.0) ts(c(0xff000000) ta(0) fn(““) fh(4.0) fw(1.0)
-fs(0.0) fa(0.0) f(0)) as(t(1) s(3.0)))</td>
-<td></td>
-</tr>
-<tr>
-<td>dimensionStyle<br>[dims]</td>
-<td>dimensionStyle(eo(1.0) ev(2.0) de(5.0) ts(c(0xff000000) ta(0) fn(““)
-fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) to(0.0) fs(fd(1) gs(0) p(”“)
-s(”“)) tt(0.75) sa(t(1) s(3.0)) ea(t(1) s(3.0)) am(0) ul(0))</td>
-<td></td>
-</tr>
-<tr>
-<td>angleStyle<br>[angs]</td>
-<td>angleStyle(eo(1.0) ev(2.0) de(5.0) ts(c(0xff000000) ta(0) fn(““)
-fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) to(0.0) fs(fd(1) gs(0) p(”“)
-s(”°“)) tt(0.75) sa(t(1) s(3.0)) ea(t(1) s(3.0)) am(0))</td>
-<td></td>
-</tr>
-<tr>
-<td>radiusStyle<br>[rads]</td>
-<td>radiusStyle(de(5.0) ft(0) ts(c(0xff000000) ta(0) fn(““) fh(4.0)
-fw(1.0) fs(0.0) fa(0.0) f(0)) to(0) fs(fd(1) gs(0) p(”R”) s(““))
-tt(0.75) as(t(1) s(3.0)) am(0) ul(0))</td>
-<td></td>
-</tr>
-<tr>
-<td>diameterStyle<br>[dias]</td>
-<td>diameterStyle(de(5.0) ts(c(0xff000000) ta(0) fn(““) fh(4.0) fw(1.0)
-fs(0.0) fa(0.0) f(0)) to(0) fs(fd(1) gs(0) p(”Φ”) s(““)) tt(0.75)
-sa(t(1) s(3.0)) ea(t(1) s(3.0)) am(0) ul(0))</td>
-<td></td>
-</tr>
-<tr>
-<td>arcDimensionStyle<br>[arcs]</td>
-<td>arcDimensionStyle(eo(1.0) ev(2.0) de(5.0) ts(c(0xff000000) ta(0)
-fn(““) fh(4.0) fw(1.0) fs(0.0) fa(0.0) f(0)) to(0.0) fs(fd(1) gs(0)
-p(”⌒“) s(”“)) tt(0.75) sa(t(1) s(3.0)) ea(t(1) s(3.0)) am(0) em(0)
-ul(0))</td>
+<td>X</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<p>線スタイルについては以下の属性も受け付ける（図形内には使用できません）
-| 要素 | パラメータ | 説明 | |—–|——|—–| | lc(c) | c:Int/Label|
-<code>lineStyle</code>の<code>c</code> | | lw(w) | w:Double/Label|
-<code>lineStyle</code>の<code>w</code> | | lt(t) | c:Int/Label|
-<code>lineStyle</code>の<code>t</code> |</p>
-<p>※　カレント属性の文字スタイル及び矢印スタイルは、カレント属性のleaderStyle、balloonStyle、dimensionStyle、angleStyle、radiusStyle、diameterStyle及びarcDimensionStyleへ影響を与えません。</p>
-<p>####　コマンド 以下のコマンドが使えます。 | コマンド | パラメータ |
-説明 | |—–|——|——| | save() | | 現在の属性をスタックに保存します。 | |
-restore() | | saveコマンドで保存した属性をスタックから戻します。 | |
-clear() | |
-現在の属性を初期値に変更します（スタックは変更しません）。　| |
-layer(name) | name:String |
-書き込みレイヤを<code>name</code>のレイヤに切り替えます。　| |
-sheet(name) | name:String |
-書き込みシートを<code>name</code>のシートに切り替えます。　|</p>
-<p>※　このドキュメントを書いている時点でsave, restore,
-clearのコマンドは未使用です。</p>
-<h4 data-number="1.3.2.6" id="図形要素"><span class="header-section-number">1.3.2.6</span> 図形要素</h4>
-<p>図形名および要素名の<code>[]</code>内は短縮名です。 ##### Line [ L
-]（線）</p>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pp(x0 y0 x1 y1)</td>
-<td>x0 : Double, y0 : Double, <br>x1 : Double, y1 : Double</td>
-<td>始点と終点</td>
-</tr>
-<tr>
-<td>p0(x y)</td>
-<td>x : Double, y : Double</td>
-<td>始点</td>
-</tr>
-<tr>
-<td>p1(x y)</td>
-<td>x : Double, y : Double</td>
-<td>終点</td>
-</tr>
-<tr>
-<td>lineStyle(…)<br>[ ls ]</td>
-<td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル</td>
-</tr>
-<tr>
-<td>startArrow(…)<br>[ sa ]</td>
-<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>始点の矢印スタイル</td>
-</tr>
-<tr>
-<td>endArrow(…)<br>[ ea ]</td>
-<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>終点の矢印スタイル</td>
-</tr>
-</tbody>
-</table>
-<h5 data-number="1.3.2.6.1" id="polyline-p-ポリライン"><span class="header-section-number">1.3.2.6.1</span> Polyline [ P
-]（ポリライン）</h5>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>vertices(x1 y1 x2 y2 x3 y3 … xn yn)<br>[ vs ]</td>
-<td>x1..xn : Double, y1..yn : Double</td>
-<td>頂点</td>
-</tr>
-<tr>
-<td>isClosed(flag)<br>[ ic ]</td>
-<td>flag : Int</td>
-<td>0:Open　1:Close 省略時0</td>
-</tr>
-<tr>
-<td>lineStyle(…)<br>[ ls ]</td>
-<td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル</td>
-</tr>
-<tr>
-<td>fillStyle(…)<br>[ fs ]</td>
-<td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>塗りスタイル</td>
-</tr>
-<tr>
-<td>startArrow(…)<br>[ sa ]</td>
-<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>始点矢印</td>
-</tr>
-<tr>
-<td>endArrow(…)<br>[ ea ]</td>
-<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>終点矢印</td>
-</tr>
-</tbody>
-</table>
+<pre><code>mt &quot;plus&quot; # マーカー &#39;+&#39;
+mt    # カレントマーカー</code></pre>
+<h3 data-number="2.3.7" id="ms"><span class="header-section-number">2.3.7</span> ms</h3>
+<p><code>ms [size]</code></p>
+<p>マーカーサイズを設定します。マーカーサイズは用紙寸になります（マーカーサイズは用紙寸なので<a href="#ps">ps</a>が0の場合、注意が必要です）。マーカーサイズがない場合はカレントマーカーサイズが使われます。初期値はカレントマーカーサイズです。<br />
+マーカー名が<code>dot</code>の場合、このサイズは使われません。</p>
+<pre><code>ms 4  # マーカーサイズ 4
+ms    # カレントマーカーサイズ</code></pre>
+<h3 data-number="2.3.8" id="tc"><span class="header-section-number">2.3.8</span> tc</h3>
+<p><code>tc [color]</code></p>
+<p>これ以降の図形で使う文字色を設定します。色の指定方法は<a href="#lc">lc</a>と同じです。<br />
+初期値はカレント文字色です。</p>
+<h3 data-number="2.3.9" id="tb"><span class="header-section-number">2.3.9</span> tb</h3>
+<p><code>tb f</code></p>
+<p>文字の配置基準です。<br />
+<code>f</code>は0：左下、1：中下、2：右下、3：左中、4：中央、5：右中、6：左上、7：中上、8：右上。<br />
+初期値は0（左下）です。</p>
+<h3 data-number="2.3.10" id="fn"><span class="header-section-number">2.3.10</span> fn</h3>
+<p><code>fn [name]</code></p>
+<p><code>name</code>のフォント名を指定します。<code>name</code>がない場合はカレントフォント名が使われます。<br />
+初期値はカレントフォント名です。</p>
+<h3 data-number="2.3.11" id="fh"><span class="header-section-number">2.3.11</span> fh</h3>
+<p><code>fh [h]</code><br />
+文字の高さを指定します。<code>h</code>がない場合はカレント文字高さが使われます。
+<a href="#ps">ps</a>が0の場合、ここで指定するサイズは実寸になります。
+初期値はカレント文字高さです。</p>
+<h3 data-number="2.3.12" id="fw"><span class="header-section-number">2.3.12</span> fw</h3>
+<p><code>fw [w]</code><br />
+文字幅の比率を指定します。<code>w</code>がない場合はカレント文字幅比率が使われます。
+初期値はカレント文字幅です。</p>
+<h3 data-number="2.3.13" id="fs"><span class="header-section-number">2.3.13</span> fs</h3>
+<p><code>fs [s]</code><br />
+文字と文字の間隔を指定します。<code>s</code>がない場合はカレント文字間隔が使われます。<br />
+<a href="#ps">ps</a>が0の場合、ここで指定するサイズは実寸になります。<br />
+初期値はカレント文字間隔です。</p>
+<h3 data-number="2.3.14" id="fa"><span class="header-section-number">2.3.14</span> fa</h3>
+<p><code>fa [a]</code></p>
+<p>フォントの傾斜角を指定します。フォントの傾斜角は時計回りが正となるので注意してください。<code>a</code>がない場合はカレント傾斜角が使われます。<br />
+初期値はカレント傾斜角です。</p>
+<h3 data-number="2.3.15" id="ff"><span class="header-section-number">2.3.15</span> ff</h3>
+<p><code>ff [f]</code></p>
+<p>文字の修飾（イタリック、ボールドなど）を設定します。<br />
+<code>f</code>は、以下の値の組み合わせです。</p>
+<p>1 : イタリック<br />
+2 : ボールド<br />
+4 : 下線<br />
+8 : 取り消し線<br />
+16 :（予約：不使用）<br />
+32 :（予約：不使用）<br />
+64 : 文字のみ傾斜<br />
+128 : 枠線</p>
+<p><code>f</code>がない場合はカレント文字修飾が使われます。<br />
+初期値はカレント文字修飾です。</p>
+<h3 data-number="2.3.16" id="fnt"><span class="header-section-number">2.3.16</span> fnt</h3>
+<p><code>fnt [h] [w] [s] [a] [f]</code></p>
+<p>フォントに関するフォント名以外のパラメータを設定します。<br />
+h: 文字高さ、w: 文字幅の比率、s: 文字間隔、a:
+文字傾斜角、f:文字修飾<br />
+パラメータを全て省略した場合は全てカレント値が使われます。パラメータを一部省略した場合、そのパラメータは変更されません。<br />
+初期値はカレント値です。<br />
+各パラメータ詳細は、<a href="#fh">fh</a>,<a href="#fw">fw</a>,<a href="#fs">fs</a>,<a href="#fa">fa</a>,<a href="#ff">ff</a>を参照してください。</p>
+<h2 data-number="2.4" id="図形コマンド"><span class="header-section-number">2.4</span> 図形コマンド</h2>
+<h3 data-number="2.4.1" id="line"><span class="header-section-number">2.4.1</span> line</h3>
+<p><code>line [x0 y0] [x1 y1] [x2 y2] ... [xn yn]</code></p>
+<p>線を引きます。複数のxy座標のペアをパラメータとして渡すとそれらを結んだ線を引きます。<br />
+<a href="#lz">lz</a>が1の場合は終点と始点の間に線を引きます。<br />
+通常、直線は2点が必要ですが、2点より少なくてもエラーにはなりません（何も書かれません）。また、パラメータは偶数個必要です。</p>
+<pre><code># (0,0)、(100,0)、(100,50)の座標をつなぐ線。
+line 0 0 100 0 100 50  </code></pre>
+<h3 data-number="2.4.2" id="circle"><span class="header-section-number">2.4.2</span> circle</h3>
+<p><code>circle x y radius [flatness=1.0] [angle=0.0]</code></p>
+<p>中心座標(x,y)、半径radius、扁平率flatness、傾きangleの楕円を描きます。塗りつぶしができます。</p>
+<pre><code>circle 0 0 100        # 中心(0,0)、半径100の円
+circle 0 0 100 0.5    # 中心(0,0)、半径100、扁平率0.5の楕円
+circle 0 0 100 0.5 30 # 中心(0,0)、半径100、扁平率0.5、傾き30度の楕円</code></pre>
+<h3 data-number="2.4.3" id="arc"><span class="header-section-number">2.4.3</span> arc</h3>
+<p><code>arc x y radius start sweep [flatness=1.0] [angle=0.0]</code></p>
+<p>中心座標(x,y)、半径radius、開始角start、角幅sweep、扁平率flatness、傾きangleの楕円弧を描きます。塗りつぶしができます。startから、sweepが正の場合は左回り、負の場合は右回りの円弧になります。<br />
+<a href="#lz">lz</a>が1の場合は終点と始点の間に線を引きます（円弧ではなくベジェ曲線になります）。</p>
+<pre><code>arc 0 0 100 30 45         # 中心(0,0)、半径100、開始角30、角幅45の円弧
+arc 0 0 100 30 -45 0.5    # 中心(0,0)、半径100、開始角30、角幅-45（時計回りで45度）、扁平率0.5の楕円弧
+arc 0 0 100 30 -45 0.5 30 # 中心(0,0)、半径100、開始角30、角幅-45（時計回りで45度）、扁平率0.5、傾き30度の楕円弧
+arc 0 0 100 30 45         # 中心(0,0)、半径100、開始角30、角幅45の円弧
+arc 0 0 100 30 -45 0.5    # 中心(0,0)、半径100、開始角30、角幅-45（時計回りで45度）、扁平率0.5の楕</code></pre>
+<h3 data-number="2.4.4" id="fan"><span class="header-section-number">2.4.4</span> fan</h3>
+<p><code>fan x y radius  start sweep [flatness=1.0] [angle=0.0]</code></p>
+<p>中心座標(x,y)、半径radius、開始角start、角幅sweep、扁平率flatness、傾きangleの扇形（ベジェ曲線）を描きます。塗りつぶしができます。</p>
+<h3 data-number="2.4.5" id="polyline"><span class="header-section-number">2.4.5</span> polyline</h3>
+<p><code>polyline [x0 y0] [x1 y1] [x2 y2] ... [xn yn]</code></p>
+<p>複数のxy座標のペアをパラメータとして渡すとそれらを結んだ線（ポリライン）を描きます。<br />
+<a href="#lz">lz</a>が1の場合は終点と始点の間に線を引きます。<br />
+塗りつぶしができます。</p>
+<h3 data-number="2.4.6" id="spline"><span class="header-section-number">2.4.6</span> spline</h3>
+<p><code>spline [x0 y0] [x1 y1] [x2 y2] ... [xn yn]</code></p>
+<p>複数のxy座標のペアをパラメータとして渡すとそれらを結んだスプライン曲線を描きます。<br />
+<a href="#lz">lz</a>が1の場合は終点と始点を曲線で結びます。<br />
+塗りつぶしができます。</p>
+<h3 data-number="2.4.7" id="bezier"><span class="header-section-number">2.4.7</span> bezier</h3>
+<p><code>bezier x0 y0 dx0 dy0 cx1 cy1 x1 y1 [dx1 dy1 cx2 cy2 x2 y2] ... [dxn-1 dyn-1 cxn cyn xn yn]</code></p>
+<p>3次ベジェ曲線です。頂点、制御点１(dx,dy)、制御点2(cx,cy)，頂点の順に並べてあります。頂点数をmとした場合、制御点と頂点の合計は3*m+1になります。<br />
+<a href="#lz">lz</a>が1の場合は終点と始点の間に直線を引きます。<br />
+塗りつぶしができます。</p>
+<h3 data-number="2.4.8" id="text"><span class="header-section-number">2.4.8</span> text</h3>
+<p><code>text str x y [angle=0.0]</code></p>
+<p>文字列strを座標(x,y)、角度angleで描きます。塗りつぶし色で背景を塗ることができます。</p>
+<pre><code>text &quot;test&quot; 0 0
+text &quot;test&quot; 0 0 30</code></pre>
+<h3 data-number="2.4.9" id="marker"><span class="header-section-number">2.4.9</span> marker</h3>
+<p><code>marker x y [angle=0.0]</code></p>
+<p>マーカーを座標(x,y)、角度angleでマーカーを描きます。<br />
+スタイルはマーカーの種類は<a href="#mt">mt</a>、マーカーサイズは<a href="#ms">ms</a>、色などは線の属性を使用します（色は<a href="#lc">lc</a>、線幅は<a href="#lw">lw</a>、線種<a href="#lt">lt</a>はconstructionのみ有効）。</p>
+<h3 data-number="2.4.10" id="group"><span class="header-section-number">2.4.10</span> group</h3>
+<pre><code>group
+....
+....
+end group</code></pre>
+<p><code>group</code>と<code>end group</code>間の図形をグループ化します。<code>group</code>中に<code>group</code>を入れることもできます。<br />
+<code>group</code>中では<a href="#layer">layer</a>コマンド、<a href="#ps">ps</a>コマンド、<a href="#p0">p0</a>コマンドは使えません。<br />
+また、<code>end group</code>が存在しない場合、そのグループ図形は追加されません（エラーにするか未定）。</p>
+<h1 data-number="3" id="履歴"><span class="header-section-number">3</span> 履歴</h1>
 <ul>
-<li>isCloseが1の時は矢印スタイルは使われません。</li>
-</ul>
-<h5 data-number="1.3.2.6.2" id="spline-s-スプライン曲線"><span class="header-section-number">1.3.2.6.2</span> Spline [ S
-]（スプライン曲線）</h5>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>vertices(x1 y1 x2 y2 x3 y3 … xn yn)<br>[ vs ]</td>
-<td>x1..xn : Double, y1..yn : Double</td>
-<td>頂点</td>
-</tr>
-<tr>
-<td>isClosed(flag)<br>[ ic ]</td>
-<td>flag : Int</td>
-<td>0:Open　1:Close 省略時0</td>
-</tr>
-<tr>
-<td>lineStyle(…)<br>[ ls ]</td>
-<td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル</td>
-</tr>
-<tr>
-<td>fillStyle(…)<br>[ fs ]</td>
-<td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>塗りスタイル</td>
-</tr>
-<tr>
-<td>startArrow(…)<br>[ sa ]</td>
-<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>始点矢印</td>
-</tr>
-<tr>
-<td>endArrow(…)<br>[ ea ]</td>
-<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>終点矢印</td>
-</tr>
-</tbody>
-</table>
+<li>2026/04/26
 <ul>
-<li>カーディナルスプラインでテンションは0.5です。</li>
-<li>isCloseが1の時は矢印スタイルは使われません。</li>
-</ul>
-<h5 data-number="1.3.2.6.3" id="bezier-b-ベジェ曲線"><span class="header-section-number">1.3.2.6.3</span> Bezier [ B
-]（ベジェ曲線）</h5>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>vertices(x1 y1 x2 y2 x3 y3 … xn yn)<br>[ vs ]</td>
-<td>x1..xn : Double, y1..yn : Double</td>
-<td>頂点と制御点</td>
-</tr>
-<tr>
-<td>lineStyle(…)<br>[ ls ]</td>
-<td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル</td>
-</tr>
-<tr>
-<td>fillStyle(…)<br>[ fs ]</td>
-<td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>塗りスタイル</td>
-</tr>
-<tr>
-<td>startArrow(…)<br>[ sa ]</td>
-<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>始点矢印</td>
-</tr>
-<tr>
-<td>endArrow(…)<br>[ ea ]</td>
-<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>終点矢印</td>
-</tr>
-</tbody>
-</table>
+<li>ver 1.1 Rev.1<br />
+</li>
+<li>誤記および書式の修正。</li>
+</ul></li>
+<li>2025/04/17
 <ul>
-<li>3次ベジェ曲線です。頂点、制御点１、制御点2，頂点の順に並べてあります。頂点数をmとした場合、制御点と頂点の合計nはn=3*m+1になります。</li>
-<li>isCloseが1の時は始点と終点が直線で繋がれ矢印スタイルは使われません。</li>
-</ul>
-<h5 data-number="1.3.2.6.4" id="circle-c-円"><span class="header-section-number">1.3.2.6.4</span> Circle [ C ]（円）</h5>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>p0(x y)</td>
-<td>x : Double, y : Double</td>
-<td>中心点</td>
-</tr>
-<tr>
-<td>radius(r)<br>[ r ]</td>
-<td>r : Double</td>
-<td>半径</td>
-</tr>
-<tr>
-<td>flatness(f)<br>[ f ]</td>
-<td>f : Double</td>
-<td>扁平率。省略時1</td>
-</tr>
-<tr>
-<td>angle(a)<br>[ a ]</td>
-<td>a : Double</td>
-<td>角度（度）。省略時0</td>
-</tr>
-<tr>
-<td>lineStyle(…)<br>[ ls ]</td>
-<td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル</td>
-</tr>
-<tr>
-<td>fillStyle(…)<br>[ fs ]</td>
-<td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>塗りスタイル</td>
-</tr>
-</tbody>
-</table>
-<h5 data-number="1.3.2.6.5" id="arc-a-円弧"><span class="header-section-number">1.3.2.6.5</span> Arc [ A ]（円弧）</h5>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>p0(x y)</td>
-<td>x : Double, y : Double</td>
-<td>中心点</td>
-</tr>
-<tr>
-<td>radius(r)<br>[ r ]</td>
-<td>r : Double</td>
-<td>半径</td>
-</tr>
-<tr>
-<td>flatness(f)<br>[ f ]</td>
-<td>f : Double</td>
-<td>扁平率。省略時1</td>
-</tr>
-<tr>
-<td>angle(a)<br>[ a ]</td>
-<td>a : Double</td>
-<td>角度（度）。省略時0</td>
-</tr>
-<tr>
-<td>startAngle(a)<br>[ st ]</td>
-<td>a : Double</td>
-<td>開始角（度）。省略時0</td>
-</tr>
-<tr>
-<td>sweepAngle(a)<br>[ sw ]</td>
-<td>a : Double</td>
-<td>角幅（度）。省略時90</td>
-</tr>
-<tr>
-<td>lineStyle(…)<br>[ ls ]</td>
-<td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル</td>
-</tr>
-<tr>
-<td>fillStyle(…)<br>[ fs ]</td>
-<td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>塗りスタイル</td>
-</tr>
-<tr>
-<td>startArrow(…)<br>[ sa ]</td>
-<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>始点矢印</td>
-</tr>
-<tr>
-<td>endArrow(…)<br>[ ea ]</td>
-<td><a href="#arrowStyle">矢印スタイル</a>参照</td>
-<td>終点矢印</td>
-</tr>
-</tbody>
-</table>
+<li>ver 1.1 Rev.0<br />
+</li>
+<li>属性の初期値をカレント値に変更。<br />
+</li>
+<li>誤記修正</li>
+</ul></li>
+<li>2025/04/09
 <ul>
-<li>開始角及び角幅は省略可能ですが省略値は暫定のため省略を推奨しません。</li>
-<li>角幅は左回りが正、右回りは負です。</li>
+<li>ver 1.0 Rev.0<br />
+</li>
+<li>初版</li>
+</ul></li>
 </ul>
-<h5 data-number="1.3.2.6.6" id="marker-m-点"><span class="header-section-number">1.3.2.6.6</span> Marker [ M ]（点）</h5>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>p0(x y)</td>
-<td>x : Double, y : Double</td>
-<td>中心点</td>
-</tr>
-<tr>
-<td>angle(a)<br>[ a ]</td>
-<td>a : Double</td>
-<td>角度（度）。省略時0</td>
-</tr>
-<tr>
-<td>markerStyle(…)<br>[ ms ]</td>
-<td><a href="#markerStyle">点スタイル</a>参照</td>
-<td>点スタイル</td>
-</tr>
-<tr>
-<td>lineStyle(…)<br>[ ls ]</td>
-<td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>線スタイルの線種は無効で常に実線になります。</li>
-<li>線種がレイヤ線種になっていても実線で表示される。</li>
-<li>線種が仮線の場合は印刷されない点となる。</li>
-</ul>
-<h5 data-number="1.3.2.6.7" id="text-t-文字"><span class="header-section-number">1.3.2.6.7</span> Text [ T ]（文字）</h5>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>p0(x y)</td>
-<td>x : Double, y : Double</td>
-<td>基準点</td>
-</tr>
-<tr>
-<td>width(w)<br>[ w ]</td>
-<td>w : Double</td>
-<td>文字枠幅。省略時0。</td>
-</tr>
-<tr>
-<td>height(h)<br>[ h ]</td>
-<td>h : Double</td>
-<td>文字枠高さ。省略時0。</td>
-</tr>
-<tr>
-<td>text(t)<br>[ t ]</td>
-<td>t : String</td>
-<td>文字列</td>
-</tr>
-<tr>
-<td>angle(a)<br>[ a ]</td>
-<td>a : Double</td>
-<td>角度（度）。省略時0</td>
-</tr>
-<tr>
-<td>basis(b)<br>[ b ]</td>
-<td>b : Int</td>
-<td>配置基準。省略時0（左下）</td>
-</tr>
-<tr>
-<td>fm(m)</td>
-<td>m : Int</td>
-<td>文字枠モード。省略時0（自動）</td>
-</tr>
-<tr>
-<td>textStyle(…)<br>[ ts ]</td>
-<td><a href="#textStyle">文字スタイル</a>参照</td>
-<td>文字スタイル。</td>
-</tr>
-<tr>
-<td>fillStyle(…)<br>[ fs ]</td>
-<td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>文字背景塗りスタイル</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>配置基準　0:左下, 1:中下, 2:右下, 3:左中, 4:中央, 5:右中, 6:左上,
-7:中上, 8:右上</li>
-<li>文字枠内は背景色で塗りつぶしができます。また、文字枠の幅で文字列は折り返しされます。文字枠の大きさは、文字枠幅と文字枠高さと文字枠モードの組み合わせで決まります。</li>
-<li>文字枠モード
-0：自動。文字枠の幅と高さは文字列を囲む範囲（折り返しなし）。width（文字枠幅）とheight（文字枠高さ）は省略できる（存在しても使われない）。
-1：幅可変。width（文字枠幅）が有効で、文字枠高さは文字列を囲む範囲。height（文字枠高さ）は省略できる（存在しても使われない）。
-2：幅と高さ可変。文字枠は、width（文字枠幅）とheight（文字枠高さ）で決まる。</li>
-<li>必要な文字枠幅・高さが0の場合、文字列を囲む範囲を初期値としてとる。</li>
-</ul>
-<h5 data-number="1.3.2.6.8" id="dimension-dim-直線寸法"><span class="header-section-number">1.3.2.6.8</span> Dimension [ Dim
-]（直線寸法）</h5>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>p0(x y)</td>
-<td>x : Double, y : Double</td>
-<td>寸法線始点</td>
-</tr>
-<tr>
-<td>p1(x y)</td>
-<td>x : Double, y : Double</td>
-<td>寸法線終点</td>
-</tr>
-<tr>
-<td>direction(dx dy)<br>[ d ]</td>
-<td>dx : Double, dy : Double</td>
-<td>寸法線から引出位置への方向単位ベクトル</td>
-</tr>
-<tr>
-<td>extensionLine0(d)<br>[ e0 ]</td>
-<td>d : Double</td>
-<td>始点側引き出し線の長さ</td>
-</tr>
-<tr>
-<td>extensionLine1(d)<br>[ e1 ]</td>
-<td>d : Double</td>
-<td>終点側引き出し線の長さ</td>
-</tr>
-<tr>
-<td>text(t)<br>[ t ]</td>
-<td>t : String</td>
-<td>文字列</td>
-</tr>
-<tr>
-<td>tp(d)</td>
-<td>d : Double</td>
-<td>文字配置位置 0.0が始点、1.0が終点、0.5が寸法線の中央。省略時0.5</td>
-</tr>
-<tr>
-<td>enableAutoDimension(f)<br>[ ed ]</td>
-<td>f : Int</td>
-<td>1で寸法値自動。省略時1</td>
-</tr>
-<tr>
-<td>lineStyle(…)<br>[ ls ]</td>
-<td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル</td>
-</tr>
-<tr>
-<td>fillStyle(…)<br>[ fs ]</td>
-<td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>文字背景塗りスタイル</td>
-</tr>
-<tr>
-<td>dimensionStyle(…)<br>[ ds ]</td>
-<td><a href="#dimensionStyle">直線寸法スタイル</a>参照</td>
-<td>直線寸法スタイル</td>
-</tr>
-<tr>
-<td>tolerance(…)<br>[ to ]</td>
-<td><a href="#tolerance">許容差</a>参照</td>
-<td>許容差。省略時、許容差なし</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>引き出し線の長さがマイナスの場合、directionの逆向きに引き出し線を伸ばす。</li>
-</ul>
-<h5 data-number="1.3.2.6.9" id="radius-rad-半径寸法"><span class="header-section-number">1.3.2.6.9</span> Radius [ Rad
-]（半径寸法）</h5>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>p0(x y)</td>
-<td>x : Double, y : Double</td>
-<td>寸法線始点</td>
-</tr>
-<tr>
-<td>p1(x y)</td>
-<td>x : Double, y : Double</td>
-<td>寸法線終点</td>
-</tr>
-<tr>
-<td>text(t)<br>[ t ]</td>
-<td>t : String</td>
-<td>文字列</td>
-</tr>
-<tr>
-<td>tp(d)</td>
-<td>d : Double</td>
-<td>文字配置位置 0.0が中心、1.0が終点、0.5が寸法線の中央。省略時0.5</td>
-</tr>
-<tr>
-<td>enableAutoDimension(f)<br>[ ed ]</td>
-<td>f : Int</td>
-<td>1で寸法値自動。省略時1</td>
-</tr>
-<tr>
-<td>lineStyle(…)<br>[ ls ]</td>
-<td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル</td>
-</tr>
-<tr>
-<td>fillStyle(…)<br>[ fs ]</td>
-<td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>文字背景塗りスタイル</td>
-</tr>
-<tr>
-<td>dimensionStyle(…)<br>[ ds ]</td>
-<td><a href="#radiusStyle">半径寸法スタイル</a>参照</td>
-<td>半径寸法スタイル</td>
-</tr>
-<tr>
-<td>tolerance(…)<br>[ to ]</td>
-<td><a href="#tolerance">許容差</a>参照</td>
-<td>許容差。省略時、許容差なし</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>始点は円の中心。</li>
-</ul>
-<h5 data-number="1.3.2.6.10" id="diameter-dia-直径寸法"><span class="header-section-number">1.3.2.6.10</span> Diameter [ Dia
-]（直径寸法）</h5>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>p0(x y)</td>
-<td>x : Double, y : Double</td>
-<td>寸法線始点</td>
-</tr>
-<tr>
-<td>p1(x y)</td>
-<td>x : Double, y : Double</td>
-<td>寸法線終点</td>
-</tr>
-<tr>
-<td>text(t)<br>[ t ]</td>
-<td>t : String</td>
-<td>文字列</td>
-</tr>
-<tr>
-<td>tp(d)</td>
-<td>d : Double</td>
-<td>文字配置位置 0.0が始点、1.0が終点、0.5が寸法線の中央。省略時0.5</td>
-</tr>
-<tr>
-<td>enableAutoDimension(f)<br>[ ed ]</td>
-<td>f : Int</td>
-<td>1で寸法値自動。省略時1</td>
-</tr>
-<tr>
-<td>lineStyle(…)<br>[ ls ]</td>
-<td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル</td>
-</tr>
-<tr>
-<td>fillStyle(…)<br>[ fs ]</td>
-<td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>文字背景塗りスタイル</td>
-</tr>
-<tr>
-<td>dimensionStyle(…)<br>[ ds ]</td>
-<td><a href="#diameterStyle">直径寸法スタイル</a>参照</td>
-<td>直径寸法スタイル</td>
-</tr>
-<tr>
-<td>tolerance(…)<br>[ to ]</td>
-<td><a href="#tolerance">許容差</a>参照</td>
-<td>許容差。省略時、許容差なし</td>
-</tr>
-</tbody>
-</table>
-<h5 data-number="1.3.2.6.11" id="angle-ang-角度寸法"><span class="header-section-number">1.3.2.6.11</span> Angle [ Ang
-]（角度寸法）</h5>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>p0(x y)</td>
-<td>x : Double, y : Double</td>
-<td>中心</td>
-</tr>
-<tr>
-<td>radius(r)<br>[ r ]</td>
-<td>r : Double</td>
-<td>半径</td>
-</tr>
-<tr>
-<td>startAngle(a)<br>[ st ]</td>
-<td>a : Double</td>
-<td>開始角（度）。省略時0</td>
-</tr>
-<tr>
-<td>sweepAngle(a)<br>[ sw ]</td>
-<td>a : Double</td>
-<td>角幅（度）。省略時90</td>
-</tr>
-<tr>
-<td>extensionLine0(d)<br>[ e0 ]</td>
-<td>d : Double</td>
-<td>始点側引き出し線の長さ</td>
-</tr>
-<tr>
-<td>extensionLine1(d)<br>[ e1 ]</td>
-<td>d : Double</td>
-<td>終点側引き出し線の長さ</td>
-</tr>
-<tr>
-<td>text(t)<br>[ t ]</td>
-<td>t : String</td>
-<td>文字列</td>
-</tr>
-<tr>
-<td>tp(d)</td>
-<td>d : Double</td>
-<td>文字配置位置 0.0が始点、1.0が終点、0.5が寸法線の中央。省略時0.5</td>
-</tr>
-<tr>
-<td>enableAutoDimension(f)<br>[ ed ]</td>
-<td>f : Int</td>
-<td>1で寸法値自動。省略時1</td>
-</tr>
-<tr>
-<td>lineStyle(…)<br>[ ls ]</td>
-<td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル</td>
-</tr>
-<tr>
-<td>fillStyle(…)<br>[ fs ]</td>
-<td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>文字背景塗りスタイル</td>
-</tr>
-<tr>
-<td>dimensionStyle(…)<br>[ ds ]</td>
-<td><a href="#angleStyle">角度寸法スタイル</a>参照</td>
-<td>角度寸法スタイル</td>
-</tr>
-<tr>
-<td>tolerance(…)<br>[ to ]</td>
-<td><a href="#tolerance">許容差</a>参照</td>
-<td>許容差。省略時、許容差なし</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>引き出し線の長さがマイナスの場合、中心と反対側に引き出し線を伸ばす。</li>
-</ul>
-<h5 data-number="1.3.2.6.12" id="arcdimension-arcd-弧長寸法"><span class="header-section-number">1.3.2.6.12</span> ArcDimension [ ArcD
-]（弧長寸法）</h5>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>p0(x y)</td>
-<td>x : Double, y : Double</td>
-<td>中心</td>
-</tr>
-<tr>
-<td>radius(r)<br>[ r ]</td>
-<td>r : Double</td>
-<td>寸法線の半径</td>
-</tr>
-<tr>
-<td>startAngle(a)<br>[ st ]</td>
-<td>a : Double</td>
-<td>開始角（度）。省略時0</td>
-</tr>
-<tr>
-<td>sweepAngle(a)<br>[ sw ]</td>
-<td>a : Double</td>
-<td>角幅（度）。省略時90</td>
-</tr>
-<tr>
-<td>ar(r)<br></td>
-<td>r : Double</td>
-<td>弧長の半径</td>
-</tr>
-<tr>
-<td>text(t)<br>[ t ]</td>
-<td>t : String</td>
-<td>文字列</td>
-</tr>
-<tr>
-<td>tp(d)</td>
-<td>d : Double</td>
-<td>文字配置位置 0.0が始点、1.0が終点、0.5が寸法線の中央。省略時0.5</td>
-</tr>
-<tr>
-<td>enableAutoDimension(f)<br>[ ed ]</td>
-<td>f : Int</td>
-<td>1で寸法値自動。省略時1</td>
-</tr>
-<tr>
-<td>lineStyle(…)<br>[ ls ]</td>
-<td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル</td>
-</tr>
-<tr>
-<td>fillStyle(…)<br>[ fs ]</td>
-<td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>文字背景塗りスタイル</td>
-</tr>
-<tr>
-<td>dimensionStyle(…)<br>[ ds ]</td>
-<td><a href="#arcdimensionStyle">弧長寸法スタイル</a>参照</td>
-<td>弧長寸法スタイル</td>
-</tr>
-<tr>
-<td>tolerance(…)<br>[ to ]</td>
-<td><a href="#tolerance">許容差</a>参照</td>
-<td>許容差。省略時、許容差なし</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>寸法線（寸法値が表示される）の半径と、弧長を測る半径があることに注意。</li>
-<li>延長線が平行（延長線モード自動で弧幅が90度以内の場合を含む）で寸法線の半径が弧長の半径より小さい時、寸法線が寸法線の半径で描画できないならば、寸法線の半径を無視し、寸法線を描画できる最小の半径を使い描画する。</li>
-</ul>
-<p><a id="Leader"></a> ##### Leader [ Lea ]（引出線）</p>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>vertices(x1 y1 x2 y2 x3 y3 … xn yn)<br>[ vs ]</td>
-<td>x1..xn : Double, y1..yn : Double</td>
-<td>頂点</td>
-</tr>
-<tr>
-<td>text(t)<br>[ t ]</td>
-<td>t : String</td>
-<td>文字列</td>
-</tr>
-<tr>
-<td>lineStyle(…)<br>[ ls ]</td>
-<td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル</td>
-</tr>
-<tr>
-<td>fillStyle(…)<br>[ fs ]</td>
-<td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>文字背景塗りスタイル</td>
-</tr>
-<tr>
-<td>leaderStyle(…)<br>[ lt ]</td>
-<td><a href="#leaderStyle">引出線スタイル</a>参照</td>
-<td>引出線スタイル</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>leaderStyle.leaderBasisが3（Free）の場合、文字列の配置点は最後の頂点にleaderStyle.textOffsetをX、leaderStyle.leaderOffsetをYとしてオフセットする（文字の基点は中心）。</li>
-<li>leaderStyle.leaderBasisが3（Free）の場合、leaderStyle.extendLineとleaderStyle.leaderOrientationは無視され文字列の傾きはleaderStyle.textAngleが使われる。</li>
-</ul>
-<h5 data-number="1.3.2.6.13" id="balloon-bal-バルーン"><span class="header-section-number">1.3.2.6.13</span> Balloon [ Bal
-]（バルーン）</h5>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>vertices(x1 y1 x2 y2 x3 y3 … xn yn)<br>[ vs ]</td>
-<td>x1..xn : Double, y1..yn : Double</td>
-<td>頂点</td>
-</tr>
-<tr>
-<td>text(t)<br>[ t ]</td>
-<td>t : String</td>
-<td>文字列</td>
-</tr>
-<tr>
-<td>lineStyle(…)<br>[ ls ]</td>
-<td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル</td>
-</tr>
-<tr>
-<td>fillStyle(…)<br>[ fs ]</td>
-<td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>文字背景塗りスタイル</td>
-</tr>
-<tr>
-<td>balloonStyle(…)<br>[ bs ]</td>
-<td><a href="#balloonStyle">バルーンスタイル</a>参照</td>
-<td>バルーンスタイル</td>
-</tr>
-</tbody>
-</table>
-<h5 data-number="1.3.2.6.14" id="group-g-グループ図形"><span class="header-section-number">1.3.2.6.14</span> Group [ G
-]（グループ図形）</h5>
-<table>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>shapes(S1()S2()…Sn())<br>[ ss ]</td>
-<td>S1..Sn:図形</td>
-<td>図形のリスト</td>
-</tr>
-</tbody>
-</table>
-<h5 data-number="1.3.2.6.15" id="path-pa-パス図形"><span class="header-section-number">1.3.2.6.15</span> Path [ Pa
-]（パス図形）</h5>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>p(…)<br></td>
-<td></td>
-<td>パスリスト</td>
-</tr>
-<tr>
-<td>lineStyle(…)<br>[ ls ]</td>
-<td><a href="#lineStyle">線スタイル</a>参照</td>
-<td>線スタイル</td>
-</tr>
-<tr>
-<td>fillStyle(…)<br>[ fs ]</td>
-<td><a href="#fillStyle">塗りスタイル</a>参照</td>
-<td>塗りスタイル</td>
-</tr>
-</tbody>
-</table>
-<p>パス要素 | 要素 | パラメータ | 説明 | |—–|——|—–| | s(x,y)<br>|
-x:Double, y:Double| 始点 | | e(flag)<br>| flag:Int| 0：閉じない,
-1:閉じる | | l(x1 y1 x2 y2 … xn yn)<br>| x1..xn : Double, y1..yn :
-Double| 直線 | | b(x1 y1 x2 y2 … xn yn)<br>| x1..xn : Double, y1..yn :
-Double| 3次ベジェ曲線。2つの制御点と１つの頂点の組 | -
-パスはs()から始まること。e()のフラグが1の時は最後の点からまで始点まで直線を引く。</p>
-<h5 data-number="1.3.2.6.16" id="image-img-画像図形"><span class="header-section-number">1.3.2.6.16</span> Image [ Img
-]（画像図形）</h5>
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 37%" />
-<col style="width: 31%" />
-</colgroup>
-<thead>
-<tr>
-<th>要素</th>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>p0(x y)</td>
-<td>x : Double, y : Double</td>
-<td>中心</td>
-</tr>
-<tr>
-<td>width(w)<br>[ w ]</td>
-<td>w : Double</td>
-<td>幅</td>
-</tr>
-<tr>
-<td>height(h)<br>[ h ]</td>
-<td>h : Double</td>
-<td>高さ</td>
-</tr>
-<tr>
-<td>angle(a)<br>[ a ]</td>
-<td>a : Double</td>
-<td>角度（度）。省略時0</td>
-</tr>
-<tr>
-<td>image(bytes)<br>[ im ]</td>
-<td>bytes : Bytes</td>
-<td>画像データ</td>
-</tr>
-<tr>
-<td>src(file)<br></td>
-<td>file : String</td>
-<td>画像データファイルへのパス（フォルダ名含む）。例：src(“media\\e1ed77be-822f-4743-a295-6d4c025ba6b0.png”)
-フォルダの区切りの’\’は文字列では２つ必要なことに注意。ファイルに拡張子は無くてもよいが、あったほうがデバッグが楽になると思います。</td>
-</tr>
-<tr>
-<td>type(name)<br>[ t ]</td>
-<td>name : String</td>
-<td>画像の種類（jpg, png, bmp）<br>参考値。省略可。</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>画像の種類はバイナリから判断できるためtypeタグは無くてもよい。今のところtypeタグはデバッグで使うことを想定する。</li>
-<li>imageタグとsrcタグは片方のみ有効。両方あった場合の動作は未定義。</li>
-<li>imageタグを使うとファイルサイズが大きくなりますが、画像を一つのファイルにまとめることができるのでアプリケーションによっては実装が容易になります。</li>
-<li>既存の図面に別の図面をインポートで追加する可能性を考えて、srcに使うファイル名は（ファイル名の衝突を避けるため）uuidを使うことを推奨します（そこまでしなくても、prefixを付けたミリ秒単位の日時をファイル名にしても大丈夫と思います）。</li>
-</ul>
-<h3 data-number="1.3.3" id="settingsセクション-1"><span class="header-section-number">1.3.3</span> settingsセクション</h3>
-<p>設定を記述します。</p>
-<pre><code>settings(
- currentLayer(&quot;Lyer1&quot;)
- currentSheet(&quot;Sheet2&quot;)
-)</code></pre>
-<h4 data-number="1.3.3.1" id="currentlayer"><span class="header-section-number">1.3.3.1</span> currentLayer</h4>
-<p>選択中のレイヤ名 #### currentSheet 選択中のシート名</p>
-<h2 data-number="1.4" id="補足"><span class="header-section-number">1.4</span> 補足</h2>
-<h3 data-number="1.4.1" id="ファイルバージョン"><span class="header-section-number">1.4.1</span> ファイルバージョン</h3>
-<ul>
-<li>インデックスファイルと図面ファイルのバージョンはそれぞれ違う値にすることもできますが、インデクスファイルのメジャーバージョン2以降はインデックスファイルと図面ファイルは同じものにしようと思います。</li>
-</ul>
-<h3 data-number="1.4.2" id="バージョンによる違い"><span class="header-section-number">1.4.2</span> バージョンによる違い</h3>
-<ul>
-<li>ファイルバージョンは文字列でversionタグを使いますが、旧バージョンでは<code>fileversion(versionNumber)</code>を使いメジャーバージョン（整数値）のみでした。</li>
-<li>メジャーバージョン1はページが１つしかなく、pagesタグがない代わりにdrawingタグがあります。また、settingsタグはありません（設定はdrawingファイルにあります）。
-以下はインデックスファイルのメジャーバージョン1の例です。メジャーバージョン１では図面ファイル名は<code>drawing</code>でした。</li>
-</ul>
-<pre><code>filetype(&quot;precad_archive&quot;)
-fileinfo(
- fileversion(1)appinfo(&quot;precad for windows version 1.0.0.0&quot;)
-)
-contents(
- drawing(&quot;drawing&quot;)
-)</code></pre>
-<ul>
-<li>線図形（Line）の始点と終点はppタグでまとめて書き出しますが、バージョン2.1.0までは始点と終点を別々に以下の書式で記述していました。バージョン2.2.0以降、分けて記述するのは冗長なのでppの書式に変更しました。互換性のため読み込みのみ対応しています。</li>
-</ul>
-<pre><code>p0(x0,y0)p1(x1,y1)</code></pre>
-<ul>
-<li>頂点リスト（vertices()）はファイルバージョン2.0.0以下では次の書式でした。互換性のため読み込みのみ対応しています。</li>
-</ul>
-<pre><code>points(P(x0,y0)P(x1,y1)...)　　//Pは大文字</code></pre>
-<ul>
-<li>ベジェ曲線の頂点リストは以下の旧型式(ファイルバージョン2.0.0以下)があります（非推奨）。各頂点とその制御点を分けて記述します。制御点は各頂点の始点側（s()）と終点側（e()）の制御点を記述します。開いたベジェ曲線の場合は始点の終点側の制御点、終点の始点側の制御点は無視されます。
-記述が冗長なのでこの形式は互換性のために読み込みのみ対応しています。</li>
-</ul>
-<pre><code>points(P(x0 y0)P(x1 y1)...)
-controlPoints(cp(s(sx0 sy0)e(ex0 ey0)cp(s(sx1 sy1)e(ex1 ey1))...))</code></pre>
-<ul>
-<li><p>バージョン2.1.0以前の直径寸法スタイルと直線寸法スタイルの矢印は始点終点同じものでした。そのため矢印スタイルのタグは<code>arrowStyle</code>でした。</p></li>
-<li><p>バージョン2.3.0からImageのsrcタグにファイル名を追加、圧縮ファイル内のmediaフォルダ内に画像を保存します。それ以前はimageタグを使用し文字列として同梱していました（この方式はクリップボード経由のコピーのために現在も使われています）。</p></li>
-<li><p>バージョン2.9.0からカレント属性を定義しました。</p></li>
-<li><p>バージョン2.10.0からラベル（%lなど）を追加しました。</p></li>
-<li><p>バージョン2.10.0から図形の短縮名を追加しました。</p></li>
-<li><p>バージョン2.11.0からfillStyleに線形グラデーション、放射状グラデーションを追加しました。</p></li>
-</ul>
-<h2 data-number="1.5" id="履歴"><span class="header-section-number">1.5</span> 履歴</h2>
-<p>2026/03/21 2.11.0 Rev.0 -
-fillStyleに線形グラデーション、放射状グラデーションを追加。 -
-誤記修正。</p>
-<p>2026/01/31 2.10.0 Rev.1 - 誤記修正。</p>
-<p>2026/01/10 2.10.0 Rev.0 - パラメータにラベル（%lなど）を追加。 -
-カレント線スタイルにlc, lw, ltを追加。 - 図形に短縮名を追加しました。 -
-レイヤとシートの説明が抜けていたので追加しました。 - 誤記修正。</p>
-<p>2025/12/22 2.9.1 Rev.0 -
-カレント属性の始点終点矢印、引出線、バルーン、寸法線類に省略形を追加。</p>
-<p>2025/12/22 2.9.0 Rev.0 -
-図形属性を図形外にも記載可能とした（カレント属性）。それに合わせ図形の属性値省略時の値を削除。
-- toleranceのfractionDigitsの省略時の値を1から2へ変更。</p>
-<p>2025/12/05 2.8.0 Rev.0 -
-直線寸法、半径寸法、直径寸法、弧長寸法に長さの単位を追加。 -
-角度寸法スタイルを定義（2.7.0までは直線寸法スタイルを使用。直線寸法スタイルに長さの単位を追加したため、新たに定義）。
-- グリッドのspacingタグ廃止、gridSizeOnPaperタグ追加。</p>
-<p>2025/1/14 2.7.0 Rev.0 -
-textStyleのtextAlignに両端揃えと均等揃え追加。 -
-Text（文字）にfm（文字枠モード）追加。 -
-文字スタイルの縦書きは未実装のため、フラグを予約に変更。 -
-文字スタイルに枠線フラグ追加。</p>
-<p>2024/10/20 2.6.0 Rev.0 -
-バージョン変更　2.5.1-&gt;2.6.0（線種追加したので）。 -
-履歴の日付修正。</p>
-<p>2024/10/20 2.5.1 Rev.0 - 線種追加。 - 線種名誤記修正。</p>
-<p>2024/08/28 2.5.0 Rev.1 - formatStyleのprefix,suffix省略値修正。 -
-textStyleのfontName省略値追加。</p>
-<p>2024/08/25 2.5.0 Rev.0 -
-ArcDimension（弧長寸法）、arcDimensionStyle（弧長寸法スタイル）追加 -
-誤記修正</p>
-<p>2024/02/08 2.4.1 Rev.1 - 点（dot）のサイズについて修正</p>
-<p>2024/02/08 2.4.1 Rev.0 - textStyleのflagの値の誤記を修正。 -
-textStyleのflagにTEXT_SLANT_ONLY_CHARACTERを追加。</p>
-<p>2023/04/28 2.4.0 Rev.2 -
-用紙名を保存するように変更。用紙の回転フラグ追加。</p>
-<p>2023/04/14 2.4.0 rev1 - Leaderの修正 - 寸法値の変更 -
-このファイルのバージョン名の命名規則変更。</p>
-<p>2023/04/12 2.4 rev0 - 引出線の仕様変更。 -
-半径寸法のdimensionLineExtension説明追加、flag追加。 -
-寸法線関係の説明追加と修正。</p>
-<p>2023/04/10 rev5 -
-直径寸法のdimensionLineExtensionが0の場合の処理を追加。 -
-leaderStyleにパラメータ追加。</p>
-<p>2023/04/9 rev4 -
-寸法線と角度寸法のdimensionLineExtensionが0の場合の処理を追加。</p>
-<p>2023/03/23 rev3 - 線種追加</p>
-<p>2023/03/23 rev2 - マクロ文字列追加</p>
-<p>2023/03/09 - 初版</p>
             </div>
     </div>
   </div>

@@ -1,9 +1,5 @@
 ---
 html:
-  embed_local_images: true
-  embed_svg: true
-  offline: true
-  toc: true
 print_background: false
 title: PreCad file format
 ---
